@@ -1,0 +1,16 @@
+@import '~antd/dist/antd.css';
+
+.carousel {
+    margin-top: 10vh;
+    margin-left: 10vw;
+    width: 50vw;
+}
+
+.panel {
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    color: #ffffff;
+    text-align: center;
+    background: #364d79;
+}
