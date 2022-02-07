@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: aquamarine;
+}
+
+.todo-app {
+  -webkit-animation: fadeIn 0.5s ease-in;
+          animation: fadeIn 0.5s ease-in;
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 0 0 5px rgba(25,25,25,.25);
+  text-align: left;
+  left: 50%;
+  top: 50%;
+  padding: 1.5rem;
+  position: absolute;
+  z-index: 10;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+/* #todo-container {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-container {
+  width: 30%;
+  float: left;
+  background-color: antiquewhite;
+} */
+
+#items-container {
+  width: 30vw;
+  max-height: 600px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#items-completed-header {
+  height: 2em;
+  padding: 1em;
+  text-align: center;
+}
+
+#items-completed-header h1 {
+  color: gray;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+hr.todo-hr {
+  border: 1px solid rgb(211,211,211);
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
