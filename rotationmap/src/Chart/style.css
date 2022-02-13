@@ -4,6 +4,9 @@
     margin-top: 10vh;
     margin-left: 10vw;
     width: 50vw;
+    border: 0.2px solid grey;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .panel {

@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, {
+    useState,
+    // useEffect,
+} from 'react';
 import { Carousel, Modal, Table, Upload, Button, Image } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import data from './data';
 import './style.css';
+// import { GET_PICS, ADD_PIC, DEL_PIC } from '../service';
 
 const Chart: React.FC = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    // const [picData, setPicData] = useState([]);
 
     const showModal = () => {
         setModalVisible(true);
@@ -46,6 +51,10 @@ const Chart: React.FC = () => {
         autoplaySpeed: 4000,
     };
 
+    // useEffect(() => {
+    //     GET_PICS().then();
+    // }, [modalVisible])
+
     return (
         <>
             <Carousel {...settings} className='carousel'>
@@ -71,8 +80,20 @@ const Chart: React.FC = () => {
                 footer={null}
             >
                 <Table dataSource={data} columns={columns} pagination={false} scroll={{ y: 300 }} />
-                <Upload>
-                    <Button icon={<UploadOutlined />} type='primary' style={{ marginTop: '10px' }}>添加图片</Button>
+                <Upload
+                    accept="image/*"
+                    customRequest={(option) => {
+                        console.log(option);
+                        let imgProps = new Map();
+                        imgProps.set('file', option.file);
+                        // ADD_PIC(imgProps).then();
+                    }}
+                >
+                    <Button
+                        icon={<UploadOutlined />}
+                        type='primary'
+                        style={{ marginTop: '10px' }}
+                    >添加图片</Button>
                 </Upload>
             </Modal>
         </>
