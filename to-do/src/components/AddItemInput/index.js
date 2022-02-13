@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { PlusOutlined } from "@ant-design/icons";
 import "./index.css";
 
 function AddItemInput({ onSubmit }) {
@@ -24,7 +23,7 @@ function AddItemInput({ onSubmit }) {
 
   return (
     <div id="add-item-input">
-      <FontAwesomeIcon icon={faPlus} />
+      <PlusOutlined id="plus-icon" />
       <input
         type="text"
         placeholder="✍️ Add item..."

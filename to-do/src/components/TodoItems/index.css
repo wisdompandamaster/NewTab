@@ -1,30 +1,32 @@
 .item {
   display: flex;
   padding: 1em;
+  border-radius: 20px;
   -webkit-transition: all 0.5s, background-color 0s;
   transition: all 0.5s, background-color 0s;
 }
 
 .item:hover {
-  background-color: rgb(204, 201, 201);
+  background-color: rgb(220, 243, 208);
+  border-radius: 20px;
 }
 
 .item:hover input {
   background-color: transparent;
 }
 
-.item-icon {
+.todo-icon {
   height: 1em;
   width: 1em;
   margin-right: 1em;
 }
 
-.item-text {
+.todo-text {
   width: 90%;
   margin-right: 1em;
 }
 
-.item-text textarea {
+.todo-text textarea {
   border: none;
   font-size: 1em;
   font-weight: 400;
@@ -36,28 +38,35 @@
   background-color: transparent;
 }
 
-.item-text p.date {
-  font-size: 0.6em;
-  font-weight: 600;
-  margin-top: 1em;
+p.text {
+  font-size: 1em;
+  margin: auto;
 }
 
-.uncompleted:hover path,
+.todo-text p.date {
+  font-size: 0.6em;
+  font-weight: 600;
+}
+
+.uncompleted {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.uncompleted:hover,
 .edit-icon:hover path {
   fill: rgb(67, 239, 169);
 }
 
-.completed path {
-  fill: rgb(67, 239, 169);
-}
-
 .completed:hover path {
-  fill: black;
+  fill: ghostwhite;
 }
 
 .edit-icon,
 .delete-icon {
   opacity: 0;
+  margin-right: 1em;
 }
 
 .delete-icon:hover path {

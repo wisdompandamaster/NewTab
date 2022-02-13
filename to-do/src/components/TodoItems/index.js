@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import EditItemInput from "../EditItemInput";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleNotch,
-  faCheck,
-  faEdit,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+  createFromIconfontCN,
+  EditOutlined,
+  DeleteFilled,
+  CheckCircleTwoTone,
+} from "@ant-design/icons";
 import "./index.css";
 
 function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
@@ -24,6 +23,10 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
     }
   };
 
+  const IconFont = createFromIconfontCN({
+    scriptUrl: "//at.alicdn.com/t/font_3180970_ek9le05bzhc.js",
+  });
+
   return todos.map((todo, index) => {
     return (
       <div
@@ -31,16 +34,16 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
         key={index}
         onKeyDown={cancelEdit}
       >
-        <div className="item-icon" onClick={() => completeTodo(todo.id)}>
+        <div className="todo-icon" onClick={() => completeTodo(todo.id)}>
           {todo.isCompleted ? (
-            <FontAwesomeIcon icon={faCheck} className="completed" />
+            <CheckCircleTwoTone twoToneColor="#52c41a" className="completed" />
           ) : (
-            <FontAwesomeIcon icon={faCircleNotch} className="uncompleted" />
+            <IconFont type="icon-bx-circle" className="uncompleted" />
           )}
         </div>
         <div
           key={todo.id}
-          className="item-text"
+          className="todo-text"
           onDoubleClick={() => setEdit({ id: todo.id, value: todo.text })}
         >
           {todo.id === edit.id && !todo.isCompleted ? (
@@ -57,16 +60,12 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
           )}
         </div>
         <div className="edit-icon">
-          <FontAwesomeIcon
-            icon={faEdit}
+          <EditOutlined
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
           />
         </div>
         <div className="delete-icon">
-          <FontAwesomeIcon
-            icon={faTimesCircle}
-            onClick={() => removeTodo(todo.id)}
-          />
+          <DeleteFilled onClick={() => removeTodo(todo.id)} />
         </div>
       </div>
     );

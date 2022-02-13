@@ -1,55 +1,200 @@
+@import "~antd/dist/antd.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: aquamarine;
 }
 
-.todo-app {
-  -webkit-animation: fadeIn 0.5s ease-in;
-          animation: fadeIn 0.5s ease-in;
-  background-color: white;
-  border-radius: 1em;
-  box-shadow: 0 0 5px rgba(25,25,25,.25);
-  text-align: left;
-  left: 50%;
-  top: 50%;
-  padding: 1.5rem;
+#todo-app {
   position: absolute;
-  z-index: 10;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  width: 352px;
+  height: 165px;
+  left: 183px;
+  top: 390px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
 }
 
-/* #todo-container {
-  width: 50vw;
+#todo-container {
   display: flex;
+  height: 100%;
+  max-height: 165px;
+  border-radius: 20px;
   justify-content: space-between;
 }
 
-#list-container {
-  width: 30%;
-  float: left;
-  background-color: antiquewhite;
-} */
+#side-container {
+  width: 40%;
+  border-radius: 20px;
+}
 
-#items-container {
-  width: 30vw;
-  max-height: 600px;
-  overflow: auto;
+#todo-header {
+  height: 20%;
+  border-radius: 20px;
+}
+
+#app-icon {
+  position: relative;
+  width: 6px;
+  height: 14px;
+  left: 18px;
+  top: 17px;
+
+  background: linear-gradient(180deg, #b1ff64 0%, #11f2af 100%);
+  box-shadow: 0px 3px 6px rgba(71, 255, 55, 0.8);
+  border-radius: 20px;
+}
+
+#app-title {
+  position: relative;
+  left: 36px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.1em;
+  color: #000000;
+}
+
+#todo-count {
+  height: 80%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.count {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.count h1 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+#count-completed {
+  color: #63ff3c;
+}
+
+.count p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+}
+
+#p-completed {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#items-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  justify-items: space-evenly;
+}
+
+#items-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.todo-item {
+  display: flex;
+}
+
+.item-icon {
+  height: 1em;
+  width: 1em;
+  margin-top: 0.1em;
+  margin-right: 1em;
+}
+
+.item-text {
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 17px;
+  margin-right: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#items-completed-header {
+  color: gray;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+hr {
+  width: 90%;
+  height: 0px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin: 0.3em 0;
+}
+
+#modal-button {
+  border: 0;
+  background-color: #ffffff;
+  color: gray;
+  text-align: right;
+  text-decoration: underline;
+  margin-right: 1em;
+  margin-top: 0.5em;
+}
+
+#modal-button:hover {
+  color: #63ff3c;
+}
+
+.ant-modal-content {
+  border-radius: 20px;
+}
+
+.ant-modal-header {
+  border-radius: 20px;
+}
+
+.ant-modal-body {
+  border-radius: 20px;
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+.ant-modal-body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.ant-modal-footer {
+  display: none;
 }
 
 #items-completed-header {
   height: 2em;
-  padding: 1em;
   text-align: center;
 }
 
@@ -60,23 +205,6 @@ body {
 }
 
 hr.todo-hr {
-  border: 1px solid rgb(211,211,211);
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  width: auto;
+  border: 0.5px solid rgb(211, 211, 211);
 }

@@ -2,19 +2,19 @@
   padding: 1em;
 }
 
-#add-item-input svg,
+#add-item-input #plus-icon,
 #add-item-input input {
   display: inline-block;
   vertical-align: top;
 }
 
-#add-item-input svg {
+#add-item-input #plus-icon {
   height: 1em;
   width: 1em;
   margin-right: 1em;
 }
 
-#add-item-input svg path {
+#add-item-input #plus-icon path {
   fill: gray;
 }
 

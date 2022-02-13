@@ -4,13 +4,7 @@
 
 ## Prepares
 
-### Font Awesome
-
-npm i --save @fortawesome/fontawesome-svg-core
-
-npm install --save @fortawesome/free-solid-svg-icons
-
-npm install --save @fortawesome/react-fontawesome
+AntD 组件库和图标库
 
 ### Date Picker
 
