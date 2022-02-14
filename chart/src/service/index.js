@@ -1,4 +1,4 @@
-export async function ADD_PIC(imgProps: Map<any, any>) {
+export async function ADD_PIC(imgProps) {
     return fetch('', {
         method: 'POST',
         headers: {
@@ -17,7 +17,7 @@ export async function GET_PICS() {
     })
 }
 
-export async function DEL_PIC(picId: string) {
+export async function DEL_PIC(picId) {
     return fetch('', {
         method: 'DELETE',
         headers: {

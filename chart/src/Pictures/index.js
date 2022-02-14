@@ -8,7 +8,7 @@ import data from './data';
 import './style.css';
 // import { GET_PICS, ADD_PIC, DEL_PIC } from '../service';
 
-const Chart: React.FC = () => {
+const Pictures = () => {
     const [modalVisible, setModalVisible] = useState(false);
     // const [picData, setPicData] = useState([]);
 
@@ -21,7 +21,7 @@ const Chart: React.FC = () => {
             title: '图片',
             dataIndex: 'src',
             key: 'src',
-            render: (text: any) => {
+            render: (text) => {
                 return (
                     <>
                         <Image width={50} height={50} alt={text} src={require(`../asset/${text}.jpg`)} />
@@ -101,4 +101,4 @@ const Chart: React.FC = () => {
 }
 
 
-export default Chart;
+export default Pictures;
