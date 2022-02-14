@@ -1,0 +1,43 @@
+@import '~antd/dist/antd.css';
+.ant-modal-body{
+    padding: 5px
+}
+.memorandum{
+    display: flex;
+    justify-content: space-between;
+}
+.notes-tabs{
+    width: 100%;
+    max-width: 200px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+.notes-tabs-body{
+    overflow:auto;
+}
+.ant-card-body{
+    padding:24px 12px
+}
+.notes-tabs-item{
+    position: relative;
+    font-size: 14px;
+}
+.notes-tabs-item:hover .ant-card-meta-title{
+    /*background-color: #f0f1f4;*/
+    color: #69c0ff;
+}
+/* 笔记删除按钮 */
+.notes-del{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/* 笔记添加按钮 */
+.notes-add{
+    position: absolute;
+    bottom: 10px;
+    right: 22px;
+}

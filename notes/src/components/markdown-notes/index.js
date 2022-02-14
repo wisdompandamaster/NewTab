@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 // 导入编辑器的样式
@@ -26,12 +26,35 @@ const mdParser = new MarkdownIt({
     }
 });
 
-// 完成！
-function handleEditorChange({ html, text }) {
-    console.log('handleEditorChange', html, text);
-}
-export default MarkdownNotes => {
+const MarkdownNotes = (noteData) => {
+    const [notesValue, setIsCardDelete] = useState('');
+    // 需要异步渲染Markdown时
+    // const renderHTML =(text) => {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => {
+    //             resolve(mdParser.render(text))
+    //         }, 0)
+    //     })
+    // };
+    React.useEffect(() => {
+        setIsCardDelete(noteData?.notesData[noteData.noteIndex]);
+        return () => {}
+    });
+
+    const handleEditorChange = ({ html, text }) => {
+        setIsCardDelete(text);
+        const note = noteData.notesData
+        note[noteData.noteIndex] = text
+        noteData.setNotesData(note)
+    };
     return (
-        <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
+        <MdEditor
+            value={notesValue}
+            style={{ height: '500px',maxWidth: '790px',width: '100%' }}
+            shortcuts={true}
+            renderHTML={text => mdParser.render(text)}
+            onChange={handleEditorChange} />
     );
 };
+
+export default MarkdownNotes;
