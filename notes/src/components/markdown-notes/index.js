@@ -44,12 +44,13 @@ const MarkdownNotes = (noteData) => {
     const handleEditorChange = ({ html, text }) => {
         setIsCardDelete(text);
         const note = noteData.notesData
-        note[noteData.noteIndex] = text
+        note[noteData.noteIndex].value = text
         noteData.setNotesData(note)
+        noteData.setNotesList(note)
     };
     return (
         <MdEditor
-            value={notesValue}
+            value={notesValue?.value}
             style={{ height: '500px',maxWidth: '790px',width: '100%' }}
             shortcuts={true}
             renderHTML={text => mdParser.render(text)}
