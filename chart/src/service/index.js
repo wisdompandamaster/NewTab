@@ -1,28 +1,30 @@
+import axios from 'axios';
+
+// 添加图片
 export async function ADD_PIC(imgProps) {
-    return fetch('', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
+    return axios.post('url',
+        {
+            data: imgProps,
         },
-        body: JSON.stringify(imgProps),
-    })
+    )
 }
 
-export async function GET_PICS() {
-    return fetch('', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
+// 获取全部图片
+export async function GET_PICS(userId) {
+    return axios.get('url',
+        {
+            headers: { 'Content-Type': 'application/json', },
+            params: { 'userId': userId },
         },
-    })
+    )
 }
 
-export async function DEL_PIC(picId) {
-    return fetch('', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
+// 删除某张图片
+export async function DEL_PIC(userId, picId) {
+    return axios.get('url',
+        {
+            headers: { 'Content-Type': 'application/json', },
+            params: { 'userId': userId, 'picId': picId },
         },
-        body: JSON.stringify({ id: picId }),
-    })
+    )
 }
