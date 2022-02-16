@@ -3,13 +3,13 @@ import React, {
 }
     from 'react';
 import useScript from "./useScript";
-import { Modal, Button } from 'antd';
-import { InfoOutlined } from '@ant-design/icons';
+import { Modal, Button, Card } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import "./plugin.js"
 import "./style.css"
 
 const url1 = "https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"
-const url2 = "https://widget-page.qweather.net/h5/index.html?md=0123456&bg=1&lc=auto&key=45b6b9fb03ef47f681c8c6f4c0e8f934&v=_1644894516681"
+const url2 = "https://widget-page.qweather.net/h5/index.html?md=0123456&bg=3&lc=auto&key=45b6b9fb03ef47f681c8c6f4c0e8f934&v=_1644894516681"
 
 const Weather = () =>{
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -25,14 +25,13 @@ const Weather = () =>{
     useScript(url1);
     return (
         <div className="Weather">
-            <div className="plugin">
-                <div className="pluginBody">
+            <div className="Card">
+            <Card size="small" bordered={false} style={{ width: 352, height:165, borderRadius: 20 }} hoverable={true} >
                 <div id = "he-plugin-standard"/>
-                </div>
                 <div className="pluginFooter">
-                <Button type="ghost" onClick={showModal} ghost={true} shape='circle' icon={<InfoOutlined />} size='small'>
-                </Button>
+                <Button type="text" onClick={showModal} ghost={true} shape='circle' icon={<InfoCircleOutlined />} size='small'/>
                 </div>
+            </Card>
             </div>
             <Modal title="" visible={isModalVisible} 
             // onOK={handleOK}

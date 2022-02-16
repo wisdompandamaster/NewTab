@@ -1,3 +1,27 @@
+@import "~antd/dist/antd.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+body {
+  overflow: hidden;
+}
+
+#Weather {
+  position: absolute;
+  width: 352px;
+  height: 165px;
+  left: 183px;
+  top: 390px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
 .App {
   text-align: center;
 }
