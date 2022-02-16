@@ -1,0 +1,55 @@
+@import '~antd/dist/antd.css';
+
+.Weather
+    .ant-modal-body {
+      padding: 0 !important;
+      font-size: 0 !important;
+      line-height: 1 !important;
+    }
+.ant-modal-content {
+    position: relative;
+    background-color: #00000000 !important;
+    border: 0;
+    border-radius: 4px;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+
+.plugin{
+    position: relative;
+    width: 320px;
+    height: 160px;
+}
+.pluginFooter{
+    position: absolute;
+    bottom: 0.1em;
+    right: 0.1em;
+}
+    /*- scrollbar -*/
+    /* .content
+    .-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    .content
+    .-webkit-scrollbar-thumb{
+        background-color: #999;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+    .content
+    .-webkit-scrollbar-thumb:vertical:hover{
+        background-color: #666;
+    }
+    .content
+    .-webkit-scrollbar-thumb:vertical:active{
+        background-color: #333;
+    }
+    .content
+    .-webkit-scrollbar-button{
+        display: none;
+    }
+    .content
+    ::-webkit-scrollbar-track{
+        background-color: #f1f1f1;
+    } */
