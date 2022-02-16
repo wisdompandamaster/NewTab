@@ -71,7 +71,7 @@ const Notes = () => {
                                 size='large'
                                 icon={<PlusOutlined/>}/>
                     </div>
-                    <MarkdownNotes setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
+                    <MarkdownNotes setShowNote={setShowNote} setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
                 </div>
             </Modal>
         </>
