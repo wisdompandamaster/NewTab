@@ -1,0 +1,42 @@
+@import '~antd/dist/antd.css';
+
+.carousel {
+    position: absolute;
+    top:20px;
+    left: 1136px;
+    height: 165px;
+    width: 352px;
+    border: 0 solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .1s ease-in;
+}
+.carousel:active{
+    transform: scale(0.95);
+}
+
+.panel {
+    width: 100%;
+    /* padding-bottom: 60%;
+    height: 0; */
+    color: #ffffff;
+    text-align: center;
+    background: #364d79;
+}
+
+
+
+/* 滚动条样式 */
+div::-webkit-scrollbar{
+    width: 3px;
+}
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px #00000033;
+    background: rgba(0,0,0,0.2);
+  }
+div::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}

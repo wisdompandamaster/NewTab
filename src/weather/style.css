@@ -1,0 +1,78 @@
+@import '~antd/dist/antd.css';
+
+
+
+.Weather .ant-modal-body {
+      padding: 0 !important;
+      font-size: 0 !important;
+      line-height: 1 !important;
+    }
+.Weather .ant-modal-content {
+    position: relative;
+    background-color: #00000000 !important;
+    border: 0;
+    border-radius: 4px;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+
+.Card{
+    position: absolute;
+    width: 352px;
+    height: 165px;
+    /* left: 1136px;
+    top: 20px; */
+    left:392px;
+    top:20px;
+    background: #FFFFFF;
+    border: 0px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: .1s ease-in;
+}
+.Card:active{
+    transform: scale(0.95);
+}
+
+.pluginTitle{
+    position: relative;
+    left: 0;
+}
+.pluginFooter{
+    position: relative;
+    bottom: 0.2em;
+    margin-right: 0em;
+}
+.content{
+    position: inherit;
+    overflow: hidden;
+    width: 486px;
+}
+    /*- scrollbar -*/
+    /* .content
+    .-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    .content
+    .-webkit-scrollbar-thumb{
+        background-color: #999;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+    .content
+    .-webkit-scrollbar-thumb:vertical:hover{
+        background-color: #666;
+    }
+    .content
+    .-webkit-scrollbar-thumb:vertical:active{
+        background-color: #333;
+    }
+    .content
+    .-webkit-scrollbar-button{
+        display: none;
+    }
+    .content
+    ::-webkit-scrollbar-track{
+        background-color: #f1f1f1;
+    } */
