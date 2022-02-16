@@ -50,6 +50,7 @@
   margin: 5px 19px 5px 18px;
 }
 .note-content{
+  height: 30px;
   line-height: 17px;
   padding: 6px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);

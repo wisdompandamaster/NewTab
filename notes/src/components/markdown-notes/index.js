@@ -41,15 +41,17 @@ const MarkdownNotes = (noteData) => {
         return () => {}
     });
 
+    // 使用正则表达式从字符串中删除 HTML/XML 标记。
+    const stripHTMLTags = str => str.replace(/<[^>]*>/g, '');
+
     const handleEditorChange = ({ html, text }) => {
         setIsCardDelete(text);
+        const newStripHTMLTags = stripHTMLTags(html);
         const note = noteData.notesData
-        noteData.setShowNote(note.slice(0,4))
-        console.log(note)
         note[noteData.noteIndex].value = text
+        note[noteData.noteIndex].html = newStripHTMLTags
         noteData.setNotesData(note)
         noteData.setNotesList(note)
-
     };
     return (
         <MdEditor

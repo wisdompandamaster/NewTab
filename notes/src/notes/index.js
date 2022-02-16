@@ -12,12 +12,7 @@ const Notes = () => {
     const [notesData, setNotesData] = useState(notesList); //笔记数据
     const [noteIndex, setNoteIndex] = useState(0); // 选中第几个
     const [isNotesVisible, setNotesVisible] = useState(false); // 弹框
-    const [showNote, setShowNote] = useState([]); // 弹框
 
-    React.useEffect(() => {
-        setShowNote(notesData.slice(0,4))
-        return () => {}
-    },[]);
     // 是否显示弹框
     const isShowModal = () => {
         setNotesVisible(!isNotesVisible);
@@ -37,16 +32,10 @@ const Notes = () => {
                     <h1 className="note-title">笔记</h1>
                 </header>
                 <div className='note-body'>
-                    {/*只能有四条*/}
-                    {
-                        showNote.map(item => {
-                            return (
-                                <span key={item.id} className='note-content'>{item.value}</span>
-                            )
-                        })
-
-                    }
-
+                    <div  className='note-content'>{ notesData[0]?.html }</div>
+                    <div  className='note-content'>{notesData[1]?.html}</div>
+                    <div  className='note-content'>{notesData[2]?.html}</div>
+                    <div  className='note-content'>{notesData[3]?.html}</div>
                 </div>
             </div>
             <Modal title="备忘录"
@@ -71,7 +60,7 @@ const Notes = () => {
                                 size='large'
                                 icon={<PlusOutlined/>}/>
                     </div>
-                    <MarkdownNotes setShowNote={setShowNote} setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
+                    <MarkdownNotes  setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
                 </div>
             </Modal>
         </>
