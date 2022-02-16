@@ -1,0 +1,88 @@
+
+/* 顶部导航 */
+.checkmode input[type='checkbox']{
+    position: relative;
+    width:90px;
+    height:32px;
+    left:1vw;
+    top:2vh;
+    appearance: none;  
+    /* appearence 设置div的显示形状 */
+    background-color:rgba(255,255,255,0.5);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+.checkmode input[type='checkbox']:checked{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.checkmode input[type='checkbox']::before{
+    content: 'Light';
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    color:#000000CC;
+    height: 32px;
+    background: #FFFFFF;
+    box-shadow: inset -2px -4px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 30px;
+    text-align: center;
+    line-height: 32px;
+    transition: .5s;
+}
+.checkmode input[type='checkbox']:checked:before{
+    left:30px;
+    content: 'Dark';
+    background-color: #000000;
+    color:#FFFFFFCC;
+    box-shadow: inset 2px 4px 8px rgba(255, 255, 255, 0.4);
+ 
+}
+
+.avatar{
+    background-color: #00000033;
+    height:32px;
+    width: 32px;
+    border-radius:16px;
+    text-align: center;
+    line-height: 32px;
+    overflow: hidden;
+    position: absolute;
+    top:2vh;
+    right:80px;
+    cursor: pointer;
+}
+
+.setting span{
+    position: absolute;
+    right: 30px;
+    top:2vh;
+    font-weight: 600;
+    color:#000000CC;
+    font-size: 32px;
+    line-height: 32px;
+    cursor: pointer;
+}
+ 
+ 
+
+
+/* 设置面板 */
+.setting-collapse{
+    background: #fff;
+}
+.setting-collapse .setting-panel{
+   margin-bottom: 10px;
+   overflow: hidden;
+   background: #00000022;
+   border: 0px;
+   border-radius: 10px;
+}
+.panel-title{
+    font-size: 15px;
+    font-weight: 500;
+}

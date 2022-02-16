@@ -1,0 +1,166 @@
+.news{
+    position: absolute;
+    width: 352px;
+    height: 165px;
+    margin:20px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: .1s ease-in;
+}
+.news:active{
+    transform: scale(0.95,0.95);
+}
+.left p{
+    position: absolute;
+    height: 22px;
+    left: 30px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    top:13px;
+    left:36px;
+    cursor: pointer;
+}
+.left::before{
+    position: absolute;
+    content:'';
+    left: 18px;
+    top: 17px;
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(180deg, #FFC531 14.58%, #FF5631 100%);
+    box-shadow: 0px 3px 6px rgba(255, 141, 6, 0.8);
+    border-radius: 20px;
+}
+.right{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 120px;
+    right:18px;
+    top:14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+.right span{
+    height:22px;
+    width:22px;
+    font-size: 22px;
+}
+
+.briefList{
+    position: absolute;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    width: 90%;
+    height: 70%;
+    top: 40px;
+    left:50%;
+    transform:translateX(-50%);
+}
+.briefList .briefListItem{
+    width: 150px;
+    height: 18px;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color:#00000066;
+    margin:5px 0;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    letter-spacing: 1px;
+}
+.briefList .briefListItem a{
+   color:#00000066;
+}
+.briefList .briefListItem a:hover{
+    color:#000000;
+ }
+.briefList .briefListItem span{
+    font-size: 16px;
+    font-weight: 700;
+    margin-right:10px;
+    line-height: 18px;
+    color:#00000066;
+    cursor: pointer;
+}
+.briefList .briefListItem:nth-child(1) span{
+    color:#FFDD2B;
+}
+.briefList .briefListItem:nth-child(2) span{
+    color:#B2B2B2;
+}
+.briefList .briefListItem:nth-child(3) span{
+    color:#D2A36C;
+}
+.line{
+    position: absolute;
+    top:59%;
+    left:36%;
+    width: 100px;
+    height: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+
+span .newsItemNum{
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    background-color: #e4e0e0;
+    position: relative;
+    top: 1.5px;
+}
+.newsItem:nth-child(1) span .newsItemNum{
+    background-color:#FFDD2B;
+}
+.newsItem:nth-child(2) span .newsItemNum{
+    background-color:#B2B2B2;
+}
+.newsItem:nth-child(3) span .newsItemNum{
+    background-color:#D2A36C;
+}
+
+.newsItem>span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 450px;
+    position: relative;
+}
+
+.newsItem:hover{
+    background-color:#00000033; 
+    transition: .3s ease-out;
+}
+/* 滚动条样式 */
+.newsList::-webkit-scrollbar{
+    width: 3px;
+}
+.newsList::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px #00000033;
+    background: rgba(0,0,0,0.2);
+  }
+.newsList::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+   

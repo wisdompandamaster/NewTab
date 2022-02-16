@@ -1,0 +1,12 @@
+.functionAera{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content:center;
+    top:8vh;
+    margin: 0 auto;
+    width:80%;
+    height:50%;
+    background-color: #ffffff4D;
+}

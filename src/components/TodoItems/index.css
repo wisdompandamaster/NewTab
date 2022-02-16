@@ -1,0 +1,96 @@
+.item {
+  display: flex;
+  padding: 0;
+  border-radius: 10px;
+  -webkit-transition: all 0.5s, background-color 0s;
+  transition: all 0.5s, background-color 0s;
+}
+
+.item:hover {
+  background-color: rgb(220, 243, 208);
+}
+
+.item:hover input {
+  background-color: transparent;
+}
+
+.todo-icon {
+  height: 1em;
+  width: 1em;
+  margin-right: 1em;
+  margin-left:0.5em;
+  margin-top:0.5em;
+}
+
+.todo-text {
+  width: 90%;
+  margin-right: 1em;
+  margin-top:0.5em;
+}
+
+.todo-text textarea {
+  border: none;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1em;
+  outline: none;
+  padding: 0px;
+  resize: none;
+  width: 90%;
+  background-color: transparent;
+}
+
+p.text {
+  font-size: 1em;
+  margin: auto;
+}
+
+.todo-text p.date {
+  font-size: 0.6em;
+  font-weight: 600;
+}
+
+.uncompleted {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.uncompleted:hover,
+.edit-icon:hover path {
+  fill: rgb(67, 239, 169);
+}
+
+.completed:hover path {
+  fill: ghostwhite;
+}
+
+.edit-icon,
+.delete-icon {
+  opacity: 0;
+  margin-right: 1em;
+  margin-top: 0.5em;
+}
+
+.delete-icon:hover path {
+  fill: red;
+}
+
+.item:hover > .edit-icon,
+.item:hover > .delete-icon {
+  opacity: 1;
+}
+
+.complete p.text {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.complete p.date {
+  font-weight: 400;
+  opacity: 0.4;
+}
+
+.complete > .edit-icon {
+  display: none;
+}

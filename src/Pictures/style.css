@@ -1,0 +1,26 @@
+@import '~antd/dist/antd.css';
+
+.carousel {
+    position: absolute;
+    top:200px;
+    margin-top: 0;
+    margin-left:20px;
+    height:250px;
+    width: 725px;
+    border: 0 solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s;
+}
+.carousel:active{
+    transform: scale(0.9);
+}
+
+.panel {
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    color: #ffffff;
+    text-align: center;
+    background: #364d79;
+}
