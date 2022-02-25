@@ -24,6 +24,7 @@ body{
   width: 100vw;
    height: 100vh;
    position: fixed;
+   transition: background-image .3s ease-in-out;
     /*通过缩放来去掉白边  */
 }
 .clockSearch{

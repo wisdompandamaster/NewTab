@@ -6,6 +6,7 @@
     margin-bottom: 25px;
     justify-content: center;
     align-items: center;
+    transition: background-image .3s ease-in-out;
 }
 .backgroundImg div{
     text-align: center;
