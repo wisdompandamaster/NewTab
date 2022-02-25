@@ -1,5 +1,5 @@
 import React from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import { getMeta } from "./Todo.js";
 import AddItemInput from "./AddItemInput";
 import TodoItems from "./TodoItems";

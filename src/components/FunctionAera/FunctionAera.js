@@ -1,10 +1,10 @@
 import './FunctionAera.css'
 import '../../font/iconfont.css'
 import News from '../News/News'
-import Todo from '../Todo'
+import Todo from '../Todo/Todo'
 import Pictures from '../Pictures'
-import Notes from "../../notes";
-import Weather from '../../weather/Weather'
+import Notes from "../Notes";
+import Weather from '../Weather/Weather'
 import CalComponent from '../Calendar/CalComponent'
 import Apps from '../Apps/Apps'
 import { useSelector } from 'react-redux'

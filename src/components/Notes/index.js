@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Modal, Button} from 'antd';
-import MarkdownNotes from "../components/markdown-notes/index";
+import MarkdownNotes from "./markdown-notes/index";
 import './index.css';
 import {PlusOutlined} from '@ant-design/icons';
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import NoesTabs from "./noesTabs";
 import {nanoid} from "nanoid";
 

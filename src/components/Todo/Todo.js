@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CheckCircleTwoTone, createFromIconfontCN } from "@ant-design/icons";
 import { Modal,  notification} from "antd";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import TodoModal from "./TodoModal";
 
 export function getMeta(todos) {

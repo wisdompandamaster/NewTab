@@ -7,10 +7,6 @@ import MottoFooter from './components/MottoFooter/MottoFooter';
 import {useSelector} from 'react-redux'
 
 
-//配置minio 永久访问
-
-
-
 function App() {
 
   const blur = useSelector(state=>state.blur)

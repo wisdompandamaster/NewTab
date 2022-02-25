@@ -2,7 +2,7 @@ import React, {
     useState
 }
     from 'react';
-import useScript from "./useScript";
+import useScript from "../../hooks/useScript";
 import { Modal, Card } from 'antd';
 import "./plugin.js"
 import "./style.css"
