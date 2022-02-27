@@ -17,19 +17,35 @@
     position: relative;
 }
 .notes-tabs-body{
+    height: 100%;
     overflow:auto;
+    background: #f0f1f4;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 55px);
+
 }
 .ant-card-body{
     padding:24px 12px
 }
 .notes-tabs-item{
+    background: #f0f1f4;
     position: relative;
     font-size: 14px;
 }
 .notes-tabs-item:hover .ant-card-meta-title{
-    /*background-color: #f0f1f4;*/
+
     color: #69c0ff;
 }
+.notes-tabs-checked{
+    background: #fff;
+    color: #222;
+}
+
 /* 笔记删除按钮 */
 .notes-del{
     position: absolute;
