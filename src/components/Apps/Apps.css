@@ -1,21 +1,25 @@
-.Apps{
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-around;
-    left: 764px;
-    border: 1px slid #000000;
-    top:205px;
-    width: 724px;
-    height: 165px;
+.Apps {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* align-content: space-around; */
+  left: 764px;
+  border: 1px slid #000000;
+  top: 200px;
+  width: 724px;
+  height: 165px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: small;
+  text-align: center;
 }
-.Apps .icon{
-    margin:0 26px;
-    transition: .1s ease-in;
-    width: 70px;
-    height: 70px;
+.Apps .icon {
+  margin: 2px 24px;
+  transition: 0.1s ease-in;
+  width: 70px;
+  height: 80px;
 }
-.Apps .icon:active{
-    transform: scale(0.8);
+.Apps .icon:active {
+  transform: scale(0.8);
 }

@@ -10,120 +10,130 @@ import Toutiao from "../../AppIcons/Toutiao.svg";
 import Weibo from "../../AppIcons/Weibo.svg";
 import Xigua from "../../AppIcons/Xigua.svg";
 import Douyin from "../../AppIcons/Douyin.svg";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Card } from "./card";
 import update from "immutability-helper";
-import { Badge } from "antd";
-import { CloseCircleFilled } from "@ant-design/icons/lib/icons";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { useDispatch, useSelector } from "react-redux";
+
+const defaultIcons = [
+  {
+    id: 1,
+    href: "https://www.bilibili.com/",
+    imgPath: Bilibili,
+    name: "Bilibili",
+  },
+  {
+    id: 2,
+    href: "https://www.bytedance.com/zh/",
+    imgPath: Bytedance,
+    name: "Bytedance",
+  },
+  {
+    id: 3,
+    href: "https://www.douban.com/",
+    imgPath: Douban,
+    name: "豆瓣",
+  },
+  {
+    id: 4,
+    href: "https://www.douyin.com/",
+    imgPath: Douyin,
+    name: "抖音",
+  },
+  {
+    id: 5,
+    href: "https://github.com/",
+    imgPath: Github,
+    name: "Github",
+  },
+  {
+    id: 6,
+    href: "https://juejin.cn/",
+    imgPath: Juejin,
+    name: "掘金",
+  },
+  {
+    id: 7,
+    href: "https://leetcode-cn.com/",
+    imgPath: Leetcode,
+    name: "Leetcode",
+  },
+  {
+    id: 8,
+    href: "https://www.toutiao.com/",
+    imgPath: Toutiao,
+    name: "头条",
+  },
+  {
+    id: 9,
+    href: "https://weibo.com/",
+    imgPath: Weibo,
+    name: "微博",
+  },
+  {
+    id: 10,
+    href: "https://www.ixigua.com/",
+    imgPath: Xigua,
+    name: "西瓜视频",
+  },
+];
 
 export default function Apps() {
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      com: (
-        <a href="https://www.bilibili.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="bilibili" src={Bilibili} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 2,
-      com: (
-        <a
-          href="https://www.bytedance.com/zh/"
-          rel="noreferrer"
-          target={"_blank"}
-        >
-          <img alt="bytedance" src={Bytedance} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 3,
-      com: (
-        <a href="https://www.douban.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="douban" src={Douban} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 4,
-      com: (
-        <a href="https://www.douyin.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="douyin" src={Douyin} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 5,
-      com: (
-        <a href="https://github.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="github" src={Github} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 6,
-      com: (
-        <a href="https://juejin.cn/" rel="noreferrer" target={"_blank"}>
-          <img alt="juejin" src={Juejin} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 7,
-      com: (
-        <a href="https://leetcode-cn.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="leetcode" src={Leetcode} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 8,
-      com: (
-        <a href="https://www.toutiao.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="toutiao" src={Toutiao} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 9,
-      com: (
-        <a href="https://weibo.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="weibo" src={Weibo} className="icon" />
-        </a>
-      ),
-    },
-    {
-      id: 10,
-      com: (
-        <a href="https://www.ixigua.com/" rel="noreferrer" target={"_blank"}>
-          <img alt="xigua" src={Xigua} className="icon" />
-        </a>
-      ),
-    },
-  ]);
+  const [apps, setApps] = useLocalStorage("apps", []);
+  const myApps = useSelector((state) => state.myApps);
+  const dispatch = useDispatch();
+  const [cards, setCards] = useState(apps);
 
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setCards((prevCards) =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      })
-    );
+  useEffect(() => {
+    if (!apps.length) {
+      setApps(defaultIcons);
+      setCards(defaultIcons);
+      dispatch({
+        type: "CHANGE_APPS",
+        myApps: defaultIcons,
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    setCards(myApps);
+    setApps(myApps);
+  }, [myApps]);
+
+  useEffect(() => {
+    setApps(cards);
+  }, [cards]);
+
+  const deleteApp = (name) => {
+    let updatecards = cards.filter((item) => item.name != name);
+    setCards(updatecards);
+  };
+
+  const moveCard = useCallback(
+    (dragIndex, hoverIndex) => {
+      setCards((prevCards) =>
+        update(prevCards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, prevCards[dragIndex]],
+          ],
+        })
+      );
+    },
+    [cards]
+  );
 
   const renderCard = useCallback(
     (card, index) => {
       return (
         <Card
           key={card.id}
-          index={index}
           id={card.id}
+          index={index}
+          info={card}
           moveCard={moveCard}
-          com={card.com}
+          deleteApp={deleteApp}
         />
       );
     },
@@ -132,7 +142,7 @@ export default function Apps() {
 
   return (
     <>
-      <div className="Apps">{cards.map((card, i) => renderCard(card, i))}</div>
+      <div className="Apps">{cards.map((card, i) => renderCard(card, i))}</div>,
     </>
   );
 

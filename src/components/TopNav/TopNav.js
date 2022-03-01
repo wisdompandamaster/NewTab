@@ -11,11 +11,9 @@ import {
   Input,
   Button,
   message,
-  Radio,
 } from "antd";
 import { UserOutlined, GithubOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { useSelector, useDispatch } from "react-redux";
 
 function CheckMode() {
   //深浅色模式切换
@@ -178,57 +176,101 @@ function About() {
 //添加图标
 function AddIcon() {
   const [form] = Form.useForm();
-  const [shortcuts, setShortcuts] = useLocalStorage("shortcuts", []);
+  const dispatch = useDispatch();
+  const myApps = useSelector((state) => state.myApps);
+  const deleteMode = useSelector((state) => state.deleteApp);
 
-  const onFinish = ({ url }) => {
+  const onFinish = ({ url, name }) => {
     const host = new URL(url).host;
-    const icon = "https://www.google.com/s2/favicons?sz=64&domain=" + host;
-    console.log(icon);
+    const icon = "http://favicon.cccyun.cc/" + host;
+    const apps = [
+      ...myApps,
+      {
+        id: myApps.length + 1,
+        href: url,
+        imgPath: icon,
+        name,
+      },
+    ];
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: apps,
+    });
     message.success("创建成功!");
+    form.resetFields();
   };
 
   const onFinishFailed = () => {
     message.error("创建失败!");
   };
 
+  const handleClick = (b) => {
+    dispatch({
+      type: "CHANGE_DELETEAPP",
+      deleteApp: b,
+    });
+  };
+
   return (
-    <Form
-      form={form}
-      layout="horizontal"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        name="url"
-        rules={[
-          {
-            required: true,
-          },
-          {
-            type: "url",
-            warningOnly: true,
-          },
-          {
-            type: "string",
-            min: 6,
-          },
-        ]}
+    <>
+      <Form
+        form={form}
+        layout="horizial"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <Input
-          id="url-input"
-          bordered={false}
-          style={{ borderBottom: "1px solid gray" }}
-          placeholder="网址"
-        />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" style={{ marginRight: "2em" }}>
-          添加
-        </Button>
-        <Button htmlType="button">取消</Button>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          name="url"
+          rules={[
+            {
+              required: true,
+            },
+            {
+              type: "url",
+              warningOnly: true,
+            },
+          ]}
+        >
+          <Input placeholder="网址" allowClear />
+        </Form.Item>
+        <Form.Item
+          name="name"
+          rules={[
+            {
+              required: true,
+            },
+            {
+              type: "string",
+              warningOnly: true,
+              max: 4,
+            },
+          ]}
+        >
+          <Input placeholder="名称" allowClear />
+        </Form.Item>
+        <Form.Item wrapperCol={{ span: 24, offset: 9 }}>
+          <Button type="primary" htmlType="submit">
+            添加
+          </Button>
+        </Form.Item>
+      </Form>
+      <hr />
+      <Button
+        type="danger"
+        onClick={() => handleClick(true)}
+        style={{ margin: "0 3em" }}
+      >
+        移除
+      </Button>
+      <Button
+        type="dash"
+        onClick={() => handleClick(false)}
+        style={{ marginLeft: "2em" }}
+      >
+        取消
+      </Button>
+    </>
   );
 }
 
@@ -282,7 +324,7 @@ function Setting() {
             <SetBackground></SetBackground>
           </Panel>
           <Panel
-            header={<div className="panel-title">添加快捷方式</div>}
+            header={<div className="panel-title">修改快捷方式</div>}
             key="2"
             className="setting-panel"
           >
