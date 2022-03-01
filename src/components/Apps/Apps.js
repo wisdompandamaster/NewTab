@@ -77,6 +77,18 @@ const defaultIcons = [
     imgPath: Xigua,
     name: "西瓜视频",
   },
+  {
+    id: 11,
+    href: "https://www.baidu.com/",
+    imgPath: "http://favicon.cccyun.cc/www.baidu.com",
+    name: "百度",
+  },
+  {
+    id: 12,
+    href: "https://www.taptap.com/",
+    imgPath: "https://favicon.cccyun.cc/www.taptap.com/",
+    name: "TapTap",
+  },
 ];
 
 export default function Apps() {
@@ -86,7 +98,7 @@ export default function Apps() {
   const [cards, setCards] = useState(apps);
 
   useEffect(() => {
-    if (!apps.length) {
+    if (!myApps.length) {
       setApps(defaultIcons);
       setCards(defaultIcons);
       dispatch({

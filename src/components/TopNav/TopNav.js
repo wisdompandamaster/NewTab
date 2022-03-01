@@ -178,7 +178,6 @@ function AddIcon() {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const myApps = useSelector((state) => state.myApps);
-  const deleteMode = useSelector((state) => state.deleteApp);
 
   const onFinish = ({ url, name }) => {
     const host = new URL(url).host;
