@@ -1,0 +1,21 @@
+.Apps{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    left: 764px;
+    border: 1px slid #000000;
+    top:205px;
+    width: 724px;
+    height: 165px;
+}
+.Apps .icon{
+    margin:0 26px;
+    transition: .1s ease-in;
+    width: 70px;
+    height: 70px;
+}
+.Apps .icon:active{
+    transform: scale(0.8);
+}

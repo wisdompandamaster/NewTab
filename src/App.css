@@ -1,0 +1,277 @@
+@import '~antd/dist/antd.css';
+
+:root{
+  /* 定义CSS变量，之后设置简单模式，浅色或深色模式的时候可以用*/
+  --dark-color:#0000004D;
+}
+body{
+  line-height: normal;
+  min-width: 800px;
+}
+.App {
+  position: absolute;
+  width:100vw;
+  height:100vh;
+  /* background-color: #59887c4d; */
+}
+.mask{
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   background-color: #000;
+}
+.background{
+  width: 100vw;
+   height: 100vh;
+   position: fixed;
+   transition: background-image .3s ease-in-out;
+    /*通过缩放来去掉白边  */
+}
+.clockSearch{
+    display:flex;
+    justify-content: center;
+}
+/* -------------更改的antd组件样式--------- */
+.ant-modal-header{
+   border-radius: 10px;
+}
+.ant-modal-content {
+  border-radius: 10px; 
+}
+.ant-modal-close-x:hover{
+   background-color: #0000004D;
+   border-radius: 0 10px 0 0;
+}
+.ant-collapse > .ant-collapse-item:last-child,.ant-collapse-borderless > .ant-collapse-item:last-child .ant-collapse-header{
+  border-radius: 10px;
+}
+
+/* Todo组件的css */
+#todo-app {
+  position: absolute;
+  width: 352px;
+  height: 165px;
+  /* left: 392px;
+  top: 20px; */
+  left:20px;
+  top:205px;
+  padding-bottom: 10px;
+  /* font-family: ; */
+  padding-top:10px;
+  background: #ffffff;
+  border: 0px solid #ffffff;
+  border-radius: 20px;
+  transition: .1s ease-in;
+}
+#todo-app:active {
+  transform: scale(0.95);
+}
+
+#todo-container{
+  display: flex;
+  height: 100%;
+  max-height: 165px;
+  border-radius: 20px;
+  justify-content: space-between;
+}
+
+#side-container {
+  width: 40%;
+  border-radius: 20px;
+}
+
+#todo-header {
+  height: 20%;
+  border-radius: 20px;
+}
+
+#app-icon {
+  position: relative;
+  width: 6px;
+  height: 14px;
+  left: 18px;
+  top: 8px;
+  background: linear-gradient(180deg, #b1ff64 0%, #11f2af 100%);
+  box-shadow: 0px 3px 6px rgba(71, 255, 55, 0.8);
+  border-radius: 20px;
+}
+
+#app-title {
+  position: relative;
+  width: 100px;
+  left: 36px;
+  top:-11px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.2rem;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+#todo-count {
+  height: 90%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.count h1 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 35px;
+}
+
+#count-completed {
+  color: #63ff3c;
+}
+
+.count p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+}
+
+#p-completed {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#items-container {
+  width: 60%;
+  display: flex;
+  /* margin-top: 30px; */
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  justify-items: space-evenly;
+}
+
+#items-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.todo-item {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.item-icon {
+  height: 1em;
+  width: 1em;
+  margin-top: 0.1em;
+  margin-right: 1em;
+}
+
+.item-text {
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 17px;
+  margin-right: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#items-completed-header {
+  color: gray;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+hr {
+  width: 90%;
+  height: 0px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin: 0.3em 0;
+}
+
+#modal-button {
+  border: 0;
+  background-color: #ffffff;
+  color: gray;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  height: 24px;
+  top: 10px;
+  text-decoration: underline;
+  margin-right: 1em;
+  margin-top: 0em;
+}
+
+#modal-button:hover {
+  color: #63ff3c;
+}
+
+.ant-modal-content {
+  border-radius: 10px;
+}
+
+.ant-modal-header {
+  border-radius: 10px;
+}
+
+.ant-modal-body {
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+.ant-modal-body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.ant-modal-footer {
+  display: none;
+}
+
+#items-completed-header {
+  height: 2em;
+  text-align: center;
+}
+
+#items-completed-header h1 {
+  color: gray;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+hr.todo-hr {
+  width: auto;
+  border: 0.5px solid rgb(211, 211, 211);
+}
+
+.react-datepicker__input-container{
+   top:-11px;
+}
+
+/* 天气组件的CSS */
+#Weather {
+  position: absolute;
+  width: 352px;
+  height: 165px;
+  left: 183px;
+  top: 390px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}

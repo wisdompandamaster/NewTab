@@ -1,0 +1,134 @@
+.clockSearch{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clock{
+    position:relative;
+    display: flex;
+    text-align: center;
+    font-size: 7rem;
+    font-weight: 200;
+    color:white;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s ease-in-out;
+    
+}
+.h,.m{
+    display: inline-block;
+    width:8rem;
+}
+.h{
+    text-align: right;
+    margin-right: 2rem;
+}
+.m{
+    text-align: left;
+    margin-left: 2rem;
+}
+/* 搜索框 */
+.search{
+    width:40vw;
+    height:6vh;
+    position:relative;
+    margin-top:3vh;
+    min-width: 600px;
+    min-height: 50px;
+    background-color: #ffffffcc;
+    border-radius: 50px;
+    transition: .3s ease-in-out;
+    
+}
+.engine{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
+    outline: none;
+    border: none;
+    width:5vw;
+    min-width: 80px;
+    height:6vh;
+    min-height: 50px;
+    cursor:pointer;
+    line-height: 6vh;
+    border-radius: 50px 0 0 50px;
+    background-color: #ffffffcc;
+    /* transition:0.5s; */
+}
+
+.engine:hover{
+    background-color: #00000026;
+}
+.engine:focus + .engineList{
+    display: block;
+}
+.engineList{
+    display:none;
+    position: absolute;
+    z-index: 3;
+    margin-top:6px;
+    padding:5px;
+    width:126px;
+    min-width: 96px;
+    border-radius: 10px;
+    background-color:#ffffffEB;
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.32), inset 0px 4px 4px rgba(255, 255, 255, 0.2);
+    transition: 0.2s;
+}
+.engineList li{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height:6vh;
+    min-height: 36px;
+    width:96%;
+    margin:2px auto;
+    list-style: none;
+    color:rgba(0, 0, 0, 0.6);
+    line-height: 6vh;
+    border-radius: 10px;
+    font-size: 2vh;
+    font-weight:500;
+    cursor:pointer;
+}
+.engineList li span{  
+    display: block;
+    color:rgba(0, 0, 0, 0.6);
+}
+.engineList li:hover{
+    background-color: #0000001A;
+}
+.search input{
+    font-family: Microsoft YaHei ;
+    color:#0c0c0c;
+    display: inline-block;
+    position:absolute;
+    font-size: 1.2rem;
+    height:6vh;
+    min-height: 50px;
+    width: 30vw;
+    outline: none;
+    border: none;
+    padding: 0 0 0 10px;
+    background-color: #ffffff00;
+}
+.search > span {
+    display: inline-flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    color: #302f2fcc;
+    border-radius: 50%;
+    height:6vh;
+    min-height: 50px;
+    width:6vh;
+    min-width: 50px;
+    right:0;
+}
+.search > span:hover{
+    background-color: #00000026;
+}

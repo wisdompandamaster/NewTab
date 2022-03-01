@@ -1,0 +1,117 @@
+.backgroundImg{
+    display: flex;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 25px;
+    justify-content: center;
+    align-items: center;
+    transition: background-image .3s ease-in-out;
+}
+.backgroundImg div{
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    color:white;
+    background-color: #00000088;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 50px;
+    transition: .3s;
+}
+.backgroundImg div:hover {
+    background-color: #000000DD;
+}
+
+.setBackground span{
+    margin-left: 10px;
+    user-select: none;
+}
+.backgroundCover, .backgroundBlur{
+    width: 70%;
+    display: inline-block;
+}
+
+.showBackground{
+    font-size: 0;
+    overflow-y: scroll;
+    height: 550px;
+    width: 748px;
+    margin-bottom: 10px;
+}
+
+.showBackgroundItem{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom:5px;
+    margin-right: 5px;
+    margin-left:5px;
+    width:235px;
+    height:120px;
+    
+}
+.showBackgroundItem div{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    text-align: center;
+    opacity: 0; 
+    background-color: #000000CC;
+    line-height: 50px;
+    transition: .3s ease-in;
+    cursor: pointer;
+}
+.showBackgroundItem::before{
+    content: 'hello';
+    width: 235px;
+    height: 120px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #00000000;
+    border-radius: inherit;
+    transition: .3s ease-in-out;
+}
+.showBackgroundItem:hover::before{
+    background-color: #00000088;
+}
+.showBackgroundItem:hover div{
+    opacity: 1; 
+}
+.showBackgroundItem div:hover{
+    background-color: rgba(145, 241, 145,0.8);
+}
+.showBackgroundItem div:active{
+    transform: scale(0.8);
+}
+
+.backTab{
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    line-height: 30px;
+    display: inline-block;
+    height: 30px;
+}
+
+/* 滚动条样式 */
+.showBackground::-webkit-scrollbar{
+    width: 3px;
+}
+.showBackground::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px #00000033;
+    background: rgba(0,0,0,0.2);
+  }
+.showBackground::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}

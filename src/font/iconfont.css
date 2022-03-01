@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('./iconfont.ttf?t=1644486870755') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 35px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sougou:before {
+  content: "\e647";
+}
+
+.icon-baidu:before {
+  content: "\e523";
+}
+
+.icon-sousuo:before {
+  content: "\e665";
+}
+
+.icon-downarrow:before {
+  font-size: 20px;
+  content: "\e610";
+}
+
+.icon-shezhi:before {
+  content: "\e676";
+}
+
+.icon-guge:before {
+  content: "\e62c";
+}
+
+.icon-biying:before {
+  content: "\e50c";
+}
+
+.icon-github:before {
+  content: "\e673";
+}
+
+.icon-weibo-fill:before {
+  content: "\e645";
+}
+
+.icon-douyin:before {
+  content: "\e68d";
+}
+
+.icon-juejin-logo:before {
+  content: "\e66b";
+}
