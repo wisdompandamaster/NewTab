@@ -1,10 +1,12 @@
 import './TopNav.css'
 import '../../font/iconfont.css' 
 import SetBackground from '../SetBackground/SetBackground';
+import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
 import { UserOutlined,GithubOutlined } from '@ant-design/icons';
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
+import defaultSetting from '../../config';
 
 
 function CheckMode(){   //深浅色模式切换
@@ -29,8 +31,9 @@ function User(){
      <>
     <Avatar onClick={showModal} className='avatar' icon={<UserOutlined />} src="https://joeschmoe.io/api/v1/random" />
     <Modal closable={false} footer={null} title={<><div className='dot'></div><div className='loginTitle'>登录</div></>} visible={isModalVisible} width={'330px'}   onCancel={handleCancel}>
-        <div className='userlog'><UserOutlined /></div>
-        <p>游客模式</p>
+        {/* <div className='userlog'><UserOutlined /></div>
+        <p>游客模式</p> */}
+        <Account/>
     </Modal>
     </>
    )
@@ -42,7 +45,7 @@ function ContactUs(){
 
   const onFinish = (values) => {
     
-    fetch("http://121.196.148.27:8000/account/comments/", {
+    fetch(defaultSetting.site + "/account/comments/", {
       method: "POST",
       body: JSON.stringify(values.user)
   }).then((response)=>response.json())

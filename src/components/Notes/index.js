@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import {Modal, Button} from 'antd';
 import MarkdownNotes from "./markdown-notes/index";
 import './index.css';
@@ -6,12 +6,51 @@ import {PlusOutlined} from '@ant-design/icons';
 import useLocalStorage from "../../hooks/useLocalStorage";
 import NoesTabs from "./noesTabs";
 import {nanoid} from "nanoid";
+import cookie from 'react-cookies';
+import defaultSetting from "../../config";
 
 const Notes = () => {
     const [notesList, setNotesList] = useLocalStorage("notesList", []);
     const [notesData, setNotesData] = useState(notesList); //笔记数据
     const [noteIndex, setNoteIndex] = useState(0); // 选中第几个
     const [isNotesVisible, setNotesVisible] = useState(false); // 弹框
+
+    useEffect(()=>{
+        let url = defaultSetting.site + '/functions/getmynotes/' 
+        async  function getNotes(){   
+        fetch(url,{
+            credentials:'include'
+        }).then((response)=>response.json())
+        .then((data)=>{ 
+            setNotesData(JSON.parse(data.res));
+            setNotesList(JSON.parse(data.res));
+        })
+       .catch((e)=>console.log(e.message));
+      }
+       if(cookie.load('status')==='200'){          //获取数据
+          getNotes()
+    }},[])
+      
+    useEffect(()=>{
+        let url = defaultSetting.site + '/functions/savemynotes/' 
+          async function saveNotes(){   
+            fetch(url,{
+                method:'post',
+                body:JSON.stringify(notesData),
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials:'include'
+            }).then((response)=>response.json())
+            .then((data)=>{ })
+        .catch((e)=>console.log("error"));
+        }
+        if(cookie.load('status')==='200'){          //保存到数据库
+            saveNotes() 
+        }
+      },[notesData])
+
+
 
     // 是否显示弹框
     const isShowModal = () => {

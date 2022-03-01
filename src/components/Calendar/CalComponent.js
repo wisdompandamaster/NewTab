@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import './CalComponent.css';
+import {useSelector, useDispatch} from 'react-redux'
 
 export const accessWeekday = {
     "0": "星期日",
@@ -13,8 +14,20 @@ export const accessWeekday = {
 }
 
 function CalComponent() {
-  const [date, setDate] = useState(new Date());
 
+  const [date, setDate] = useState(new Date());
+  const TodoDates = useSelector(state=>state.TodoDates)
+  const dispatch = useDispatch()
+
+  const handleTodoDatePos = (date)=>{
+     let TodoDatePos = date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate()
+     dispatch({
+      type: 'CHANGE_TODODATEPOS',
+      TodoDatePos: TodoDatePos
+     })
+  }
+
+   
   return (
     <>
       <div className='cal'>
@@ -30,8 +43,10 @@ function CalComponent() {
             </div>
             <div className='cal-right'>
                 <Calendar 
+                    tileContent={({ activeStartDate, date, view }) => view === 'month' && (TodoDates.includes(date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate())) ? <div className='todo'></div> : null}
                     locale="en-GB"
                     onChange={setDate} value={date} 
+                    onClickDay={(date, event) => handleTodoDatePos(date)}
                 />
             </div>
       </div>

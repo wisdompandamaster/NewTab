@@ -10,12 +10,14 @@ function Search(){  //搜索框
     let top = clear? '14vh':'4vh'
     const [select, setSelect] = useState(1)
     const [query, setQuery] = useState('')
-    let icons = ['icon-guge','icon-baidu','icon-biying','icon-sougou']
+    let icons = ['icon-google','icon-baidu','icon-biying','icon-bilibili-copy-copy','icon-zhihu','icon-github']
     let urls = [
         'https://www.google.com/search?q=',
         'https://www.baidu.com/s?tn=44004473_38_oem_dg&ie=utf-8&wd=',
         'https://cn.bing.com/search?q=',
-        'https://www.sogou.com/web?query='
+        'https://search.bilibili.com/all?keyword=',
+        'https://www.zhihu.com/search?type=content&q=',
+        'https://github.com/search?q='
     ]
     const change = (n,e)=>{
         console.log(n)
@@ -30,13 +32,17 @@ function Search(){  //搜索框
     return (
         <div style={{top:top}} className='search'>
             {/* 左边 */}
-            <button placeholder='hello' className='engine'><span style={{color:'grey'}} className={'iconfont'+' '+(icons[select])}></span><span className="icon-downarrow iconfont"></span></button> 
+            <button placeholder='hello' className='engine'><span style={{color:'grey'}} className={'iconfont'+' '+(icons[select])}></span>
+            {/* <span className="icon-downArrow iconfont"></span> */}
+            </button> 
            
             <ul className='engineList'> 
-                <li onMouseDown={(e)=> change(0,e)}><span className="icon-guge iconfont"></span>谷 歌</li>  {/*onClick 在失焦之后，不起作用，用onMouseDown*/}
+                <li onMouseDown={(e)=> change(0,e)}><span className="icon-google iconfont"></span> 谷 歌</li>  {/*onClick 在失焦之后，不起作用，用onMouseDown*/}
                 <li onMouseDown={(e)=> change(1,e)}><span className="icon-baidu iconfont"></span> 百 度 </li>
                 <li onMouseDown={(e)=> change(2,e)}><span className="icon-biying iconfont"></span> 必 应 </li>
-                <li onMouseDown={(e)=> change(3,e)}><span className="icon-sougou iconfont"></span> 搜 狗 </li>
+                <li onMouseDown={(e)=> change(3,e)}><span className="icon-bilibili-copy-copy iconfont"></span> Bilibili </li>
+                <li onMouseDown={(e)=> change(4,e)}><span className="icon-zhihu iconfont"></span> 知 乎 </li>
+                <li onMouseDown={(e)=> change(5,e)}><span className="icon-github iconfont"></span> Github </li>
             </ul>
             {/* 中间 */}
             <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={(e)=>setQuery(e.target.value)} value={query} placeholder='输入并查找'/> 

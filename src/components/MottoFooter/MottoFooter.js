@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './MottoFooter.css'
+import { message } from 'antd'
 
 
 export default function MottoFooter(){  //格言脚注
@@ -28,8 +29,15 @@ export default function MottoFooter(){  //格言脚注
     //let motto = JSON.parse(localStorage.getItem('motto'))
 
     // console.log(motto2.hitokoto)
+    const clipMotto = () => {
+        navigator.clipboard
+        .writeText(motto.hitokoto)
+        .then(()=>{message.success('已成功复制到剪贴板')})
+
+    }
+
     return (
-        <div className='motto'>
+        <div onClick={clipMotto} className='motto'>
             <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div><span>--{motto.from}--</span><span>{motto.from_who}</span>
         </div>
     )

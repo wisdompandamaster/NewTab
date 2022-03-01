@@ -1,5 +1,6 @@
 import './News.css'
 import '../../font/iconfont.css'
+import defaultSetting from '../../config';
 import React, { useEffect, useState } from 'react';
 import { Modal, Tooltip, Tabs, List, Typography} from 'antd';
 
@@ -174,7 +175,7 @@ function NewsBrief(){    //热榜简单面板
     useEffect(()=>{
       //这里目前页面刷新一次才请求一次，后续需要定时请求更新，并且添加节流
           
-        let url = 'http://121.196.148.27:8000/news/get/' 
+        let url = defaultSetting.site + '/news/get/' 
         async function getList(){   
                 
             fetch(url).then((response)=>response.json())
@@ -191,7 +192,7 @@ function NewsBrief(){    //热榜简单面板
         e.stopPropagation()
     }
    
-    let res = localStorage.getItem('briefList')? JSON.parse(localStorage.getItem('briefList')):initialData
+    let res = localStorage.getItem('briefList') && localStorage.getItem('briefList')!='[]'? JSON.parse(localStorage.getItem('briefList')):initialData
     let List = [res[1].content, res[2].content, res[0].content] 
     let briefList = List[type]
 
@@ -200,9 +201,9 @@ function NewsBrief(){    //热榜简单面板
         <div className='briefNav'>
             <div className='left'><div></div><p>话题热榜</p></div>
             <div className='right'>
-                <span onMouseOver={()=>setType(0)} style={{color:(type===0? '#000000':'#00000033')}} className="iconfont icon-douyin"></span>
+                <span onMouseOver={()=>setType(0)} style={{color:(type===0? '#000000':'#00000033')}} className="iconfont icon-douyin1"></span>
                 <span onMouseOver={()=>setType(1)} style={{color:(type===1? '#000000':'#00000033')}}className="iconfont icon-juejin-logo"></span>
-                <span onMouseOver={()=>setType(2)} style={{color:(type===2? '#000000':'#00000033')}}className="iconfont icon-weibo-fill"></span>
+                <span onMouseOver={()=>setType(2)} style={{color:(type===2? '#000000':'#00000033')}}className="iconfont icon-weibo"></span>
             </div>
             <div className='briefList'>
                 {

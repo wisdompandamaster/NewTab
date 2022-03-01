@@ -1,8 +1,47 @@
-import './SetBackground.css'
-import {useSelector, useDispatch} from 'react-redux'
-import { Upload, message, Slider, Modal, Tabs } from 'antd'
-import React, { useState } from 'react';
+import './SetBackground.css';
+import {useSelector, useDispatch} from 'react-redux';
+import { Upload, message, Slider, Modal, Tabs } from 'antd';
+import React, { useState, useEffect } from 'react';
 import { InboxOutlined,CheckOutlined } from '@ant-design/icons';
+import defaultSetting from '../../config';
+import cookie from 'react-cookies';
+
+let t = null;
+function debounce(fn){    //防抖函数
+  return function(){
+    if(t){
+      clearTimeout(t);
+    }
+    t = setTimeout(()=>{
+      fn.apply(this,arguments)
+    },1000);
+  }
+}
+
+
+//上传存储设置(函数非组件)  待加防抖  这个地方的问题在于,由于请求频率过高，后台接收不一定按顺序
+function saveSettings(type, value){
+  let url = defaultSetting.site + '/functions/savemysettings/' 
+  async function save(){   
+    console.log('save运行')
+    fetch(url,{
+        method:'post',
+        body:JSON.stringify({"type":type,"value":value}),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then((response)=>response.json())
+    .then((data)=>{
+        console.log(data.msg)
+    }
+    ).catch((e)=>console.log("error"));
+  }
+  if(cookie.load('status')==='200')
+   {
+     debounce(save)()
+   }      
+}
 
 
 function UploadImg(){
@@ -13,7 +52,8 @@ function UploadImg(){
   const props = {
   name: 'file',
   multiple: true,
-  action: 'http://121.196.148.27:8000/img/upload/',
+  withCredentials:true,
+  action: defaultSetting.site + '/img/uploadmybg/',
   onChange(info) {
     const { status, response } = info.file;
     if (status !== 'uploading') {
@@ -23,9 +63,9 @@ function UploadImg(){
       message.success(`${info.file.name} file uploaded successfully.`);
       dispatch({
         type: 'CHANGE_MYBG',
-        mybackgroundimglist: response.objectList
+        mybglist: response.objectList
      }) 
-      localStorage.setItem('mybackgroundimglist',JSON.stringify(response.objectList))
+      localStorage.setItem('mybglist',JSON.stringify(response.objectList))
       
     } else if (status === 'error') {
       message.error(`${info.file.name} file upload failed.`);
@@ -38,7 +78,7 @@ function UploadImg(){
   
     return (
     <div>
-    <Dragger {...props}>
+    <Dragger {...props} disabled={cookie.load('status')==='200'? false:true}>
     <p className="ant-upload-drag-icon">
       <InboxOutlined />
     </p>
@@ -65,13 +105,14 @@ function ShowBackground(props){
             currentbg: value
         }) 
         localStorage.setItem('currentbg', value)
+        saveSettings('current_bg',value)        //上传修改的背景数据,1S上传一次
     }
     
     return (
         <div className='showBackground'>
             {
                 imgList.map((item,index)=>{           //这里通过改行内样式，其实可以通过替换类
-                 let url = 'url(http://121.196.148.27:9000/'+item+')' 
+                 let url = 'url('+ defaultSetting.imgSite + item+')' 
                  let boxShadow = currentbg===item? '5px 5px rgba(145, 241, 145,0.8),-5px 5px rgba(145, 241, 145,0.8),5px -5px rgba(145, 241, 145,0.8),-5px -5px rgba(145, 241, 145,0.8)':''
                  let spanStyle = currentbg===item? {opacity:1,backgroundColor:'rgba(145, 241, 145,0.8)'}:{}
                  return  <div style={{backgroundImage:url,backgroundSize:'cover',boxShadow:boxShadow}} className='showBackgroundItem' key={index}> <div onClick={(e)=>onChangeBg(e,item)} style={spanStyle}><CheckOutlined /></div></div> 
@@ -86,34 +127,54 @@ export default function SetBackground(){
 
     const { TabPane } = Tabs;
     const [isModalVisible, setIsModalVisible] = useState(false);
- 
+
     const dispatch = useDispatch()
     const state = useSelector(state=>state)
     const cover = state.cover 
     const blur =  state.blur
     const currentbg =  state.currentbg
     const onlineimglist =  state.onlineimglist
-    const mybackgroundimglist =  state.mybackgroundimglist
-      
+    const mybglist =  state.mybglist
 
-    let background = 'url(http://121.196.148.27:9000/'+currentbg+')'
+    useEffect(() => {
+      let url = defaultSetting.site + '/img/getmybglist/' 
+      async function getList(){   
+          fetch(url,{
+              credentials:'include'
+          }).then((response)=>response.json())
+          .then((data)=>{localStorage.setItem('mybglist',JSON.stringify(data.objectList));
+          dispatch({
+            type: 'CHANGE_MYBG',
+            mybglist: data.objectList
+          })
+          }
+          ).catch((e)=>console.log("error"));
+      }
+  },[]);
+
+    let background = 'url(' + defaultSetting.imgSite + currentbg+')'
  
      function onChangeCover(value) {  
-      dispatch({
-         type: 'CHANGE_COVER',
-         cover: value
-     })
-     localStorage.setItem('cover',value)
+        dispatch({
+          type: 'CHANGE_COVER',
+          cover: value
+        })
+        localStorage.setItem('cover',value)
+        saveSettings('cover',value)
      }
+
      function onChangeBlur(value) {
        dispatch({
          type: 'CHANGE_BLUR',
          blur: value
      })
-     localStorage.setItem('blur',value)
-     }
+       localStorage.setItem('blur',value)
+       saveSettings('blur',value)
+    }
+
+    
      function onAfterChange(value) {
-       console.log('onAfterChange: ', value);
+       //console.log('onAfterChange: ', value);
      }
  
    const showModal = () => {
@@ -137,7 +198,7 @@ export default function SetBackground(){
                     <ShowBackground data={onlineimglist}></ShowBackground>
                 </TabPane>
                 <TabPane tab={<span className='backTab'>我的壁纸</span>} key='2'>
-                    <ShowBackground data={mybackgroundimglist}></ShowBackground>
+                    <ShowBackground data={mybglist}></ShowBackground>
                 </TabPane>
                 <TabPane tab={<span className='backTab'>上传壁纸</span>} key='3'>
                     <UploadImg></UploadImg>

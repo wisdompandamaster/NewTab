@@ -178,3 +178,9 @@
     background: #6f48eb;
     color: white;
    }
+
+div.todo{
+     width:100%;
+     height: 2px;
+     background-color: red;
+   }

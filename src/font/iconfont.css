@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('./iconfont.ttf?t=1644486870755') format('truetype');
+  font-family: "iconfont"; /* Project id 3208106 */
+  src: url('//at.alicdn.com/t/font_3208106_1ue2ah07vji.woff2?t=1645966374377') format('woff2'),
+       url('//at.alicdn.com/t/font_3208106_1ue2ah07vji.woff?t=1645966374377') format('woff'),
+       url('//at.alicdn.com/t/font_3208106_1ue2ah07vji.ttf?t=1645966374377') format('truetype');
 }
 
 .iconfont {
@@ -11,47 +13,54 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-sougou:before {
-  content: "\e647";
-}
-
-.icon-baidu:before {
-  content: "\e523";
+.icon-douyin1:before {
+  content: "\e68d";
 }
 
 .icon-sousuo:before {
-  content: "\e665";
+  content: "\e603";
 }
 
-.icon-downarrow:before {
-  font-size: 20px;
-  content: "\e610";
+.icon-douyin:before {
+  content: "\e607";
+}
+
+.icon-downArrow:before {
+  content: "\e60a";
+}
+
+.icon-bilibili-copy-copy:before {
+  content: "\e600";
+}
+
+.icon-juejin-logo:before {
+  content: "\e66b";
 }
 
 .icon-shezhi:before {
   content: "\e676";
 }
 
-.icon-guge:before {
-  content: "\e62c";
+.icon-biying:before {
+  content: "\e66e";
 }
 
-.icon-biying:before {
-  content: "\e50c";
+.icon-weibo:before {
+  content: "\e666";
+}
+
+.icon-google:before {
+  content: "\ea0c";
+}
+
+.icon-baidu:before {
+  content: "\e612";
+}
+
+.icon-zhihu:before {
+  content: "\e7f8";
 }
 
 .icon-github:before {
   content: "\e673";
-}
-
-.icon-weibo-fill:before {
-  content: "\e645";
-}
-
-.icon-douyin:before {
-  content: "\e68d";
-}
-
-.icon-juejin-logo:before {
-  content: "\e66b";
 }

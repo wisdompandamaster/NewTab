@@ -90,7 +90,7 @@ body{
   width: 6px;
   height: 14px;
   left: 18px;
-  top: 8px;
+  top: 12px;
   background: linear-gradient(180deg, #b1ff64 0%, #11f2af 100%);
   box-shadow: 0px 3px 6px rgba(71, 255, 55, 0.8);
   border-radius: 20px;
@@ -100,7 +100,7 @@ body{
   position: relative;
   width: 100px;
   left: 36px;
-  top:-11px;
+  top:-7px;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;

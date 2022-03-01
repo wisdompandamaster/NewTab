@@ -1,10 +1,12 @@
 const defalutState = {
-     cover:localStorage.getItem('currentbg')? localStorage.getItem('cover'):20,
-     blur:localStorage.getItem('currentbg')? localStorage.getItem('blur'):0,
+     cover:localStorage.getItem('cover')? localStorage.getItem('cover'):20,
+     blur:localStorage.getItem('blur')? localStorage.getItem('blur'):0,
      currentbg:localStorage.getItem('currentbg')? localStorage.getItem('currentbg'):'background/bg9.png',
-     mybackgroundimglist:localStorage.getItem('mybackgroundimglist')? JSON.parse(localStorage.getItem('mybackgroundimglist')):["mybackgroundimg/wallpaper-415671.jpg"],
+     mybglist:localStorage.getItem('mybglist')? JSON.parse(localStorage.getItem('mybglist')):[],
      onlineimglist:['background/bg1.jpg','background/bg2.jpg','background/bg3.jpg','background/bg4.jpg','background/bg5.jpg','background/bg6.jpg','background/bg7.jpg','background/bg8.jpg','background/bg9.png','background/bg10.jpg','background/bg11.jpg','background/bg12.jpg','background/bg13.jpg','background/bg14.jpg','background/bg15.jpg','background/bg16.jpg','background/bg17.jpg','background/bg18.jpg'],
-     clear:0
+     clear:0,
+     TodoDatePos:new Date().toLocaleDateString(),
+     TodoDates:[]
 }
 
 //eslint-disable-next-line
@@ -30,12 +32,22 @@ export default (state = defalutState,action) =>{
         case 'CHANGE_MYBG':
             return {
                 ...state,
-                mybackgroundimglist:action.mybackgroundimglist
+                mybglist:action.mybglist
             }
         case 'CHANGE_CLEAR':
             return {
                 ...state,
                 clear:action.clear
+            }
+        case 'CHANGE_TODODATES':
+            return {
+                ...state,
+                TodoDates:action.TodoDates
+            }
+        case 'CHANGE_TODODATEPOS':
+            return {
+                ...state,
+                TodoDatePos:action.TodoDatePos
             }
         default:
             return { ...state }

@@ -1,31 +1,26 @@
-import React, {
-    useState,
-    useEffect
-} from 'react';
+import React, { useState, useEffect } from 'react';
+import defaultSetting from '../../config';
 import { Carousel, Modal, Table, Upload, Button, Image, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 // import data from './data';
 import './style.css';
+import cookie from "react-cookies";
 
 const Pictures = () => {
+
     let initialList = localStorage.getItem('myimglist')? JSON.parse(localStorage.getItem('myimglist')):['']
-    // 图片列表的弹窗
+
     const [modalVisible, setModalVisible] = useState(false);
-    // 当前用户的id
-    // const [userId, setUserId] = useState('');
-    // 当前图片数量
-    // const [picNumber, setPicNumber] = useState(0);
+    
     const [myimglist, setMyImgList] = useState(initialList);
 
-    // 图片的数据
-    // const [picData, setPicData] = useState([]);
-
-    
     useEffect(() => {
            
-        let url = 'http://121.196.148.27:8000/img/getmyimglist/' 
+        let url = defaultSetting.site + '/img/getmyimglist/' 
         async function getList(){   
-            fetch(url).then((response)=>response.json())
+            fetch(url,{
+                credentials:'include'
+            }).then((response)=>response.json())
             .then((data)=>{localStorage.setItem('myimglist',JSON.stringify(data.objectList));
                         setMyImgList(data.objectList)}
             ).catch((e)=>console.log("error"));
@@ -47,8 +42,11 @@ const Pictures = () => {
     }
 
     const deletePic = (pic) => {
-        let url = 'http://121.196.148.27:8000/img/deletemyimg/?file_name='+ pic.split('/')[1]
-        fetch(url).then((response)=>response.json())
+        console.log('delete pic')
+        let url = defaultSetting.site + '/img/deletemyimg/?file_name='+ pic.split('/')[1]
+        fetch(url,{
+            credentials:'include'
+        }).then((response)=>response.json())
             .then((data)=>{localStorage.setItem('myimglist',JSON.stringify(data.objectList));
         setMyImgList(data.objectList)}
             ).catch((e)=>console.log("error"));
@@ -62,7 +60,7 @@ const Pictures = () => {
             key: '',
             render: (text) => {
                 
-                let url = 'http://121.196.148.27:9000/'+text
+                let url = defaultSetting.imgSite + text
                 return (
                     <>
                         <Image width={80} height={45} alt={text} src={url}/>
@@ -75,11 +73,11 @@ const Pictures = () => {
             dataIndex: '',
             key: '',
             render: (text, index) => {
-                console.log(text)
+                 
                 return (
-                    <>
-                        <Button danger onClick={() => { deletePic(text) }}>删除</Button>
-                    </>
+                    myimglist.length < 2 ? 
+                     <div></div>:<Button disabled={cookie.load('status')==='200'? false:true} danger onClick={() => { deletePic(text) }}>删除</Button>
+                    
                 );
             }
         }
@@ -95,7 +93,8 @@ const Pictures = () => {
 
     const props = {
         name: 'file',
-        action: 'http://121.196.148.27:8000/img/uploadmyimg/',
+        withCredentials:true,
+        action: defaultSetting.site + '/img/uploadmyimg/',
         onChange(info) {
         const { status, response } = info.file;
           if ( status !== 'uploading') {
@@ -117,7 +116,7 @@ const Pictures = () => {
                 {
                     // picData.map(() => { })
                     myimglist.map((item, index) => {
-                        let url = 'http://121.196.148.27:9000/'+item
+                        let url = defaultSetting.imgSite + item
                         return (
                             <div className='panel' key={index} onClick={showModal}>
                                 <img alt={''}
@@ -142,7 +141,7 @@ const Pictures = () => {
                 <Upload {...props}
                      
                 >
-                    <Button
+                    <Button disabled={cookie.load('status')==='200'? false:true}
                         icon={<UploadOutlined />}
                         type='primary'
                         style={{ marginTop: '10px' }}

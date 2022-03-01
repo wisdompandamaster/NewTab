@@ -41,7 +41,7 @@ code {
   width: 6px;
   height: 14px;
   left: 18px;
-  top: 17px;
+  top: 21px;
 
   background: linear-gradient(180deg, #6CB9FF 0%, #3355FF 100%);
   box-shadow: 0px 3px 6px rgba(55, 135, 255, 0.8);
@@ -50,7 +50,7 @@ code {
 .note-title{
   position: relative;
   left: 36px;
-  top:-1px;
+  top:2px;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;

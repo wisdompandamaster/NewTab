@@ -49,7 +49,7 @@
     padding: 0;
     outline: none;
     border: none;
-    width:5vw;
+    width:4vw;
     min-width: 80px;
     height:6vh;
     min-height: 50px;
@@ -64,7 +64,7 @@
     background-color: #00000026;
 }
 .engine:focus + .engineList{
-    display: block;
+    display: flex;
 }
 .engineList{
     display:none;
@@ -72,7 +72,7 @@
     z-index: 3;
     margin-top:6px;
     padding:5px;
-    width:126px;
+    /* width:126px; */
     min-width: 96px;
     border-radius: 10px;
     background-color:#ffffffEB;
@@ -85,8 +85,8 @@
     align-items: center;
     height:6vh;
     min-height: 36px;
-    width:96%;
-    margin:2px auto;
+    width:100px;
+    margin:2px 2px;
     list-style: none;
     color:rgba(0, 0, 0, 0.6);
     line-height: 6vh;

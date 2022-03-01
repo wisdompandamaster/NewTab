@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircleTwoTone, createFromIconfontCN } from "@ant-design/icons";
 import { Modal,  notification} from "antd";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import TodoModal from "./TodoModal";
+import {useSelector, useDispatch} from 'react-redux';
+import cookie from 'react-cookies';
+import defaultSetting from '../../config/index';
+
+
 
 export function getMeta(todos) {
   const completed = todos.filter((todo) => todo.isCompleted);
@@ -14,12 +19,76 @@ export function getMeta(todos) {
 }
 
 function Todo() {
+
+  const dispatch = useDispatch() //引入dispatch和useselector
+  const TodoDatePos = useSelector(state=>state.TodoDatePos) 
+ 
+  
+
   //localstorage
   const [persistedTodoList, setPersistedTodoList] = useLocalStorage(
     "todoList",
-    []
+     []
   );
   const [todos, setTodos] = useState(persistedTodoList);
+
+  const getTodoDates = (todos)=>              //获得笔记的日期，并且去重
+    todos.reduce((total,item)=>{
+    if(!item.isCompleted){
+      total.add(item.date)     //用set来存储去重日期
+    };
+    return total
+    },new Set())
+
+  useEffect(()=>{
+     
+    let url = defaultSetting.site + '/functions/getmytodos/' 
+    async  function getTodos(){   
+    fetch(url,{
+        credentials:'include'
+    }).then((response)=>response.json())
+    .then((data)=>{
+        setTodos(JSON.parse(data.res));
+        setPersistedTodoList(JSON.parse(data.res));
+    })
+   .catch((e)=>console.log(e.message));
+  }
+   if(cookie.load('status')==='200'){          //获取数据
+      
+      getTodos()
+}
+  },[])
+  
+  useEffect(()=>{
+    let TodoDates = [...getTodoDates(todos)]
+    dispatch({                      //dispatch到store
+      type: 'CHANGE_TODODATES',
+      TodoDates: TodoDates
+    })
+     
+    let url = defaultSetting.site + '/functions/savemytodos/' 
+      async function saveTodos(){   
+        fetch(url,{
+            method:'post',
+            body:JSON.stringify(todos),
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            credentials:'include'
+        }).then((response)=>response.json())
+        .then((data)=>{})
+    .catch((e)=>console.log("error"));
+    }
+
+    if(cookie.load('status')==='200'){          //保存到数据库
+         
+        saveTodos() 
+    }
+  },[todos])
+
+
+  
+  
 
   // 打勾
   const completeTodo = (e,id) => {
@@ -36,7 +105,7 @@ function Todo() {
 
   // 组件默认显示今日待办事项
   const todosToday = todos.filter(
-    (todo) => todo.date === new Date().toLocaleDateString()
+    (todo) => todo.date === TodoDatePos
   );
   const metaToday = getMeta(todosToday);
 
