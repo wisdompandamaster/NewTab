@@ -32,6 +32,7 @@ const Notes = () => {
     }},[])
       
     useEffect(()=>{
+        console.log('notes改变')
         let url = defaultSetting.site + '/functions/savemynotes/' 
           async function saveNotes(){   
             fetch(url,{
@@ -90,7 +91,7 @@ const Notes = () => {
                                 notesData.length !== 0
                                     ? notesData.map((item, index) => {
                                         return (
-                                            <NoesTabs key={index} noteIndex={noteIndex} notesData={notesData} setNotesList={setNotesList} setNotesData={setNotesData} setNoteIndex={setNoteIndex} item={item} index={index}/>
+                                            <NoesTabs key={index} noteIndex={noteIndex} notesData={notesData} setNotesList={(data)=>setNotesList(data)} setNotesData={(data)=>setNotesData(data)} setNoteIndex={setNoteIndex} item={item} index={index}/>
                                         )
                                     })
                                     : <p  className='wrapper'>快来添加第一条笔记吧</p>
@@ -102,7 +103,7 @@ const Notes = () => {
                                 size='large'
                                 icon={<PlusOutlined/>}/>
                     </div>
-                    <MarkdownNotes  setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
+                    <MarkdownNotes  setNotesList={(data)=>setNotesList(data)} notesData={notesData} setNotesData={(data)=>setNotesData(data)} noteIndex={noteIndex}/>
                 </div>
             </Modal>
         </>

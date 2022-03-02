@@ -50,8 +50,8 @@ export default function Account(){
     if(cookie.load('status')==='200')    //如果已经登录
     {
       return(
-        <div>{cookie.load('username')}
-          <Button onClick={onSignOut}>退出登录</Button>
+        <div className='onsignin'>{cookie.load('username')}
+          <Button danger onClick={onSignOut}>退出登录</Button>
         </div>
 
       )

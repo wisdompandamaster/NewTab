@@ -95,6 +95,7 @@ function UploadImg(){
 function ShowBackground(props){
 
     let imgList = props.data
+    console.log(imgList)
     const dispatch = useDispatch()
     const currentbg = useSelector(state=>state.currentbg)
 
@@ -105,14 +106,15 @@ function ShowBackground(props){
             currentbg: value
         }) 
         localStorage.setItem('currentbg', value)
-        saveSettings('current_bg',value)        //上传修改的背景数据,1S上传一次
+        saveSettings('current_bg',value)        //上传修改的背景数据
     }
     
     return (
         <div className='showBackground'>
             {
                 imgList.map((item,index)=>{           //这里通过改行内样式，其实可以通过替换类
-                 let url = 'url('+ defaultSetting.imgSite + item+')' 
+                  console.log(item)
+                 let url = 'url('+ defaultSetting.imgSite + item +')' 
                  let boxShadow = currentbg===item? '5px 5px rgba(145, 241, 145,0.8),-5px 5px rgba(145, 241, 145,0.8),5px -5px rgba(145, 241, 145,0.8),-5px -5px rgba(145, 241, 145,0.8)':''
                  let spanStyle = currentbg===item? {opacity:1,backgroundColor:'rgba(145, 241, 145,0.8)'}:{}
                  return  <div style={{backgroundImage:url,backgroundSize:'cover',boxShadow:boxShadow}} className='showBackgroundItem' key={index}> <div onClick={(e)=>onChangeBg(e,item)} style={spanStyle}><CheckOutlined /></div></div> 
@@ -150,6 +152,8 @@ export default function SetBackground(){
           }
           ).catch((e)=>console.log("error"));
       }
+      getList()
+      
   },[]);
 
     let background = 'url(' + defaultSetting.imgSite + currentbg+')'

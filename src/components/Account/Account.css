@@ -54,3 +54,11 @@ form.login_form + div{
     line-height: 17px;
 }
 
+.onsignin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+}
