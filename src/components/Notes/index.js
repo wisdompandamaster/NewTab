@@ -59,8 +59,7 @@ const Notes = () => {
     };
     // 添加笔记
     const isNoteAdd = () => {
-        if (notesData.length === 0) setNoteIndex(0)
-        const data = notesData.concat([{id:nanoid(), value: '无内容', text:""}]);
+        const data = notesData.concat([{id:nanoid(), value: '无内容'}]);
         setNotesData(data);
         setNotesList(data);
     };
@@ -69,14 +68,14 @@ const Notes = () => {
         <>
             <div className='note-card' onClick={isShowModal}>
                 <header className="note-header">
-                    <div className="note-icon"/>
+                    <div className="note-icon"></div>
                     <h1 className="note-title">笔记</h1>
                 </header>
                 <div className='note-body'>
-                    <div  className='note-content'>{ notesData[0]?.value }</div>
-                    <div  className='note-content'>{notesData[1]?.value}</div>
-                    <div  className='note-content'>{notesData[2]?.value}</div>
-                    <div  className='note-content'>{notesData[3]?.value}</div>
+                    <div  className='note-content'>{ notesData[0]?.html }</div>
+                    <div  className='note-content'>{notesData[1]?.html}</div>
+                    <div  className='note-content'>{notesData[2]?.html}</div>
+                    <div  className='note-content'>{notesData[3]?.html}</div>
                 </div>
             </div>
             <Modal title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>笔记</div>}

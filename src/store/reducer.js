@@ -6,7 +6,12 @@ const defalutState = {
      onlineimglist:['background/bg1.jpg','background/bg2.jpg','background/bg3.jpg','background/bg4.jpg','background/bg5.jpg','background/bg6.jpg','background/bg7.jpg','background/bg8.jpg','background/bg9.png','background/bg10.jpg','background/bg11.jpg','background/bg12.jpg','background/bg13.jpg','background/bg14.jpg','background/bg15.jpg','background/bg16.jpg','background/bg17.jpg','background/bg18.jpg'],
      clear:0,
      TodoDatePos:new Date().toLocaleDateString(),
-     TodoDates:[]
+     TodoDates:[],
+     // apps
+    myApps: localStorage.getItem("apps")
+    ? JSON.parse(localStorage.getItem("apps"))
+    : [],
+    deleteApp: false,
 }
 
 //eslint-disable-next-line
@@ -48,6 +53,16 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 TodoDatePos:action.TodoDatePos
+            }
+        case "CHANGE_APPS":
+            return {
+                ...state,
+                myApps: action.myApps,
+            }
+        case "CHANGE_DELETEAPP":
+            return {
+                ...state,
+                deleteApp: action.deleteApp,
             }
         default:
             return { ...state }
