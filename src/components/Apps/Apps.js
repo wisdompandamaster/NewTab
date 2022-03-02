@@ -80,13 +80,13 @@ const defaultIcons = [
   {
     id: 11,
     href: "https://www.baidu.com/",
-    imgPath: "http://favicon.cccyun.cc/www.baidu.com",
+    imgPath: "https://www.baidu.com/favicon.ico",
     name: "百度",
   },
   {
     id: 12,
     href: "https://www.taptap.com/",
-    imgPath: "https://favicon.cccyun.cc/www.taptap.com/",
+    imgPath: "https://www.taptap.com/favicon.ico",
     name: "TapTap",
   },
 ];
@@ -120,6 +120,10 @@ export default function Apps() {
   const deleteApp = (name) => {
     let updatecards = cards.filter((item) => item.name != name);
     setCards(updatecards);
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: updatecards,
+    });
   };
 
   const moveCard = useCallback(

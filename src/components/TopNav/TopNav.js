@@ -5,15 +5,15 @@ import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
 import { UserOutlined,GithubOutlined } from '@ant-design/icons';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import defaultSetting from '../../config';
 
 
-function CheckMode(){   //深浅色模式切换
-   return (
-    <label className='checkmode'><input type='checkbox' name='btn'/></label>
-   )
-}
+// function CheckMode(){   //深浅色模式切换
+//    return (
+//     <label className='checkmode'><input type='checkbox' name='btn'/></label>
+//    )
+// }
 
 function CheckMode() {
   //深浅色模式切换
@@ -163,8 +163,9 @@ function AddIcon() {
   const myApps = useSelector((state) => state.myApps);
 
   const onFinish = ({ url, name }) => {
-    const host = new URL(url).host;
-    const icon = "http://favicon.cccyun.cc/" + host;
+    const url_info = new URL(url); 
+    // const icon = "http://favicon.cccyun.cc/" + host;
+    const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
     const apps = [
       ...myApps,
       {
@@ -174,10 +175,12 @@ function AddIcon() {
         name,
       },
     ];
+
     dispatch({
       type: "CHANGE_APPS",
       myApps: apps,
     });
+    localStorage.setItem('apps', apps)
     message.success("创建成功!");
     form.resetFields();
   };

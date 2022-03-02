@@ -14,7 +14,7 @@ const mdParser = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
-    highlight:  (str, lang) => {
+    highlight: (str, lang) => {
         if (lang && hljs.getLanguage(lang)) {
             try {
                 return hljs.highlight(lang, str).value
@@ -28,39 +28,42 @@ const mdParser = new MarkdownIt({
 
 const MarkdownNotes = (noteData) => {
     const [notesValue, setIsCardDelete] = useState('');
-    // 需要异步渲染Markdown时
-    // const renderHTML =(text) => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve(mdParser.render(text))
-    //         }, 0)
-    //     })
-    // };
+
+    // 初始化更新
     React.useEffect(() => {
-        setIsCardDelete(noteData?.notesData[noteData.noteIndex]);
+        const newNoteData =  noteData?.notesData[noteData.noteIndex] ? noteData?.notesData[noteData.noteIndex] : noteData?.notesData[noteData.noteIndex-1]
+        setIsCardDelete(newNoteData);
         return () => {}
-    },[noteData.notesData, noteData.noteIndex]);
+    }, [noteData.notesData, noteData.noteIndex]);
 
     // 使用正则表达式从字符串中删除 HTML/XML 标记。
     const stripHTMLTags = str => str.replace(/<[^>]*>/g, '');
 
-    const handleEditorChange = ({ html, text }) => {
-        setIsCardDelete(text);
-        const newStripHTMLTags = stripHTMLTags(html);
+    // 改变markdown笔记内容时触发
+    const handleEditorChange = ({html, text}) => {
+        setIsCardDelete(text)
         const note = noteData.notesData
-        note[noteData.noteIndex].value = text
-        note[noteData.noteIndex].html = newStripHTMLTags
+        note[noteData.noteIndex].text = text
+        note[noteData.noteIndex].value = stripHTMLTags(html);
         noteData.setNotesData(note)
         noteData.setNotesList(note)
     };
+
     return (
-        <MdEditor
-            value={notesValue?.value}
-            style={{ height: '500px',maxWidth: '790px',width: '100%' }}
-            shortcuts={true}
-            renderHTML={text => mdParser.render(text)}
-            onChange={handleEditorChange} />
+        <>
+            {noteData?.notesData.length !== 0
+                ? <MdEditor
+                    placeholder='写点什么吧'
+                    value={notesValue?.text}
+                    style={{height: '500px', maxWidth: '790px', width: '100%'}}
+                    shortcuts={true}
+                    renderHTML={text => mdParser.render(text)}
+                    onChange={handleEditorChange}/>
+                : <div style={{height: '500px', maxWidth: '790px', width: '100%'}}/>
+            }
+        </>
     );
+
 };
 
 export default MarkdownNotes;
