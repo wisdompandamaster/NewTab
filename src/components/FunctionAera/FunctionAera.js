@@ -7,6 +7,7 @@ import Notes from "../Notes";
 import Weather from '../Weather/Weather'
 import CalComponent from '../Calendar/CalComponent'
 import Apps from '../Apps/Apps'
+
 import { useSelector } from 'react-redux'
 
 
