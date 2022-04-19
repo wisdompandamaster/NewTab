@@ -112,7 +112,7 @@ function Todo() {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
-    openNotification();
+    // openNotification();
     setIsModalVisible(true);
   };
   const handleOk = () => {
@@ -191,7 +191,7 @@ function Todo() {
                     className="item-icon"
                     
                   />
-                  <div className="item-text">{todo.text}</div>
+                  <div className="item-text item-completed">{todo.text}</div>
                 </div>
                 {i === metaToday.completed.length - 1 ? "" : <hr />}
               </div>

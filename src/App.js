@@ -63,7 +63,7 @@ function App() {
     <div className="App">
       <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
       <div className='mask' style={{opacity:coverNum}}></div>
-      <Menulist/>
+      {/* <Menulist/> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
        <FunctionAera></FunctionAera>

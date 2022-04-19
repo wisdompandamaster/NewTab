@@ -169,6 +169,7 @@ body{
   display: flex;
   cursor: pointer;
   user-select: none;
+  font-size: 18px;
 }
 
 .item-icon {
@@ -182,12 +183,18 @@ body{
   width: 100%;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 17px;
+  font-size: 18px;
+  line-height: 18px;
   margin-right: 1em;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.item-completed{
+  /* text-decoration: line-through; */
+  opacity: 0.2;
 }
 
 #items-completed-header {

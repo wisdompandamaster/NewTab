@@ -201,8 +201,8 @@ function NewsBrief(){    //热榜简单面板
         <div className='briefNav'>
             <div className='left'><div></div><p>话题热榜</p></div>
             <div className='right'>
-                <span onMouseOver={()=>setType(0)} style={{color:(type===0? '#000000':'#00000033')}} className="iconfont icon-douyin1"></span>
-                <span onMouseOver={()=>setType(1)} style={{color:(type===1? '#000000':'#00000033')}}className="iconfont icon-juejin-logo"></span>
+                <span onMouseOver={()=>setType(0)} style={{color:(type===0? '#000000':'#00000033')}} className="iconfont icon-zhihu"></span>
+                <span onMouseOver={()=>setType(1)} style={{color:(type===1? '#000000':'#00000033')}}className="iconfont icon-bilibili-copy-copy"></span>
                 <span onMouseOver={()=>setType(2)} style={{color:(type===2? '#000000':'#00000033')}}className="iconfont icon-weibo"></span>
             </div>
             <div className='briefList'>
