@@ -169,6 +169,24 @@ let initialData=[
   }
 ]
 
+//节流函数，待验证是否有效
+
+// function throttle(fn, delay) {
+// let curTime = Date.now();
+//   return function() {
+//       let context = this,
+//           args = arguments,
+//           nowTime = Date.now();
+//       // 如果两次时间间隔超过了指定时间，则执行函数。
+//       if (nowTime - curTime >= delay) {
+//         curTime = Date.now();
+//         return fn.apply(context, args);
+//       }
+//     };
+//   }
+  
+   
+
 function NewsBrief(){    //热榜简单面板
     const [type,setType] = useState(0)
    // useEffect 异步请求数据，写入localstorage, 从local里面读取数据
@@ -183,7 +201,8 @@ function NewsBrief(){    //热榜简单面板
                            localStorage.setItem('resList',JSON.stringify(data.res))}
             ).catch((e)=>console.log("error"));
         }
-        getList() 
+
+         getList() 
          
 
     },[])

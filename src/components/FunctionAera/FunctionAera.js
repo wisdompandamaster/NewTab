@@ -7,25 +7,48 @@ import Notes from "../Notes";
 import Weather from '../Weather/Weather'
 import CalComponent from '../Calendar/CalComponent'
 import Apps from '../Apps/Apps'
-
+import {SortableContainer, SortableElement} from 'react-sortable-hoc'
+import {arrayMoveImmutable} from 'array-move'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
+const SortableItem = SortableElement(({value}) => value);
+const SortableList = SortableContainer(({items}) => {
+        return (
+          <div>
+            {items.map((value, index) => (
+              <SortableItem key={`item-${value}`} index={index} value={value} />
+            ))}
+          </div>
+        );
+    });
 
 //测试上传
 export default function FunctionAera(){   //中间的功能组件，放在里面
-
+ 
+    //先重新排列这些组件，统一组件大小，再拖拽排序 4.21待解决
     const clear = useSelector(state=>state.clear)
     let display = clear? 'none':'block'
+
+    const [items, setItems] = useState([<News></News>,<Todo/>,<Pictures/>,<Weather/>,<CalComponent/>,<Notes/>]);
+    const onSortEnd = ({oldIndex, newIndex}) => {
+        setItems(({items}) => ({
+            items: arrayMoveImmutable(items, oldIndex, newIndex),
+          }));
+      };
     
     return (
+        // <div style={{display:display}} className='functionAera'>
+        //     <News></News>
+        //     <Todo/>
+        //     <Pictures/>
+        //     <Notes/>
+        //    <Weather/>
+        //    <CalComponent/> 
+        //    <Apps/>
+        // </div>
         <div style={{display:display}} className='functionAera'>
-            <News></News>
-            <Todo/>
-            <Pictures/>
-            <Notes/>
-           <Weather/>
-           <CalComponent/> 
-           <Apps/>
+        <SortableList axis='xy' items={items} onSortEnd={(oldIndex,newIndex)=>onSortEnd()} />
         </div>
     )
 }
