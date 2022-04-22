@@ -15,11 +15,11 @@ code {
 
 /* 笔记的部分CSS */
 .note-card{
-  position: absolute;
+  /* position: absolute; */
   width: 352px;
   height: 165px;
-  left: 392px;
-  top: 205px;
+  /* left: 392px;
+  top: 205px; */
 
   background: #FFFFFF;
   border: 0px solid #E5E5E5;

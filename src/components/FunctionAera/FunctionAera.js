@@ -12,10 +12,10 @@ import {arrayMoveImmutable} from 'array-move'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-const SortableItem = SortableElement(({value}) => value);
+const SortableItem = SortableElement(({value}) => <div className='sortableItem'>{value}</div>);
 const SortableList = SortableContainer(({items}) => {
         return (
-          <div>
+          <div className='sortable'>
             {items.map((value, index) => (
               <SortableItem key={`item-${value}`} index={index} value={value} />
             ))}
@@ -30,11 +30,11 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     const clear = useSelector(state=>state.clear)
     let display = clear? 'none':'block'
 
-    const [items, setItems] = useState([<News></News>,<Todo/>,<Pictures/>,<Weather/>,<CalComponent/>,<Notes/>]);
+    const [items, setItems] = useState([<News/>,<Todo/>,<Notes/>,<Weather/>,<CalComponent/>,<Pictures/>,<Apps/>]);
     const onSortEnd = ({oldIndex, newIndex}) => {
-        setItems(({items}) => ({
-            items: arrayMoveImmutable(items, oldIndex, newIndex),
-          }));
+        setItems( 
+             arrayMoveImmutable(items, oldIndex, newIndex),
+          );
       };
     
     return (
@@ -48,7 +48,7 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
         //    <Apps/>
         // </div>
         <div style={{display:display}} className='functionAera'>
-        <SortableList axis='xy' items={items} onSortEnd={(oldIndex,newIndex)=>onSortEnd()} />
+        <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
         </div>
     )
 }

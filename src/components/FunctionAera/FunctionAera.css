@@ -7,6 +7,18 @@
     width:1508px;
     height:390px;
     border-radius: 20px;
-    background-color: #ffffff4D;
+    /* background-color: #ffffff4D; */
+}
+.sortable{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* display: inline-grid;
+    grid-template-columns: repeat(4, 352px);
+    grid-template-rows: repeat(auto-fill, 180px); */
+}
+.sortableItem{
+    margin: 12px;
+    /* display: inline-block; */
 }
  

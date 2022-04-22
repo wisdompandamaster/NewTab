@@ -1,14 +1,14 @@
 .cal{
-    position: absolute;
+    /* position: absolute; */
     width: 352px;
     height: 165px;
-    top: 20px;
-    left: 20px;
+    /* top: 20px;
+    left: 20px; */
     padding: 16px;
     background: #FFFFFF;
     box-sizing: border-box;
     border-radius: 20px;
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
     transition: .1s ease-in;
 }

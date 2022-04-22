@@ -1,9 +1,9 @@
 @import '~antd/dist/antd.css';
 
 .carousel {
-    position: absolute;
-    top:20px;
-    left: 1136px;
+    /* position: absolute; */
+    /* top:20px;
+    left: 1136px; */
     height: 165px;
     width: 352px;
     border: 0 solid white;
