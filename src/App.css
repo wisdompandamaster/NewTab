@@ -48,13 +48,14 @@ body{
 
 /* Todo组件的css */
 #todo-app {
-  position: absolute;
+  /* position: absolute; */
+  display: inline-block;
   width: 352px;
   height: 165px;
   /* left: 392px;
   top: 20px; */
-  left:20px;
-  top:205px;
+  /* left:20px;
+  top:205px; */
   padding-bottom: 10px;
   /* font-family: ; */
   padding-top:10px;

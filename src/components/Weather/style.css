@@ -17,13 +17,14 @@
     }
 
 .Card{
-    position: absolute;
+    /* position: absolute; */
     width: 352px;
     height: 165px;
     /* left: 1136px;
     top: 20px; */
-    left:392px;
-    top:20px;
+    /* left:392px;
+    top:20px; */
+    display: inline-block;
     background: #FFFFFF;
     border: 0px solid #FFFFFF;
     box-sizing: border-box;

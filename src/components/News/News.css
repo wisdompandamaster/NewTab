@@ -1,11 +1,11 @@
 .news{
-    position: absolute;
-    display: flow-root;
+    /* position: absolute; */
+    display: inline-block;
     width: 352px;
     height: 165px;
     /* margin:20px; */
-    left:764px;
-    top:20px;
+    /* left:764px;
+    top:20px; */
     background: #FFFFFF;
     box-sizing: border-box;
     border-radius: 20px;
