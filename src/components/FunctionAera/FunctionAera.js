@@ -17,7 +17,7 @@ const SortableList = SortableContainer(({items}) => {
         return (
           <div className='sortable'>
             {items.map((value, index) => (
-              <SortableItem key={`item-${value}`} index={index} value={value} />
+              <SortableItem key={index} index={index} value={value} />
             ))}
           </div>
         );
@@ -30,6 +30,7 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     const clear = useSelector(state=>state.clear)
     let display = clear? 'none':'block'
 
+    const functionList = useSelector(state=>state.functionList)
     const [items, setItems] = useState([<News/>,<Todo/>,<Notes/>,<Weather/>,<CalComponent/>,<Pictures/>,<Apps/>]);
     const onSortEnd = ({oldIndex, newIndex}) => {
         setItems( 

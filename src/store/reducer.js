@@ -12,6 +12,7 @@ const defalutState = {
     ? JSON.parse(localStorage.getItem("apps"))
     : [],
     deleteApp: false,
+    functionList: '[<News/>,<Todo/>,<Notes/>,<Weather/>,<CalComponent/>,<Pictures/>,<Apps/>]'
 }
 
 //eslint-disable-next-line
