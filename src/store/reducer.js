@@ -12,7 +12,7 @@ const defalutState = {
     ? JSON.parse(localStorage.getItem("apps"))
     : [],
     deleteApp: false,
-    functionList: '[<News/>,<Todo/>,<Notes/>,<Weather/>,<CalComponent/>,<Pictures/>,<Apps/>]'
+    // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
 }
 
 //eslint-disable-next-line
@@ -65,6 +65,11 @@ export default (state = defalutState,action) =>{
                 ...state,
                 deleteApp: action.deleteApp,
             }
+        // case "CHANGE_FUNCTIONLIST":
+        //     return {
+        //         ...state,
+        //         functionList: action.functionList,
+        //     }
         default:
             return { ...state }
       }

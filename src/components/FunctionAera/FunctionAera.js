@@ -12,7 +12,10 @@ import {arrayMoveImmutable} from 'array-move'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-const SortableItem = SortableElement(({value}) => <div className='sortableItem'>{value}</div>);
+
+const funcs = [<News/>,<Todo/>,<Pictures/>,<Notes/>,<Weather/>,<CalComponent/>,<Apps/>]
+
+const SortableItem = SortableElement(({value}) => <div className='sortableItem'>{funcs[value]}</div>);
 const SortableList = SortableContainer(({items}) => {
         return (
           <div className='sortable'>
@@ -29,13 +32,14 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     //先重新排列这些组件，统一组件大小，再拖拽排序 4.21待解决
     const clear = useSelector(state=>state.clear)
     let display = clear? 'none':'block'
-
-    const functionList = useSelector(state=>state.functionList)
-    const [items, setItems] = useState([<News/>,<Todo/>,<Notes/>,<Weather/>,<CalComponent/>,<Pictures/>,<Apps/>]);
+    let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
+    //const functionList = useSelector(state=>state.functionList)
+    const [items, setItems] = useState(JSON.parse(functionList));
     const onSortEnd = ({oldIndex, newIndex}) => {
         setItems( 
              arrayMoveImmutable(items, oldIndex, newIndex),
           );
+          localStorage.setItem('functionList',JSON.stringify(arrayMoveImmutable(items, oldIndex, newIndex)))
       };
     
     return (
