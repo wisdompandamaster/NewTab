@@ -10,6 +10,8 @@
     /* background-color: #ffffff4D; */
 }
 .sortable{
+    /* position: relative; */
+    /* z-index: 1; */
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -18,6 +20,8 @@
     grid-template-rows: repeat(auto-fill, 180px); */
 }
 .sortableItem{
+    /* position: relative; */
+    /* z-index: 2; */
     margin: 12px;
     /* display: inline-block; */
 }

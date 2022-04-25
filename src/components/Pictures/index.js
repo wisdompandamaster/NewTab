@@ -39,6 +39,7 @@ const Pictures = () => {
 
     const showModal = () => {
         setModalVisible(true);
+        // console.log("showmodel")
     }
 
     const deletePic = (pic) => {
@@ -112,14 +113,15 @@ const Pictures = () => {
 
     return (
         <>
+            <div onClick={showModal}>
             <Carousel {...settings} className='carousel'>
                 {
                     // picData.map(() => { })
                     myimglist.map((item, index) => {
                         let url = defaultSetting.imgSite + item
                         return (
-                            <div className='panel' key={index} onClick={showModal}>
-                                <img alt={''}
+                            <div className='panel' key={index} >
+                                <img alt={''} 
                                     width={'100%'}
                                     // alt={item.src}
                                     // style={{objectFit:'scale-down'}}
@@ -131,6 +133,7 @@ const Pictures = () => {
                     })
                 }
             </Carousel>
+            </div>
             <Modal
                 title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>图片墙</div>}
                 visible={modalVisible}

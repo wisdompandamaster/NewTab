@@ -54,6 +54,7 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
         // </div>
         <div style={{display:display}} className='functionAera'>
         <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
+        
         </div>
     )
 }

@@ -1,7 +1,8 @@
 @import '~antd/dist/antd.css';
 
 .carousel {
-    /* position: absolute; */
+    /* position: relative;
+    z-index: 1; */
     /* top:20px;
     left: 1136px; */
     height: 165px;
@@ -19,6 +20,8 @@
     width: 100%;
     /* padding-bottom: 60%;
     height: 0; */
+    /* position: relative;
+    z-index: 100; */
     color: #ffffff;
     text-align: center;
     background: #364d79;
