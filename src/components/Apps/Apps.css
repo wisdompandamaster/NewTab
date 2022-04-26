@@ -18,7 +18,8 @@
   border-radius: 20px;
 }
 .icon {
-  margin: 2px 20px;
+  margin: 0px 5px;
+  padding: 10px 0;
   transition: 0.3s ease-in;
   width: 70px;
   height: 80px;
@@ -26,3 +27,17 @@
 .Apps .icon:active {
   transform: scale(0.8);
 }
+
+.Apps::-webkit-scrollbar{
+  width: 0px;
+}
+/* div::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px #00000033;
+  background: rgba(0,0,0,0.2);
+}
+div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+} */

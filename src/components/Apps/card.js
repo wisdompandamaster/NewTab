@@ -85,14 +85,14 @@ export const Card = ({ id, index, moveCard, info, deleteApp }) => {
               width={64}
               height={64}
               style={{ borderRadius: "1em" }}
-              alt="icon"
+              alt={info.name}
               src={info.imgPath}
               fallback={Web}
               preview={false}
             />
           </a>
         </Badge>
-        <p>{info.name}</p>
+        {/* <p>{info.name}</p> */}
       </div>
     </div>
   );
