@@ -24,5 +24,9 @@
     /* z-index: 2; */
     margin: 12px;
     /* display: inline-block; */
+    /* transition: .5s ease-in; */
 }
+/* .sortableItem:active{
+    transform: scale(0.95);
+} */
  

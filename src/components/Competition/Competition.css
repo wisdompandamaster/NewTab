@@ -1,0 +1,41 @@
+.competition{
+    width: 352px;
+    height: 165px;
+    /* margin:20px; */
+    /* left:764px;
+    top:20px; */
+    display: inline-block;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: .1s ease-in;
+}
+.competition:active{
+    transform: scale(0.95);
+}
+
+.competition .left {
+    display: inline-block;
+    margin-top: 13px;
+}
+.competition .left p{
+    
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+    display: inline-block;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    margin-left: 12px;
+}
+.competition .left div{
+    display: inline-block;
+    margin-left: 18px;
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(180deg, #6d53b4 14.58%, #2a1086 100%);
+    box-shadow: 0px 3px 6px rgba(7, 87, 119, 0.8);
+    border-radius: 20px;
+}
