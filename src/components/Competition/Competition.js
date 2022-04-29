@@ -14,6 +14,17 @@ function NBA(){
             ).catch((e)=>console.log("error"));
         }
         getGameList() 
+       const t = setInterval(()=>{
+            let flag = games.map((item,index)=>item.boxscore.status)          //获取比赛状态数组，如果有比赛正在进行才请求
+            console.log(flag)
+            if(flag.includes("2")){
+                getGameList()
+            }
+            console.log('nbagames')
+       },10000)              //10s更新一次
+       return ()=>{
+           clearTimeout(t)
+       }
     },[])
 
     return (
@@ -22,14 +33,21 @@ function NBA(){
             games.map((item,index)=>{
               let awayTeam = item.awayTeam.profile.name
               let homeTeam = item.homeTeam.profile.name
+              let time = new Date(item.profile.dateTimeEt)
+              time = new Date(time.setHours(time.getHours() + 12))
+              time = time.getHours() + " : " + time.toLocaleTimeString().slice(3,5)
+              let score = item.boxscore.awayScore + " : " + item.boxscore.homeScore
+              let score_time = item.boxscore.status !== "1" ?  score:time
               return (
                 <div key={index} className="nba">
-                <span className="nba_team"><img src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}/>{awayTeam}</span>
-                <span className="score_time">{item.boxscore.awayScore} : {item.boxscore.homeScore}
-                <div>{item.boxscore.statusDesc}</div>
-                <div>{item.seriesText}</div>
+                <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}/>{awayTeam}</span>
+                <span className="score_time">
+                    {score_time}
+                    <div style={{color:"red"}}>{item.boxscore.statusDesc}</div>
+                    <div>{item.seriesText}</div>
+                    {/* <div>{time}</div> */}
                 </span>
-                <span className="nba_team"><img src={defaultSetting.imgSite + "nbalogo/" + homeTeam + '.png'}/>{homeTeam}</span>
+                <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + homeTeam + '.png'}/>{homeTeam}</span>
                 </div>
               )
             })
@@ -50,7 +68,7 @@ export default function Competition(){
                 <span>围棋</span>
             </div>
             <div className="com_board">
-                <a href='https://china.nba.cn/' target='_blank'><NBA/></a>
+                <a href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
                 {/* <div></div>
                 <div></div> */}
             </div>
