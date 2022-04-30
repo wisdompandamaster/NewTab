@@ -58,9 +58,9 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.com_right span:hover{
+/* .com_right span:hover{
     background-color:#00000022;
-}
+} */
 .com_board{
     width: 95%;
     height: 120px;
