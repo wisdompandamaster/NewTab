@@ -3,25 +3,31 @@ import defaultSetting from '../../config';
 import { useEffect, useState } from 'react'
 
 
-function NBA(){
+function NBA(){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
     
     const [games,setGames] = useState([])
+    let flag = []           //用来判断是否有比赛在进行中
     useEffect(()=>{
         let url = "https://china.nba.cn/stats2/scores/miniscoreboardlive.json?countryCode=CN&locale=zh_CN&tz=%2B8"
         async function getGameList(){   
             fetch(url).then((response)=>response.json())
-            .then((data)=>{ setGames(data.payload.today.games)}         //.next.games 表示下一天
+            .then((data)=>{ setGames(data.payload.today.games);
+                flag = data.payload.today.games.map((item,index)=>item.boxscore.status)
+            }         //.next.games 表示下一天
             ).catch((e)=>console.log("error"));
         }
         getGameList() 
-       const t = setInterval(()=>{
-            let flag = games.map((item,index)=>item.boxscore.status)          //获取比赛状态数组，如果有比赛正在进行才请求
-            console.log(flag)
+
+        const t = setInterval(()=>{
+            // let flag = games.map((item,index)=>item.boxscore.status)          //获取比赛状态数组，如果有比赛正在进行才请求  这个地方获取不行
+            // console.log(games)
             if(flag.includes("2")){
+                console.log('比赛进行中')
                 getGameList()
             }
             console.log('nbagames')
        },10000)              //10s更新一次
+
        return ()=>{
            clearTimeout(t)
        }

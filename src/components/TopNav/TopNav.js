@@ -234,14 +234,11 @@ function AddIcon() {
         >
           <Input placeholder="名称" allowClear />
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 24, offset: 9 }}>
+        <Form.Item wrapperCol={{ span: 24, offset:1}}>
           <Button type="primary" htmlType="submit">
             添加
           </Button>
-        </Form.Item>
-      </Form>
-      <hr />
-      <Button
+          <Button
         type="danger"
         onClick={() => handleClick(true)}
         style={{ margin: "0 3em" }}
@@ -251,10 +248,12 @@ function AddIcon() {
       <Button
         type="dash"
         onClick={() => handleClick(false)}
-        style={{ marginLeft: "2em" }}
+        // style={{ marginLeft: "2em" }}
       >
         取消
       </Button>
+        </Form.Item>
+      </Form>
     </>
   );
 }
