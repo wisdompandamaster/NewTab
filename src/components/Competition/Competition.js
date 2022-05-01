@@ -7,7 +7,7 @@ function NBA(){
     
     const [games,setGames] = useState([])
     useEffect(()=>{
-        let url = "https://china.nba.cn/stats2/scores/miniscoreboard.json?countryCode=CN&locale=zh_CN&tz=%2B8"
+        let url = "https://china.nba.cn/stats2/scores/miniscoreboardlive.json?countryCode=CN&locale=zh_CN&tz=%2B8"
         async function getGameList(){   
             fetch(url).then((response)=>response.json())
             .then((data)=>{ setGames(data.payload.today.games)}         //.next.games 表示下一天
@@ -40,7 +40,7 @@ function NBA(){
           <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}/>{awayTeam}</span>
           <span className="score_time">
               {score_time}
-              <div style={{color:"red"}}>{item.boxscore.statusDesc}</div>
+              <div style={{color:"red"}}>{item.boxscore.statusDesc}&nbsp;{item.boxscore.periodClock}</div>
               <div>{item.seriesText}</div>
               {/* <div>{time}</div> */}
           </span>
