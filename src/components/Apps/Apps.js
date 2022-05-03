@@ -156,6 +156,9 @@ export default function Apps() {
     [moveCard]
   );
 
+  
+  
+
   return (
     <>
       <div className="Apps">{cards.map((card, i) => renderCard(card, i))}</div>

@@ -25,7 +25,6 @@ function NBA(){                     //修复了一个bug，但是还没弄清原
                 console.log('比赛进行中')
                 getGameList()
             }
-            console.log('nbagames')
        },10000)              //10s更新一次
 
        return ()=>{

@@ -162,6 +162,22 @@ function AddIcon() {
   const dispatch = useDispatch();
   const myApps = useSelector((state) => state.myApps);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+
+
   const onFinish = ({ url, name }) => {
     const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
@@ -238,12 +254,19 @@ function AddIcon() {
           <Button type="primary" htmlType="submit">
             添加
           </Button>
-          <Button
+      <Button
         type="danger"
         onClick={() => handleClick(true)}
         style={{ margin: "0 3em" }}
       >
         移除
+      </Button>
+      <Button
+        type="dash"
+        onClick={showModal}
+        // style={{ marginLeft: "2em" }}
+      >
+        排列
       </Button>
       <Button
         type="dash"
@@ -254,6 +277,11 @@ function AddIcon() {
       </Button>
         </Form.Item>
       </Form>
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </>
   );
 }
@@ -308,7 +336,7 @@ function Setting() {
             <SetBackground></SetBackground>
           </Panel>
           <Panel
-            header={<div className="panel-title">修改快捷方式</div>}
+            header={<div className="panel-title">编辑快捷方式</div>}
             key="2"
             className="setting-panel"
           >
