@@ -212,6 +212,8 @@ function AddIcon() {
     });
   };
 
+   
+
   return (
     <>
       <Form
@@ -277,10 +279,14 @@ function AddIcon() {
       </Button>
         </Form.Item>
       </Form>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title="快捷方式设置" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        {
+          myApps.map((item,index)=>{
+            return (
+            <div><img src={item.imgPath}/>{item.name}</div>
+            )
+          })
+        }
       </Modal>
     </>
   );
