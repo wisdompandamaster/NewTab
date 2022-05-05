@@ -211,12 +211,30 @@ function AddIcon() {
       deleteApp: b,
     });
   };
-
-   
+ 
 
   return (
     <>
-      <Form
+      <span style={{marginRight:'60px'}}>编辑APPS</span>
+      <Button
+        type="dash"
+        onClick={showModal}
+        // style={{ marginLeft: "2em" }}
+      >
+       设置APP
+      </Button>
+      <Modal title="快捷方式设置" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <>
+          <div className='set_apps_left'>
+          {myApps.map((item,index)=>{
+            return (
+            <div><img src={item.imgPath}/></div>
+            )
+          })
+          }
+          </div>
+          <div className='set_apps_right'>
+          <Form
         form={form}
         layout="horizial"
         onFinish={onFinish}
@@ -265,28 +283,15 @@ function AddIcon() {
       </Button>
       <Button
         type="dash"
-        onClick={showModal}
-        // style={{ marginLeft: "2em" }}
-      >
-        排列
-      </Button>
-      <Button
-        type="dash"
         onClick={() => handleClick(false)}
         // style={{ marginLeft: "2em" }}
       >
         取消
       </Button>
         </Form.Item>
-      </Form>
-      <Modal title="快捷方式设置" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        {
-          myApps.map((item,index)=>{
-            return (
-            <div><img src={item.imgPath}/>{item.name}</div>
-            )
-          })
-        }
+          </Form>
+          </div>
+          </>
       </Modal>
     </>
   );
@@ -342,7 +347,7 @@ function Setting() {
             <SetBackground></SetBackground>
           </Panel>
           <Panel
-            header={<div className="panel-title">编辑快捷方式</div>}
+            header={<div className="panel-title">功能组件设置</div>}
             key="2"
             className="setting-panel"
           >

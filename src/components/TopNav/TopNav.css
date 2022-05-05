@@ -176,3 +176,17 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
 }
+
+.set_apps_left{
+  display: inline-flex;
+  width: 400px;
+  background-color: #00000022;
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.set_apps_right{
+  display: inline-block;
+}
