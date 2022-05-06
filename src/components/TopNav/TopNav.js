@@ -223,12 +223,12 @@ function AddIcon() {
       >
        设置APP
       </Button>
-      <Modal title="快捷方式设置" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <>
+      <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <div className='set_apps'>
           <div className='set_apps_left'>
           {myApps.map((item,index)=>{
             return (
-            <div><img src={item.imgPath}/></div>
+            <div className='edit_cards'><img src={item.imgPath}/></div>
             )
           })
           }
@@ -291,7 +291,7 @@ function AddIcon() {
         </Form.Item>
           </Form>
           </div>
-          </>
+          </div>
       </Modal>
     </>
   );

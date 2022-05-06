@@ -176,17 +176,27 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
 }
-
+.set_apps{
+   display: flex;
+}
 .set_apps_left{
-  display: inline-flex;
+  display:flex;
   width: 400px;
+  height: 260px;
   background-color: #00000022;
   border-radius: 10px;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items:center;
   flex-wrap: wrap;
-  margin: 10px;
+  margin-right: 30px;
+  overflow-y:scroll;
 }
 .set_apps_right{
-  display: inline-block;
+  display: block;
+  margin-top: 40px;
+  width: 300px;
+}
+
+.edit_cards{
+  margin: 10px 15px 10px 20px;
 }
