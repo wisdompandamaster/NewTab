@@ -1,11 +1,12 @@
 import './TopNav.css'
 import '../../font/iconfont.css' 
 import SetBackground from '../SetBackground/SetBackground';
+import SetApp from '../Apps/SetApp/SetApp'
 import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
 import { UserOutlined,GithubOutlined } from '@ant-design/icons';
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector } from 'react-redux';
 import defaultSetting from '../../config';
 
 
@@ -158,10 +159,7 @@ function About() {
 
 //添加图标
 function AddIcon() {
-  const [form] = Form.useForm();
-  const dispatch = useDispatch();
-  const myApps = useSelector((state) => state.myApps);
-
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -176,122 +174,17 @@ function AddIcon() {
     setIsModalVisible(false);
   };
 
-
-
-  const onFinish = ({ url, name }) => {
-    const url_info = new URL(url); 
-    // const icon = "http://favicon.cccyun.cc/" + host;
-    const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
-    const apps = [
-      ...myApps,
-      {
-        id: myApps.length + 1,
-        href: url,
-        imgPath: icon,
-        name,
-      },
-    ];
-
-    dispatch({
-      type: "CHANGE_APPS",
-      myApps: apps,
-    });
-    localStorage.setItem('apps', apps)
-    message.success("创建成功!");
-    form.resetFields();
-  };
-
-  const onFinishFailed = () => {
-    message.error("创建失败!");
-  };
-
-  const handleClick = (b) => {
-    dispatch({
-      type: "CHANGE_DELETEAPP",
-      deleteApp: b,
-    });
-  };
- 
-
   return (
     <>
       <span style={{marginRight:'60px'}}>编辑APPS</span>
       <Button
         type="dash"
         onClick={showModal}
-        // style={{ marginLeft: "2em" }}
       >
        设置APP
       </Button>
       <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <div className='set_apps'>
-          <div className='set_apps_left'>
-          {myApps.map((item,index)=>{
-            return (
-            <div className='edit_cards'><img src={item.imgPath}/></div>
-            )
-          })
-          }
-          </div>
-          <div className='set_apps_right'>
-          <Form
-        form={form}
-        layout="horizial"
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          name="url"
-          rules={[
-            {
-              required: true,
-            },
-            {
-              type: "url",
-              warningOnly: true,
-            },
-          ]}
-        >
-          <Input placeholder="网址" allowClear />
-        </Form.Item>
-        <Form.Item
-          name="name"
-          rules={[
-            {
-              required: true,
-            },
-            {
-              type: "string",
-              warningOnly: true,
-              max: 4,
-            },
-          ]}
-        >
-          <Input placeholder="名称" allowClear />
-        </Form.Item>
-        <Form.Item wrapperCol={{ span: 24, offset:1}}>
-          <Button type="primary" htmlType="submit">
-            添加
-          </Button>
-      <Button
-        type="danger"
-        onClick={() => handleClick(true)}
-        style={{ margin: "0 3em" }}
-      >
-        移除
-      </Button>
-      <Button
-        type="dash"
-        onClick={() => handleClick(false)}
-        // style={{ marginLeft: "2em" }}
-      >
-        取消
-      </Button>
-        </Form.Item>
-          </Form>
-          </div>
-          </div>
+        <SetApp/>
       </Modal>
     </>
   );

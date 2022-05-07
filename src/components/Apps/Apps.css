@@ -2,7 +2,7 @@
   /* position: absolute; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   /* align-content: space-around; */
   /* left: 764px; */
   border: 0px slid #000000;
@@ -17,6 +17,11 @@
   /* padding: 5px; */
   border-radius: 20px;
 }
+.Apps > a{
+   margin: 10px 0px 6px 19px;
+   transition: 0.3s ease-in;    
+   /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
+}
 .icon {
   margin: 0px 5px;
   padding: 10px 0;
@@ -24,7 +29,7 @@
   width: 70px;
   height: 80px;
 }
-.Apps .icon:active {
+.Apps:active {
   transform: scale(0.8);
 }
 

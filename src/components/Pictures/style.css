@@ -1,5 +1,7 @@
 @import '~antd/dist/antd.css';
-
+/* .Picture{
+    transition: all .5s ;
+} */
 .carousel {
     /* position: relative;
     z-index: 1; */
@@ -10,7 +12,7 @@
     border: 0 solid white;
     border-radius: 20px;
     overflow: hidden;
-    transition: .1s ease-in;
+    /* transition: all .5s ; */
 }
 .carousel:active{
     transform: scale(0.95);

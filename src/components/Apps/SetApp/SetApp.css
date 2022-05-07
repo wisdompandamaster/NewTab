@@ -1,0 +1,25 @@
+.set_apps{
+    display: flex;
+ }
+ .set_apps_left{
+   display:flex;
+   width: 400px;
+   height: 260px;
+   background-color: #00000022;
+   border-radius: 10px;
+   justify-content: flex-start;
+   align-items:center;
+   flex-wrap: wrap;
+   margin-right: 30px;
+   overflow-y:scroll;
+ }
+ .set_apps_right{
+   display: block;
+   margin-top: 40px;
+   width: 300px;
+ }
+ 
+ .edit_cards{
+   margin: 10px 15px 10px 20px;
+ }
+ 

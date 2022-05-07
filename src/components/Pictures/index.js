@@ -112,7 +112,7 @@ const Pictures = () => {
       };
 
     return (
-        <>
+        <>  
             <div onClick={showModal}>
             <Carousel {...settings} className='carousel'>
                 {

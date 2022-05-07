@@ -21,7 +21,7 @@ const SortableList = SortableContainer(({items}) => {
         return (
           <div className='sortable'>
             {items.map((value, index) => (
-              <SortableItem key={index} index={index} value={value} />
+              <SortableItem onClick={()=>console.log(value)} key={index} index={index} value={value} />
             ))}
           </div>
         );
@@ -44,15 +44,6 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
       };
     
     return (
-        // <div style={{display:display}} className='functionAera'>
-        //     <News></News>
-        //     <Todo/>
-        //     <Pictures/>
-        //     <Notes/>
-        //    <Weather/>
-        //    <CalComponent/> 
-        //    <Apps/>
-        // </div>
         <div style={{display:display}} className='functionAera'>
         <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
         </div>
