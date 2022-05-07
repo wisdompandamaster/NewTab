@@ -2,6 +2,7 @@ import './TopNav.css'
 import '../../font/iconfont.css' 
 import SetBackground from '../SetBackground/SetBackground';
 import SetApp from '../Apps/SetApp/SetApp'
+import SetFooter from '../MottoFooter/SetFooter/SetFooter';
 import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
@@ -157,36 +158,16 @@ function About() {
   );
 }
 
-//添加图标
-function AddIcon() {
+//设置功能
+function SetFunction() {
   
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  
 
   return (
-    <>
-      <span style={{marginRight:'60px'}}>编辑APPS</span>
-      <Button
-        type="dash"
-        onClick={showModal}
-      >
-       设置APP
-      </Button>
-      <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <SetApp/>
-      </Modal>
-    </>
+    <div class='set_function'>
+      <SetApp/>
+      <SetFooter/>
+    </div>
   );
 }
 
@@ -244,7 +225,7 @@ function Setting() {
             key="2"
             className="setting-panel"
           >
-            <AddIcon></AddIcon>
+            <SetFunction/> 
           </Panel>
           <Panel
             header={<div className="panel-title">关于我们</div>}

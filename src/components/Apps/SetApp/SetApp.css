@@ -1,7 +1,7 @@
 .set_apps{
     display: flex;
  }
- .set_apps_left{
+ .set_apps_left {
    display:flex;
    width: 400px;
    height: 260px;
@@ -20,6 +20,6 @@
  }
  
  .edit_cards{
-   margin: 10px 15px 10px 20px;
+   margin: 0 0 0 16px;
  }
  

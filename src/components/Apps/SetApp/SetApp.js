@@ -12,7 +12,7 @@ import Douyin from "../../../AppIcons/Douyin.svg";
 import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useCallback, useEffect} from 'react';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Modal } from 'antd';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import { Card } from '../card';
 
@@ -100,6 +100,22 @@ export default function SetApp(){
   const myApps = useSelector((state) => state.myApps);
   const [cards, setCards] = useState(apps);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+
+
 
   const onFinish = ({ url, name }) => {
     const url_info = new URL(url); 
@@ -182,7 +198,8 @@ export default function SetApp(){
   const renderCard = useCallback(
     (card, index) => {
       return (
-        <Card
+        <div className='edit_cards'>
+        <Card 
           key={card.id}
           id={card.id}
           index={index}
@@ -190,13 +207,22 @@ export default function SetApp(){
           moveCard={moveCard}
           deleteApp={deleteApp}
         />
+        </div>
       );
     },
     [moveCard]
   );
 
   return (
-    <>
+    <div>
+      <span style={{marginRight:'60px'}}>编辑APPS</span>
+      <Button
+        type="dash"
+        onClick={showModal}
+      >
+       设置APP
+      </Button>
+      <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <div className='set_apps'>
           <div className='set_apps_left'>
           {/* {myApps.map((item,index)=>{
@@ -205,8 +231,7 @@ export default function SetApp(){
             )
           })
           } */}
-          <div>{cards.map((card, i) => renderCard(card, i))}</div>
-          </div>
+           {cards.map((card, i) => renderCard(card, i))}</div>
           <div className='set_apps_right'>
           <Form
         form={form}
@@ -266,7 +291,8 @@ export default function SetApp(){
           </Form>
           </div>
           </div>
-    </>
+      </Modal>  
+    </div>
   );
 
 }
