@@ -1,39 +1,32 @@
 import React from "react";
-import { Button, Select, Typography, Divider } from 'antd';
+import { Switch } from 'antd';
  
 
 export default function SetFooter(){
 
-    const options = [];
-    for (let i = 0; i < 100000; i++) {
-      const value = `${i.toString(36)}${i}`;
-      options.push({
-        value,
-        disabled: i === 10,
-      });
-    }
+    // const options = [];
+    // for (let i = 0; i < 100000; i++) {
+    //   const value = `${i.toString(36)}${i}`;
+    //   options.push({
+    //     value,
+    //     disabled: i === 10,
+    //   });
+    // }
     
-    function handleChange(value) {
-      console.log(`selected ${value}`);
+    // function handleChange(value) {
+    //   console.log(`selected ${value}`);
+    // }
+    function onChange(checked) {
+      console.log(`switch to ${checked}`);
     }
 
 
     return (
       <div>
       <span style={{marginRight:'60px'}}>编辑格言</span>
-      {/* <Button 
-        type="dash"
-      >
-       设置内容
-      </Button> */}
-      <Select
-      mode="multiple"
-      style={{ width: '100%' }}
-      placeholder="Please select"
-      defaultValue={['a10', 'c12']}
-      onChange={handleChange}
-      options={options}
-    />
+      {/* 设置格言是否显示,计划通过滑动swiper来实现*/ }
+      <Switch defaultChecked onChange={onChange} />   
+
       </div>
     )
 }
