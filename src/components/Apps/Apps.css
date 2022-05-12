@@ -19,9 +19,14 @@
 }
 .Apps > a{
    margin: 10px 0px 6px 19px;
-   transition: 0.3s ease-in;    
+   transition: 0.3s ease-in;   
    /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
 }
+
+.Apps a > img{
+   width: 64px;
+}
+
 .icon {
   margin: 0px 5px;
   padding: 10px 0;

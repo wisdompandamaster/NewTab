@@ -14,9 +14,11 @@ import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useCallback, useEffect} from 'react';
 import { Form, Input, Button, message, Modal } from 'antd';
 import useLocalStorage from '../../../hooks/useLocalStorage';
+import {SortableContainer, SortableElement} from 'react-sortable-hoc'
+import {arrayMoveImmutable} from 'array-move'
 import { Card } from '../card';
 
-//专门用来设置Apps
+//专门用来设置Apps   
 export default function SetApp(){
 
   const defaultIcons = [
@@ -94,13 +96,47 @@ export default function SetApp(){
         },
   ];
 
+  // let appList = localStorage.getItem('appList')? localStorage.getItem('appList'):"[0,1,2,3,4,5,6]"
   const [apps, setApps] = useLocalStorage("apps", []);
+  const [items, setItems] = useState(apps);
+
+  
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const myApps = useSelector((state) => state.myApps);
-  const [cards, setCards] = useState(apps);
-
+  //const [cards, setCards] = useState(apps);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const renderItem = (item)=>{
+      return (
+        <div className='app_sortableItem'>
+        <img alt={item.name} src={item.imgPath}/>
+        <div>{item.name}</div>
+        </div>
+      )
+
+  }
+
+  //拖拽排序插件-----------------------------------
+const SortableItem = SortableElement(({value}) => renderItem(value));
+const SortableList = SortableContainer(({items}) => {
+        return (
+          <div className='app_sortable'>
+            {items.map((value, index) => (
+              <SortableItem key={index} index={index} value={value} />
+            ))}
+          </div>
+        );
+    });
+    
+    const onSortEnd = ({oldIndex, newIndex}) => {
+        setItems( 
+             arrayMoveImmutable(items, oldIndex, newIndex),
+          );
+          localStorage.setItem('apps',JSON.stringify(arrayMoveImmutable(items, oldIndex, newIndex)))    //这里更改了，但是还不能同步
+      };
+//-------------------------------------------------
+
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -155,7 +191,7 @@ export default function SetApp(){
   useEffect(() => {
     if (!myApps.length) {
       setApps(defaultIcons);
-      setCards(defaultIcons);
+      //setCards(defaultIcons);
       dispatch({
         type: "CHANGE_APPS",
         myApps: defaultIcons,
@@ -163,55 +199,53 @@ export default function SetApp(){
     }
   }, []);
 
-  useEffect(() => {
-    setCards(myApps);
-    setApps(myApps);
-  }, [myApps]);
+  // useEffect(() => {
+  //   setCards(myApps);
+  //   setApps(myApps);
+  // }, [myApps]);
 
-  useEffect(() => {
-    setApps(cards);
-  }, [cards]);
+  // useEffect(() => {
+  //   setApps(cards);
+  // }, [cards]);
 
-  const deleteApp = (name) => {
-    let updatecards = cards.filter((item) => item.name != name);
-    setCards(updatecards);
-    dispatch({
-      type: "CHANGE_APPS",
-      myApps: updatecards,
-    });
-  };
+  // const deleteApp = (name) => {
+  //   let updatecards = cards.filter((item) => item.name != name);
+  //   setCards(updatecards);
+  //   dispatch({
+  //     type: "CHANGE_APPS",
+  //     myApps: updatecards,
+  //   });
+  // };
 
-  const moveCard = useCallback(
-    (dragIndex, hoverIndex) => {
-      setCards((prevCards) =>
-        update(prevCards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, prevCards[dragIndex]],
-          ],
-        })
-      );
-    },
-    [cards]
-  );
+  // const moveCard = useCallback(
+  //   (dragIndex, hoverIndex) => {
+  //     setCards((prevCards) =>
+  //       update(prevCards, {
+  //         $splice: [
+  //           [dragIndex, 1],
+  //           [hoverIndex, 0, prevCards[dragIndex]],
+  //         ],
+  //       })
+  //     );
+  //   },
+  //   [cards]
+  // );
 
-  const renderCard = useCallback(
-    (card, index) => {
+  const renderCard =  (card, index) => {
       return (
         <div className='edit_cards'>
-        <Card 
+        
+        {/* <Card 
           key={card.id}
           id={card.id}
           index={index}
           info={card}
-          moveCard={moveCard}
+          //moveCard={moveCard}
           deleteApp={deleteApp}
-        />
+        /> */}
         </div>
       );
-    },
-    [moveCard]
-  );
+    }
 
   return (
     <div>
@@ -231,7 +265,9 @@ export default function SetApp(){
             )
           })
           } */}
-           {cards.map((card, i) => renderCard(card, i))}</div>
+          <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
+           {/* {apps.map((app, i) => renderCard(app, i))} */}
+           </div>
           <div className='set_apps_right'>
           <Form
         form={form}

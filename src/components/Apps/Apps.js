@@ -2,7 +2,6 @@ import "./Apps.css";
 import "../../font/iconfont.css";
 
 import { useSelector } from "react-redux";
-import { Tooltip, Image, Badge } from "antd";
 
 export default function Apps() {
 
@@ -12,7 +11,7 @@ export default function Apps() {
     return (   //因为click事件会引发拖动，所以这里click没有生效，设置transition解决了
       <a rel="noreferrer" href={item.href} target={'_blank'} ><img alt={item.name} src={item.imgPath}/></a>
     )
-  }
+  }            //目前这里还没办法及时变换顺序
   
   return (
       <div className="Apps">{myApps.map((item, i) => renderCard(item))}</div>

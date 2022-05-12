@@ -36,6 +36,7 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
     //const functionList = useSelector(state=>state.functionList)
     const [items, setItems] = useState(JSON.parse(functionList));
+    
     const onSortEnd = ({oldIndex, newIndex}) => {
         setItems( 
              arrayMoveImmutable(items, oldIndex, newIndex),

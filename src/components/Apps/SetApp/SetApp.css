@@ -12,6 +12,7 @@
    flex-wrap: wrap;
    margin-right: 30px;
    overflow-y:scroll;
+   overflow-x: hidden;
  }
  .set_apps_right{
    display: block;
@@ -22,4 +23,16 @@
  .edit_cards{
    margin: 0 0 0 16px;
  }
+.app_sortable{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.app_sortableItem{
+   cursor: pointer;
+   z-index: 9999;
+   margin:0px 20px 3px 15px;
+}
+ 
+
  
