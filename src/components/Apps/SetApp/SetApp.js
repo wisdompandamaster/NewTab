@@ -1,5 +1,5 @@
 import './SetApp.css'
-import Bilibili from "../../../AppIcons/Bilibili.svg";
+import Bilibili from "../../../AppIcons/Bilibili.svg";   
 import Bytedance from "../../../AppIcons/Bytedance.svg";
 import Douban from "../../../AppIcons/Douban.svg";
 import Github from "../../../AppIcons/Github.svg";
@@ -20,7 +20,7 @@ import { Card } from '../card';
 
 //专门用来设置Apps   
 export default function SetApp(){
-
+  //这里的defaultIcon可以考虑删掉
   const defaultIcons = [
         {
           id: 1,
@@ -97,14 +97,15 @@ export default function SetApp(){
   ];
 
   // let appList = localStorage.getItem('appList')? localStorage.getItem('appList'):"[0,1,2,3,4,5,6]"
-  const [apps, setApps] = useLocalStorage("apps", []);
-  const [items, setItems] = useState(apps);
-
+  //const [apps, setApps] = useLocalStorage("apps", []);
+  
+  //还有移除功能待实现
   
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const myApps = useSelector((state) => state.myApps);
   //const [cards, setCards] = useState(apps);
+  const [items, setItems] = useState(myApps);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const renderItem = (item)=>{
@@ -133,7 +134,11 @@ const SortableList = SortableContainer(({items}) => {
         setItems( 
              arrayMoveImmutable(items, oldIndex, newIndex),
           );
-          localStorage.setItem('apps',JSON.stringify(arrayMoveImmutable(items, oldIndex, newIndex)))    //这里更改了，但是还不能同步
+          localStorage.setItem('apps',JSON.stringify(arrayMoveImmutable(items, oldIndex, newIndex)));    //这里更改了，但是还不能同步
+          dispatch({
+            type: "CHANGE_APPS",
+            myApps: arrayMoveImmutable(items, oldIndex, newIndex),
+          });
       };
 //-------------------------------------------------
 
@@ -152,7 +157,7 @@ const SortableList = SortableContainer(({items}) => {
 
 
 
-
+  //添加新APP
   const onFinish = ({ url, name }) => {
     const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
@@ -171,7 +176,8 @@ const SortableList = SortableContainer(({items}) => {
       type: "CHANGE_APPS",
       myApps: apps,
     });
-    localStorage.setItem('apps', apps)
+    localStorage.setItem('apps', JSON.stringify(apps))
+    setItems(apps)
     message.success("创建成功!");
     form.resetFields();
   };
@@ -190,12 +196,13 @@ const SortableList = SortableContainer(({items}) => {
 
   useEffect(() => {
     if (!myApps.length) {
-      setApps(defaultIcons);
+      //setApps(defaultIcons);
       //setCards(defaultIcons);
       dispatch({
         type: "CHANGE_APPS",
         myApps: defaultIcons,
       });
+      localStorage.setItem('apps',JSON.stringify(defaultIcons))
     }
   }, []);
 
@@ -259,12 +266,7 @@ const SortableList = SortableContainer(({items}) => {
       <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <div className='set_apps'>
           <div className='set_apps_left'>
-          {/* {myApps.map((item,index)=>{
-            return (
-            <div className='edit_cards'><img src={item.imgPath}/></div>
-            )
-          })
-          } */}
+           
           <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
            {/* {apps.map((app, i) => renderCard(app, i))} */}
            </div>

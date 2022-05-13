@@ -32,6 +32,10 @@
    cursor: pointer;
    z-index: 9999;
    margin:0px 20px 3px 15px;
+   text-align: center;
+}
+.app_sortableItem img{
+  width: 64px;
 }
  
 

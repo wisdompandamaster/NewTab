@@ -5,17 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import configureStore from './store/index';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { DndProvider } from 'react-dnd';    //react-dnd拖拽方案
+// import { HTML5Backend } from 'react-dnd-html5-backend';
 
 
 const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
-       
         <App />
-      
     </Provider>,
   document.getElementById('root')
 );
