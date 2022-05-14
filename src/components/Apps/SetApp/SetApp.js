@@ -100,6 +100,8 @@ export default function SetApp(){
   //const [apps, setApps] = useLocalStorage("apps", []);
   
   //还有移除功能待实现
+  const deleteMode = useSelector((state) => state.deleteApp);
+
   
   const [form] = Form.useForm();
   const dispatch = useDispatch();
