@@ -13,6 +13,7 @@ import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useCallback, useEffect} from 'react';
 import { Form, Input, Button, message, Modal } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -110,9 +111,25 @@ export default function SetApp(){
   const [items, setItems] = useState(myApps);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const deleteApp = (id) => {
+    // console.log('deleteAPP')
+    let updatemyApps = myApps.filter((item) => item.id != id);
+    setItems(updatemyApps);
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: updatemyApps,
+    });
+  };
+
   const renderItem = (item)=>{
       return (
         <div className='app_sortableItem'>
+        <Button
+              shape="circle"
+              icon={deleteMode ? <CloseOutlined /> : ""}
+              size="small"
+              onMouseDown={() => deleteApp(item.id)}
+        />
         <img alt={item.name} src={item.imgPath}/>
         <div>{item.name}</div>
         </div>
