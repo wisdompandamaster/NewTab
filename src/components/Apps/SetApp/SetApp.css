@@ -31,9 +31,16 @@
 .app_sortableItem{
    cursor: pointer;
    z-index: 9999;
-   margin:0px 20px 3px 15px;
+   margin:-5px 10px -15px 22px;
    text-align: center;
+   width: 64px;
 }
+.app_sortableItem button{
+   position: relative;
+   left:30px;
+   top:16px;
+}
+
 .app_sortableItem img{
   width: 64px;
 }
