@@ -8,13 +8,14 @@ import Weather from '../Weather/Weather'
 import CalComponent from '../Calendar/CalComponent'
 import Apps from '../Apps/Apps'
 import Competition from '../Competition/Competition'
+import CountDown from '../CountDown/CountDown'
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
 
-const funcs = [<News/>,<Todo/>,<Pictures/>,<Notes/>,<Weather/>,<CalComponent/>,<Apps/>,<Competition/>]
+const funcs = [<News/>,<Todo/>,<Pictures/>,<Notes/>,<Weather/>,<CalComponent/>,<CountDown/>,<Competition/>]
 
 const SortableItem = SortableElement(({value}) => <div className='sortableItem'>{funcs[value]}</div>);
 const SortableList = SortableContainer(({items}) => {

@@ -1,0 +1,54 @@
+.CountDown{
+    width: 352px;
+    height: 165px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: .1s ease-in;
+}
+.CountDown .left {
+    display: inline-block;
+    margin-top: 13px;
+}
+.CountDown .left p{
+    /* position: relative; */
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* text-align: center; */
+    margin: 0;
+    display: inline-block;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    margin-left: 12px;
+}
+.CountDown .left div{
+    display: inline-block;
+    /* position: relative; */
+    margin-left: 18px;
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(180deg, #31c5ff 14.58%, #26f5f5 100%);
+    box-shadow: 0px 3px 6px rgba(109, 214, 233, 0.8);
+    border-radius: 20px;
+}
+.countdown_content div:nth-child(1){
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight:800;
+    letter-spacing: 3px;
+    color:#31c5ff;
+}
+.countdown_content div:nth-child(2){
+    text-align: center;
+    margin-top: 5px;
+    font-size: 55px;
+    font-weight:900;
+    letter-spacing: 8px;
+}
+.countdown_content span{
+    font-size: 30px;
+    letter-spacing: 0px;
+}
