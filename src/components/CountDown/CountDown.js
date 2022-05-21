@@ -18,6 +18,7 @@ export default function CountDown(){
     const showModal = () => {
         setIsModalVisible(true);
     };
+    
     const handleCancel = () => {
         setIsModalVisible(false);
     };

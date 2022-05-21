@@ -36,6 +36,7 @@
 .countdown_content{
     overflow-y: scroll;
     height: 120px;
+    scrollbar-width:none;
 
 }
 .countdown_content div div:nth-child(1){
@@ -61,9 +62,10 @@
 
 
 /* 滚动条样式 */
-.countdown_content::-webkit-scrollbar{
+/* .countdown_content::-webkit-scrollbar{
     width: 0px;
-}
+} */
+/* 设置滚动滑块 */
 /* .newsList::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 4px #00000033;
@@ -73,4 +75,13 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     border-radius: 10px;
     background: rgba(0,0,0,0.1);
+} */
+
+/* CSS实现滚动贴合  用在组件里面*/   
+/* main{
+    scroll-snap-type:y mandatory;  强制滚动
+    scroll-padding: 80px;   贴合时的padding,如有粘滞元素的时候
+}
+section{
+    scroll-snap-align: start;  贴合的位置，底部，center,或者顶部
 } */
