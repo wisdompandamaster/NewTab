@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 import './MottoFooter.css'
 import { message } from 'antd'
+import { useSelector } from 'react-redux'
 
 
 export default function MottoFooter(){  //格言脚注
 
     const [motto, setMotto] = useState({})        //之后添加左键复制，右键刷新,或者添加菜单
+    const footerexist = useSelector(state=>state.footerexist)
 
     useEffect(()=>{
         let url = 'https://v1.hitokoto.cn/?c=k&c=i&c=j&type=json'   //之后可以添加可选择句子类型
+        
         async function getMotto(){           
             fetch(url).then((response)=>response.json())
             .then((data)=>{localStorage.setItem('motto',JSON.stringify(data));setMotto(data)}
@@ -37,7 +40,7 @@ export default function MottoFooter(){  //格言脚注
     }
 
     return (
-        <div onClick={clipMotto} className='motto'>
+        <div onClick={clipMotto} style={{visibility: footerexist ? 'visible':'hidden'}}  className='motto'>
             <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div><span>--{motto.from}--</span><span>{motto.from_who}</span>
         </div>
     )

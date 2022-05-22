@@ -36,7 +36,7 @@
 .countdown_content{
     overflow-y: scroll;
     height: 120px;
-    scrollbar-width:none;
+    /* scrollbar-width:none; */
 
 }
 .countdown_content div div:nth-child(1){
@@ -62,9 +62,9 @@
 
 
 /* 滚动条样式 */
-/* .countdown_content::-webkit-scrollbar{
+.countdown_content::-webkit-scrollbar{
     width: 0px;
-} */
+}
 /* 设置滚动滑块 */
 /* .newsList::-webkit-scrollbar-thumb {
     border-radius: 10px;

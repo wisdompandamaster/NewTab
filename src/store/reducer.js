@@ -99,6 +99,7 @@ const defalutState = {
     : defaultIcons,
     deleteApp: false,
     // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
+    footerexist:true,
 }
 
 //eslint-disable-next-line
@@ -150,6 +151,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 deleteApp: action.deleteApp,
+            }
+        case "CHANGE_FOOTEREXIST":
+            return {
+                ...state,
+                footerexist: action.footerexist,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {

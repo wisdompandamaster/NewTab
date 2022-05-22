@@ -1,8 +1,10 @@
 import React from "react";
 import { Switch } from 'antd';
+import {useSelector, useDispatch} from 'react-redux';
  
 
 export default function SetFooter(){
+
 
     // const options = [];
     // for (let i = 0; i < 100000; i++) {
@@ -16,7 +18,12 @@ export default function SetFooter(){
     // function handleChange(value) {
     //   console.log(`selected ${value}`);
     // }
+    const dispatch = useDispatch()
     function onChange(checked) {
+      dispatch({                      //dispatch到store
+        type: 'CHANGE_FOOTEREXIST',
+        footerexist: checked
+      })
       console.log(`switch to ${checked}`);
     }
 
