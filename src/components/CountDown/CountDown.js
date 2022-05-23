@@ -9,7 +9,7 @@ export default function CountDown(){
     const temp =  [{'name':'考研','ddl':'2022-12-24 00:00'},{'name':'答辩','ddl':'2022-5-24 00:00'}]
 
     //添加localstorage支持
-    const [countdownList, setcountdownList] = useLocalStorage('countdownList',[])
+    const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
    
     const [countdown, setcountdown] = useState(countdownList)
 
