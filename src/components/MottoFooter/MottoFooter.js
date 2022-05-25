@@ -8,9 +8,14 @@ export default function MottoFooter(){  //格言脚注
 
     const [motto, setMotto] = useState({})        //之后添加左键复制，右键刷新,或者添加菜单
     const footerexist = useSelector(state=>state.footerexist)
+    const footerkinds = useSelector(state=>state.footerkinds)
 
     useEffect(()=>{
-        let url = 'https://v1.hitokoto.cn/?c=k&c=i&c=j&type=json'   //之后可以添加可选择句子类型
+        let kinds = footerkinds.reduce((pre,cur,i)=>{         //还没加到localstorage
+            return pre + 'c=' + cur + '&'
+        },'')
+        console.log(kinds)
+        let url = 'https://v1.hitokoto.cn/?'+kinds+'type=json'   
         
         async function getMotto(){           
             fetch(url).then((response)=>response.json())
@@ -27,7 +32,7 @@ export default function MottoFooter(){  //格言脚注
             clearTimeout(t)
         }
         
-    },[])
+    },[footerkinds])
 
     //let motto = JSON.parse(localStorage.getItem('motto'))
 
