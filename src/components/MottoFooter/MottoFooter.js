@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react'
 import './MottoFooter.css'
 import { message } from 'antd'
 import { useSelector } from 'react-redux'
+import useLocalStorage from "../../hooks/useLocalStorage";
+
+//这里总结一下localStorage用法
 
 
 export default function MottoFooter(){  //格言脚注
 
+    //const [footerset, setFooterSet] = useLocalStorage('footerset',{})
     const [motto, setMotto] = useState({})        //之后添加左键复制，右键刷新,或者添加菜单
     const footerexist = useSelector(state=>state.footerexist)
     const footerkinds = useSelector(state=>state.footerkinds)
@@ -14,7 +18,6 @@ export default function MottoFooter(){  //格言脚注
         let kinds = footerkinds.reduce((pre,cur,i)=>{         //还没加到localstorage
             return pre + 'c=' + cur + '&'
         },'')
-        console.log(kinds)
         let url = 'https://v1.hitokoto.cn/?'+kinds+'type=json'   
         
         async function getMotto(){           

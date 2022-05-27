@@ -99,8 +99,12 @@ const defalutState = {
     : defaultIcons,
     deleteApp: false,
     // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
-    footerexist:true,
-    footerkinds:['i'],
+    footerexist:localStorage.getItem("footerset")
+    ? JSON.parse(localStorage.getItem("footerset")).footerexist
+    : true,
+    footerkinds:localStorage.getItem("footerset")
+    ? JSON.parse(localStorage.getItem("footerset")).footerkinds
+    : ['i'],
 }
 
 //eslint-disable-next-line
