@@ -9,6 +9,7 @@ import Menulist from './components/Menulist/Menulist'
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect } from 'react';
 import cookie from 'react-cookies';
+import SwiperAera from './components/SwiperAera/SwiperAera';
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
       {/* <Menulist/> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
-       <FunctionAera></FunctionAera>
+       <SwiperAera></SwiperAera>
        <MottoFooter></MottoFooter>
     </div>
     

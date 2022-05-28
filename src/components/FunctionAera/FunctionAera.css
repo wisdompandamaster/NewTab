@@ -2,8 +2,8 @@
 
 .functionAera{
     position: relative;
-    top: 12vh;
-    margin: 0 auto;
+    bottom: 0vh;
+    margin: 0 auto 20px auto;
     width:1508px;
     height:390px;
     border-radius: 20px;
