@@ -1,7 +1,30 @@
 import './CountDown.css';
 import { Modal } from 'antd';
-import { useState } from 'react';
+import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
+import React, { useState } from 'react';
 import useLocalStorage from "../../hooks/useLocalStorage";
+
+const defaultData = [
+    {
+        id: 624748504,
+        title: '活动名称一',
+        readonly: '活动名称一',
+        decs: '这个活动真好玩',
+        state: 'open',
+        created_at: '2020-05-26T09:42:56Z',
+        update_at: '2020-05-26T09:42:56Z',
+    },
+    {
+        id: 624691229,
+        title: '活动名称二',
+        readonly: '活动名称二',
+        decs: '这个活动真好玩',
+        state: 'closed',
+        created_at: '2020-05-26T08:19:22Z',
+        update_at: '2020-05-26T08:19:22Z',
+    },
+];
+
 
 //一个想法，把顶部的时间变成倒计时，可选
 export default function CountDown(){
@@ -34,6 +57,98 @@ export default function CountDown(){
     // minute = Math.floor(timeRemainning / 1000 / 60 % 60)
     // hour = Math.floor(timeRemainning / 1000 / 60 / 60 % 24)
     // day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
+    //pro component 表格组件
+    const [editableKeys, setEditableRowKeys] = useState([]);
+    const [dataSource, setDataSource] = useState([]);
+    //表格配置
+    const columns = [
+        // {
+        //     title: '活动名称',
+        //     dataIndex: 'title',
+        //     tooltip: '只读，使用form.getFieldValue获取不到值',
+        //     formItemProps: (form, { rowIndex }) => {
+        //         return {
+        //             rules: rowIndex > 1 ? [{ required: true, message: '此项为必填项' }] : [],
+        //         };
+        //     },
+        //     // 第一行不允许编辑
+        //     editable: (text, record, index) => {
+        //         return index !== 0;
+        //     },
+        //     width: '15%',
+        // },
+        // {
+        //     title: '活动名称二',
+        //     dataIndex: 'readonly',
+        //     tooltip: '只读，使用form.getFieldValue可以获取到值',
+        //     readonly: true,
+        //     width: '15%',
+        // },
+        // {
+        //     title: '状态',
+        //     key: 'state',
+        //     dataIndex: 'state',
+        //     valueType: 'select',
+        //     valueEnum: {
+        //         all: { text: '全部', status: 'Default' },
+        //         open: {
+        //             text: '未解决',
+        //             status: 'Error',
+        //         },
+        //         closed: {
+        //             text: '已解决',
+        //             status: 'Success',
+        //         },
+        //     },
+        // },
+        {
+            title: '描述',
+            dataIndex: 'decs',
+            width:'200px',
+            fieldProps: (from, { rowKey, rowIndex }) => {
+                if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
+                    return {
+                        disabled: true,
+                    };
+                }
+                if (rowIndex > 9) {
+                    return {
+                        disabled: true,
+                    };
+                }
+                return {};
+            },
+        },
+        {
+            title: '活动时间',
+            dataIndex: 'created_at',
+            valueType: 'date',
+            width: 100,
+        },
+        {
+            title: '操作',
+            valueType: 'option',
+            width: 200,
+            render: (text, record, _, action) => [
+                <a key="editable" onClick={() => {
+                        var _a;
+                        (_a = action === null || action === void 0 ? void 0 : action.startEditable) === null || _a === void 0 ? void 0 : _a.call(action, record.id);
+                    }}>
+          编辑
+        </a>,
+                <a key="delete" onClick={() => {
+                        setDataSource(dataSource.filter((item) => item.id !== record.id));
+                    }}>
+          删除
+        </a>,
+            ],
+        },
+    ];
+
+
+
+
+
 
     return (
         <>
@@ -55,8 +170,8 @@ export default function CountDown(){
             }
            </div>
            </div>
-        <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'600px'}  footer={null}  onCancel={handleCancel}>
-        {   //这里等着用列表组件来添加
+        <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'1000px'}  footer={null}  onCancel={handleCancel}>
+        {/* {   //这里等着用列表组件来添加
             countdown.map((item)=>{
                 return (
                 <div>
@@ -65,7 +180,27 @@ export default function CountDown(){
                 </div>
                 )
             })
-        }
+        } */}
+         <>
+        <EditableProTable rowKey="id" headerTitle="" maxLength={5}  
+        recordCreatorProps={ {
+                position:'bottom',
+                record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),
+            }
+            } loading={false}  
+            columns={columns} request={async () => ({
+            data: defaultData,
+            total: 3,
+            success: true,
+        })} value={dataSource} onChange={setDataSource} editable={{
+            type: 'multiple',
+            editableKeys,
+            onSave: async (rowKey, data, row) => {
+                console.log(rowKey, data, row);
+            },
+            onChange: setEditableRowKeys,
+        }}/>
+      </>
         <div>hello</div>
         </Modal>   
         </>
