@@ -29,7 +29,7 @@ const defaultData = [
 //一个想法，把顶部的时间变成倒计时，可选
 export default function CountDown(){
 
-    const temp =  [{'name':'考研','ddl':'2022-12-24 00:00'},{'name':'答辩','ddl':'2022-5-24 00:00'}]
+    const temp =  [{id:123,name:'考研',ddl:'2022-12-24 00:00'},{id:125,name:'答辩',ddl:'2022-5-24 00:00'}]
 
     //添加localstorage支持
     const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
@@ -102,8 +102,8 @@ export default function CountDown(){
         //     },
         // },
         {
-            title: '描述',
-            dataIndex: 'decs',
+            title: '倒计时项目',
+            dataIndex: 'name',
             width:'200px',
             fieldProps: (from, { rowKey, rowIndex }) => {
                 if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
@@ -120,15 +120,15 @@ export default function CountDown(){
             },
         },
         {
-            title: '活动时间',
-            dataIndex: 'created_at',
+            title: 'DDL',
+            dataIndex: 'ddl',
             valueType: 'date',
             width: 100,
         },
         {
             title: '操作',
             valueType: 'option',
-            width: 200,
+            width: 200,//
             render: (text, record, _, action) => [
                 <a key="editable" onClick={() => {
                         var _a;
@@ -185,14 +185,16 @@ export default function CountDown(){
         <EditableProTable rowKey="id" headerTitle="" maxLength={5}  
         recordCreatorProps={ {
                 position:'bottom',
-                record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),
+                record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),  //新建一行时的记录标识
             }
             } loading={false}  
-            columns={columns} request={async () => ({
-            data: defaultData,
-            total: 3,
-            success: true,
-        })} value={dataSource} onChange={setDataSource} editable={{
+            columns={columns} 
+            request={async () => ({
+                data: temp,
+                total: 3,
+                success: true,
+            })} 
+            value={dataSource} onChange={setDataSource} editable={{
             type: 'multiple',
             editableKeys,
             onSave: async (rowKey, data, row) => {
