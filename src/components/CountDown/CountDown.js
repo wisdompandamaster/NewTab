@@ -29,7 +29,7 @@ const defaultData = [
 //一个想法，把顶部的时间变成倒计时，可选
 export default function CountDown(){
 
-    const temp =  [{id:123,name:'考研',ddl:'2022-12-24 00:00'},{id:125,name:'答辩',ddl:'2022-5-24 00:00'}]
+    const temp = []
 
     //添加localstorage支持
     const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
@@ -59,7 +59,7 @@ export default function CountDown(){
     // day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
     //pro component 表格组件
     const [editableKeys, setEditableRowKeys] = useState([]);
-    const [dataSource, setDataSource] = useState([]);
+    const [dataSource, setDataSource] = useState(countdownList);
     //表格配置
     const columns = [
         // {
@@ -138,6 +138,8 @@ export default function CountDown(){
         </a>,
                 <a key="delete" onClick={() => {
                         setDataSource(dataSource.filter((item) => item.id !== record.id));
+                        setcountdown(dataSource.filter((item) => item.id !== record.id))
+                        setcountdownList(dataSource.filter((item) => item.id !== record.id))
                     }}>
           删除
         </a>,
@@ -190,7 +192,7 @@ export default function CountDown(){
             } loading={false}  
             columns={columns} 
             request={async () => ({
-                data: temp,
+                data: countdown,
                 total: 3,
                 success: true,
             })} 
@@ -198,7 +200,9 @@ export default function CountDown(){
             type: 'multiple',
             editableKeys,
             onSave: async (rowKey, data, row) => {
-                console.log(rowKey, data, row);
+                 setDataSource(dataSource.concat(data))
+                 setcountdown(dataSource.concat(data))
+                 setcountdownList(dataSource.concat(data))
             },
             onChange: setEditableRowKeys,
         }}/>
