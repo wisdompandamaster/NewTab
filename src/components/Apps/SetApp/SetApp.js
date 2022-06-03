@@ -177,6 +177,8 @@ const SortableList = SortableContainer(({items}) => {
 
 
   //添加新APP
+  //https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=
+  //可以通过这个api获取图标
   const onFinish = ({ url, name }) => {
     const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;

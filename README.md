@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+<!-- Add banner here -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NewTab
 
-## Available Scripts
+<!-- Add buttons here -->
 
-In the project directory, you can run:
+<!-- Describe your project in brief -->
+NewTab 新标签页是一个集合多种信息和工具的自制浏览器首页
+<!-- The project title should be self explanotory and try not to make it a mouthful. (Although exceptions exist- **awesome-readme-writing-guide-for-open-source-projects** - would have been a cool name)
 
-### `npm start`
+Add a cover/banner image for your README. **Why?** Because it easily **grabs people's attention** and it **looks cool**(*duh!obviously!*).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The best dimensions for the banner is **1280x650px**. You could also use this for social preview of your repo.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I personally use [**Canva**](https://www.canva.com/) for creating the banner images. All the basic stuff is **free**(*you won't need the pro version in most cases*).
 
-### `npm test`
+There are endless badges that you could use in your projects. And they do depend on the project. Some of the ones that I commonly use in every projects are given below. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I use [**Shields IO**](https://shields.io/) for making badges. It is a simple and easy to use tool that you can use for almost all your badge cravings. -->
 
-### `npm run build`
+<!-- Some badges that you could use -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
+: This badge shows the version of the current release. -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![GitHub last commit](https://img.shields.io/github/last-commit/wisdompandamaster/NewTab)  ![GitHub issues](https://img.shields.io/github/issues-raw/wisdompandamaster/NewTab) ![GitHub pull requests](https://img.shields.io/github/issues-pr/wisdompandamaster/NewTab)
+<!-- : This is also a dynamic badge that tracks pull requests. This notifies the maintainers of the project when a new pull request comes. -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- ![GitHub All Releases](https://img.shields.io/github/downloads/wisdompandamaster/NewTab): If you are not like me and your project gets a lot of downloads(*I envy you*) then you should have a badge that shows the number of downloads! This lets others know how **Awesome** your project is and is worth contributing to. -->
 
-### `npm run eject`
+<!-- ![GitHub](https://img.shields.io/github/license/wisdompandamaster/NewTab)
+: This shows what kind of open-source license your project uses. This is good idea as it lets people know how they can use your project for themselves. -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- ![Tweet](https://img.shields.io/twitter/url?style=flat-square&logo=twitter&url=https%3A%2F%2Fnavendu.me%2Fnsfw-filter%2Findex.html): This is not essential but it is a cool way to let others know about your project! Clicking this button automatically opens twitter and writes a tweet about your project and link to it. All the user has to do is to click tweet. Isn't that neat? -->
+## Demo-Preview
+[在线Demo](http://121.196.148.27:3006)
+<!-- Add a demo for your project -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- After you have written about your project, it is a good idea to have a demo/preview(**video/gif/screenshots** are good options) of your project so that people can know what to expect in your project. You could also add the demo in the previous section with the product description.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Here is a random GIF as a placeholder.-->
+![Demo1](./public/demo1.png)
+![Demo2](./public//Demo2.png)
+![Demo3](./public//Demo3.png)
+![Demo4](./public//Demo4.png)
+![Random GIF](https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- # Table of contents -->
 
-## Learn More
+<!-- After you have introduced your project, it is a good idea to add a **Table of contents** or **TOC** as **cool** people say it. This would make it easier for people to navigate through your README and find exactly what they are looking for.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README. -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- - [Project Title](#project-title)
+- [Demo-Preview](#demo-preview)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Contribute](#contribute)
+    - [Sponsor](#sponsor)
+    - [Adding new features or fixing bugs](#adding-new-features-or-fixing-bugs)
+- [License](#license)
+- [Footer](#footer) -->
 
-### Code Splitting
+## Installation
+<!-- [(Back to top)](#table-of-contents) -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- *You might have noticed the **Back to top** button(if not, please notice, it's right there!). This is a good idea because it makes your README **easy to navigate.*** 
 
-### Analyzing the Bundle Size
+The first one should be how to install(how to generally use your project or set-up for editing in their machine).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This should give the users a concrete idea with instructions on how they can use your project repo with all the steps.
 
-### Making a Progressive Web App
+Following this steps, **they should be able to run this in their device.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+A method I use is after completing the README, I go through the instructions from scratch and check if it is working. -->
 
-### Advanced Configuration
+<!-- Here is a sample instruction: -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To use this project, first clone the repo on your device using the command below:
 
-### Deployment
+```git init```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```git clone https://github.com/wisdompandamaster/NewTab.git```
 
-### `npm run build` fails to minify
+Then start it with npm:
+```cd newtab```     
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```npm install```
+
+```npm start``` 
+<!-- # Usage
+[(Back to top)](#table-of-contents) -->
+
+<!-- This is optional and it is used to give the user info on how to use the project after installation. This could be added in the Installation section also. -->
+
+<!-- # Development
+[(Back to top)](#table-of-contents) -->
+
+<!-- This is the place where you give instructions to developers on how to modify the code.
+
+You could give **instructions in depth** of **how the code works** and how everything is put together.
+
+You could also give specific instructions to how they can setup their development environment.
+
+Ideally, you should keep the README simple. If you need to add more complex explanations, use a wiki. Check out [this wiki](https://github.com/navendu-pottekkat/nsfw-filter/wiki) for inspiration. -->
+
+<!-- # Contribute
+[(Back to top)](#table-of-contents) -->
+
+<!-- This is where you can let people know how they can **contribute** to your project. Some of the ways are given below.
+
+Also this shows how you can add subsections within a section. -->
+
+<!-- ### Sponsor
+[(Back to top)](#table-of-contents) -->
+
+<!-- Your project is gaining traction and it is being used by thousands of people(***with this README there will be even more***). Now it would be a good time to look for people or organisations to sponsor your project. This could be because you are not generating any revenue from your project and you require money for keeping the project alive.
+
+You could add how people can sponsor your project in this section. Add your patreon or GitHub sponsor link here for easy access.
+
+A good idea is to also display the sponsors with their organisation logos or badges to show them your love!(*Someday I will get a sponsor and I can show my love*) -->
+
+<!-- ### Adding new features or fixing bugs
+[(Back to top)](#table-of-contents) -->
+
+<!-- This is to give people an idea how they can raise issues or feature requests in your projects. 
+
+You could also give guidelines for submitting and issue or a pull request to your project.
+
+Personally and by standard, you should use a [issue template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/ISSUE_TEMPLATE.md) and a [pull request template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/PULL_REQ_TEMPLATE.md)(click for examples) so that when a user opens a new issue they could easily format it as per your project guidelines.
+
+You could also add contact details for people to get in touch with you regarding your project. -->
+
+<!-- # License
+[(Back to top)](#table-of-contents) -->
+
+<!-- Adding the license to README is a good practice so that people can easily refer to it.
+
+Make sure you have added a LICENSE file in your project folder. **Shortcut:** Click add new file in your root of your repo in GitHub > Set file name to LICENSE > GitHub shows LICENSE templates > Choose the one that best suits your project!
+
+I personally add the name of the license and provide a link to it like below. -->
+
+<!-- [GNU General Public License version 3](https://opensource.org/licenses/GPL-3.0) -->
+
+<!-- # Footer
+[(Back to top)](#table-of-contents) -->
+
+<!-- Let's also add a footer because I love footers and also you **can** use this to convey important info.
+
+Let's make it an image because by now you have realised that multimedia in images == cool(*please notice the subtle programming joke). -->
+
+Leave a star in GitHub, give a clap in Medium and share this guide if you found this helpful.
+
+<!-- Add the footer here -->
+
+<!-- ![Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png) -->
