@@ -23,6 +23,7 @@
 .Apps > a{
    margin: 10px 0px 6px 19px;
    transition: 0.3s ease-in;   
+   height: 80px;
    /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
 }
 
