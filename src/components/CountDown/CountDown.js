@@ -3,6 +3,10 @@ import { Modal } from 'antd';
 import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
 import React, { useState } from 'react';
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import "swiper/css/pagination";
+import { Pagination} from "swiper";
 
 const defaultData = [
     {
@@ -147,29 +151,40 @@ export default function CountDown(){
         },
     ];
 
-
-
-
-
-
     return (
         <>
         <div className='CountDown' onClick={showModal}>
             <div className='left'><div></div><p>倒计时</p></div>
             <div className='countdown_content'>
+            <Swiper className='swiper-no-swiping' 
+                            spaceBetween={0}
+                            slidesPerView={1}
+                            //loop={true}
+                            onSlideChange={() => console.log('slide change')}
+                            onSwiper={(swiper) => console.log(swiper)}
+                            pagination={{ clickable: true }}
+                            //scrollbar={{ draggable: false }}
+                            
+                            mousewheel={true}
+                            navigation={true}
+                            //loop={true}
+                            modules={[Pagination]}
+                        >
             {
                 countdown.map((item)=>{
                     const timeRemainning = new Date(item.ddl) - now;
                     const day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
                     return (
-                        <div>
-                        <div>距离{item.name}还剩</div>
-                        <div>{day}<span>days</span></div>
-                        </div>
+                            <SwiperSlide>
+                                <div>距离{item.name}还剩</div>
+                                <div>{day}<span>days</span></div>
+                            </SwiperSlide>
+                        //继续写countdown 变换的代码
                     )
-
+                   
                 })
             }
+             </Swiper>
            </div>
            </div>
         <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'1000px'}  footer={null}  onCancel={handleCancel}>
