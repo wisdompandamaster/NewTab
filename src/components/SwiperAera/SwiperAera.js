@@ -24,7 +24,7 @@ export default function SwiperAera(){
         //scrollbar={{ draggable: false }}
         
         mousewheel={true}
-        navigation={true}
+        //navigation={true}
         //loop={true}
         modules={[Pagination,Mousewheel]}
        >
