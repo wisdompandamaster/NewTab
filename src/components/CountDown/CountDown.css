@@ -36,18 +36,25 @@
 .countdown_content{
     overflow-y: scroll;
     height: 120px;
+    /* margin-top:10px; */
+    scroll-snap-type: y mandatory;
     /* scrollbar-width:none; */
 
 }
-.countdown_content div div:nth-child(1){
+.countdown_content > div{
+    /* height:120px; */
+    margin-top: 30px;
+    scroll-snap-align: end;
+}
+
+.countdown_content > div div:nth-child(1){
     text-align: center;
-    margin-top: 10px;
     font-size: 20px;
     font-weight:800;
     letter-spacing: 3px;
     color:#31c5ff;
 }
-.countdown_content div div:nth-child(2){
+.countdown_content > div div:nth-child(2){
     text-align: center;
     margin-top: 5px;
     font-size: 55px;

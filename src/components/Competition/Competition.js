@@ -67,6 +67,12 @@ function NBA(){                     //修复了一个bug，但是还没弄清原
 
 export default function Competition(){
     const [type,setType] = useState(0)          //比赛类型
+
+    const handleWheelCapture = (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
     return (
         <>
         <div className='competition'>
@@ -76,7 +82,7 @@ export default function Competition(){
                 <span onMouseOver={()=>setType(1)} style={{backgroundColor:(type===1? '#00000022':'#ffffff')}}>LOL</span>
                 <span onMouseOver={()=>setType(2)} style={{backgroundColor:(type===2? '#00000022':'#ffffff')}}>围棋</span>
             </div>
-            <div className="com_board">
+            <div className="com_board" onWheelCapture={handleWheelCapture}>
                 <a href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
                 {/* <div></div>
                 <div></div> */}
