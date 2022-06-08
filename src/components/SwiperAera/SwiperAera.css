@@ -1,8 +1,10 @@
 .swiperaera{
     position: relative;
     top: 12vh;
-    width: 1600px;
+    width: 85vw;
+    height:22vw;
     margin: 0 auto;
     z-index: 0;
+    border:2px solid black;
     /* height: 50vh; */
 }

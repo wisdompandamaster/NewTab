@@ -4,9 +4,10 @@
     position: relative;
     bottom: 0vh;
     margin: 0 auto 20px auto;
-    width:1508px;
-    height:390px;
+    width:84vw;
+    height:20vw;
     border-radius: 20px;
+    border: 2px solid black;
     /* background-color: #ffffff4D; */
 }
 .sortable{
@@ -14,7 +15,7 @@
     /* z-index: 1; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     /* display: inline-grid;
     grid-template-columns: repeat(4, 352px);
     grid-template-rows: repeat(auto-fill, 180px); */
