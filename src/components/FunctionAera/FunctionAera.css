@@ -1,13 +1,14 @@
- 
-
-.functionAera{
+ .functionAera{
     position: relative;
     bottom: 0vh;
     margin: 0 auto 20px auto;
     width:84vw;
     height:20vw;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 0px solid black;
+    overflow:hidden;
+    /* transform: scale(0.95); */
+    /* filter: blur(0px)!important */
     /* background-color: #ffffff4D; */
 }
 .sortable{
@@ -24,6 +25,7 @@
     /* position: relative; */
     /* z-index: 2; */
     margin: 12px;
+    /* transform: scale(0.8); */
     /* display: inline-block; */
     /* transition: .5s ease-in; */
 }

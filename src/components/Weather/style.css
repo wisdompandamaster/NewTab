@@ -18,8 +18,10 @@
 
 .Card{
     /* position: absolute; */
-    width: 18vw;
-    height: 8.5vw;
+    /* width: 18vw;
+    height: 8.5vw; */
+    width: 352px;
+    height: 165px;
     /* left: 1136px;
     top: 20px; */
     /* left:392px;

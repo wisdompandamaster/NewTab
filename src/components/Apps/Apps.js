@@ -9,7 +9,7 @@ export default function Apps() {
 
   const renderCard = (item)=>{
     return (   //因为click事件会引发拖动，所以这里click没有生效，设置transition解决了
-      <a rel="noreferrer" href={item.href} target={'_blank'} ><img alt={item.name} src={item.imgPath}/></a>
+      <a rel="noreferrer" key={item.name} href={item.href} target={'_blank'} ><img alt={item.name} src={item.imgPath}/></a>
     )
   }            //目前这里还没办法及时变换顺序
   

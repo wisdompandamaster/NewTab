@@ -1,7 +1,5 @@
-import React, {
-    useState
-}
-    from 'react';
+import React, {useState} from 'react';
+import FuncCard from '../FuncCard/FuncCard';
 import useScript from "../../hooks/useScript";
 import { Modal, Card } from 'antd';
 import "./plugin.js"
@@ -24,15 +22,14 @@ const Weather = () =>{
     useScript(url1);
     return (
         <div className="Weather">
-            <div className="Card">
-            <Card size="small" bordered={false} style={{ width: 352, height:165, borderRadius: 20 }} hoverable={true} >
+            <FuncCard>
+             
              <div id = "he-plugin-standard"/> 
                 {/* <div className="pluginFooter">
                 <Button type="text" onClick={showModal} ghost={true} shape='circle' icon={<InfoCircleOutlined />} size='small'/>
                 </div> */}
-            </Card>
-            </div>
-            <Modal title="" visible={isModalVisible} 
+            </FuncCard>
+            {/* <Modal title="" visible={isModalVisible} 
             // onOK={handleOK}
             onCancel={handleCancel}
             footer={null}
@@ -44,7 +41,7 @@ const Weather = () =>{
                     src={url2}
                     />
                 </div>
-            </Modal>
+            </Modal> */}
         </div>
     )
 }

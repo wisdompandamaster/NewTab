@@ -1,0 +1,10 @@
+.funcCard{
+    width: 352px;
+    height: 165px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .1s ease-in;
+}

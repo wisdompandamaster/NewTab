@@ -1,7 +1,9 @@
 .cal{
     /* position: absolute; */
-    width: 18vw;
-    height: 8.5vw;
+    /* width: 18vw;
+    height: 8.5vw; */
+    width: 352px;
+    height: 165px;
     /* top: 20px;
     left: 20px; */
     padding: 16px;

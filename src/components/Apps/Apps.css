@@ -5,7 +5,7 @@
   justify-content: center;
   /* align-content: space-around; */
   /* left: 764px; */
-  border: 2px solid #000000;
+  border: 0px solid #000000;
   /* top: 200px; */
   position: relative;
   bottom: 0vh;
@@ -24,11 +24,13 @@
    margin: 10px 0px 6px 19px;
    transition: 0.3s ease-in;   
    height: 5vw;
+   min-height: 60px;
    /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
 }
 
 .Apps a > img{
    width: 4.5vw;
+   min-width: 60px;
 }
 
 .icon {

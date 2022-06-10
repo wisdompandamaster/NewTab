@@ -180,7 +180,7 @@ export default function CountDown(){
                     const timeRemainning = new Date(item.ddl) - now;
                     const day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
                     return (
-                                <div>
+                                <div key={item.id}>
                                 <div>距离{item.name}还剩</div>
                                 <div>{day}<span>days</span></div>
                                 </div>

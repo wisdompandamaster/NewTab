@@ -7,8 +7,10 @@
     z-index: 1; */
     /* top:20px;
     left: 1136px; */
-    width: 18vw;
-    height: 8.5vw;
+    /* width: 18vw;
+    height: 8.5vw; */
+    width: 352px;
+    height: 165px;
     border: 0 solid white;
     border-radius: 20px;
     overflow: hidden;
