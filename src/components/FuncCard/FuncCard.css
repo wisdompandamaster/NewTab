@@ -3,8 +3,27 @@
     height: 165px;
     background: #FFFFFF;
     border-radius: 20px;
-    display: flex;
+    overflow: hidden;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     transition: .1s ease-in;
+}
+.cardTitle{
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+}
+.cardTitle div{
+    display: inline-block;
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(180deg, #FFC531 14.58%, #FF5631 100%);
+    box-shadow: 0px 3px 6px rgba(255, 141, 6, 0.8);
+    border-radius: 20px;
+    margin-right: 15px;
+    margin-left: 5px;
 }
