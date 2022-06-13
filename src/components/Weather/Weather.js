@@ -22,8 +22,13 @@ const Weather = () =>{
     useScript(url1);
     return (
         <div className="Weather">
-            <FuncCard>
-             
+            <FuncCard 
+               title=''
+               iconStyle={{
+                   background:'linear-gradient(180deg, #FF0000 14.58%, #FF5631 100%)',
+                   boxShadow:'0px 3px 6px rgba(250, 0, 0, 0.8)'
+                }}
+            >
              <div id = "he-plugin-standard"/> 
                 {/* <div className="pluginFooter">
                 <Button type="text" onClick={showModal} ghost={true} shape='circle' icon={<InfoCircleOutlined />} size='small'/>
