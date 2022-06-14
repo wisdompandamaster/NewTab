@@ -1,4 +1,5 @@
 .funcCard{
+    position: relative;   /* 试运行 */
     width: 352px;
     height: 165px;
     background: #FFFFFF;
@@ -15,6 +16,7 @@
     align-items: center;
 }
 .cardTitle{
+    display: inline-block;
     margin-top: 0.8rem;
     margin-left: 0.8rem;
     font-style: normal;
@@ -32,4 +34,23 @@
     border-radius: 20px;
     margin-right: 15px;
     margin-left: 5px;
+}
+.cardKinds{
+    display: inline-flex;
+    width: 150px;
+    height: 25px;
+    position:absolute;
+    right: 0;
+    margin-top: 12px;
+    justify-content: space-around;
+}
+.cardKinds span{
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 700;
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
 }

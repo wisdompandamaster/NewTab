@@ -28,6 +28,7 @@ const Weather = () =>{
                    background:'linear-gradient(180deg, #FF0000 14.58%, #FF5631 100%)',
                    boxShadow:'0px 3px 6px rgba(250, 0, 0, 0.8)'
                 }}
+               kinds={[]}
             >
              <div id = "he-plugin-standard"/> 
                 {/* <div className="pluginFooter">
