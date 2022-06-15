@@ -2,6 +2,7 @@ import './News.css'
 import '../../font/iconfont.css'
 import defaultSetting from '../../config';
 import React, { useEffect, useState } from 'react';
+import FuncCard from '../FuncCard/FuncCard';
 import { Modal, Tooltip, Tabs, List, Typography} from 'antd';
 
 let initialData=[
@@ -217,8 +218,8 @@ function NewsBrief(){    //热榜简单面板
 
     return (
         <>
-        <div className='briefNav'>
-            <div className='left'><div></div><p>话题热榜</p></div>
+        <FuncCard  title='话题热榜'>
+            {/* <div className='left'><div></div><p>话题热榜</p></div> */}
             <div className='right'>
                 <span onMouseOver={()=>setType(0)} style={{color:(type===0? '#000000':'#00000033')}} className="iconfont icon-zhihu"></span>
                 <span onMouseOver={()=>setType(1)} style={{color:(type===1? '#000000':'#00000033')}}className="iconfont icon-bilibili-copy-copy"></span>
@@ -233,7 +234,7 @@ function NewsBrief(){    //热榜简单面板
                 }
             </div>
             <div className='line'></div>
-        </div>
+        </FuncCard>
         </>
     )
 
