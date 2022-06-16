@@ -99,7 +99,7 @@ body{
   border-radius: 20px;
 }
 
-#app-title {
+/* #app-title {
   position: relative;
   width: 100px;
   left: 36px;
@@ -111,7 +111,7 @@ body{
   letter-spacing: 0.2rem;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
-}
+} */
 
 #todo-count {
   height: 90%;
@@ -154,8 +154,9 @@ body{
 
 #items-container {
   width: 60%;
+  height:145px;
   display: flex;
-  /* margin-top: 30px; */
+  margin-top: -25px;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;

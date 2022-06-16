@@ -6,6 +6,7 @@ import TodoModal from "./TodoModal";
 import {useSelector, useDispatch} from 'react-redux';
 import cookie from 'react-cookies';
 import defaultSetting from '../../config/index';
+import FuncCard from "../FuncCard/FuncCard";
 
 
 
@@ -144,15 +145,26 @@ function Todo() {
     scriptUrl: "//at.alicdn.com/t/font_3180970_kmsy1a7e7d8.js",
   });
 
+  const handleWheelCapture = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+   }
+
   return (
     <>
-      <div id="todo-app">
+      <FuncCard 
+          title="待办事项"
+          iconStyle={{
+            background:'linear-gradient(180deg, #b1ff64 0%, #11f2af 100%)',
+            boxShadow:'0px 3px 6px rgba(71, 255, 55, 0.8)'
+         }}
+      >
         <div id="todo-container" onClick={showModal}>
           <div id="side-container" >
-            <header id="todo-header">
+            {/* <header id="todo-header">
               <div id="app-icon"></div>
               <h1 id="app-title">待办事项</h1>
-            </header>
+            </header> */}
             <div id="todo-count">
               <div className="count">
                 <h1 id="count-completed">{metaToday.completed.length}</h1>
@@ -164,7 +176,8 @@ function Todo() {
               </div>
             </div>
           </div>
-          <div id="items-container">
+          
+          <div id="items-container" onWheelCapture={handleWheelCapture}>
             {metaToday.uncompleted.map((todo, i) => (
               <div key={todo.id}>
                 <div className="todo-item" onClick={(e) => completeTodo(e,todo.id)} key={todo.id}>
@@ -198,7 +211,7 @@ function Todo() {
             ))}
           </div>
         </div>
-      </div>
+      </FuncCard>
       <Modal bodyStyle={{padding:'11px'}}
         title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>待办事项</div>}
         visible={isModalVisible}
