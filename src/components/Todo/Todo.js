@@ -146,9 +146,10 @@ function Todo() {
   });
 
   const handleWheelCapture = (e) => {
-      e.preventDefault();
+    if(metaToday.uncompleted.length + metaToday.completed.length > 5){  //如果事项大于五条，滚动事件就停止冒泡
       e.stopPropagation();
-   }
+     }  
+  }
 
   return (
     <>
@@ -176,11 +177,11 @@ function Todo() {
               </div>
             </div>
           </div>
-          
           <div id="items-container" onWheelCapture={handleWheelCapture}>
-            {metaToday.uncompleted.map((todo, i) => (
-              <div key={todo.id}>
-                <div className="todo-item" onClick={(e) => completeTodo(e,todo.id)} key={todo.id}>
+             {
+               metaToday.uncompleted.map((todo, i) => (
+                 <div key={todo.id}>
+                 <div className="todo-item" onClick={(e) => completeTodo(e,todo.id)} key={todo.id}>
                   <IconFont
                     type="icon-bx-circle"
                     className="item-icon"
@@ -189,7 +190,7 @@ function Todo() {
                   <div className="item-text">{todo.text}</div>
                 </div>
                 {i === metaToday.uncompleted.length - 1 ? "" : <hr />}
-              </div>
+               </div>
             ))}
             {metaToday.uncompleted.length && metaToday.completed.length ? (
               <hr />
