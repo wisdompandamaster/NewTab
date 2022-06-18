@@ -114,6 +114,7 @@ export default function SetApp(){
   const deleteApp = (id) => {
     // console.log('deleteAPP')
     let updatemyApps = myApps.filter((item) => item.id != id);
+    localStorage.setItem('apps', JSON.stringify(updatemyApps))
     setItems(updatemyApps);
     dispatch({
       type: "CHANGE_APPS",
@@ -182,25 +183,43 @@ const SortableList = SortableContainer(({items}) => {
   const onFinish = ({ url, name }) => {
     const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
-    const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
-    const apps = [
-      ...myApps,
-      {
-        id: myApps.length + 1,
-        href: url,
-        imgPath: icon,
-        name,
-      },
-    ];
-
-    dispatch({
-      type: "CHANGE_APPS",
-      myApps: apps,
-    });
-    localStorage.setItem('apps', JSON.stringify(apps))
-    setItems(apps)
-    message.success("创建成功!");
-    form.resetFields();
+    //const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
+    let icon_url = 'https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=' + name
+    //图标逻辑如下，如果api里能搜到，就用第三个，因为前两个太丑，如果没有第三个，就用第二个，如果都没有，就用文字图片api,根据名字生成图标
+    fetch(icon_url).then((response)=>response.json())
+            .then((data)=>{  
+              // console.log(typeof(data.icons[2].src));       //api结果里的第三个作为图标
+              let icon = 'https://ui-avatars.com/api/?name='+name+'&background=0081ff&color=ffffff&rounded=false'
+              //文字头像api
+              if(data.icons[2])
+              {
+                icon = data.icons[2].src;
+              }
+              else if(data.icons[1])
+              {
+                icon = data.icons[1].src;
+              }
+              console.log(icon)
+              const apps = [
+                ...myApps,
+                {
+                  id: Date.now(),       //时间戳作为唯一ID,最好是时间戳+随机数
+                  href: url,
+                  imgPath: icon,
+                  name,
+                },
+              ];
+              console.log('dispatch')
+              dispatch({
+                type: "CHANGE_APPS",
+                myApps: apps,
+              });
+              localStorage.setItem('apps', JSON.stringify(apps));
+              setItems(apps);
+              message.success("创建成功!");
+              form.resetFields();
+            }          
+            ).catch((e)=>console.log("error"));
   };
 
   const onFinishFailed = () => {
