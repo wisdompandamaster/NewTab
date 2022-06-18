@@ -3,10 +3,18 @@ import defaultSetting from '../../config';
 import { useEffect, useState } from 'react'
 
 
-function NBA(){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
-    
+function NBA(props){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
+                                         //还差一个滚动贴合
     const [games,setGames] = useState([])
+
     let flag = []           //用来判断是否有比赛在进行中
+
+    const handleWheelCapture = (e)=>{
+      if(games.length > 1){
+        e.stopPropagation();
+      }
+    }
+
     useEffect(()=>{
         let url = "https://china.nba.cn/stats2/scores/miniscoreboardlive.json?countryCode=CN&locale=zh_CN&tz=%2B8"
         async function getGameList(){   
@@ -57,7 +65,7 @@ function NBA(){                     //修复了一个bug，但是还没弄清原
     const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>今日无赛程</div>
     
     return (
-        <div>
+        <div onWheelCapture={handleWheelCapture}>
         {
             games.length === 0 ? no_game : have_game 
         }
@@ -66,12 +74,9 @@ function NBA(){                     //修复了一个bug，但是还没弄清原
 }
 
 export default function Competition(){
-    const [type,setType] = useState(0)          //比赛类型
 
-    const handleWheelCapture = (e)=>{
-        e.preventDefault();
-        e.stopPropagation();
-    }
+    const [type,setType] = useState(0)          //比赛类型
+    const [game,setGame] = useState([])
 
     return (
         <>
@@ -82,7 +87,7 @@ export default function Competition(){
                 <span onMouseOver={()=>setType(1)} style={{backgroundColor:(type===1? '#00000022':'#ffffff')}}>LOL</span>
                 <span onMouseOver={()=>setType(2)} style={{backgroundColor:(type===2? '#00000022':'#ffffff')}}>围棋</span>
             </div>
-            <div className="com_board" onWheelCapture={handleWheelCapture}>
+            <div className="com_board">
                 <a href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
                 {/* <div></div>
                 <div></div> */}

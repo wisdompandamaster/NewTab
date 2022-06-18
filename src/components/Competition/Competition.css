@@ -77,11 +77,21 @@
 .com_board a{
     color: #000000;
 }
+.com_board a>div{
+  overflow-y: scroll;
+  height: 120px;
+  scroll-snap-type: y mandatory;
+  /* 滚动贴合 */
+}
+.com_board a>div::-webkit-scrollbar{
+    width: 0;
+}
 .nba {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: space-around;
+    scroll-snap-align: start;
 }
 .nba_team{
    display: inline-flex;
