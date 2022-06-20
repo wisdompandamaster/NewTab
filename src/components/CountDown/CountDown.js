@@ -7,7 +7,13 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 // import 'swiper/css';
 // import "swiper/css/navigation";
 // import { Pagination,Navigation} from "swiper";
-
+const waitTime = (time = 100) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, time);
+    });
+};
 const defaultData = [
     {
         id: 624748504,
@@ -63,7 +69,7 @@ export default function CountDown(){
     // day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
     //pro component 表格组件
     const [editableKeys, setEditableRowKeys] = useState([]);
-    const [dataSource, setDataSource] = useState(countdownList);
+    const [dataSource, setDataSource] = useState([]);
     //表格配置
     const columns = [
         // {
@@ -219,15 +225,32 @@ export default function CountDown(){
             value={dataSource} onChange={setDataSource} editable={{
             type: 'multiple',
             editableKeys,
-            onSave: async (rowKey, data, row) => {
-                 setDataSource(dataSource.concat(data))
-                 setcountdown(dataSource.concat(data))
-                 setcountdownList(dataSource.concat(data))
+            onSave:async (rowKey, data, row) => {        //有bug，已有项目更改后会产生新的相同ID的项目 
+                // console.log('onSave')
+                // let datasource = dataSource.concat(data)
+                // let map = new Map();
+                // for (let item of datasource) {
+                //     map.set(item.id, item);
+                // }
+                // dataSource = [...map.values()];
+                console.log(data)
+                await waitTime(2000);
+                // setDataSource(dataSource)
+                // setcountdown(dataSource)
+                // setcountdownList(dataSource)
+                //console.log(dataSource)
             },
             onChange: setEditableRowKeys,
         }}/>
       </>
-        <div>hello</div>
+      <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
+        <ProFormField ignoreFormItem fieldProps={{
+            style: {
+                width: '100%',
+            },
+        }} mode="read" valueType="jsonCode" text={JSON.stringify(dataSource)}/>
+      </ProCard>
+        {/* <div>hello</div> */}
         </Modal>   
         </>
     )
