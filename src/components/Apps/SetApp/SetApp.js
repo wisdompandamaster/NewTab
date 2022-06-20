@@ -9,15 +9,15 @@ import Toutiao from "../../../AppIcons/Toutiao.svg";
 import Weibo from "../../../AppIcons/Weibo.svg";
 import Xigua from "../../../AppIcons/Xigua.svg";
 import Douyin from "../../../AppIcons/Douyin.svg";
-import update from "immutability-helper";
+// import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
-import React, { useState, useCallback, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import { Form, Input, Button, message, Modal } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-import useLocalStorage from '../../../hooks/useLocalStorage';
+// import useLocalStorage from '../../../hooks/useLocalStorage';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
-import { Card } from '../card';
+// import { Card } from '../card';
 
 //专门用来设置Apps   
 export default function SetApp(){
@@ -113,7 +113,7 @@ export default function SetApp(){
 
   const deleteApp = (id) => {
     // console.log('deleteAPP')
-    let updatemyApps = myApps.filter((item) => item.id != id);
+    let updatemyApps = myApps.filter((item) => item.id !== id);
     localStorage.setItem('apps', JSON.stringify(updatemyApps))
     setItems(updatemyApps);
     dispatch({
@@ -278,21 +278,21 @@ const SortableList = SortableContainer(({items}) => {
   //   [cards]
   // );
 
-  const renderCard =  (card, index) => {
-      return (
-        <div className='edit_cards'>
+  // const renderCard =  (card, index) => {
+  //     return (
+  //       <div className='edit_cards'>
         
-        {/* <Card 
-          key={card.id}
-          id={card.id}
-          index={index}
-          info={card}
-          //moveCard={moveCard}
-          deleteApp={deleteApp}
-        /> */}
-        </div>
-      );
-    }
+  //       {/* <Card 
+  //         key={card.id}
+  //         id={card.id}
+  //         index={index}
+  //         info={card}
+  //         //moveCard={moveCard}
+  //         deleteApp={deleteApp}
+  //       /> */}
+  //       </div>
+  //     );
+  //   }
 
   return (
     <div>

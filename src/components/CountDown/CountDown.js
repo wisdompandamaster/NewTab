@@ -1,50 +1,36 @@
 import './CountDown.css';
 import { Modal } from 'antd';
-import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
-import React, { useState } from 'react';
+import { EditableProTable } from '@ant-design/pro-components';
+import React, { useEffect, useState } from 'react';
 import useLocalStorage from "../../hooks/useLocalStorage";
+import FuncCard from '../FuncCard/FuncCard'
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import 'swiper/css';
 // import "swiper/css/navigation";
 // import { Pagination,Navigation} from "swiper";
-const waitTime = (time = 100) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true);
-        }, time);
-    });
-};
-const defaultData = [
-    {
-        id: 624748504,
-        title: '活动名称一',
-        readonly: '活动名称一',
-        decs: '这个活动真好玩',
-        state: 'open',
-        created_at: '2020-05-26T09:42:56Z',
-        update_at: '2020-05-26T09:42:56Z',
-    },
-    {
-        id: 624691229,
-        title: '活动名称二',
-        readonly: '活动名称二',
-        decs: '这个活动真好玩',
-        state: 'closed',
-        created_at: '2020-05-26T08:19:22Z',
-        update_at: '2020-05-26T08:19:22Z',
-    },
-];
+
+
+// const waitTime = (time = 100) => {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(true);
+//         }, time);
+//     });
+// };
+ 
 
 
 //一个想法，把顶部的时间变成倒计时，可选
 export default function CountDown(){
 
     const temp = []
-
+    
     //添加localstorage支持
     const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
-   
-    const [countdown, setcountdown] = useState(countdownList)
+    // const [countdown, setcountdown] = useState(countdownList)
+     //pro component 表格组件
+     const [editableKeys, setEditableRowKeys] = useState([]);
+     const [dataSource, setDataSource] = useState(countdownList);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -67,9 +53,10 @@ export default function CountDown(){
     // minute = Math.floor(timeRemainning / 1000 / 60 % 60)
     // hour = Math.floor(timeRemainning / 1000 / 60 / 60 % 24)
     // day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
-    //pro component 表格组件
-    const [editableKeys, setEditableRowKeys] = useState([]);
-    const [dataSource, setDataSource] = useState([]);
+   useEffect(()=>{
+      setcountdownList(dataSource)
+    //   setcountdown(dataSource)
+   },[dataSource])
     //表格配置
     const columns = [
         // {
@@ -147,9 +134,9 @@ export default function CountDown(){
           编辑
         </a>,
                 <a key="delete" onClick={() => {
-                        setDataSource(dataSource.filter((item) => item.id !== record.id));
-                        setcountdown(dataSource.filter((item) => item.id !== record.id))
-                        setcountdownList(dataSource.filter((item) => item.id !== record.id))
+                        setDataSource(dataSource.filter((item) => item.id != record.id));
+                        //setcountdown(dataSource.filter((item) => item.id !== record.id))
+                        //setcountdownList(dataSource.filter((item) => item.id !== record.id))
                     }}>
           删除
         </a>,
@@ -158,15 +145,22 @@ export default function CountDown(){
     ];
 
     const handleWheelCapture = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         e.stopPropagation();
     } 
 
     return (
         <>
-        <div className='CountDown' onClick={showModal}>
-            <div className='left'><div></div><p>倒计时</p></div>
-            <div className='countdown_content' onWheelCapture={handleWheelCapture}>
+        <FuncCard 
+        // className='CountDown' 
+          title='倒计时'
+          iconStyle={{
+            background:'linear-gradient(180deg, #31c5ff 14.58%, #26f5f5 100%)',
+            boxShadow:'0px 3px 6px rgba(109, 214, 233, 0.8)'
+         }}
+        >
+            {/* <div className='left'><div></div><p>倒计时</p></div> */}
+            <div className='countdown_content' onClick={showModal} onWheelCapture={handleWheelCapture}>
             {/* <Swiper className='swiper-no-swiping' 
                             spaceBetween={0}
                             slidesPerView={1}
@@ -182,7 +176,7 @@ export default function CountDown(){
                             modules={[Pagination,Navigation]}
                         > */}
             {
-                countdown.map((item)=>{
+                dataSource.map((item)=>{
                     const timeRemainning = new Date(item.ddl) - now;
                     const day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
                     return (
@@ -197,7 +191,7 @@ export default function CountDown(){
             }
              
            </div>
-           </div>
+           </FuncCard>
         <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'1000px'}  footer={null}  onCancel={handleCancel}>
         {/* {   //这里等着用列表组件来添加
             countdown.map((item)=>{
@@ -218,7 +212,7 @@ export default function CountDown(){
             } loading={false}  
             columns={columns} 
             request={async () => ({
-                data: countdown,
+                data: countdownList,
                 total: 3,
                 success: true,
             })} 
@@ -234,22 +228,21 @@ export default function CountDown(){
                 // }
                 // dataSource = [...map.values()];
                 console.log(data)
-                await waitTime(2000);
+                // await waitTime(500);
                 // setDataSource(dataSource)
                 // setcountdown(dataSource)
-                // setcountdownList(dataSource)
                 //console.log(dataSource)
             },
             onChange: setEditableRowKeys,
         }}/>
       </>
-      <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
+      {/* <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
         <ProFormField ignoreFormItem fieldProps={{
             style: {
                 width: '100%',
             },
         }} mode="read" valueType="jsonCode" text={JSON.stringify(dataSource)}/>
-      </ProCard>
+      </ProCard> */}
         {/* <div>hello</div> */}
         </Modal>   
         </>
