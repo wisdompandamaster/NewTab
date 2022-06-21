@@ -75,6 +75,7 @@
     width: 0px;
   }
 .com_board a{
+    /* display: block; */
     color: #000000;
 }
 .com_board a>div{

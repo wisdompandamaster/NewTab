@@ -1,6 +1,10 @@
 import './Competition.css'
 import defaultSetting from '../../config';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import FuncCard from '../FuncCard/FuncCard';
+
+//无比赛页面
+const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>今日无赛程</div>
 
 
 function NBA(props){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
@@ -62,7 +66,7 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
         )
       })
 
-    const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>今日无赛程</div>
+    // const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>今日无赛程</div>
     
     return (
         <div onWheelCapture={handleWheelCapture}>
@@ -78,21 +82,37 @@ export default function Competition(){
     const [type,setType] = useState(0)          //比赛类型
     const [game,setGame] = useState([])
 
+    const handleChangeType=(value)=>{
+        setType(value)
+    }
+
     return (
         <>
-        <div className='competition'>
-            <div className="com_left"><div></div><p>比赛信息</p></div>
-            <div className="com_right">
+        <FuncCard 
+         title='比赛信息'
+         iconStyle={{
+            background: 'linear-gradient(180deg, #6d53b4 14.58%, #2a1086 100%)',
+            boxShadow: '0px 3px 6px rgba(7, 87, 119, 0.8)'
+        }}
+        kinds={['NBA','LOL','围棋']}
+        // className='competition'
+        changeType={handleChangeType}
+        >
+            {/* <div className="com_left"><div></div><p>比赛信息</p></div> */}
+            {/* <div className="com_right">
                 <span onMouseOver={()=>setType(0)} style={{backgroundColor:(type===0? '#00000022':'#ffffff')}}>NBA</span>
                 <span onMouseOver={()=>setType(1)} style={{backgroundColor:(type===1? '#00000022':'#ffffff')}}>LOL</span>
                 <span onMouseOver={()=>setType(2)} style={{backgroundColor:(type===2? '#00000022':'#ffffff')}}>围棋</span>
-            </div>
+            </div> */}
             <div className="com_board">
-                <a href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
+                {/* 这里是FuncCard 尝试封装type的一个尝试 */}
+                <a style={{display:(type===0?'block':'none')}} href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
+                <a style={{display:(type===1?'block':'none')}} href='https://lpl.qq.com/' rel="noreferrer" target='_blank'>{no_game}</a>
+                <a style={{display:(type===2?'block':'none')}} href='#' rel="noreferrer" target='_blank'>{no_game}</a>
                 {/* <div></div>
                 <div></div> */}
             </div>
-        </div>
+        </FuncCard>
         </>
     )
 }

@@ -1,6 +1,15 @@
-
 import { useState } from 'react'
 import './FuncCard.css'
+
+/**
+ * 
+ * 组件可选参数：
+ * title         （Stirng）
+ * iconStyle      (CSS Style)
+ * kinds          ([])
+ * changeType()   
+ *  
+ */
 
 export default function FuncCard(props){
 
@@ -21,7 +30,7 @@ export default function FuncCard(props){
                 {
                     kinds.map((item, index)=>{
                         return (
-                            <span onMouseOver={()=>setType(index)} style={{backgroundColor:(type===index? '#00000022':'#ffffff')}}>{item}</span>
+                            <span key={index} onMouseOver={()=>{setType(index);props.changeType(index)}} style={{backgroundColor:(type===index? '#00000022':'#ffffff')}}>{item}</span>
                         )
                     })
                 }
