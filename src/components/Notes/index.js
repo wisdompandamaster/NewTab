@@ -8,6 +8,7 @@ import NoesTabs from "./noesTabs";
 import {nanoid} from "nanoid";
 import cookie from 'react-cookies';
 import defaultSetting from "../../config";
+import FuncCard from '../FuncCard/FuncCard';
 
 const Notes = () => {
     const [notesList, setNotesList] = useLocalStorage("notesList", []);
@@ -84,18 +85,25 @@ const Notes = () => {
 
     return (
         <>
-            <div className='note-card' onClick={isShowModal}>
-                <header className="note-header">
+            <FuncCard 
+            // className='note-card' 
+            title='笔记'
+            iconStyle={{
+                background: 'linear-gradient(180deg, #6CB9FF 0%, #3355FF 100%)',
+                boxShadow: '0px 3px 6px rgba(55, 135, 255, 0.8)'
+            }}
+            >
+                {/* <header className="note-header">
                     <div className="note-icon"/>
                     <h1 className="note-title">笔记</h1>
-                </header>
-                <div className='note-body'>
+                </header> */}
+                <div className='note-body' onClick={isShowModal}>
                     <div  className='note-content'>{ notesData[0]?.value }</div>
                     <div  className='note-content'>{notesData[1]?.value}</div>
                     <div  className='note-content'>{notesData[2]?.value}</div>
                     <div  className='note-content'>{notesData[3]?.value}</div>
                 </div>
-            </div>
+            </FuncCard>
             <Modal title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>笔记</div>}
                    width={1000}
                    footer={null}
