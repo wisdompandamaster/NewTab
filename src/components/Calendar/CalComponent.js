@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Calendar from 'react-calendar';
 import './CalComponent.css';
 import {useSelector, useDispatch} from 'react-redux';
-import useLocalStorage from "../../hooks/useLocalStorage"
+import useLocalStorage from "../../hooks/useLocalStorage";
+import FuncCard from '../FuncCard/FuncCard';
 
 export const accessWeekday = {
     "0": "星期日",
@@ -38,12 +39,15 @@ function CalComponent() {
    
   return (
     <>
-      <div className='cal'>
+      <FuncCard 
+      title='日历'
+      // className='cal'
+      >
             <div className='cal-left'>
-                <div className='cal-header'>
+                {/* <div className='cal-header'>
                     <div className='cal-icon'></div>
                     <div className='cal-title'>日历</div>
-                </div>
+                </div> */}
                 <div className='cal-date-container'>
                     <div className='cal-weekday'>{accessWeekday[date.getDay()]}</div>
                     <div className='cal-date'>{date.getDate()}</div>
@@ -72,7 +76,7 @@ function CalComponent() {
                     onClickDay={(date, event) => handleTodoDatePos(date)}
                 />
             </div>
-      </div>
+      </FuncCard>
     </>
   );
 }

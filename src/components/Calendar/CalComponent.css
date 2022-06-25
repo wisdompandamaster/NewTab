@@ -1,11 +1,8 @@
-.cal{
-    /* position: absolute; */
-    /* width: 18vw;
-    height: 8.5vw; */
+/* .cal{
+     
     width: 352px;
     height: 165px;
-    /* top: 20px;
-    left: 20px; */
+     
     padding: 16px;
     background: #FFFFFF;
     box-sizing: border-box;
@@ -13,19 +10,24 @@
     display: inline-flex;
     justify-content: space-between;
     transition: .1s ease-in;
-}
-.cal:active{
+} */
+/* .cal:active{
     transform: scale(0.95);
-}
+} */
 .cal-left{
     width: 40%;
     flex-direction: column;
+    position: absolute;
+    top: 55px;
+    left:0;
 }
-
 .cal-right{
     height: 100%;
     width: 60%;
-    display: flex;
+    display:flex;
+    position: absolute;
+    right:13px;
+    top: 0;
     align-items: center;
     justify-content: center;
 }
