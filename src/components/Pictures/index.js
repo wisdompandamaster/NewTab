@@ -5,6 +5,7 @@ import { UploadOutlined } from '@ant-design/icons';
 // import data from './data';
 import './style.css';
 import cookie from "react-cookies";
+import FuncCard from '../FuncCard/FuncCard';
 
 const Pictures = () => {
 
@@ -114,13 +115,14 @@ const Pictures = () => {
     return (
         <>  
             <div onClick={showModal}>
+            <FuncCard className='carousel_func'>
             <Carousel {...settings} className='carousel'>
                 {
                     // picData.map(() => { })
                     myimglist.map((item, index) => {
                         let url = defaultSetting.imgSite + item
                         return (
-                            <div className='panel' key={index} >
+                            <div className='panel' key={index}>
                                 <img alt={''} 
                                     width={'100%'}
                                     // alt={item.src}
@@ -133,6 +135,7 @@ const Pictures = () => {
                     })
                 }
             </Carousel>
+            </FuncCard>
             </div>
             <Modal
                 title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>图片墙</div>}

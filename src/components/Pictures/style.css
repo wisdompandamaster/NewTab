@@ -16,8 +16,11 @@
     overflow: hidden;
     /* transition: all .5s ; */
 }
+.carousel_func{
+    background-color: #00000000;
+}
 .carousel:active{
-    transform: scale(0.95);
+    /* transform: scale(0.95); */
 }
 
 .panel {

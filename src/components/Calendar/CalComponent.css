@@ -11,9 +11,9 @@
     justify-content: space-between;
     transition: .1s ease-in;
 } */
-/* .cal:active{
-    transform: scale(0.95);
-} */
+.cal:active{
+    /* transform: scale(0.95); */
+}
 .cal-left{
     width: 40%;
     flex-direction: column;

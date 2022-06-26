@@ -8,6 +8,7 @@ import './FuncCard.css'
  * iconStyle      (CSS Style)
  * kinds          ([])
  * changeType()   
+ * className
  *  
  */
 
@@ -19,8 +20,10 @@ export default function FuncCard(props){
 
     const if_title = title ? '':' no-title'  //判断是否有标题来确定内容的布局方式
 
+    const classlist = ' ' + props.className||'' //原来的类名
+
     return (
-        <div className={'funcCard' + if_title}>
+        <div className={'funcCard' + if_title + classlist}>
         {title ?      //标题
             <div className='cardTitle'><div style={iconStyle}></div>{title}</div> : null
         }
