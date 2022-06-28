@@ -56,8 +56,8 @@ function App() {
   const cover = useSelector(state=>state.cover)
   const currentbg = useSelector(state=>state.currentbg)
    
-  let blurNum = 'blur(' + blur + 'px)'
-  let scale ='scale(' + (1 + blur * 0.003) + ')'
+  let blurNum = 'blur(' + blur/4 + 'px)'
+  let scale ='scale(' + (1 + blur * 0.0008) + ')'
   let coverNum = cover * 0.01
   let background = 'url('+ defaultSetting.imgSite + currentbg +')'
   return (
