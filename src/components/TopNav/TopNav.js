@@ -3,6 +3,7 @@ import '../../font/iconfont.css'
 import SetBackground from '../SetBackground/SetBackground';
 import SetApp from '../Apps/SetApp/SetApp'
 import SetFooter from '../MottoFooter/SetFooter/SetFooter';
+import SetClock from '../ClockSearch/SetClock/SetClock';
 import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
@@ -167,6 +168,7 @@ function SetFunction() {
     <div class='set_function'>
       <SetApp/>
       <SetFooter/>
+      <SetClock/>
     </div>
   );
 }
