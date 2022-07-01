@@ -162,10 +162,8 @@ function About() {
 //设置功能
 function SetFunction() {
   
-  
-
   return (
-    <div class='set_function'>
+    <div className='set_function'>
       <SetApp/>
       <SetFooter/>
       <SetClock/>

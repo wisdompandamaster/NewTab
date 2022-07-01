@@ -105,6 +105,7 @@ const defalutState = {
     footerkinds:localStorage.getItem("footerset")
     ? JSON.parse(localStorage.getItem("footerset")).footerkinds
     : ['i'],
+    timefont:localStorage.getItem("timefont")? JSON.parse(localStorage.getItem("timefont")):1
 }
 
 //eslint-disable-next-line
@@ -166,6 +167,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 footerkinds: action.footerkinds,
+            }
+        case "CHANGE_TIMEFONT":
+            return {
+                ...state,
+                timefont: action.timefont,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {

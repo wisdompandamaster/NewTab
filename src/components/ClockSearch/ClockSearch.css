@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'UnidreamLED';
+    src:url(../../font/UnidreamLED.eot); /***兼容ie9***/
+    src:url(../../font/UnidreamLED.eot?#iefix)format('embedded-opentype'), /***兼容ie6-ie8***/
+    url('../../font/UnidreamLED.woff') format('woff'), 
+    local('UnidreamLED'), url("../../font/UnidreamLED.woff");/***默认使用本地的***/
+  }
+  @font-face {
+    font-family: "DS-Digital"; 
+    /* 这个是定义字体的名称 */
+    src: url("../../font/DS-Digital\ Bold.ttf");
+  }
 .clockSearch{
     display:flex;
     flex-direction: column;
@@ -8,18 +20,25 @@
     position:relative;
     display: flex;
     text-align: center;
-    font-size: 7rem;
+    /* align-items: center; */
+    line-height: 12rem;
+    font-size: 9rem;
     font-weight: 200;
     color:white;
     display: block;
     cursor: pointer;
     user-select: none;
     transition: .3s ease-in-out;
-    
+    height: 12rem;
+}
+.digitalfont{
+    font-family: 'DS-Digital';
 }
 .h,.m{
     display: inline-block;
-    width:8rem;
+    /* font-family: 'DS-Digital'; */
+    /* font-size: 100px; */
+    width:9rem;
 }
 .h{
     text-align: right;
@@ -29,6 +48,10 @@
     text-align: left;
     margin-left: 2rem;
 }
+
+
+
+
 /* 搜索框 */
 .search{
     width:40vw;
@@ -40,7 +63,6 @@
     background-color: #ffffffcc;
     border-radius: 50px;
     transition: .3s ease-in-out;
-    
 }
 .engine{
     display: inline-flex;

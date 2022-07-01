@@ -28,7 +28,7 @@ export default function SetFooter(){
         type: 'CHANGE_FOOTERKINDS',
         footerkinds: footerkinds
       })
-      console.log('setfooter')
+      // console.log('setfooter')
       setFooterSet({
         footerexist:footerexist,
         footerkinds:footerkinds

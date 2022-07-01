@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from 'react-redux'
 function Search(){  //搜索框
 
     const clear = useSelector(state=>state.clear)
-    let top = clear? '14vh':'4vh'
+    let top = clear? '14vh':'0vh'
     const [select, setSelect] = useState(1)
     const [query, setQuery] = useState('')
     let icons = ['icon-google','icon-baidu','icon-biying','icon-bilibili-copy-copy','icon-zhihu','icon-github']
@@ -79,12 +79,15 @@ export default function ClockSearch(){     //时间显示 + 搜索框
     let h = now.getHours(), m = now.getMinutes() >= 10 ? now.getMinutes():"0"+now.getMinutes()
 
     const clear = useSelector(state=>state.clear)
-    let top = clear? '8vh':'3vh'
+    let top = clear? '8vh':'0vh'
 
+    const timefont = useSelector(state=>state.timefont)
+
+    const digitalfont = timefont === 2 ? ' digitalfont':''  
 
     return (
         <div className='clockSearch'>
-        <div style={{top:top}} onClick={()=>onChangeClear()} className='clock'>
+        <div style={{top:top}} onClick={()=>onChangeClear()} className={'clock' + digitalfont}>
             <div className='h'>{h}</div>
             :
             <div className='m'>{m}</div>

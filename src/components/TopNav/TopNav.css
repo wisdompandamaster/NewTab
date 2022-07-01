@@ -164,7 +164,9 @@
 .set_function > div{
   display: flex;
   justify-content: space-between;
-  margin-top:5px;
+  /* margin-top:5px; */
+  height: 40px;
+  align-items: center;
 }
 
 
