@@ -12,6 +12,7 @@ import './FuncCard.css'
  *  
  */
 
+//加入filter:blur
 export default function FuncCard(props){
 
     const {title, iconStyle, kinds} = props
@@ -20,7 +21,7 @@ export default function FuncCard(props){
 
     const if_title = title ? '':' no-title'  //判断是否有标题来确定内容的布局方式
 
-    const classlist = ' ' + props.className||'' //原来的类名
+    const classlist = props.className ? (' ' + props.className):'' //原来的类名
 
     return (
         <div className={'funcCard' + if_title + classlist}>
@@ -33,7 +34,7 @@ export default function FuncCard(props){
                 {
                     kinds.map((item, index)=>{
                         return (
-                            <span key={index} onMouseOver={()=>{setType(index);props.changeType(index)}} style={{backgroundColor:(type===index? '#00000022':'#ffffff')}}>{item}</span>
+                            <span key={index} onMouseOver={()=>{setType(index);props.changeType(index)}} style={{backgroundColor:(type===index? '#00000022':'#ffffff00')}}>{item}</span>
                         )
                     })
                 }

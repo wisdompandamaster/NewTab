@@ -4,7 +4,7 @@ WIDGET = {
       "layout": "1",
       "width": "325",
       "height": "145",
-      "background": "2",
+      "background": "5", //2 白色 3 浅色 4 深色 5 透明
       "dataColor": "000000",
       "language": "zh",
       "borderRadius": "20",

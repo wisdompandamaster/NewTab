@@ -1,13 +1,13 @@
-.news{
-    /* position: absolute; */
-    /* display: inline-block; */
+/* .news{
+    position: absolute;
+    display: inline-block;
     width: 352px;
     height: 165px;
-    /* width: 18vw;
-    height: 8.5vw; */
-    /* margin:20px; */
-    /* left:764px;
-    top:20px; */
+    width: 18vw;
+    height: 8.5vw;
+    margin:20px;
+    left:764px;
+    top:20px;
     background: #FFFFFF;
     box-sizing: border-box;
     border-radius: 20px;
@@ -15,18 +15,18 @@
 }
 .news:active{
     transform: scale(0.95);
-}
+} */
 .briefNav .left {
     display: inline-block;
     margin-top: 13px;
 }
-.briefNav .left p{
-    /* position: relative; */
+/* .briefNav .left p{
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
-    /* text-align: center; */
+   
     margin: 0;
     display: inline-block;
     letter-spacing: 0.2rem;
@@ -35,14 +35,13 @@
 }
 .briefNav .left div{
     display: inline-block;
-    /* position: relative; */
     margin-left: 18px;
     width: 6px;
     height: 14px;
     background: linear-gradient(180deg, #FFC531 14.58%, #FF5631 100%);
     box-shadow: 0px 3px 6px rgba(255, 141, 6, 0.8);
     border-radius: 20px;
-}
+} */
 .right{
     /* position: absolute; */
     display: inline-flex;

@@ -9,7 +9,26 @@
     justify-content: center;
     align-items: center; */
     transition: .1s ease-in;
+    /* backdrop-filter: blur(50px); */
 }
+.filter{
+    background: #FFFFFF33;
+    backdrop-filter: blur(10px);
+}
+/* .funcCard::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #FFFFFF66;
+    background-size:cover;
+    backdrop-filter: blur(50px);
+    border-radius:20px;
+} */
+    
 .no-title{
     display: flex;
     justify-content: center;

@@ -281,7 +281,7 @@ export default function News(){
 
     return (
         <>
-        <div className='news' onClick={showModal}>       {/*新闻面版*/}
+        <div onClick={showModal}>       {/*新闻面版*/}
         <NewsBrief></NewsBrief>
         </div>
         {/*新闻详情弹窗*/}

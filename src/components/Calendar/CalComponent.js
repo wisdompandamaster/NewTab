@@ -42,6 +42,10 @@ function CalComponent() {
       <FuncCard 
       title='日历'
       // className='cal'
+      iconStyle={{
+        background: 'linear-gradient(180deg, #FF6D90 14.58%, #FF3131 100%)',
+        boxShadow: '0px 3px 6px rgba(255, 55, 55, 0.8)'
+      }}
       >
             <div className='cal-left'>
                 {/* <div className='cal-header'>
@@ -69,7 +73,7 @@ function CalComponent() {
                 </div>            
             </div>
             <div className='cal-right'>
-                <Calendar 
+                <Calendar
                     tileContent={({ activeStartDate, date, view }) => view === 'month' && (TodoDates.includes(date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate())) ? <div className='todo'></div> : null}
                     locale="en-GB"
                     onChange={setDate} value={date} 
