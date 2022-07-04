@@ -94,9 +94,7 @@ const defalutState = {
      TodoDatePos:new Date().toLocaleDateString(),
      TodoDates:[],
      // apps
-    myApps: localStorage.getItem("apps")
-    ? JSON.parse(localStorage.getItem("apps"))
-    : defaultIcons,
+    myApps: localStorage.getItem("apps") ? JSON.parse(localStorage.getItem("apps")): defaultIcons,
     deleteApp: false,
     // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
     footerexist:localStorage.getItem("footerset")
@@ -105,7 +103,8 @@ const defalutState = {
     footerkinds:localStorage.getItem("footerset")
     ? JSON.parse(localStorage.getItem("footerset")).footerkinds
     : ['i'],
-    timefont:localStorage.getItem("timefont")? JSON.parse(localStorage.getItem("timefont")):1
+    timefont:localStorage.getItem("timefont")? JSON.parse(localStorage.getItem("timefont")):1,
+    cardstyle:localStorage.getItem("cardstyle") ? JSON.parse(localStorage.getItem("cardstyle")) : 1,
 }
 
 //eslint-disable-next-line
@@ -172,6 +171,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 timefont: action.timefont,
+            }
+        case "CHANGE_CARDSTYLE":
+            return {
+                ...state,
+                cardstyle: action.cardstyle,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {

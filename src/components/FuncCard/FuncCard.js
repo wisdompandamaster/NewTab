@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import './FuncCard.css'
 
 /**
@@ -15,6 +16,7 @@ import './FuncCard.css'
 //加入filter:blur
 export default function FuncCard(props){
 
+    const cardstyle = useSelector(state=>state.cardstyle)
     const {title, iconStyle, kinds} = props
     
     const [type, setType] = useState(0)
@@ -23,8 +25,10 @@ export default function FuncCard(props){
 
     const classlist = props.className ? (' ' + props.className):'' //原来的类名
 
+    const cardstyles=['',' filter']
+
     return (
-        <div className={'funcCard' + if_title + classlist}>
+        <div className={'funcCard' + if_title + classlist + cardstyles[cardstyle]}>
         {title ?      //标题
             <div className='cardTitle'><div style={iconStyle}></div>{title}</div> : null
         }

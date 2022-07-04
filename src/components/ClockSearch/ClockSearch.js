@@ -7,6 +7,9 @@ import {useSelector, useDispatch} from 'react-redux'
 function Search(){  //搜索框
 
     const clear = useSelector(state=>state.clear)
+    const cardstyle = useSelector(state=>state.cardstyle)
+    const cardstyles = ['',' filter'] 
+
     let top = clear? '14vh':'0vh'
     const [select, setSelect] = useState(1)
     const [query, setQuery] = useState('')
@@ -30,13 +33,13 @@ function Search(){  //搜索框
         setQuery('')
     }
     return (
-        <div style={{top:top}} className='search'>
+        <div style={{top:top}} className={'search' + cardstyles[cardstyle]}>
             {/* 左边 */}
-            <button placeholder='hello' className='engine'><span style={{color:'grey'}} className={'iconfont'+' '+(icons[select])}></span>
+            <button placeholder='hello' className={'engine' + cardstyles[cardstyle]}><span style={{color:'grey'}} className={'iconfont'+' '+(icons[select])}></span>
             {/* <span className="icon-downArrow iconfont"></span> */}
             </button> 
            
-            <ul className='engineList'> 
+            <ul className={'engineList' + cardstyles[cardstyle]}> 
                 <li onMouseDown={(e)=> change(0,e)}><span className="icon-google iconfont"></span> 谷 歌</li>  {/*onClick 在失焦之后，不起作用，用onMouseDown*/}
                 <li onMouseDown={(e)=> change(1,e)}><span className="icon-baidu iconfont"></span> 百 度 </li>
                 <li onMouseDown={(e)=> change(2,e)}><span className="icon-biying iconfont"></span> 必 应 </li>
@@ -47,7 +50,7 @@ function Search(){  //搜索框
             {/* 中间 */}
             <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={(e)=>setQuery(e.target.value)} value={query} placeholder='输入并查找'/> 
             {/* 右边 */}
-            <span onClick={()=>{search(urls[select],query)}}className="icon-sousuo iconfont"></span>
+            <span onClick={()=>{search(urls[select],query)}} className="icon-sousuo iconfont"></span>
         </div>  
         
     )

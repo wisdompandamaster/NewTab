@@ -8,7 +8,7 @@ export default function SetClock(){
 
     const dispatch = useDispatch()
     // const [value, setValue] = useState(1);
-    const [timeFont, setTimeFont] = useLocalStorage('timefont') //footerset用不着
+    const [timeFont, setTimeFont] = useLocalStorage('timefont')  
     const TimeFont = useSelector(state=>state.timefont)
 
     const onChange = (e) => {
