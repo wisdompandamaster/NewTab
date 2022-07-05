@@ -18,28 +18,37 @@
   font-size: small;
   text-align: center;
   background-color: #ffffff00;
+  
   /* padding: 5px; */
 }
-.Apps > a{
-   margin: 10px 0px 6px 19px;
-   transition: 0.3s ease-in;   
-   height: 5vw;
+.apps_sortableItem a{
+  transition: 0.3s ease-in;
+   position: relative; 
+   /* height: 4.5vw; */
+   width: 60px;
    min-height: 60px;
    /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
 }
 
-.Apps a > img{
+.apps_sortableItem a img{  
+ 
    width: 4.5vw;
    min-width: 60px;
+   max-width: 4.5vw;
    border-radius: 20px;
 }
-
-.icon {
-  margin: 0px 5px;
-  padding: 10px 0;
-  transition: 0.3s ease-in;
-  width: 70px;
-  height: 80px;
+.apps_sortable{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  
+}
+.apps_sortableItem{
+  width: 4.5vw;
+  height: 4.5vw;
+  margin:0 1vw 0 1vw;
+  position: relative;
 }
 /* .Apps:active {
   transform: scale(0.8);

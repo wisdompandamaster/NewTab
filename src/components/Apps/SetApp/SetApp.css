@@ -23,25 +23,25 @@
  .edit_cards{
    margin: 0 0 0 16px;
  }
-.app_sortable{
+.set_app_sortable{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.app_sortableItem{
+.set_app_sortableItem{
    cursor: pointer;
    z-index: 9999;
    margin:-5px 10px -15px 22px;
    text-align: center;
    width: 64px;
 }
-.app_sortableItem button{
+.set_app_sortableItem button{
    position: relative;
    left:30px;
    top:16px;
 }
 
-.app_sortableItem img{
+.set_app_sortableItem img{
   width: 64px;
   border-radius: 20px;
 }

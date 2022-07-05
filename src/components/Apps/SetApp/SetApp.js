@@ -124,7 +124,7 @@ export default function SetApp(){
 
   const renderItem = (item)=>{
       return (
-        <div className='app_sortableItem'>
+        <div className='set_app_sortableItem'>
         <Button
               shape="circle"
               icon={deleteMode ? <CloseOutlined /> : ""}
@@ -142,7 +142,7 @@ export default function SetApp(){
 const SortableItem = SortableElement(({value}) => renderItem(value));
 const SortableList = SortableContainer(({items}) => {
         return (
-          <div className='app_sortable'>
+          <div className='set_app_sortable'>
             {items.map((value, index) => (
               <SortableItem key={index} index={index} value={value} />
             ))}
