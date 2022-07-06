@@ -19,12 +19,10 @@ export default function Apps() {
             icon={deleteMode ? <CloseOutlined /> : ""}
             size="small"
             onMouseDown={() => deleteApp(item.id)}
-      /> */}
-      <div>
+      /> */} 
       <a rel="noreferrer" key={item.name} href={item.href} target={'_blank'} >
       <img alt={item.name} src={item.imgPath}/>
       </a>
-      </div>
       {/* <div>{item.name}</div> */}
       </div>
     )
