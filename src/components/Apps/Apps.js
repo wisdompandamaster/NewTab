@@ -20,8 +20,9 @@ export default function Apps() {
             size="small"
             onMouseDown={() => deleteApp(item.id)}
       /> */} 
-      <a rel="noreferrer" key={item.name} href={item.href} target={'_blank'} >
-      <img alt={item.name} src={item.imgPath}/>
+      <a 
+      rel="noreferrer" key={item.name} href={item.href} target={'_blank'} >
+      <img  alt={item.name} src={item.imgPath}/>
       </a>
       {/* <div>{item.name}</div> */}
       </div>
@@ -62,8 +63,9 @@ const SortableList = SortableContainer(({items}) => {
   
   return (
       // <div className="Apps">{myApps.map((item, i) => renderItem(item))}</div>
+      //通过给SortableList 设置最小拖动距离来激活点击事件（distance 单位px）
       <div className='Apps'>
-      <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
+      <SortableList  distance={1} axis='xy' items={items} onSortEnd={onSortEnd} />
        {/* {apps.map((app, i) => renderCard(app, i))} */}
        </div>
   );
