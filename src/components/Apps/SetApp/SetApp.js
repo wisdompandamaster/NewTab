@@ -111,6 +111,10 @@ export default function SetApp(){
   const [items, setItems] = useState(myApps);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  useEffect(()=>{
+    setItems(myApps)
+  },[myApps])
+
   const deleteApp = (id) => {
     // console.log('deleteAPP')
     let updatemyApps = myApps.filter((item) => item.id !== id);

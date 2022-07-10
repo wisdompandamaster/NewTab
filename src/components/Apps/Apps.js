@@ -11,6 +11,10 @@ export default function Apps() {
   const myApps = useSelector((state) => state.myApps);
   const [items, setItems] = useState(myApps);
 
+  useEffect(()=>{          //这一行让Apps SetApps 拖拽时可以同步变换
+    setItems(myApps)
+  },[myApps])
+
   const renderItem = (item)=>{
     return (
       <div className="apps_sortableItem">
@@ -70,29 +74,4 @@ const SortableList = SortableContainer(({items}) => {
        </div>
   );
 
-  // let apps = [Bilibili, Bytedance, Douban, Douyin, Github, Juejin, Leetcode, Toutiao, Weibo, Xigua]
-  // let urls = [
-  //     'https://www.bilibili.com/',
-  //     'https://www.bytedance.com/zh/',
-  //     'https://www.douban.com/',
-  //     'https://www.douyin.com/',
-  //     'https://github.com/',
-  //     'https://juejin.cn/',
-  //     'https://leetcode-cn.com/',
-  //     'https://www.toutiao.com/',
-  //     'https://weibo.com/',
-  //     'https://www.ixigua.com/'
-  // ]
-  // return (
-  //     <div className='Apps'>
-  //         {
-  //             apps.map((item, index) => {
-  //                 return (
-  //                     <a key={index} href={urls[index]} rel='noreferrer' target={'_blank'}><img alt={item} src={item} className='icon' /></a>
-  //                 )
-  //             })
-
-  //         }
-  //     </div>
-  // )
 }
