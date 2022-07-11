@@ -130,8 +130,9 @@ export default function SetApp(){
       return (
         <div className='set_app_sortableItem'>
         <Button
+              style={{visibility: deleteMode?'visible':'hidden'}}
               shape="circle"
-              icon={deleteMode ? <CloseOutlined /> : ""}
+              icon={<CloseOutlined />}
               size="small"
               onMouseDown={() => deleteApp(item.id)}
         />

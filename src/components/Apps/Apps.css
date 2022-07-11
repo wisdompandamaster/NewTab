@@ -44,9 +44,36 @@
   margin:0 1vw 0 1vw;
   position: relative;
 }
+.shake{
+  animation: icon_shake 0.2s infinite;
+}
+.apps_sortableItem button{
+  position: relative;
+  left:45%;
+  top:20%;
+  z-index: 1;
+}
 /* .Apps:active {
   transform: scale(0.8);
 } */
+@keyframes icon_shake {
+  0%{
+    transform:rotate(3deg);
+  }
+  25%{
+    transform:rotate(0);
+  }
+  50%{
+    transform:rotate(-3deg);
+  }
+  75%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(3deg);
+  }
+}
+
 
 .Apps::-webkit-scrollbar{
   width: 0px;

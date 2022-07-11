@@ -4,10 +4,13 @@ import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect} from 'react';
+import {  Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 export default function Apps() {
 
   const dispatch = useDispatch();
+  const deleteMode = useSelector((state) => state.deleteApp);
   const myApps = useSelector((state) => state.myApps);
   const [items, setItems] = useState(myApps);
 
@@ -15,18 +18,40 @@ export default function Apps() {
     setItems(myApps)
   },[myApps])
 
+  const deleteApp = (id) => {
+    // console.log('deleteAPP')
+    let updatemyApps = myApps.filter((item) => item.id !== id);
+    localStorage.setItem('apps', JSON.stringify(updatemyApps))
+    setItems(updatemyApps);
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: updatemyApps,
+    });
+  };
+
+  const handleContextMenu = (e,b)=>{
+      e.preventDefault();
+      dispatch({
+        type: "CHANGE_DELETEAPP",
+        deleteApp: !b,
+      });
+  }
+
   const renderItem = (item)=>{
+    const shake = deleteMode ? " shake":""
+
     return (
-      <div className="apps_sortableItem">
-      {/* <Button
-            shape="circle"
-            icon={deleteMode ? <CloseOutlined /> : ""}
-            size="small"
-            onMouseDown={() => deleteApp(item.id)}
-      /> */} 
+      <div className={"apps_sortableItem"+shake}>
+      <Button
+              style={{visibility: deleteMode?'visible':'hidden'}}
+              shape="circle"
+              icon={ <CloseOutlined /> }
+              size="small"
+              onMouseDown={() => deleteApp(item.id)}
+      />
       <a 
       rel="noreferrer" key={item.name} href={item.href} target={'_blank'} >
-      <img  alt={item.name} src={item.imgPath}/>
+      <img onContextMenu={(e)=>handleContextMenu(e,deleteMode)}  alt={item.name} src={item.imgPath}/>
       </a>
       {/* <div>{item.name}</div> */}
       </div>
