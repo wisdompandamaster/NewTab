@@ -17,15 +17,12 @@ export default function SwiperAera(){
      <Swiper className='swiper-no-swiping' 
         spaceBetween={0}
         slidesPerView={1}
-        //loop={true}
+        loop={true}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         pagination={{ clickable: true }}
         //scrollbar={{ draggable: false }}
-        
         mousewheel={true}
-        //navigation={true}
-        //loop={true}
         modules={[Pagination,Mousewheel]}
        >
         <SwiperSlide>
