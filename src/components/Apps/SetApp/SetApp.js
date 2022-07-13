@@ -11,8 +11,9 @@ import Xigua from "../../../AppIcons/Xigua.svg";
 import Douyin from "../../../AppIcons/Douyin.svg";
 // import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Form, Input, Button, message, Modal } from 'antd';
+import Draggable from 'react-draggable';
 import { CloseOutlined } from '@ant-design/icons';
 // import useLocalStorage from '../../../hooks/useLocalStorage';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
@@ -101,7 +102,6 @@ export default function SetApp(){
   //const [apps, setApps] = useLocalStorage("apps", []);
   
   //还有移除功能待实现
-  const deleteMode = useSelector((state) => state.deleteApp);
 
   
   const [form] = Form.useForm();
@@ -111,62 +111,18 @@ export default function SetApp(){
   const [items, setItems] = useState(myApps);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const [disabled, setDisabled] = useState(false);
+  const [bounds, setBounds] = useState({
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+  });
+  const draggleRef = useRef(null);
+
   useEffect(()=>{
     setItems(myApps)
   },[myApps])
-
-  const deleteApp = (id) => {
-    // console.log('deleteAPP')
-    let updatemyApps = myApps.filter((item) => item.id !== id);
-    localStorage.setItem('apps', JSON.stringify(updatemyApps))
-    setItems(updatemyApps);
-    dispatch({
-      type: "CHANGE_APPS",
-      myApps: updatemyApps,
-    });
-  };
-
-  const renderItem = (item)=>{
-      return (
-        <div className='set_app_sortableItem'>
-        <Button
-              style={{visibility: deleteMode?'visible':'hidden'}}
-              shape="circle"
-              icon={<CloseOutlined />}
-              size="small"
-              onMouseDown={() => deleteApp(item.id)}
-        />
-        <img alt={item.name} src={item.imgPath}/>
-        <div>{item.name}</div>
-        </div>
-      )
-
-  }
-
-  //拖拽排序插件-----------------------------------
-const SortableItem = SortableElement(({value}) => renderItem(value));
-const SortableList = SortableContainer(({items}) => {
-        return (
-          <div className='set_app_sortable'>
-            {items.map((value, index) => (
-              <SortableItem key={index} index={index} value={value} />
-            ))}
-          </div>
-        );
-    });
-    
-    const onSortEnd = ({oldIndex, newIndex}) => {
-        setItems( 
-             arrayMoveImmutable(items, oldIndex, newIndex),
-          );
-          localStorage.setItem('apps',JSON.stringify(arrayMoveImmutable(items, oldIndex, newIndex)));    //这里更改了，但是还不能同步
-          dispatch({
-            type: "CHANGE_APPS",
-            myApps: arrayMoveImmutable(items, oldIndex, newIndex),
-          });
-      };
-//-------------------------------------------------
-
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -180,13 +136,29 @@ const SortableList = SortableContainer(({items}) => {
     setIsModalVisible(false);
   };
 
+  //draggable组件
+  const onStart = (_event, uiData) => {
+    const { clientWidth, clientHeight } = window.document.documentElement;
+    const targetRect = draggleRef.current?.getBoundingClientRect();
+
+    if (!targetRect) {
+      return;
+    }
+
+    setBounds({
+      left: -targetRect.left + uiData.x,
+      right: clientWidth - (targetRect.right - uiData.x),
+      top: -targetRect.top + uiData.y,
+      bottom: clientHeight - (targetRect.bottom - uiData.y),
+    });
+  };
 
 
   //添加新APP
   //https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=
   //可以通过这个api获取图标
   const onFinish = ({ url, name }) => {
-    const url_info = new URL(url); 
+    // const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
     //const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
     let icon_url = 'https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=' + name
@@ -231,18 +203,8 @@ const SortableList = SortableContainer(({items}) => {
     message.error("创建失败!");
   };
 
-  const handleClick = (b) => {
-    dispatch({
-      type: "CHANGE_DELETEAPP",
-      deleteApp: b,
-    });
-  };
- 
-
   useEffect(() => {
     if (!myApps.length) {
-      //setApps(defaultIcons);
-      //setCards(defaultIcons);
       dispatch({
         type: "CHANGE_APPS",
         myApps: defaultIcons,
@@ -251,72 +213,37 @@ const SortableList = SortableContainer(({items}) => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   setCards(myApps);
-  //   setApps(myApps);
-  // }, [myApps]);
-
-  // useEffect(() => {
-  //   setApps(cards);
-  // }, [cards]);
-
-  // const deleteApp = (name) => {
-  //   let updatecards = cards.filter((item) => item.name != name);
-  //   setCards(updatecards);
-  //   dispatch({
-  //     type: "CHANGE_APPS",
-  //     myApps: updatecards,
-  //   });
-  // };
-
-  // const moveCard = useCallback(
-  //   (dragIndex, hoverIndex) => {
-  //     setCards((prevCards) =>
-  //       update(prevCards, {
-  //         $splice: [
-  //           [dragIndex, 1],
-  //           [hoverIndex, 0, prevCards[dragIndex]],
-  //         ],
-  //       })
-  //     );
-  //   },
-  //   [cards]
-  // );
-
-  // const renderCard =  (card, index) => {
-  //     return (
-  //       <div className='edit_cards'>
-        
-  //       {/* <Card 
-  //         key={card.id}
-  //         id={card.id}
-  //         index={index}
-  //         info={card}
-  //         //moveCard={moveCard}
-  //         deleteApp={deleteApp}
-  //       /> */}
-  //       </div>
-  //     );
-  //   }
-
   return (
     <div>
-      <span style={{marginRight:'60px'}}>编辑APPS</span>
+      <span style={{marginRight:'60px'}}>添加APPS</span>
       <Button
         type="dash"
         onClick={showModal}
       >
-       设置APP
+       添加
       </Button>
-      <Modal title="快捷方式设置" width={'800px'} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal 
+      title="添加APP(modal实验)"
+      closable={false}
+      visible={isModalVisible} 
+      onOk={handleOk} 
+      onCancel={handleCancel}
+      mask={false}
+      bodyStyle={{background:"#00000000"}}
+      // getContainer={()=>document.getElementById("setting")}
+      modalRender={(modal)=>(
+        <Draggable
+          disabled={disabled}
+          bounds={bounds}
+          onStart={(event, uiData) => onStart(event, uiData)}
+        >
+          <div ref={draggleRef}>{modal}</div>
+        </Draggable>
+      )}
+      > 
         <div className='set_apps'>
-          <div className='set_apps_left'>
-           
-          <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
-           {/* {apps.map((app, i) => renderCard(app, i))} */}
-           </div>
           <div className='set_apps_right'>
-          <Form
+      <Form
         form={form}
         layout="horizial"
         onFinish={onFinish}
@@ -346,7 +273,7 @@ const SortableList = SortableContainer(({items}) => {
             {
               type: "string",
               warningOnly: true,
-              max: 4,
+              max: 6,
             },
           ]}
         >
@@ -356,20 +283,6 @@ const SortableList = SortableContainer(({items}) => {
           <Button type="primary" htmlType="submit">
             添加
           </Button>
-      <Button
-        type="danger"
-        onClick={() => handleClick(true)}
-        style={{ margin: "0 3em" }}
-      >
-        移除
-      </Button>
-      <Button
-        type="dash"
-        onClick={() => handleClick(false)}
-        // style={{ marginLeft: "2em" }}
-      >
-        取消
-      </Button>
         </Form.Item>
           </Form>
           </div>

@@ -1,50 +1,24 @@
 .set_apps{
     display: flex;
  }
- .set_apps_left {
-   display:flex;
-   width: 400px;
-   height: 260px;
-   background-color: #00000022;
-   border-radius: 10px;
-   justify-content: flex-start;
-   align-items:center;
-   flex-wrap: wrap;
-   margin-right: 30px;
-   overflow-y:scroll;
-   overflow-x: hidden;
- }
- .set_apps_right{
+.set_apps_right{
    display: block;
    margin-top: 40px;
    width: 300px;
  }
- 
- .edit_cards{
-   margin: 0 0 0 16px;
+ .react-draggable .ant-modal-content{
+  background: #FFFFFF55;
+  /* -webkit-backdrop-filter: blur(20px); */
+  backdrop-filter: blur(20px);
+  /* transition: all 2s ease-in-out; */
  }
-.set_app_sortable{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-.set_app_sortableItem{
-   cursor: pointer;
-   z-index: 9999;
-   margin:-5px 10px -15px 22px;
-   text-align: center;
-   width: 64px;
-}
-.set_app_sortableItem button{
-   position: relative;
-   left:30px;
-   top:16px;
-}
-
-.set_app_sortableItem img{
-  width: 64px;
-  border-radius: 20px;
-}
+ .react-draggable .ant-modal-header{
+  background: #FFFFFF00;
+  border-bottom: 0;
+  /* -webkit-backdrop-filter: blur(20px); */
+  backdrop-filter: blur(20px);
+  /* transition: all 2s ease-in-out; */
+ }
  
 
  

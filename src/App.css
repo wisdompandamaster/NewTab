@@ -1,5 +1,7 @@
 @import '~antd/dist/antd.css';
 
+/* 全局CSS样式 */
+
 :root{
   /* 定义CSS变量，之后设置简单模式，浅色或深色模式的时候可以用*/
   --dark-color:#0000004D;
@@ -31,7 +33,9 @@ body{
     display:flex;
     justify-content: center;
 }
-/* -------------更改的antd组件样式--------- */
+
+
+/* -------------更改的antd modal组件样式--------- */
 .ant-modal-header{
    border-radius: 10px;
 }
