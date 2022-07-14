@@ -19,6 +19,7 @@ export default function Apps() {
   },[myApps])
 
   const deleteApp = (id) => {
+    // e.target.parentNode.classList.add('delete')
     // console.log('deleteAPP')
     let updatemyApps = myApps.filter((item) => item.id !== id);
     localStorage.setItem('apps', JSON.stringify(updatemyApps))
