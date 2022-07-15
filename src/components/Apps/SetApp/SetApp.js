@@ -12,9 +12,9 @@ import Douyin from "../../../AppIcons/Douyin.svg";
 // import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect, useRef} from 'react';
-import { Form, Input, Button, message, Modal } from 'antd';
+import { Form, Input, Button, message, Modal, Switch } from 'antd';
 import Draggable from 'react-draggable';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, SmallDashOutlined } from '@ant-design/icons';
 // import useLocalStorage from '../../../hooks/useLocalStorage';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -109,6 +109,8 @@ export default function SetApp(){
   const myApps = useSelector((state) => state.myApps);
   //const [cards, setCards] = useState(apps);
   const [items, setItems] = useState(myApps);
+
+  const [iscustom,setIsCustom] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [disabled, setDisabled] = useState(false);
@@ -134,6 +136,11 @@ export default function SetApp(){
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const onChange = (checked) => {
+    console.log(`switch to ${checked}`);
+    setIsCustom(checked);
   };
 
   //draggable组件
@@ -220,10 +227,13 @@ export default function SetApp(){
         type="dash"
         onClick={showModal}
       >
-       添加
+         添加
       </Button>
       <Modal 
-      title="添加APP(modal实验)"
+      title={<div style={{display:'inline-flex',alignItems:'center'}}>
+              添加APP(modal实验)
+             <span style={{fontSize:'15px',marginLeft:'20px'}}><Switch checked={iscustom} onChange={onChange} />自定义</span>
+             </div>}
       closable={false}
       visible={isModalVisible} 
       onOk={handleOk} 
@@ -240,32 +250,20 @@ export default function SetApp(){
           <div ref={draggleRef}>{modal}</div>
         </Draggable>
       )}
-      > 
+      >
+         {/*TODO:at least to add tabs  */}
         <div className='set_apps'>
-          <div className='set_apps_right'>
       <Form
         form={form}
-        layout="horizial"
+        style={{width:'100%'}}
+        layout="inline"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          name="url"
-          rules={[
-            {
-              required: true,
-            },
-            {
-              type: "url",
-              warningOnly: true,
-            },
-          ]}
-        >
-          <Input placeholder="网址" allowClear />
-        </Form.Item>
-        <Form.Item
+         <Form.Item
           name="name"
+          style={{width:'30%'}}
           rules={[
             {
               required: true,
@@ -279,13 +277,28 @@ export default function SetApp(){
         >
           <Input placeholder="名称" allowClear />
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 24, offset:1}}>
+        <Form.Item
+          name="url"
+          style={{width:'50%'}}
+          hidden={!iscustom}
+          rules={[
+            {
+              required: true,
+            },
+            {
+              type: "url",
+              warningOnly: true,
+            },
+          ]}
+        >
+          <Input placeholder="网址" allowClear />
+        </Form.Item>
+        <Form.Item style={{width:'5%'}}>
           <Button type="primary" htmlType="submit">
             添加
           </Button>
         </Form.Item>
           </Form>
-          </div>
           </div>
       </Modal>  
     </div>

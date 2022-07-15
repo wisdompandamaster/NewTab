@@ -1,11 +1,11 @@
 .set_apps{
     display: flex;
  }
-.set_apps_right{
+/* .set_apps_right{
    display: block;
    margin-top: 40px;
    width: 300px;
- }
+ } */
  .react-draggable .ant-modal-content{
   background: #FFFFFF55;
   /* -webkit-backdrop-filter: blur(20px); */
