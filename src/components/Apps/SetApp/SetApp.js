@@ -14,7 +14,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect, useRef} from 'react';
 import { Form, Input, Button, message, Modal, Switch } from 'antd';
 import Draggable from 'react-draggable';
-import { CloseOutlined, SmallDashOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 // import useLocalStorage from '../../../hooks/useLocalStorage';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -137,10 +137,28 @@ export default function SetApp(){
   };
 
   const onChange = (checked) => {
-    console.log(`switch to ${checked}`);
     setIsCustom(checked);
   };
 
+  const addApp = (app) => {
+    const apps = [
+      ...myApps,
+      {
+        id: Date.now(),       //时间戳作为唯一ID,最好是时间戳+随机数
+        href: app.url,
+        imgPath: app.src,
+        name:app.name,
+      },
+    ];
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: apps,
+    });
+    localStorage.setItem('apps', JSON.stringify(apps));
+    setItems(apps);
+    message.success("创建成功!");
+     
+  }
   //draggable组件
   const onStart = (_event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;
@@ -166,22 +184,13 @@ export default function SetApp(){
     // const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
     //const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
-    let icon_url = 'https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=' + name
     //图标逻辑如下，如果api里能搜到，就用第三个，因为前两个太丑，如果没有第三个，就用第二个，如果都没有，就用文字图片api,根据名字生成图标
-    fetch(icon_url).then((response)=>response.json())
-            .then((data)=>{  
               // console.log(typeof(data.icons[2].src));       //api结果里的第三个作为图标
-              let icon = 'https://ui-avatars.com/api/?name='+name+'&background=0081ff&color=ffffff&rounded=false'
+              let colorlist = ['16a085', '27ae60', '2c3e50', 'f39c12', 'e74c3c', '9b59b6', 'FB6964', '342224', "472E32", "BDBB99", "77B1A9", "73A857"];
+              //不是种子随机数
+              let color = Math.floor(Math.random() * colorlist.length);
+              let icon = 'https://ui-avatars.com/api/?name='+name+'&background='+colorlist[color]+'&color=ffffff&rounded=false'
               //文字头像api
-              if(data.icons[2])
-              {
-                icon = data.icons[2].src;
-              }
-              else if(data.icons[1])
-              {
-                icon = data.icons[1].src;
-              }
-              console.log(icon)
               const apps = [
                 ...myApps,
                 {
@@ -191,7 +200,6 @@ export default function SetApp(){
                   name,
                 },
               ];
-              console.log('dispatch')
               dispatch({
                 type: "CHANGE_APPS",
                 myApps: apps,
@@ -200,8 +208,7 @@ export default function SetApp(){
               setItems(apps);
               message.success("创建成功!");
               form.resetFields();
-            }          
-            ).catch((e)=>console.log("error"));
+            
   };
 
   const onFinishFailed = () => {
@@ -209,7 +216,7 @@ export default function SetApp(){
   };
 
   const onValuesChange = (changedValue, allValue) => {
-        console.log(changedValue);
+      if(!iscustom){
         let url = "https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=" + changedValue.name
 
         fetch(url).then((response)=>response.json())
@@ -223,6 +230,7 @@ export default function SetApp(){
               // form.resetFields();
             }          
             ).catch((e)=>console.log("error"));
+      }
   }
 
   useEffect(() => {
@@ -244,7 +252,7 @@ export default function SetApp(){
       >
          添加
       </Button>
-      <Modal 
+      <Modal width="45vw"
       title={<div style={{display:'inline-flex',alignItems:'center'}}>
               添加APP(modal实验)
              <span style={{fontSize:'15px',marginLeft:'20px'}}><Switch checked={iscustom} onChange={onChange} />自定义</span>
@@ -282,7 +290,7 @@ export default function SetApp(){
           style={{width:'30%'}}
           rules={[
             {
-              required: true,
+              required: false,
             },
             {
               type: "string",
@@ -310,20 +318,22 @@ export default function SetApp(){
           <Input placeholder="网址" allowClear />
         </Form.Item>
         <Form.Item style={{width:'5%'}}>
-          <Button type="primary" htmlType="submit">
+          <Button hidden={!iscustom} type="primary" htmlType="submit">
             添加
           </Button>
         </Form.Item>
       </Form>
         </div>
-        <div style={{height:'50vh',overFlow:'scroll'}}>
+        <div className='icon_list' style={{display:iscustom?'none':'grid'}}>
         {
         iconlist.map((item,index)=>{
+            if(!item.isInfinity)
             return (
-              <div key={index}>
+              <div className='icon_list_item' key={index}>
+              <img style={{width:'50px',borderRadius:'50%',display:'inline-block'}} src={item.src}/>
               <span>{item.name}</span>
-              <img style={{width:'20px'}} src={item.src}/>
-              <span>{item.url}</span>
+              <Button ghost={true} onClick={()=>addApp(item)} shape="circle"><PlusOutlined /></Button>
+              <div>{item.description}</div>
               </div>
             )
         })
