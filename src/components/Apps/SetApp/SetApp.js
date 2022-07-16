@@ -98,17 +98,15 @@ export default function SetApp(){
         },
   ];
 
-  // let appList = localStorage.getItem('appList')? localStorage.getItem('appList'):"[0,1,2,3,4,5,6]"
-  //const [apps, setApps] = useLocalStorage("apps", []);
-  
-  //还有移除功能待实现
+   
 
-  
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const myApps = useSelector((state) => state.myApps);
   //const [cards, setCards] = useState(apps);
   const [items, setItems] = useState(myApps);
+  const [iconlist, setIconList] = useState([]);
+  
 
   const [iscustom,setIsCustom] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -210,6 +208,23 @@ export default function SetApp(){
     message.error("创建失败!");
   };
 
+  const onValuesChange = (changedValue, allValue) => {
+        console.log(changedValue);
+        let url = "https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=" + changedValue.name
+
+        fetch(url).then((response)=>response.json())
+            .then((data)=>{  
+              // console.log(typeof(data.icons[2].src));       //api结果里的第三个作为图标
+              // let iconlist = 'https://ui-avatars.com/api/?name='+ changedValue.name+'&background=0081ff&color=ffffff&rounded=false'
+              //文字头像api
+              console.log(data)
+              setIconList(data.icons)
+              // message.success("获取成功!");
+              // form.resetFields();
+            }          
+            ).catch((e)=>console.log("error"));
+  }
+
   useEffect(() => {
     if (!myApps.length) {
       dispatch({
@@ -259,6 +274,7 @@ export default function SetApp(){
         layout="inline"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        onValuesChange={onValuesChange}
         autoComplete="off"
       >
          <Form.Item
@@ -298,8 +314,21 @@ export default function SetApp(){
             添加
           </Button>
         </Form.Item>
-          </Form>
-          </div>
+      </Form>
+        </div>
+        <div style={{height:'50vh',overFlow:'scroll'}}>
+        {
+        iconlist.map((item,index)=>{
+            return (
+              <div key={index}>
+              <span>{item.name}</span>
+              <img style={{width:'20px'}} src={item.src}/>
+              <span>{item.url}</span>
+              </div>
+            )
+        })
+       }
+       </div>
       </Modal>  
     </div>
   );
