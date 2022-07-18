@@ -83,8 +83,7 @@
   }
 }
 
-
-.Apps::-webkit-scrollbar{
+.apps_sortable::-webkit-scrollbar,.Apps::-webkit-scrollbar{
   width: 0px;
 }
 /* div::-webkit-scrollbar-thumb {

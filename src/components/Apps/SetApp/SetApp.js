@@ -180,7 +180,7 @@ export default function SetApp(){
   //添加新APP
   //https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=
   //可以通过这个api获取图标
-  const onFinish = ({ url, name }) => {
+  const onFinish = ({ url, name, src }) => {
     // const url_info = new URL(url); 
     // const icon = "http://favicon.cccyun.cc/" + host;
     //const icon = url_info.protocol+ '//'+ url_info.host + '/favicon.ico'
@@ -190,6 +190,8 @@ export default function SetApp(){
               //不是种子随机数
               let color = Math.floor(Math.random() * colorlist.length);
               let icon = 'https://ui-avatars.com/api/?name='+name+'&background='+colorlist[color]+'&color=ffffff&rounded=false'
+            
+              if(src) icon = src;
               //文字头像api
               const apps = [
                 ...myApps,
@@ -241,6 +243,12 @@ export default function SetApp(){
       });
       localStorage.setItem('apps',JSON.stringify(defaultIcons))
     }
+    let url = "https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword="
+    fetch(url).then((response)=>response.json())
+     .then((data)=>{  
+        setIconList(data.icons)
+      }          
+    ).catch((e)=>console.log("error"));
   }, []);
 
   return (
@@ -253,9 +261,10 @@ export default function SetApp(){
          添加
       </Button>
       <Modal width="45vw"
-      title={<div style={{display:'inline-flex',alignItems:'center'}}>
-              添加APP(modal实验)
-             <span style={{fontSize:'15px',marginLeft:'20px'}}><Switch checked={iscustom} onChange={onChange} />自定义</span>
+      title={<div style={{display:'inline-flex',alignItems:'center',color:'white'}}>
+             <span style={{fontSize:'25px'}}>添加 APP</span> 
+             <span style={{fontSize:'15px', position:'absolute',right:'10%',}}><Switch checked={iscustom} onChange={onChange} /></span>
+             <span style={{position:'absolute',right:'2.5%'}}>自定义</span>
              </div>}
       closable={false}
       visible={isModalVisible} 
@@ -287,7 +296,7 @@ export default function SetApp(){
       >
          <Form.Item
           name="name"
-          style={{width:'30%'}}
+          style={{width:'20%'}}
           rules={[
             {
               required: false,
@@ -303,7 +312,7 @@ export default function SetApp(){
         </Form.Item>
         <Form.Item
           name="url"
-          style={{width:'50%'}}
+          style={{width:'30%'}}
           hidden={!iscustom}
           rules={[
             {
@@ -316,6 +325,22 @@ export default function SetApp(){
           ]}
         >
           <Input placeholder="网址" allowClear />
+        </Form.Item>
+        <Form.Item
+          name="src"
+          style={{width:'35%'}}
+          hidden={!iscustom}
+          rules={[
+            {
+              required: false,
+            },
+            {
+              type: "url",
+              warningOnly: true,
+            },
+          ]}
+        >
+          <Input placeholder="图标链接（无链接自动生成文字图标）" allowClear />
         </Form.Item>
         <Form.Item style={{width:'5%'}}>
           <Button hidden={!iscustom} type="primary" htmlType="submit">
