@@ -243,6 +243,12 @@ function Setting() {
           >
             <ContactUs></ContactUs>
           </Panel>
+          <Panel
+            header={<div className="panel-title">在线聊天室</div>}
+            key="5"
+            className="setting-panel"
+          >
+          </Panel>
         </Collapse>
       </Drawer>
     </div>

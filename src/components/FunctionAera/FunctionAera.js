@@ -32,7 +32,7 @@ const SortableList = SortableContainer(({items}) => {
 //测试上传
 export default function FunctionAera(){   //中间的功能组件，放在里面
  
-    //先重新排列这些组件，统一组件大小，再拖拽排序 4.21待解决
+    //先重新排列这些组件，统一组件大小
     let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
     //const functionList = useSelector(state=>state.functionList)
     const [items, setItems] = useState(JSON.parse(functionList));
@@ -46,7 +46,7 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     
     return (
         <div className='functionAera'>
-        <SortableList axis='xy' items={items} onSortEnd={onSortEnd} />
+        <SortableList distance={2} axis='xy' items={items} onSortEnd={onSortEnd} />
         </div>
     )
 }
