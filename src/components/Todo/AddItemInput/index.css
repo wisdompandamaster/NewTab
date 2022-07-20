@@ -1,11 +1,16 @@
 #add-item-input {
   padding: 1em;
+  background-color: aliceblue;
+  display:flex;
+  align-items: center;
+  margin-bottom: 2%;
+  border-radius:10px;
 }
 
 #add-item-input #plus-icon,
 #add-item-input input {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
+  width:100%;/* vertical-align: top; */
 }
 
 #add-item-input #plus-icon {
@@ -26,4 +31,5 @@
   height: 1em;
   outline: 0px;
   padding: 0px;
+  background-color: #00000000;
 }

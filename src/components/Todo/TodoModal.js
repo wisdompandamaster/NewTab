@@ -51,13 +51,13 @@ function TodoModal({ todos, setTodos, completeTodo }) {
 
   return (
     <div className="todo-modal" style={{maxHeight:'60vh'}}>
+      <AddItemInput onSubmit={addTodo} />
       <TodoItems
         todos={getMeta(todos).uncompleted}
         completeTodo={completeTodo}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
-      <AddItemInput onSubmit={addTodo} />
       <hr className="todo-hr" />
       <h1 id="items-completed-header">{itemCountText}</h1>
       <TodoItems

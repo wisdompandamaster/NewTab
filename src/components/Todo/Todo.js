@@ -7,6 +7,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import cookie from 'react-cookies';
 import defaultSetting from '../../config/index';
 import FuncCard from "../FuncCard/FuncCard";
+import FuncModal from "../FuncModal/FuncModal";
 
 
 
@@ -213,7 +214,7 @@ function Todo() {
           </div>
         </div>
       </FuncCard>
-      <Modal bodyStyle={{padding:'11px'}}
+      <FuncModal bodyStyle={{padding:'11px'}}
         title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>待办事项</div>}
         visible={isModalVisible}
         onOk={handleOk}
@@ -224,7 +225,7 @@ function Todo() {
           setTodos={setTodos}
           completeTodo={completeTodo}
         />
-      </Modal>
+      </FuncModal>
     </>
   );
 }

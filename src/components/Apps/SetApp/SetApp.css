@@ -39,19 +39,6 @@
    white-space: nowrap;
    text-overflow: ellipsis;
 }
- .react-draggable .ant-modal-content{
-  background: #FFFFFF55;
-  /* -webkit-backdrop-filter: blur(20px); */
-  backdrop-filter: blur(20px);
-  /* transition: all 2s ease-in-out; */
- }
- .react-draggable .ant-modal-header{
-  background: #FFFFFF00;
-  border-bottom: 0;
-  /* -webkit-backdrop-filter: blur(20px); */
-  backdrop-filter: blur(20px);
-  /* transition: all 2s ease-in-out; */
- }
  
 
  

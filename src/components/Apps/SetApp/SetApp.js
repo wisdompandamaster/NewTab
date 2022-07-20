@@ -9,16 +9,11 @@ import Toutiao from "../../../AppIcons/Toutiao.svg";
 import Weibo from "../../../AppIcons/Weibo.svg";
 import Xigua from "../../../AppIcons/Xigua.svg";
 import Douyin from "../../../AppIcons/Douyin.svg";
-// import update from "immutability-helper";
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect, useRef} from 'react';
 import { Form, Input, Button, message, Modal, Switch } from 'antd';
-import Draggable from 'react-draggable';
 import { PlusOutlined } from '@ant-design/icons';
-// import useLocalStorage from '../../../hooks/useLocalStorage';
-import {SortableContainer, SortableElement} from 'react-sortable-hoc'
-import {arrayMoveImmutable} from 'array-move'
-// import { Card } from '../card';
+import FuncModal from '../../FuncModal/FuncModal';
 
 //专门用来设置Apps   
 export default function SetApp(){
@@ -111,15 +106,6 @@ export default function SetApp(){
   const [iscustom,setIsCustom] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const [disabled, setDisabled] = useState(false);
-  const [bounds, setBounds] = useState({
-    left: 0,
-    top: 0,
-    bottom: 0,
-    right: 0,
-  });
-  const draggleRef = useRef(null);
-
   useEffect(()=>{
     setItems(myApps)
   },[myApps])
@@ -159,23 +145,6 @@ export default function SetApp(){
     message.success("创建成功!");
      
   }
-  //draggable组件
-  const onStart = (_event, uiData) => {
-    const { clientWidth, clientHeight } = window.document.documentElement;
-    const targetRect = draggleRef.current?.getBoundingClientRect();
-
-    if (!targetRect) {
-      return;
-    }
-
-    setBounds({
-      left: -targetRect.left + uiData.x,
-      right: clientWidth - (targetRect.right - uiData.x),
-      top: -targetRect.top + uiData.y,
-      bottom: clientHeight - (targetRect.bottom - uiData.y),
-    });
-  };
-
 
   //添加新APP
   //https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=
@@ -260,7 +229,7 @@ export default function SetApp(){
       >
          添加
       </Button>
-      <Modal width="45vw"
+      <FuncModal width="45vw"
       title={<div style={{display:'inline-flex',alignItems:'center',color:'white'}}>
              <span style={{fontSize:'25px'}}>添加 APP</span> 
              <span style={{fontSize:'15px', position:'absolute',right:'10%',}}><Switch checked={iscustom} onChange={onChange} /></span>
@@ -270,20 +239,7 @@ export default function SetApp(){
       visible={isModalVisible} 
       onOk={handleOk} 
       onCancel={handleCancel}
-      mask={false}
-      bodyStyle={{background:"#00000000"}}
-      // getContainer={()=>document.getElementById("setting")}
-      modalRender={(modal)=>(
-        <Draggable
-          disabled={disabled}
-          bounds={bounds}
-          onStart={(event, uiData) => onStart(event, uiData)}
-        >
-          <div ref={draggleRef}>{modal}</div>
-        </Draggable>
-      )}
       >
-         {/*TODO:at least to add tabs  */}
         <div className='set_apps'>
       <Form
         form={form}
@@ -364,7 +320,7 @@ export default function SetApp(){
         })
        }
        </div>
-      </Modal>  
+      </FuncModal>  
     </div>
   );
 
