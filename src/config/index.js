@@ -1,5 +1,5 @@
 const defaultSetting = {
-    imgSite:'http://121.196.148.27:9000/',
+    imgSite:'https://wisdompanda.com/',
     site:'http://121.196.148.27:8000',
 };
 
