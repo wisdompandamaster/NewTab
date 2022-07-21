@@ -1,6 +1,6 @@
 const defaultSetting = {
-    imgSite:'https://wisdompanda.com/',
-    site:'http://121.196.148.27:8000',
+    imgSite:'https://minio.wisdompanda.com/',
+    site:'https://api.wisdompanda.com',
 };
 
 

@@ -41,6 +41,7 @@ export default function FuncModal(props){
         mask={false}
         bodyStyle={{background:"#00000000"}}
         onOk={props.onOk}
+        footer={null}
         onCancel={props.onCancel}
         modalRender={(modal)=>(
             <Draggable

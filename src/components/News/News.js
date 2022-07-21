@@ -3,6 +3,7 @@ import '../../font/iconfont.css'
 import defaultSetting from '../../config';
 import React, { useEffect, useState } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
+import FuncModal from '../FuncModal/FuncModal';
 import { Modal, Tooltip, Tabs, List, Typography} from 'antd';
 
 let initialData=[
@@ -285,13 +286,13 @@ export default function News(){
         <NewsBrief></NewsBrief>
         </div>
         {/*新闻详情弹窗*/}
-        <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>热搜榜</div>} visible={isModalVisible}  width={'900px'}  footer={null}  onCancel={handleCancel}>
+        <FuncModal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>热搜榜</div>} visible={isModalVisible}  width={'900px'}  onCancel={handleCancel}>
         <>
-            <Tabs type='card' style={{height:'500px',}} tabPosition='left'>   {/*二级页面左边的标签页*/}
+            <Tabs type='card' style={{height:'500px',background:'#ffffff66'}} tabPosition='left'>   {/*二级页面左边的标签页*/}
              {
                resList.map((item,index)=>{
                  return(
-                  <TabPane tab={<><img alt='' style={{width:'35px',height:'35px',padding:'0',borderRadius:'50%',marginRight:'40px',marginTop:'0',border:'0'}} src={item.icon}/><span>{item.web_title}</span></>} key={index}>
+                  <TabPane tab={<div><img alt='' style={{width:'35px',height:'35px',padding:'0',borderRadius:'50%',marginRight:'40px',marginTop:'0',border:'0'}} src={item.icon}/><span>{item.web_title}</span></div>} key={index}>
                   <NewsDetail dataSource={item}></NewsDetail>
                  </TabPane>
                  )
@@ -299,7 +300,7 @@ export default function News(){
              }
             </Tabs>
         </>
-        </Modal>   
+        </FuncModal>   
         </>
     )
 }
