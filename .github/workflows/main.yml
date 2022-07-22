@@ -20,6 +20,9 @@ jobs:
     - name: npm install
       # 步骤执行指令
       run: npm install
+      # 将CI设置为false,不然会把warning当error
+    - name: export CI
+      run: export CI=false
     - name: npm run build
       run: npm run build
     # 命名这个任务为发布Deploy
