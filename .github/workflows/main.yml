@@ -11,7 +11,7 @@ jobs:
   # 任务ID
   build:
     # 运行环境
-    runs-on: CentOS
+    runs-on: ubuntu-18.04
     # 步骤
     steps:
     # 使用别人的action
