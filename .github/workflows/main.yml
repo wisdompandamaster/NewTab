@@ -3,7 +3,7 @@
 name: Build app and deploy to Aliyun
 # 将CI设置为false,不然会把warning当error
 env:
-  process.env.CI : false
+  CI: false
 on:
   #监听push操作
   push:
