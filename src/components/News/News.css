@@ -170,29 +170,4 @@ span .newsItemNum{
     background: rgba(0,0,0,0.1);
 }
 
-/* 修改tabpane的背景颜色 */
-.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab{
-    background:#ffffff00;
-}
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
-    border:0;
-}
-.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab-active{
-    background:#ffffffaa;
-}
-.ant-tabs-dropdown-menu{
-    background:#ffffffaa;
-}
-.ant-tabs-dropdown-menu::-webkit-scrollbar{
-    width: 3px;  
-}
-.ant-tabs-dropdown-menu::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 4px #00000033;
-    background: rgba(0,0,0,0.2);
-  }
-.ant-tabs-dropdown-menu::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    background: rgba(0,0,0,0.1);
-}
+
