@@ -3,7 +3,8 @@ import { Modal } from 'antd';
 import { EditableProTable } from '@ant-design/pro-components';
 import React, { useEffect, useState } from 'react';
 import useLocalStorage from "../../hooks/useLocalStorage";
-import FuncCard from '../FuncCard/FuncCard'
+import FuncCard from '../FuncCard/FuncCard';
+import FuncModal from '../FuncModal/FuncModal';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import 'swiper/css';
 // import "swiper/css/navigation";
@@ -101,7 +102,7 @@ export default function CountDown(){
         {
             title: '倒计时项目',
             dataIndex: 'name',
-            width:'200px',
+            width:100,
             fieldProps: (from, { rowKey, rowIndex }) => {
                 if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
                     return {
@@ -125,7 +126,7 @@ export default function CountDown(){
         {
             title: '操作',
             valueType: 'option',
-            width: 200,//
+            width: 100,//
             render: (text, record, _, action) => [
                 <a key="editable" onClick={() => {
                         var _a;
@@ -185,7 +186,7 @@ export default function CountDown(){
             }
            </div>
            </FuncCard>
-        <Modal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'1000px'}  footer={null}  onCancel={handleCancel}>
+        <FuncModal title={<div style={{fontSize:'30px',letterSpacing:'10px',marginLeft:'54px'}}>倒计时设置</div>} visible={isModalVisible}  width={'600px'} onCancel={handleCancel}>
         {/* {   //这里等着用列表组件来添加
             countdown.map((item)=>{
                 return (
@@ -237,7 +238,7 @@ export default function CountDown(){
         }} mode="read" valueType="jsonCode" text={JSON.stringify(dataSource)}/>
       </ProCard> */}
         {/* <div>hello</div> */}
-        </Modal>   
+        </FuncModal>   
         </>
     )
 
