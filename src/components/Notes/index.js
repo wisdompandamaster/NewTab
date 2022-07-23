@@ -9,6 +9,7 @@ import {nanoid} from "nanoid";
 import cookie from 'react-cookies';
 import defaultSetting from "../../config";
 import FuncCard from '../FuncCard/FuncCard';
+import FuncModal from '../FuncModal/FuncModal';
 
 const Notes = () => {
     const [notesList, setNotesList] = useLocalStorage("notesList", []);
@@ -104,7 +105,7 @@ const Notes = () => {
                     <div  className='note-content'>{notesData[3]?.value}</div>
                 </div>
             </FuncCard>
-            <Modal title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>笔记</div>}
+            <FuncModal title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>笔记</div>}
                    width={1000}
                    footer={null}
                    visible={isNotesVisible}
@@ -130,7 +131,7 @@ const Notes = () => {
                     </div>
                     <MarkdownNotes  setNotesList={setNotesList} notesData={notesData} setNotesData={setNotesData} noteIndex={noteIndex}/>
                 </div>
-            </Modal>
+            </FuncModal>
         </>
     );
 };

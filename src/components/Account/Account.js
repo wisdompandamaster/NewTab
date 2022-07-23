@@ -43,17 +43,18 @@ export default function Account(){
      }).then(function (data) {
           // message.success(data.msg)
           localStorage.clear()
+          cookie.remove('status')
+          cookie.remove('username')
           window.location.reload()
-          
      })
     }
+
     if(cookie.load('status')==='200')    //如果已经登录
     {
       return(
         <div className='onsignin'>{cookie.load('username')}
           <Button danger onClick={onSignOut}>退出登录</Button>
         </div>
-
       )
     }
     else
