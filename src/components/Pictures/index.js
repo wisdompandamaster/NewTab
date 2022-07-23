@@ -6,6 +6,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import './style.css';
 import cookie from "react-cookies";
 import FuncCard from '../FuncCard/FuncCard';
+import FuncModal from '../FuncModal/FuncModal';
 
 const Pictures = () => {
 
@@ -137,7 +138,7 @@ const Pictures = () => {
             </Carousel>
             </FuncCard>
             </div>
-            <Modal
+            <FuncModal
                 title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>图片墙</div>}
                 visible={modalVisible}
                 onCancel={() => { setModalVisible(false) }}
@@ -153,7 +154,7 @@ const Pictures = () => {
                         style={{ marginTop: '10px' }}
                     >添加图片</Button>
                 </Upload>
-            </Modal>
+            </FuncModal>
         </>
     )
 }
