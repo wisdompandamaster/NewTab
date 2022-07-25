@@ -43,9 +43,9 @@ export default function Account(){
      }).then(function (data) {
           // message.success(data.msg)
           localStorage.clear()
-          cookie.remove('status')
-          console.log('remove cookie')
-          cookie.remove('username')
+          // cookie.remove('status')
+          // console.log('remove cookie')
+          // cookie.remove('username')
           window.location.reload()
      })
     }
