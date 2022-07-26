@@ -5,6 +5,7 @@ import SetApp from '../Apps/SetApp/SetApp'
 import SetFooter from '../MottoFooter/SetFooter/SetFooter';
 import SetClock from '../ClockSearch/SetClock/SetClock';
 import SetFuncCard from '../FuncCard/SetFuncCard/SetFuncCard';
+import { SetFuncCardStyle } from '../FuncCard/SetFuncCard/SetFuncCard';
 import Account from '../Account/Account'
 import React, { useState } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
@@ -168,6 +169,7 @@ function SetFunction() {
       <SetApp/>
       <SetFooter/>
       <SetClock/>
+      <SetFuncCardStyle/>
       <SetFuncCard/>
     </div>
   );
