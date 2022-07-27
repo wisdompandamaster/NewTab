@@ -28,12 +28,12 @@ I use [**Shields IO**](https://shields.io/) for making badges. It is a simple an
 
 <!-- ![GitHub All Releases](https://img.shields.io/github/downloads/wisdompandamaster/NewTab): If you are not like me and your project gets a lot of downloads(*I envy you*) then you should have a badge that shows the number of downloads! This lets others know how **Awesome** your project is and is worth contributing to. -->
 
-<!-- ![GitHub](https://img.shields.io/github/license/wisdompandamaster/NewTab)
-: This shows what kind of open-source license your project uses. This is good idea as it lets people know how they can use your project for themselves. -->
+![GitHub](https://img.shields.io/github/license/wisdompandamaster/NewTab)
+<!-- : This shows what kind of open-source license your project uses. This is good idea as it lets people know how they can use your project for themselves. -->
 
 <!-- ![Tweet](https://img.shields.io/twitter/url?style=flat-square&logo=twitter&url=https%3A%2F%2Fnavendu.me%2Fnsfw-filter%2Findex.html): This is not essential but it is a cool way to let others know about your project! Clicking this button automatically opens twitter and writes a tweet about your project and link to it. All the user has to do is to click tweet. Isn't that neat? -->
 ## Demo-Preview
-[在线Demo](http://121.196.148.27:3006)
+[在线Demo](https://newtab.wisdompanda.com)
 <!-- Add a demo for your project -->
 
 <!-- After you have written about your project, it is a good idea to have a demo/preview(**video/gif/screenshots** are good options) of your project so that people can know what to expect in your project. You could also add the demo in the previous section with the product description.
@@ -85,6 +85,8 @@ To use this project, first clone the repo on your device using the command below
 ```git clone https://github.com/wisdompandamaster/NewTab.git```
 
 Then start it with npm:
+
+
 ```cd newtab```     
 
 ```npm install```
@@ -133,8 +135,8 @@ Personally and by standard, you should use a [issue template](https://github.com
 
 You could also add contact details for people to get in touch with you regarding your project. -->
 
-<!-- # License
-[(Back to top)](#table-of-contents) -->
+## License
+NewTab codebase license is MIT, Please refer to the LICENSE file for detailed information.
 
 <!-- Adding the license to README is a good practice so that people can easily refer to it.
 
