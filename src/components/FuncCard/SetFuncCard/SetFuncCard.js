@@ -7,45 +7,8 @@ import useLocalStorage from "../../../hooks/useLocalStorage";
 import FuncModal from "../../FuncModal/FuncModal";
 
 
-export default function SetFuncCard(){
-
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    
-      const showModal = () => {
-        setIsModalVisible(true);
-      };
-    
-      const handleOk = () => {
-        setIsModalVisible(false);
-      };
-    
-      const handleCancel = () => {
-        setIsModalVisible(false);
-      };
-
-    return (
-        <div>
-        <span style={{marginRight:'60px'}}>添加 Cards</span>
-        <Button
-        type="dash"
-        onClick={showModal}
-        >
-         添加
-        </Button>
-        <FuncModal width="45vw"
-         title={<div style={{display:'inline-flex',alignItems:'center',color:'white'}}>
-             <span style={{fontSize:'25px'}}>添加 Card</span> 
-             </div>}
-        closable={false}
-        visible={isModalVisible} 
-        onOk={handleOk} 
-        onCancel={handleCancel}>
-        </FuncModal>
-        </div>
-    )
-}
-
 export function SetFuncCardStyle(){
+
     const [cardStyle, setCardStyle] = useLocalStorage('cardstyle')
     const cardstyle = useSelector(state=>state.cardstyle)
     const dispatch = useDispatch();

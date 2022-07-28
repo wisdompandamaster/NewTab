@@ -12,6 +12,7 @@ import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'a
 import { UserOutlined,GithubOutlined } from '@ant-design/icons';
 import {useSelector } from 'react-redux';
 import defaultSetting from '../../config';
+import SetFunctionArea from '../FunctionAera/SetFunctionAera/SetFunctionArea';
 
 
 // function CheckMode(){   //深浅色模式切换
@@ -170,7 +171,7 @@ function SetFunction() {
       <SetFooter/>
       <SetClock/>
       <SetFuncCardStyle/>
-      <SetFuncCard/>
+      <SetFunctionArea/>
     </div>
   );
 }

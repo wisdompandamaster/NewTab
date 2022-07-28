@@ -36,6 +36,7 @@ export default function FuncModal(props){
         <Modal 
         title={props.title}
         width={props.width}
+        height={props.height}
         closable={false}
         visible={props.visible}
         mask={false}
