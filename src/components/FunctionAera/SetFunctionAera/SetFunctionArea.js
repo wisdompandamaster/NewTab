@@ -1,9 +1,6 @@
 import './SetFunctionArea.css'
-import { Radio } from 'antd';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
-import useLocalStorage from "../../../hooks/useLocalStorage";
 import FuncModal from "../../FuncModal/FuncModal";
 import News from '../../News/News'
 import Todo from '../../Todo/Todo'

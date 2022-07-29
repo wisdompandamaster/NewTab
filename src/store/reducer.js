@@ -96,6 +96,7 @@ const defalutState = {
      // apps
     myApps: localStorage.getItem("apps") ? JSON.parse(localStorage.getItem("apps")): defaultIcons,
     deleteApp: false,
+    deleteFunc: false,
     // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
     footerexist:localStorage.getItem("footerset")
     ? JSON.parse(localStorage.getItem("footerset")).footerexist
@@ -176,6 +177,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 cardstyle: action.cardstyle,
+            }
+        case "CHANGE_DELETEFUNC":
+            return {
+                ...state,
+                deleteFunc: action.deleteFunc,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {
