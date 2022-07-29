@@ -53,8 +53,9 @@ export default function SetFunctionArea(){
             {
                 funcs.map((item,index)=>{
                     return (
-                      //TODO:阻止点击事件
-                      <div key={index} style={{justifySelf:'center'}}>
+                      //FIXME:天气应用无法显示
+                      <div key={index} style={{justifySelf:'center',position:'relative'}}>
+                        <div style={{width:'352px',height:'165px',position:'absolute', background:'#fff0',zIndex:1}}></div>
                          {item}
                       </div>
                     )
