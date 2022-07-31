@@ -64,6 +64,8 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
   </div>
   );
 
+
+  
  const SortableList = SortableContainer(({items}) => {
         return (
           <div className='sortable'>
