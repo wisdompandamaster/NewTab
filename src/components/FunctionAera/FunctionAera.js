@@ -11,7 +11,7 @@ import CountDown from '../CountDown/CountDown'
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
 import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {  Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 
@@ -23,23 +23,27 @@ const funcs = [{id:0, node:<News/>},
                {id:4, node:<Weather/>},
                {id:5, node:<CalComponent/>},
                {id:6,node:<CountDown/>},
-               {id:7, node:<Competition/>},
-               {id:8, node:<CountDown/>}
+               {id:7, node:<Competition/>}
               ]
 
 //测试上传
 export default function FunctionAera(){   //中间的功能组件，放在里面
 
   const funcdeleteMode = useSelector((state) => state.deleteFunc);
+  const functionList = useSelector((state)=>state.functionList);
 
   //先重新排列这些组件，统一组件大小
-  let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
+  // let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
   //const functionList = useSelector(state=>state.functionList)
-  const [items, setItems] = useState(JSON.parse(functionList));
+  const [items, setItems] = useState(functionList);
 
   const dispatch = useDispatch()
 
   const funcshake = funcdeleteMode ? " funcshake":""
+
+  useEffect(()=>{
+     setItems(functionList);
+  },[functionList])
 
   const handleContextMenu = (e,b)=>{
     e.preventDefault();
@@ -77,24 +81,18 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
     });
 
   const deleteFunc = (id) => {
-    // e.target.parentNode.classList.add('delete')
-    // console.log('deleteAPP')
     let newList = items;
     //删除数组中指定元素
-    let oldList = items;
     newList.splice(newList.indexOf(id),1);
-    console.log(oldList)
-    console.log(id)
-    console.log(newList)
     setItems(newList);
     localStorage.setItem('functionList',JSON.stringify(newList));
     // let updatemyApps = myApps.filter((item) => item.id !== id);
     // localStorage.setItem('apps', JSON.stringify(updatemyApps))
     // setItems(updatemyApps);
-    // dispatch({
-    //   type: "CHANGE_APPS",
-    //   myApps: updatemyApps,
-    // });
+    dispatch({
+      type: "CHANGE_FUNCS",
+      functionList: newList,
+    });
     // console.log("deleteFunc")
   };
  

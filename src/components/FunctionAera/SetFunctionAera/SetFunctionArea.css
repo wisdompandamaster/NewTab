@@ -1,0 +1,24 @@
+.addfunc{
+    width:352px;
+    height:165px;
+    position:absolute;
+    border-radius: 20px; 
+    background:#fff0;
+    z-index:1;
+    transition:.3s ease-in-out;
+}
+.addfunc:hover{
+    background:#0005;
+}
+.addfunc > button{
+    position:relative;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    opacity: 0;
+    background-color: #fff0;
+}
+.addfunc:hover > button{
+    opacity: 1;
+    background-color: #fff8;
+}

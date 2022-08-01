@@ -95,6 +95,7 @@ const defalutState = {
      TodoDates:[],
      // apps
     myApps: localStorage.getItem("apps") ? JSON.parse(localStorage.getItem("apps")): defaultIcons,
+    functionList:localStorage.getItem("functionList") ? JSON.parse(localStorage.getItem("functionList")):[0,1,2,3,4,5,6,7],
     deleteApp: false,
     deleteFunc: false,
     // functionList:localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6]"
@@ -182,6 +183,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 deleteFunc: action.deleteFunc,
+            }
+        case "CHANGE_FUNCS":
+            return {
+                ...state,
+                functionList: action.functionList,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {
