@@ -2,7 +2,7 @@
     display: flex;
  }
 .icon_list{
-   height:300px;
+   height:450px;
    overflow-y: scroll;
    display:grid;
    grid-template-columns: repeat(3,calc(96%/3));
@@ -12,8 +12,9 @@
 }
 .icon_list_item{
    width: 100%;
-   height:100px;
+   height:150px;
    overflow: hidden;
+   position:relative;
    margin-bottom: 5%;
    background-color: #FFFFFF66;
    /* background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%); */
@@ -39,6 +40,26 @@
    white-space: nowrap;
    text-overflow: ellipsis;
 }
- 
+.icon_list_item div.cover{
+   position:absolute;
+   width:100%;
+   height:100%;
+   margin:0;
+   transition:.3s ease-in-out;
+}
+.icon_list_item div.cover:hover{
+   background-color: #00000066;
+}
+.icon_list_item button{
+   position:absolute;
+   top:50%;
+   left:50%;
+   transform:translate(-50%,-50%);
+   opacity: 0;
+}
+.icon_list_item div.cover:hover button{
+   opacity: 1;
+   background-color: #fff3;
+}
 
  

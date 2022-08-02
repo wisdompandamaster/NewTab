@@ -311,9 +311,11 @@ export default function SetApp(){
             if(!item.isInfinity)
             return (
               <div className='icon_list_item' key={index}>
+              <div className="cover">
+              <Button ghost={true} size="large" onClick={()=>addApp(item)} shape="circle"><PlusOutlined /></Button>
+              </div>
               <img style={{width:'50px',borderRadius:'50%',display:'inline-block'}} src={item.src}/>
               <span>{item.name}</span>
-              <Button ghost={true} onClick={()=>addApp(item)} shape="circle"><PlusOutlined /></Button>
               <div>{item.description}</div>
               </div>
             )
