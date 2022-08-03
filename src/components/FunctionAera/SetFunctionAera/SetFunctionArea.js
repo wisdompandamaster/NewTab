@@ -12,6 +12,8 @@ import Weather from '../../Weather/Weather'
 import CalComponent from '../../Calendar/CalComponent'
 import Competition from '../../Competition/Competition'
 import CountDown from '../../CountDown/CountDown'
+import ServerMonitor from '../../ServerMonitor/ServerMonitor'
+import ToolKit from '../../ToolKit/ToolKit'
 
 
 export default function SetFunctionArea(){
@@ -27,7 +29,9 @@ export default function SetFunctionArea(){
                {id:4, node:<Weather/>},
                {id:5, node:<CalComponent/>},
                {id:6,node:<CountDown/>},
-               {id:7, node:<Competition/>}
+               {id:7, node:<Competition/>},
+               {id:8, node:<ServerMonitor/>},
+               {id:9, node:<ToolKit/>}
               ]
     
       const showModal = () => {

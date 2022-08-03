@@ -8,6 +8,9 @@ import Weather from '../Weather/Weather'
 import CalComponent from '../Calendar/CalComponent'
 import Competition from '../Competition/Competition'
 import CountDown from '../CountDown/CountDown'
+import ServerMonitor from '../ServerMonitor/ServerMonitor'
+import ToolKit from '../ToolKit/ToolKit'
+
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,7 +18,7 @@ import { useEffect, useState } from 'react'
 import {  Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 
-//TODO: 1.服务器性能监控模块，2. 前端工具箱模块，3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记）
+//TODO: 1.服务器性能监控模块，2. 前端工具箱模块，3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能 7. 添加一个类似github的贡献墙
 
 const funcs = [{id:0, node:<News/>},
                {id:1, node:<Todo/>},
@@ -24,7 +27,9 @@ const funcs = [{id:0, node:<News/>},
                {id:4, node:<Weather/>},
                {id:5, node:<CalComponent/>},
                {id:6,node:<CountDown/>},
-               {id:7, node:<Competition/>}
+               {id:7, node:<Competition/>},
+               {id:8, node:<ServerMonitor/>},
+               {id:9, node:<ToolKit/>}
               ]
 
 //测试上传
