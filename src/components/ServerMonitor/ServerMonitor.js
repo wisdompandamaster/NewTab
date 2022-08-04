@@ -1,10 +1,15 @@
 import './ServerMonitor.css';
 import FuncCard from '../FuncCard/FuncCard';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import md5 from 'js-md5';
 
 export default function ServerMonitor(){
 
+    const [type,setType] = useState(0) 
+
+    const handleChangeType=(value)=>{
+        setType(value)
+    }
 
     const request_time = (new Date()).getTime()
     const api_sk = '2tIiizP1DahyBmypN00hqdkdV9OaooI6'
@@ -28,9 +33,9 @@ export default function ServerMonitor(){
         <FuncCard
            title="服务器监控"
            kinds={["性能","网络","负载"]}
+           changeType={handleChangeType}
         >
-            <div> {request_token}</div>
-            <div>待调试api接口</div>
+             <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>待完成API接口</div>
         </FuncCard>
     )
 

@@ -14,6 +14,7 @@ import Competition from '../../Competition/Competition'
 import CountDown from '../../CountDown/CountDown'
 import ServerMonitor from '../../ServerMonitor/ServerMonitor'
 import ToolKit from '../../ToolKit/ToolKit'
+import Demos from '../../Demos/Demos';
 
 
 export default function SetFunctionArea(){
@@ -31,7 +32,8 @@ export default function SetFunctionArea(){
                {id:6,node:<CountDown/>},
                {id:7, node:<Competition/>},
                {id:8, node:<ServerMonitor/>},
-               {id:9, node:<ToolKit/>}
+               {id:9, node:<ToolKit/>},
+               {id:10, node:<Demos/>}
               ]
     
       const showModal = () => {

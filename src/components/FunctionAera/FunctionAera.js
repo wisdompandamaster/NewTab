@@ -10,6 +10,7 @@ import Competition from '../Competition/Competition'
 import CountDown from '../CountDown/CountDown'
 import ServerMonitor from '../ServerMonitor/ServerMonitor'
 import ToolKit from '../ToolKit/ToolKit'
+import Demos from '../Demos/Demos'
 
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -18,7 +19,7 @@ import { useEffect, useState } from 'react'
 import {  Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 
-//TODO: 1.服务器性能监控模块，2. 前端工具箱模块，3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能 7. 添加一个类似github的贡献墙
+//TODO: 1.服务器性能监控模块，2. 前端工具箱模块，3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能  7. 添加一个类似github的贡献墙
 
 const funcs = [{id:0, node:<News/>},
                {id:1, node:<Todo/>},
@@ -29,7 +30,8 @@ const funcs = [{id:0, node:<News/>},
                {id:6,node:<CountDown/>},
                {id:7, node:<Competition/>},
                {id:8, node:<ServerMonitor/>},
-               {id:9, node:<ToolKit/>}
+               {id:9, node:<ToolKit/>},
+               {id:10, node:<Demos/>}
               ]
 
 //测试上传

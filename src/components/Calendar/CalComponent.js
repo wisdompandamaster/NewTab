@@ -4,6 +4,8 @@ import './CalComponent.css';
 import {useSelector, useDispatch} from 'react-redux';
 import useLocalStorage from "../../hooks/useLocalStorage";
 import FuncCard from '../FuncCard/FuncCard';
+import FuncModal from '../FuncModal/FuncModal';
+import GitHubCalendar from 'react-github-calendar';
 
 export const accessWeekday = {
     "0": "星期日",
@@ -29,6 +31,18 @@ function CalComponent() {
      })
   }
 
+   // modal组件控制函数
+   const [isModalVisible, setIsModalVisible] = useState(false);
+   const showModal = () => {
+     // openNotification();
+     setIsModalVisible(true);
+   };
+   const handleOk = () => {
+     setIsModalVisible(false);
+   };
+   const handleCancel = () => {
+     setIsModalVisible(false);
+   };
   // const [persistedTodoList] = useLocalStorage(   
   //   "todoList",
   //    []
@@ -39,7 +53,7 @@ function CalComponent() {
    
   return (
     <>
-      <FuncCard 
+      <FuncCard
       title='日历'
       // className='cal'
       iconStyle={{
@@ -47,7 +61,7 @@ function CalComponent() {
         boxShadow: '0px 3px 6px rgba(255, 55, 55, 0.8)'
       }}
       >
-            <div className='cal-left'>
+            <div className='cal-left' onClick={showModal}>
                 {/* <div className='cal-header'>
                     <div className='cal-icon'></div>
                     <div className='cal-title'>日历</div>
@@ -81,6 +95,19 @@ function CalComponent() {
                 />
             </div>
       </FuncCard>
+      <FuncModal 
+        bodyStyle={{padding:'11px'}}
+        title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>日历</div>}
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        width={'50vw'}
+      >
+        <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
+           <GitHubCalendar username="wisdompandamaster" />
+           <GitHubCalendar username="peng-zhihui" />
+        </div>
+      </FuncModal>
     </>
   );
 }
