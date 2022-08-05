@@ -1,0 +1,32 @@
+ .demo{
+    width:340px;
+    height:180px;
+    position:absolute;
+    border-radius: 20px; 
+    background:#fff0;
+    z-index:1;
+    transition:.3s ease-in-out;
+    backdrop-filter: blur(10px);
+}
+.demo:hover{
+    /* background:#0008; */
+    backdrop-filter:blur(0);
+}
+.demo > div{
+    position:relative;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    opacity: 1;
+    /* background-color: #fff0; */
+    font-size: 50px;
+    font-weight: 700;
+    color:#fffb;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: .3s ease-in;
+}
+.demo:hover > div{
+    opacity: 0;
+    /* background-color: #000a; */
+}

@@ -6,6 +6,8 @@
 
 <!-- Describe your project in brief -->
 NewTab 新标签页是一个集合多种信息和工具的自制浏览器首页
+
+![](./public/banner.png)
 <!-- The project title should be self explanotory and try not to make it a mouthful. (Although exceptions exist- **awesome-readme-writing-guide-for-open-source-projects** - would have been a cool name)
 
 Add a cover/banner image for your README. **Why?** Because it easily **grabs people's attention** and it **looks cool**(*duh!obviously!*).
