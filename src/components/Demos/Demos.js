@@ -7,7 +7,7 @@ export default function Demos(){
 
     const demoList = [
     {name:'parallax', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/mydemo_parallax.png', src:'https://wisdompanda.com/demo/parallax/'},
-    {name:'parallax', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/mydemo_parallax.png', src:'https://wisdompanda.com/demo/parallax/'},
+    {name:'弹幕墙', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/bulletscreen.png', src:'https://wisdompanda.com/demo/bulletscreen/'},
     {name:'parallax', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/mydemo_parallax.png', src:'https://wisdompanda.com/demo/parallax/'},
     {name:'parallax', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/mydemo_parallax.png', src:'https://wisdompanda.com/demo/parallax/'}]
 

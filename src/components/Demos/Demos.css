@@ -6,7 +6,7 @@
     background:#fff0;
     z-index:1;
     transition:.3s ease-in-out;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) brightness(0.5);
 }
 .demo:hover{
     /* background:#0008; */
