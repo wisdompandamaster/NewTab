@@ -264,7 +264,7 @@ export default function TopNav() {
   const clear = useSelector((state) => state.clear);
   let opacity = clear ? 0 : 1;
   return (
-    <div style={{ opacity: opacity }}>
+    <div>
       <CheckMode></CheckMode>
       <User></User>
       <Setting></Setting>
