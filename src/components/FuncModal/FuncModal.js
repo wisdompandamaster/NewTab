@@ -1,9 +1,9 @@
 import { Modal } from 'antd'
 import './FuncModal.css'
-import { useState, useRef } from 'react';
+import { useState, useRef, memo } from 'react';
 import Draggable from 'react-draggable';
 
-export default function FuncModal(props){
+const FuncModal = (props)=>{
 
     const [disabled, setDisabled] = useState(false);
     const [bounds, setBounds] = useState({
@@ -58,3 +58,5 @@ export default function FuncModal(props){
         </Modal>
     )
 }
+
+export default memo(FuncModal);
