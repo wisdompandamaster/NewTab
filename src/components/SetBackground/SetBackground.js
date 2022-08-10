@@ -1,7 +1,7 @@
 import './SetBackground.css';
 import {useSelector, useDispatch} from 'react-redux';
 import { Upload, message, Slider, Modal, Tabs } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { InboxOutlined,CheckOutlined } from '@ant-design/icons';
 import defaultSetting from '../../config';
 import cookie from 'react-cookies';
@@ -125,7 +125,7 @@ function ShowBackground(props){
     )
 }
 
-export default function SetBackground(){
+const SetBackground = ()=>{
 
     const { TabPane } = Tabs;
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -213,3 +213,4 @@ export default function SetBackground(){
      )
 }
 
+export default memo(SetBackground);

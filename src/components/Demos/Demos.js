@@ -1,5 +1,5 @@
 import './Demos.css';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
 import FuncModal from '../FuncModal/FuncModal';
 import Lottie from 'react-lottie'
@@ -7,7 +7,7 @@ import motorbike from '../../asset/motorbike.json';
 // import astronaut from '../../asset/astronaut.json';
 // import solarsystem from '../../asset/solarsystem.json'
 
-export default function Demos(){
+const Demos = ()=>{
 
     const demoList = [
     {name:'parallax', imgPath:'https://minio.wisdompanda.com/newtabimg/demoimg/mydemo_parallax.png', src:'https://wisdompanda.com/demo/parallax/'},
@@ -72,3 +72,5 @@ export default function Demos(){
         </FuncCard>
     )
 }
+
+export default memo(Demos);

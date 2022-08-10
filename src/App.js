@@ -12,6 +12,8 @@ import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
 
 
+//FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
+
 function App() {
    //页面加载前需要请求的数据
   const dispatch = useDispatch()
@@ -55,6 +57,7 @@ function App() {
   const blur = useSelector(state=>state.blur)
   const cover = useSelector(state=>state.cover)
   const currentbg = useSelector(state=>state.currentbg)
+
    
   let blurNum = 'blur(' + blur/4 + 'px)'
   let scale ='scale(' + (1 + blur * 0.0008) + ')'

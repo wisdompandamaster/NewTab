@@ -11,11 +11,12 @@ import CountDown from '../CountDown/CountDown'
 import ServerMonitor from '../ServerMonitor/ServerMonitor'
 import ToolKit from '../ToolKit/ToolKit'
 import Demos from '../Demos/Demos'
+import Memo from '../Memo/Memo'
 
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import {  Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 
@@ -31,11 +32,12 @@ const funcs = [{id:0, node:<News/>},
                {id:7, node:<Competition/>},
                {id:8, node:<ServerMonitor/>},
                {id:9, node:<ToolKit/>},
-               {id:10, node:<Demos/>}
+               {id:10, node:<Demos/>},
+               {id:11, node:<Memo/>}
               ]
 
 //测试上传
-export default function FunctionAera(){   //中间的功能组件，放在里面
+const FunctionAera = ()=>{   //中间的功能组件，放在里面
 
   const funcdeleteMode = useSelector((state) => state.deleteFunc);
   const functionList = useSelector((state)=>state.functionList);
@@ -118,3 +120,5 @@ export default function FunctionAera(){   //中间的功能组件，放在里面
         </div>
     )
 }
+
+export default memo(FunctionAera);

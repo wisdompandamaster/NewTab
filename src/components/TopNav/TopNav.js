@@ -7,7 +7,7 @@ import SetClock from '../ClockSearch/SetClock/SetClock';
 import SetFuncCard from '../FuncCard/SetFuncCard/SetFuncCard';
 import { SetFuncCardStyle } from '../FuncCard/SetFuncCard/SetFuncCard';
 import Account from '../Account/Account'
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Avatar, Drawer, Collapse, Modal, Form, Input, Button, message } from 'antd';
 import { UserOutlined,GithubOutlined } from '@ant-design/icons';
 import {useSelector } from 'react-redux';
@@ -258,7 +258,7 @@ function Setting() {
   );
 }
 
-export default function TopNav() {
+const TopNav = ()=>{
   //顶部导航
 
   const clear = useSelector((state) => state.clear);
@@ -271,3 +271,6 @@ export default function TopNav() {
     </div>
   );
 }
+
+
+export default memo(TopNav);  //memo 防止子组件重复渲染

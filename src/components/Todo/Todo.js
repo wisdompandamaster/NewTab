@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { CheckCircleTwoTone, createFromIconfontCN } from "@ant-design/icons";
-import { Modal,  notification} from "antd";
+import { notification } from "antd";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import TodoModal from "./TodoModal";
 import {useSelector, useDispatch} from 'react-redux';
@@ -87,10 +87,6 @@ function Todo() {
         saveTodos() 
     }
   },[todos])
-
-
-  
-  
 
   // 打勾
   const completeTodo = (e,id) => {
@@ -230,4 +226,4 @@ function Todo() {
   );
 }
 
-export default Todo;
+export default memo(Todo);

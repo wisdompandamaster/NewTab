@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import './FuncCard.css'
 
@@ -14,7 +14,7 @@ import './FuncCard.css'
  */
 
 //加入filter:blur
-export default function FuncCard(props){
+const FuncCard = (props)=>{
 
     const cardstyle = useSelector(state=>state.cardstyle)
     const {title, iconStyle, kinds} = props
@@ -49,3 +49,5 @@ export default function FuncCard(props){
         </div>
     )
 }
+
+export default memo(FuncCard);

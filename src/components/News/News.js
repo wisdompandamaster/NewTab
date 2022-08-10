@@ -1,7 +1,7 @@
 import './News.css'
 import '../../font/iconfont.css'
 import defaultSetting from '../../config';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
 import FuncModal from '../FuncModal/FuncModal';
 import { Modal, Tooltip, Tabs, List, Typography} from 'antd';
@@ -265,7 +265,7 @@ function NewsDetail(props){     //热榜二级页面右边的列表
     
 }
 
-export default function News(){  
+const News = ()=>{  
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const { TabPane } = Tabs;
@@ -304,3 +304,5 @@ export default function News(){
         </>
     )
 }
+
+export default memo(News);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import './MottoFooter.css'
 import { message } from 'antd'
 import { useSelector } from 'react-redux'
@@ -7,7 +7,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 //这里总结一下localStorage用法
 
 
-export default function MottoFooter(){  //格言脚注
+const MottoFooter = ()=>{  //格言脚注
 
     //const [footerset, setFooterSet] = useLocalStorage('footerset',{})
     const [motto, setMotto] = useState({})        //之后添加左键复制，右键刷新,或者添加菜单
@@ -53,3 +53,5 @@ export default function MottoFooter(){  //格言脚注
         </div>
     )
 }
+
+export default memo(MottoFooter); //防止父组件背景改变时引发的重复渲染

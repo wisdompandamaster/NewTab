@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,memo } from 'react';
 import Calendar from 'react-calendar';
 import './CalComponent.css';
 import {useSelector, useDispatch} from 'react-redux';
@@ -1980,4 +1980,4 @@ function CalComponent() {
   );
 }
 
-export default CalComponent;
+export default memo(CalComponent);

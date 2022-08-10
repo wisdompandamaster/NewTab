@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
 import useScript from "../../hooks/useScript";
 import "./plugin.js"
@@ -45,4 +45,4 @@ const Weather = () =>{
         </div>
     )
 }
-export default Weather;
+export default memo(Weather);

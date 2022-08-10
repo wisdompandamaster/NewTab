@@ -1,7 +1,7 @@
 import './CountDown.css';
 import { Modal } from 'antd';
 import { EditableProTable } from '@ant-design/pro-components';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import useLocalStorage from "../../hooks/useLocalStorage";
 import FuncCard from '../FuncCard/FuncCard';
 import FuncModal from '../FuncModal/FuncModal';
@@ -21,8 +21,8 @@ import FuncModal from '../FuncModal/FuncModal';
  
 
 
-//一个想法，把顶部的时间变成倒计时，可选
-export default function CountDown(){
+//TODO:一个想法，把顶部的时间变成倒计时，可选 2022.8.10
+const CountDown = ()=>{
 
     const temp = []
     
@@ -243,3 +243,5 @@ export default function CountDown(){
     )
 
 }
+
+export default memo(CountDown);

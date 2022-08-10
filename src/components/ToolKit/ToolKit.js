@@ -1,6 +1,6 @@
 import './ToolKit.css'
 import FuncCard from '../FuncCard/FuncCard'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { GlobalOutlined, HddOutlined } from '@ant-design/icons'
 import { Tooltip } from 'antd';
 
@@ -64,7 +64,7 @@ function ToolkitBox(props){
 
 
 
-export default function ToolKit(){
+const ToolKit = ()=>{
 
   const [type,setType] = useState(0) 
 
@@ -86,3 +86,5 @@ export default function ToolKit(){
         </FuncCard>
     )
 }
+
+export default memo(ToolKit);

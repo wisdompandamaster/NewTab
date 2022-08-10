@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 import { Pagination, Mousewheel } from "swiper";
 import FunctionAera from '../FunctionAera/FunctionAera';
 import Apps from '../Apps/Apps';
+import { memo } from 'react';
 
-export default function SwiperAera(){
+const SwiperAera = ()=>{
     const clear = useSelector(state=>state.clear)
     let display = clear? 'none':'block'
 
@@ -36,3 +37,5 @@ export default function SwiperAera(){
       </div>
     )
 }
+
+export default memo(SwiperAera);  //memo防止由父组件引发的不必要重复渲染

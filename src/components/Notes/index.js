@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {Modal, Button, message} from 'antd';
+import React, { useState, useEffect, memo } from "react";
+import { Button, message} from 'antd';
 import MarkdownNotes from "./markdown-notes/index";
 import './index.css';
 import {PlusOutlined} from '@ant-design/icons';
@@ -137,4 +137,4 @@ const Notes = () => {
 };
 
 
-export default Notes;
+export default memo(Notes);

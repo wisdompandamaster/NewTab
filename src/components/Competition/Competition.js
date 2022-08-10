@@ -1,6 +1,6 @@
 import './Competition.css'
 import defaultSetting from '../../config';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
 
 //无比赛页面
@@ -77,7 +77,7 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
     )
 }
 
-export default function Competition(){
+const Competition = ()=>{
 
     const [type,setType] = useState(0)          //比赛类型
     const [game,setGame] = useState([])
@@ -116,3 +116,5 @@ export default function Competition(){
         </>
     )
 }
+
+export default memo(Competition);

@@ -1,6 +1,6 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 
 
@@ -56,7 +56,7 @@ function Search(){  //搜索框
     )
 }
 
-export default function ClockSearch(){     //时间显示 + 搜索框
+const ClockSearch = ()=>{     //时间显示 + 搜索框
 
     const [now, setNow] = useState(new Date())
 
@@ -99,3 +99,5 @@ export default function ClockSearch(){     //时间显示 + 搜索框
         </div>
     )
 }
+
+export default memo(ClockSearch);

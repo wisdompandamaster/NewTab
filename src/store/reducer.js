@@ -90,7 +90,7 @@ const defalutState = {
      currentbg:localStorage.getItem('currentbg')||'background/bg9.png',
      mybglist:localStorage.getItem('mybglist')? JSON.parse(localStorage.getItem('mybglist')):[],
      onlineimglist:['background/bg1.jpg','background/bg2.jpg','background/bg3.jpg','background/bg4.jpg','background/bg5.jpg','background/bg6.jpg','background/bg7.jpg','background/bg8.jpg','background/bg9.png','background/bg10.jpg','background/bg11.jpg','background/bg12.jpg','background/bg13.jpg','background/bg14.jpg','background/bg15.jpg','background/bg16.jpg','background/bg17.jpg','background/bg18.jpg'],
-     clear:0,
+     clear:1,
      TodoDatePos:new Date().toLocaleDateString(),
      TodoDates:[],
      // apps

@@ -1,5 +1,5 @@
 import './SetFunctionArea.css'
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Button, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
@@ -14,10 +14,11 @@ import Competition from '../../Competition/Competition'
 import CountDown from '../../CountDown/CountDown'
 import ServerMonitor from '../../ServerMonitor/ServerMonitor'
 import ToolKit from '../../ToolKit/ToolKit'
-import Demos from '../../Demos/Demos';
+import Demos from '../../Demos/Demos'
+import Memo from '../../Memo/Memo'
 
 
-export default function SetFunctionArea(){
+const SetFunctionArea = ()=>{
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -33,7 +34,8 @@ export default function SetFunctionArea(){
                {id:7, node:<Competition/>},
                {id:8, node:<ServerMonitor/>},
                {id:9, node:<ToolKit/>},
-               {id:10, node:<Demos/>}
+               {id:10, node:<Demos/>},
+               {id:11, node:<Memo/>}
               ]
     
       const showModal = () => {
@@ -107,4 +109,5 @@ export default function SetFunctionArea(){
     )
 }
 
- 
+
+export default memo(SetFunctionArea);

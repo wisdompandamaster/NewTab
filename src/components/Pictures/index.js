@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import defaultSetting from '../../config';
 import { Carousel, Modal, Table, Upload, Button, Image, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
@@ -160,4 +160,4 @@ const Pictures = () => {
 }
 
 
-export default Pictures;
+export default memo(Pictures);

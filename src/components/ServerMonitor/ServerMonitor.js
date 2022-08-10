@@ -1,9 +1,9 @@
 import './ServerMonitor.css';
 import FuncCard from '../FuncCard/FuncCard';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import md5 from 'js-md5';
 
-export default function ServerMonitor(){
+const ServerMonitor = ()=>{
 
     const [type,setType] = useState(0) 
 
@@ -40,3 +40,5 @@ export default function ServerMonitor(){
     )
 
 }
+
+export default memo(ServerMonitor);
