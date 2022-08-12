@@ -31,10 +31,9 @@ const FuncModal = (props)=>{
         });
       };
     
-     const handleContextMenu = (e)=>{
-          console.log('stop prop')
+    const handleContextMenu = (e)=>{
           e.stopPropagation();
-      }
+    }
 
     return (
         <div onContextMenu={(e)=>handleContextMenu(e)}>
