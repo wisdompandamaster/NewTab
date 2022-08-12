@@ -210,8 +210,48 @@
    }
 
 div.todo{
-     width:100%;
+     width:90%;
      height: 2px;
+     margin-top:-2px;
      border-radius: 1rem;
      background-color: #FF4848;
    }
+.cal-item{
+    height:20px;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.cal-detail{
+    width:60%;
+    margin-bottom: 2%;
+    background-color: #f0f0f088;
+    font-size: 25px;
+}
+.cal-detail-item{
+    height:60px;
+    font-weight:700;
+    font-size: 25px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+}
+.is-work{
+    position:absolute;
+    width:20px;
+    height:20px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 700;
+    color:#fff;
+    background:#4ed5f7;
+    right:0;
+    top:3px;
+}
+.work{
+   background:#f74e4e;
+}

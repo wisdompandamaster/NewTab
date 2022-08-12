@@ -19,6 +19,7 @@
     "highlight.js": "^11.4.0",
     "immutability-helper": "^3.1.1",
     "js-md5": "^0.7.3",
+    "lunar-javascript": "^1.2.33",
     "markdown-it": "^12.3.2",
     "minio": "^7.0.26",
     "react": "^17.0.2",

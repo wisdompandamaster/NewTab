@@ -17,6 +17,7 @@ import ToolKit from '../../ToolKit/ToolKit'
 import Demos from '../../Demos/Demos'
 import Memo from '../../Memo/Memo'
 
+//FIXME:style have some problem
 
 const SetFunctionArea = ()=>{
 

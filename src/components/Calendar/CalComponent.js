@@ -18,12 +18,15 @@ export const accessWeekday = {
     "6": "星期六"
 }
 
+const {Solar, Lunar, HolidayUtil} = require('lunar-javascript')
+
+
 function CalComponent() {
 
   const [date, setDate] = useState(new Date());
   const TodoDates = useSelector(state=>state.TodoDates)
   const dispatch = useDispatch()
-
+  
   const handleTodoDatePos = (date)=>{
      let TodoDatePos = date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate()
      dispatch({
@@ -89,8 +92,11 @@ function CalComponent() {
             </div>
             <div className='cal-right'>
                 <Calendar
-                    tileContent={({ activeStartDate, date, view }) => view === 'month' && (TodoDates.includes(date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate())) ? <div className='todo'></div> : null}
+                    tileContent={({ activeStartDate, date, view }) => 
+                    // view === 'month' && 
+                    (TodoDates.includes(date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate())) ? <div className='todo'></div> : null}
                     locale="en-GB"
+                    tileClassName="cal-item"
                     onChange={setDate} value={date} 
                     onClickDay={(date, event) => handleTodoDatePos(date)}
                 />
@@ -105,7 +111,44 @@ function CalComponent() {
         width={'50vw'}
       >
         <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
-        <ActivityCalendar
+        <Calendar
+             className="cal-detail"
+             tileClassName="cal-detail-item"
+             tileContent={({ activeStartDate, date, view }) => {
+              if(view == 'month'){
+
+              //获取日期
+              let year = date.getFullYear().toString()
+              let month = (date.getMonth() + 1).toString() 
+              let day = date.getDate().toString()
+
+              let d = HolidayUtil.getHoliday(year, month, day);  //获取法定节假日
+              let l = Lunar.fromDate(date);  
+              let holidays = l.getFestivals()  //获取阳历节日
+              console.log(holidays)
+              let lunar = l.getDayInChinese()  //获取农历
+              let n = holidays.length === 0 ? "" :  //切换农历和节日
+                <div style={{color:'#f74e4e'}}>{
+                   holidays.map((item)=>
+                     item
+                   )
+                }</div>
+              
+              // let h = d ? (d.getTarget() == date ? <div style={{color:'#f74e4e'}}>{d.getName()}</div>:""):''
+
+              return (
+                <div style={{fontSize:'15px',fontWeight:'700'}}>
+                  {n||lunar}
+                  {
+                    d ? (d.isWork() ? <div className="is-work work">班</div>:(<div className="is-work">休</div>)) : ""
+                  }
+                  
+                </div>
+              )
+                } 
+             }}
+           />
+        {/* <ActivityCalendar
           data={[
     {
       count: 0,
@@ -1971,9 +2014,9 @@ function CalComponent() {
     level3: '#F73859',
     level4: '#384259'
           }}
-         />
+         /> */}
            <GitHubCalendar username="wisdompandamaster" />
-           <GitHubCalendar username="peng-zhihui" />
+           {/* <GitHubCalendar username="peng-zhihui" /> */}
         </div>
       </FuncModal>
     </>
