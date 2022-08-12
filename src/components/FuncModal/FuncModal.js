@@ -31,8 +31,13 @@ const FuncModal = (props)=>{
         });
       };
     
+     const handleContextMenu = (e)=>{
+          console.log('stop prop')
+          e.stopPropagation();
+      }
 
     return (
+        <div onContextMenu={(e)=>handleContextMenu(e)}>
         <Modal 
         title={props.title}
         width={props.width}
@@ -57,6 +62,7 @@ const FuncModal = (props)=>{
         >
             {props.children}
         </Modal>
+        </div>
     )
 }
 
