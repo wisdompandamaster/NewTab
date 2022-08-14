@@ -26,6 +26,12 @@ function CalComponent() {
   const [date, setDate] = useState(new Date());
   const TodoDates = useSelector(state=>state.TodoDates)
   const dispatch = useDispatch()
+
+  let l = Lunar.fromDate(date); //获取每日其它信息
+  let s = Solar.fromDate(date);
+  let lh = l.getFestivals().concat(l.getOtherFestivals());
+  let sh = s.getFestivals().concat(s.getOtherFestivals());
+  let i = lh.concat(sh);
   
   const handleTodoDatePos = (date)=>{
      let TodoDatePos = date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate()
@@ -124,21 +130,21 @@ function CalComponent() {
               let day = date.getDate().toString()
 
               let d = HolidayUtil.getHoliday(year, month, day);  //获取法定节假日
+              let s = Solar.fromDate(date);
               let l = Lunar.fromDate(date);  
-              let holidays = l.getFestivals()  //获取阳历节日
+              let l_holidays = l.getFestivals()  //获取阴历节日
+              let s_holidays = s.getFestivals()  //获取阳历节日
+              let i_holidays = l_holidays.concat(s_holidays);
               let lunar = <div style={{color:'black'}}>{l.getDayInChinese()}</div>  //获取农历
               let jq = l.getJieQi()
-              let n = holidays.length === 0 ? "" :  //切换农历和节日
-                   holidays.map((item)=>
-                     item
-                   )
-                
-              
+              let n = i_holidays.length === 0 ? "" : i_holidays[0].replace('万圣节前夜','万圣夜') //切换农历和节日，替换(万圣节前夜 为 万圣夜 如果有的话)
               // let h = d ? (d.getTarget() == date ? <div style={{color:'#f74e4e'}}>{d.getName()}</div>:""):''
 
               return (
-                <div style={{fontSize:'15px',fontWeight:'700',color:'#f74e4e'}}>
-                  {jq||n||lunar}
+                <div style={{fontSize:'15px',fontWeight:'700',color:'#f74e4e',width:'98%', 
+                overflow: 'hidden'}}>
+                  {/* 节气 > 节日 > 阴历 */}
+                  {jq||n||lunar}   
                   {
                     d ? (d.isWork() ? <div className="is-work work">班</div>:(<div className="is-work">休</div>)) : ""
                   }
@@ -147,9 +153,22 @@ function CalComponent() {
               )
                 } 
              }}
+             onChange={setDate} value={date}
         />
         <div style={{width:'39%',flex:'1', marginBottom: '2%',borderRadius:'10px',background:"#f0f0f088"}}>
-          <div></div>
+          <div>
+            <div>
+              {i.map((item,index)=>{
+                return (
+                  <span key={index}>{item}</span>
+                )
+              })}
+            </div>
+            <div>
+              本年第几周，第几天
+              月相，物候等 待更新
+            </div>
+          </div>
         </div>
         </div>
         <hr/>

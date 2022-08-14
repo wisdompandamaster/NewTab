@@ -38,7 +38,7 @@ function Search(){  //搜索框
             <button placeholder='hello' className={'engine' + cardstyles[cardstyle]}><span style={{color:'grey'}} className={'iconfont'+' '+(icons[select])}></span>
             {/* <span className="icon-downArrow iconfont"></span> */}
             </button> 
-           
+
             <ul className={'engineList' + cardstyles[cardstyle]}> 
                 <li onMouseDown={(e)=> change(0,e)}><span className="icon-google iconfont"></span> 谷 歌</li>  {/*onClick 在失焦之后，不起作用，用onMouseDown*/}
                 <li onMouseDown={(e)=> change(1,e)}><span className="icon-baidu iconfont"></span> 百 度 </li>
@@ -50,7 +50,14 @@ function Search(){  //搜索框
             {/* 中间 */}
             <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={(e)=>setQuery(e.target.value)} value={query} placeholder='输入并查找'/> 
             {/* 右边 */}
+            <div className='presearch-list'>
+                helloworld
+            </div>
+            
             <span onClick={()=>{search(urls[select],query)}} className="icon-sousuo iconfont"></span>
+
+
+            
         </div>  
         
     )
