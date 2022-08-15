@@ -33,10 +33,10 @@ function Search(){  //搜索框
     }
      
     const search = (url, text)=>{
+        setPreSearch([])
         const w = window.open('_black')
         w.location.href = url + text
         setQuery('')
-        setPreSearch([])
     }
 
     const handleChange = (e)=>{

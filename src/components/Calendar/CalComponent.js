@@ -7,7 +7,7 @@ import FuncCard from '../FuncCard/FuncCard';
 import FuncModal from '../FuncModal/FuncModal';
 import GitHubCalendar from 'react-github-calendar';
 import ActivityCalendar from 'react-activity-calendar';
-import { Solar, Lunar, HolidayUtil } from 'lunar-javascript';
+import { Solar, Lunar, HolidayUtil, SolarWeek, SolarUtil } from 'lunar-javascript';
 
 export const accessWeekday = {
     "0": "星期日",
@@ -27,11 +27,23 @@ function CalComponent() {
   const TodoDates = useSelector(state=>state.TodoDates)
   const dispatch = useDispatch()
 
+   //获取日期
+  let year = date.getFullYear() 
+  let month = (date.getMonth() + 1)  
+  let day = date.getDate() 
   let l = Lunar.fromDate(date); //获取每日其它信息
   let s = Solar.fromDate(date);
   let lh = l.getFestivals().concat(l.getOtherFestivals());
   let sh = s.getFestivals().concat(s.getOtherFestivals());
-  let i = lh.concat(sh);
+  let i = lh.concat(sh); //阳历和阴历的各种信息
+  let sw = SolarWeek.fromDate(date,1).getIndexInYear(); //本年第几周
+  let sd = SolarUtil.getDaysInYear(year, month, day);  //本年第几天
+  let ygz = l.getYearInGanZhi(); //年干支
+  let mgz = l.getMonthInGanZhi(); //月干支
+  let dgz = l.getDayInGanZhi(); //地干支
+  let yx = l.getYueXiang(); //月相
+  let wh = l.getWuHou(); //物候
+  let jqwh = l.getHou(); //节气 + 第几候
   
   const handleTodoDatePos = (date)=>{
      let TodoDatePos = date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate()
@@ -123,12 +135,9 @@ function CalComponent() {
              tileClassName="cal-detail-item"
              tileContent={({ activeStartDate, date, view }) => {
               if(view == 'month'){
-
-              //获取日期
               let year = date.getFullYear().toString()
               let month = (date.getMonth() + 1).toString() 
               let day = date.getDate().toString()
-
               let d = HolidayUtil.getHoliday(year, month, day);  //获取法定节假日
               let s = Solar.fromDate(date);
               let l = Lunar.fromDate(date);  
@@ -156,17 +165,30 @@ function CalComponent() {
              onChange={setDate} value={date}
         />
         <div style={{width:'39%',flex:'1', marginBottom: '2%',borderRadius:'10px',background:"#f0f0f088"}}>
-          <div>
-            <div>
+          <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center'}}>
+            <div className='date-order'>
+              本年第 <span> {sw} </span> 周，第 <span> {sd} </span> 天
+            </div>
+            <hr/>
+            <div className='date-info'>
+              <span>节日</span>
               {i.map((item,index)=>{
                 return (
                   <span key={index}>{item}</span>
                 )
               })}
             </div>
-            <div>
-              本年第几周，第几天
-              月相，物候等 待更新
+            <div className='date-info'>
+              <span>干支</span>
+              <span>{ygz + '(年)'}</span><span>{mgz + '(月)'}</span><span>{dgz + '(日)'}</span>
+            </div>
+            <div className='date-info'>
+              <span>月相</span>
+              <span>{yx+'月'}</span>
+            </div>
+            <div className='date-info'>
+              <span>节气 物候</span>
+              <span>{jqwh}</span><span>{wh}</span>
             </div>
           </div>
         </div>
