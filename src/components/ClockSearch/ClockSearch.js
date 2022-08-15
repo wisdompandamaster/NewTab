@@ -1,7 +1,9 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
+import fetchJsonp from 'fetch-jsonp'
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+// import { CodepenOutlined } from '@ant-design/icons'
 
 
 function Search(){  //搜索框
@@ -13,8 +15,9 @@ function Search(){  //搜索框
     let top = clear? '14vh':'0vh'
     const [select, setSelect] = useState(1)
     const [query, setQuery] = useState('')
-    let icons = ['icon-google','icon-baidu','icon-biying','icon-bilibili-copy-copy','icon-zhihu','icon-github']
-    let urls = [
+    const [presearch, setPreSearch] = useState([])
+    const icons = ['icon-google','icon-baidu','icon-biying','icon-bilibili-copy-copy','icon-zhihu','icon-github']
+    const urls = [
         'https://www.google.com/search?q=',
         'https://www.baidu.com/s?tn=44004473_38_oem_dg&ie=utf-8&wd=',
         'https://cn.bing.com/search?q=',
@@ -22,8 +25,10 @@ function Search(){  //搜索框
         'https://www.zhihu.com/search?type=content&q=',
         'https://github.com/search?q='
     ]
-    const change = (n,e)=>{
-        console.log(n)
+    const preUrl = ['https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=7548,32606,1463,31254,32046,32672,32116,7564,32692,26350&wd=']
+     
+
+    const change = (n,e)=>{ 
         setSelect(n)
     }
      
@@ -31,7 +36,21 @@ function Search(){  //搜索框
         const w = window.open('_black')
         w.location.href = url + text
         setQuery('')
+        setPreSearch([])
     }
+
+    const handleChange = (e)=>{
+        setQuery(e.target.value);
+        const getPreSearchList = ()=>{ 
+
+        fetchJsonp(preUrl[0] + e.target.value,{jsonpCallback:'cb'})
+         .then((res)=>res.json())
+         .then((json)=>{json.g ? setPreSearch(json.g):setPreSearch([])})
+        }
+        // fetch(preUrl[1]+e.target.value).then((res)=>{res.json()})
+        getPreSearchList();
+    }
+
     return (
         <div style={{top:top}} className={'search' + cardstyles[cardstyle]}>
             {/* 左边 */}
@@ -48,16 +67,21 @@ function Search(){  //搜索框
                 <li onMouseDown={(e)=> change(5,e)}><span className="icon-github iconfont"></span> Github </li>
             </ul>
             {/* 中间 */}
-            <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={(e)=>setQuery(e.target.value)} value={query} placeholder='输入并查找'/> 
+            <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={handleChange} value={query} placeholder='输入并查找'/> 
             {/* 右边 */}
+            {/* 搜索联想词 */}
             <div className='presearch-list'>
-                helloworld
+                {
+                    presearch.map((item,index)=>{
+                        return (
+                            <div key={index} onMouseDown={()=>{search(urls[select],item.q)}}><div>{item ? item.q:''}</div></div>
+                        )
+                    })
+                }
             </div>
-            
+
             <span onClick={()=>{search(urls[select],query)}} className="icon-sousuo iconfont"></span>
 
-
-            
         </div>  
         
     )
