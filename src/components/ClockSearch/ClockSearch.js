@@ -1,6 +1,7 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
 import fetchJsonp from 'fetch-jsonp'
+import { TranslationOutlined, SearchOutlined, FileExcelFilled } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 // import { CodepenOutlined } from '@ant-design/icons'
@@ -14,6 +15,7 @@ function Search(){  //搜索框
 
     let top = clear? '14vh':'0vh'
     const [select, setSelect] = useState(1)
+    const [preselect, setPreSelect] = useState(0)
     const [query, setQuery] = useState('')
     const [presearch, setPreSearch] = useState([])
     const icons = ['icon-google','icon-baidu','icon-biying','icon-bilibili-copy-copy','icon-zhihu','icon-github']
@@ -27,7 +29,6 @@ function Search(){  //搜索框
     ]
     const preUrl = ['https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=7548,32606,1463,31254,32046,32672,32116,7564,32692,26350&wd=']
      
-
     const change = (n,e)=>{ 
         setSelect(n)
     }
@@ -40,6 +41,7 @@ function Search(){  //搜索框
     }
 
     const handleChange = (e)=>{
+        setPreSelect(0)
         setQuery(e.target.value);
         const getPreSearchList = ()=>{ 
 
@@ -49,6 +51,42 @@ function Search(){  //搜索框
         }
         // fetch(preUrl[1]+e.target.value).then((res)=>{res.json()})
         getPreSearchList();
+    }
+
+    const translate = (text)=>{
+        setPreSearch([])
+        const w = window.open('_black')
+        w.location.href = 'https://translate.google.cn/?sl=auto&tl=en&text='+ text + '&op=translate' 
+        setQuery('')
+    }
+
+    const inputKeyDown = (e) =>{
+        //FIXME:上下按键还有问题，加入防抖
+        e.key !== 'ArrowUp' || e.preventDefault();   //防止按上键时光标跑到左边
+        console.log(e.key)
+         
+        switch(e.key){
+            case 'Enter':
+                search(urls[select],query);
+                break;
+            case 'ArrowUp':
+                setPreSelect(preselect - 1);
+                // setQuery(presearch[preselect + 1].q)
+                break;
+            case 'ArrowDown':
+                setPreSelect(preselect + 1);
+                // setQuery(presearch[preselect + 1].q)
+                break;
+            default:
+                break;
+        }
+        if(preselect < 0){
+            setPreSelect(presearch.length + 1)
+        }
+        else if(preselect >= presearch.length + 1){
+            setPreSelect(1)
+        }
+        console.log(preselect)
     }
 
     return (
@@ -67,14 +105,25 @@ function Search(){  //搜索框
                 <li onMouseDown={(e)=> change(5,e)}><span className="icon-github iconfont"></span> Github </li>
             </ul>
             {/* 中间 */}
-            <input onKeyDown={(e)=>{if(e.key==='Enter') search(urls[select],query)}} type='text' onChange={handleChange} value={query} placeholder='输入并查找'/> 
+            <input 
+            onKeyDown={(e)=>{inputKeyDown(e)}} 
+            type='text' onChange={handleChange} value={query} placeholder='输入并查找'/> 
             {/* 右边 */}
             {/* 搜索联想词 */}
             <div className='presearch-list'>
                 {
+                    query ? <div className={1 === preselect ? 'pre-hover':''} onMouseDown={()=>translate(query)} style={{paddingLeft:'1.5%'}}><TranslationOutlined /><div className={1 === preselect ? 'pre-div-hover':''} style={{display:'inline-block'}}>{ query }</div></div> : ''
+                }
+                {
                     presearch.map((item,index)=>{
+                        if(index + 2 === preselect && query !== item.q){
+                            setQuery(item.q)
+                        }
+                        // let selected = 1;
                         return (
-                            <div key={index} onMouseDown={()=>{search(urls[select],item.q)}}><div>{item ? item.q:''}</div></div>
+                            <div key={index} className={index + 2 === preselect ? 'pre-hover':''} onMouseDown={()=>{search(urls[select],item.q)}}> <SearchOutlined />
+                            <div className={index + 2 === preselect ? 'pre-div-hover':''} style={{display:'inline-block'}}>{item ? item.q:''}</div>
+                            </div>
                         )
                     })
                 }
