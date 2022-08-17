@@ -1,10 +1,22 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
 import fetchJsonp from 'fetch-jsonp'
-import { TranslationOutlined, SearchOutlined, FileExcelFilled } from '@ant-design/icons'
+import { TranslationOutlined, SearchOutlined } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 // import { CodepenOutlined } from '@ant-design/icons'
+
+let t = null;
+function debounce(fn, time){    //防抖函数
+  return function(){
+    if(t){
+      clearTimeout(t);
+    }
+    t = setTimeout(()=>{
+      fn.apply(this,arguments)
+    },time);
+  }
+}
 
 
 function Search(){  //搜索框
@@ -50,7 +62,7 @@ function Search(){  //搜索框
          .then((json)=>{json.g ? setPreSearch(json.g):setPreSearch([])})
         }
         // fetch(preUrl[1]+e.target.value).then((res)=>{res.json()})
-        getPreSearchList();
+        debounce(getPreSearchList, 300)();
     }
 
     const translate = (text)=>{
@@ -61,32 +73,31 @@ function Search(){  //搜索框
     }
 
     const inputKeyDown = (e) =>{
-        //FIXME:上下按键还有问题，加入防抖
         e.key !== 'ArrowUp' || e.preventDefault();   //防止按上键时光标跑到左边
-        console.log(e.key)
-         
         switch(e.key){
             case 'Enter':
-                search(urls[select],query);
+                if(preselect === 1){
+                    translate(query)
+                }
+                else{
+                    search(urls[select],query);
+                }
                 break;
             case 'ArrowUp':
                 setPreSelect(preselect - 1);
-                // setQuery(presearch[preselect + 1].q)
                 break;
             case 'ArrowDown':
                 setPreSelect(preselect + 1);
-                // setQuery(presearch[preselect + 1].q)
                 break;
             default:
                 break;
         }
-        if(preselect < 0){
+        if(preselect <= 1 && e.key === 'ArrowUp'){
             setPreSelect(presearch.length + 1)
         }
-        else if(preselect >= presearch.length + 1){
+        else if(preselect >= presearch.length + 1 && e.key === 'ArrowDown'){
             setPreSelect(1)
         }
-        console.log(preselect)
     }
 
     return (
