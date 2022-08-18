@@ -12,6 +12,7 @@ import ServerMonitor from '../ServerMonitor/ServerMonitor'
 import ToolKit from '../ToolKit/ToolKit'
 import Demos from '../Demos/Demos'
 import Memo from '../Memo/Memo'
+import YearToday from '../FuncModule/YearToday/YearToday'
 
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -20,7 +21,7 @@ import { memo, useEffect, useState } from 'react'
 import {  Button } from 'antd'
 import { CloseOutlined } from '@ant-design/icons'
 
-//TODO: 1.服务器性能监控模块，2. 前端工具箱模块，3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能  7. 添加一个类似github的贡献墙
+//TODO: 1.服务器性能监控模块，2. 前端工具箱模块 3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能 7. 那年今日 8.桌面宠物或者人偶
 
 const funcs = [{id:0, node:<News/>},
                {id:1, node:<Todo/>},
@@ -33,7 +34,8 @@ const funcs = [{id:0, node:<News/>},
                {id:8, node:<ServerMonitor/>},
                {id:9, node:<ToolKit/>},
                {id:10, node:<Demos/>},
-               {id:11, node:<Memo/>}
+               {id:11, node:<Memo/>},
+               {id:12, node:<YearToday/>}
               ]
 
 //测试上传

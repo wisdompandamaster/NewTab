@@ -16,6 +16,7 @@ import ServerMonitor from '../../ServerMonitor/ServerMonitor'
 import ToolKit from '../../ToolKit/ToolKit'
 import Demos from '../../Demos/Demos'
 import Memo from '../../Memo/Memo'
+import YearToday from '../../FuncModule/YearToday/YearToday';
 
 //FIXME:style have some problem
 
@@ -36,7 +37,8 @@ const SetFunctionArea = ()=>{
                {id:8, node:<ServerMonitor/>},
                {id:9, node:<ToolKit/>},
                {id:10, node:<Demos/>},
-               {id:11, node:<Memo/>}
+               {id:11, node:<Memo/>},
+               {id:12, node:<YearToday/>}
               ]
     
       const showModal = () => {

@@ -28,10 +28,10 @@ const SwiperAera = ()=>{
         modules={[Pagination,Mousewheel]}
        >
         <SwiperSlide>
-            <FunctionAera/>
+           <Apps/>
         </SwiperSlide>
         <SwiperSlide>
-            <Apps/>
+           <FunctionAera/>    
         </SwiperSlide>
       </Swiper>
       </div>
