@@ -95,12 +95,12 @@
   margin-top: 24px;
 }
 
-.about-title {
+/* .about-title {
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 2px;
   user-select: none;
-}
+} */
 .about-member {
   display: flex;
   justify-content: space-between;

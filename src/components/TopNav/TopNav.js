@@ -139,7 +139,7 @@ function ContactUs() {
 function About() {
   return (
     <div className="about">
-      <div className="about-title">菜有什么不队</div>
+      {/* <div className="about-title">菜有什么不队</div> */}
       <div className="about-member">
         <div>唐 琦</div>
         <div>时昕昱</div>
