@@ -7,7 +7,7 @@ export default function YearToday(){
     const [yearToday, setYearToday] = useState([])
 
     let month = ((new Date()).getMonth() + 1).toString().padStart(2,'0')
-    let day = 'S' + month + ((new Date()).getDay()).toString().padStart(2,'0')
+    let day = 'S' + month + ((new Date()).getDate()).toString().padStart(2,'0')
 
     //那年今日 api
     let url = 'https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history@latest/baiduhistory/json/'+ month + '.json'
@@ -29,8 +29,8 @@ export default function YearToday(){
         >
             <div className='year-today-container' onWheelCapture={handleWheelCapture}>
                 {
-                    yearToday.map((item, index)=>{
-                        console.log(item);
+                    yearToday && yearToday.map((item, index)=>{
+        
                         //返回的字符串转为 dom节点
                         return (
                         <div className='year-today-item'>
