@@ -41,8 +41,6 @@
     letter-spacing: 0px;
 }
 
-
-
 /* 滚动条样式 */
 .countdown_content::-webkit-scrollbar{
     width: 0px;
