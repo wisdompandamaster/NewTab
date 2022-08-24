@@ -23,10 +23,10 @@ export default function YearToday(){
         // e.preventDefault();
           e.stopPropagation();
           console.log(e)
-          if(e.deltaY > 0){
+          if(e.deltaY > 0 && itemIndex < yearToday.length - 1){
              setItemIndex(itemIndex + 1);
           }
-          if(e.deltaY < 0){
+          if(e.deltaY < 0 && itemIndex >= 1){
             setItemIndex(itemIndex - 1);
          }
     } 
