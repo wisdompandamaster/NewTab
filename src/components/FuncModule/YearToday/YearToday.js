@@ -38,19 +38,15 @@ export default function YearToday(){
         >
             <div className='year-today-container' onWheelCapture={handleWheelCapture}>
                 {
-                    //TODO: 添加滑动动画
-                    // yearToday && yearToday.map((item, index)=>{
-        
-                    //     //返回的字符串转为 dom节点
-                    //     return (
+                    //TODO: 添加滑动时出现切换动画
+                    
                         yearToday[itemIndex] && (
-                        <div className='year-today-item'>
+                        <div id='slide' className={'year-today-item slidein'}>
                         <div style={{color:'#0006',fontStyle:'italic',fontWeight:500}}>A.D.{yearToday[itemIndex].year}</div>
                         <div dangerouslySetInnerHTML={{__html: yearToday[itemIndex].title}}>
                         </div>
                         </div>)
-                    //     )
-                    // })
+                    
                 }
             </div>
         </FuncCard>

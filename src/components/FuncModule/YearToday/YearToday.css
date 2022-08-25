@@ -5,7 +5,6 @@
     border-radius: 10px;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-
 }
 
 .year-today-item{
@@ -13,12 +12,28 @@
     letter-spacing: 3px;
     font-size: 1.3rem;
     padding:5px 10px;
-    /* border: 1px solid black; */
     scroll-snap-align: end;
     font-weight: 700;
+    position: absolute;
+    top:50px;
+}
+
+.slidein{
+    animation:slidein 1s;
 }
 
 /* 滚动条样式 */
 .year-today-container::-webkit-scrollbar{
     width: 0px;
+}
+
+@keyframes slidein {
+    0% {
+        opacity: 0;
+        top:70px;
+    }  
+    100% {
+        opacity: 1;
+        top:50px;
+    }  
 }
