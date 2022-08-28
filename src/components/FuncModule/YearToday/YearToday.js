@@ -40,13 +40,26 @@ export default function YearToday(){
                 {
                     //TODO: 添加滑动时出现切换动画
                     
-                        yearToday[itemIndex] && (
-                        <div id='slide' className={'year-today-item slidein'}>
-                        <div style={{color:'#0006',fontStyle:'italic',fontWeight:500}}>A.D.{yearToday[itemIndex].year}</div>
-                        <div dangerouslySetInnerHTML={{__html: yearToday[itemIndex].title}}>
-                        </div>
-                        </div>)
-                    
+                        //上面这种 itemIndex 的做法只有第一次出现有动画
+                        // yearToday[itemIndex] && (
+                        // <div id='slide' className={'year-today-item slidein'}>
+                        // <div style={{color:'#0006',fontStyle:'italic',fontWeight:500}}>A.D.{yearToday[itemIndex].year}</div>
+                        // <div dangerouslySetInnerHTML={{__html: yearToday[itemIndex].title}}>
+                        // </div>
+                        // </div>)
+
+                        yearToday && yearToday.map((item, index)=>{
+                        if(index == itemIndex){
+                            return (
+                                <div id='slide' className={'year-today-item slidein'}>
+                                <div style={{color:'#0006',fontStyle:'italic',fontWeight:500}}>A.D.{item.year}</div>
+                                <div dangerouslySetInnerHTML={{__html: item.title}}>
+                                </div>
+                                </div>
+                            )
+                           }
+                          }
+                        )
                 }
             </div>
         </FuncCard>
