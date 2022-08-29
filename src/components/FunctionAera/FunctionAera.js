@@ -13,6 +13,7 @@ import ToolKit from '../ToolKit/ToolKit'
 import Demos from '../Demos/Demos'
 import Memo from '../Memo/Memo'
 import YearToday from '../FuncModule/YearToday/YearToday'
+import TomatoClock from '../FuncModule/TomatoClock/TomatoClock'
 
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {arrayMoveImmutable} from 'array-move'
@@ -35,7 +36,8 @@ const funcs = [{id:0, node:<News/>},
                {id:9, node:<ToolKit/>},
                {id:10, node:<Demos/>},
                {id:11, node:<Memo/>},
-               {id:12, node:<YearToday/>}
+               {id:12, node:<YearToday/>},
+               {id:13, node:<TomatoClock/>}
               ]
 
 //测试上传
