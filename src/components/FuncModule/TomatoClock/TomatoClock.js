@@ -21,7 +21,15 @@ function TomatoClock(){
          title = "番茄时钟"
         >
          <div style={{height:'100%'}} onClick={showModal}>
-            hello
+            <div className='tomato-work'>
+                <div className='tomato-circle'>
+                    <div className='tomato-word'>
+                        <span>100%</span>
+                    </div>
+                </div>
+
+            </div>
+            <div className='rest'></div>
          </div>
         <FuncModal
           title={<div style={{fontSize:'30px',letterSpacing:'10px'}}>设置番茄钟</div>} visible={isModalVisible}  width={'600px'} onCancel={handleCancel}
