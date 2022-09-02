@@ -29,7 +29,11 @@ function TomatoClock(){
                 </div>
 
             </div>
-            <div className='rest'></div>
+            <div className='rest'>
+                <canvas id='rest-circle' width={100} height={100}>
+                Your browser does not support the canvas element.
+                </canvas>
+            </div>
          </div>
         <FuncModal
           title={<div style={{fontSize:'30px',letterSpacing:'10px'}}>设置番茄钟</div>} visible={isModalVisible}  width={'600px'} onCancel={handleCancel}
