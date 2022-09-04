@@ -1,7 +1,7 @@
 import './TomatoClock.css'
 import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 
 function TomatoClock(){
 
@@ -14,6 +14,19 @@ function TomatoClock(){
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    useEffect(()=>{
+        var mycanvas = document.getElementById('rest-circle')
+        var ctx = mycanvas.getContext('2d')
+
+        //找到画布的中心点
+        var canvasX = mycanvas.width / 2;
+        var canvasY = mycanvas.height / 2;
+        //一圈360度分成100份
+        var progress = Math.PI * 2 / 100;
+        //指定初始步长
+        var steps = 0;
+    },[])
   
 
     return (
