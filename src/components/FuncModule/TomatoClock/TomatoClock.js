@@ -25,7 +25,11 @@ function TomatoClock(){
         //一圈360度分成100份
         var progress = Math.PI * 2 / 100;
         //指定初始步长
-        var steps = 0;
+        var steps = 20;
+        //画进度环
+        ctx.strokeStyle = "#47cab0"
+        ctx.lineWidth = 20;
+        ctx.save();
     },[])
   
 
@@ -34,14 +38,14 @@ function TomatoClock(){
          title = "番茄时钟"
         >
          <div style={{height:'100%'}} onClick={showModal}>
-            <div className='tomato-work'>
+            {/* <div className='tomato-work'>
                 <div className='tomato-circle'>
                     <div className='tomato-word'>
                         <span>100%</span>
                     </div>
                 </div>
 
-            </div>
+            </div> */}
             <div className='rest'>
                 <canvas id='rest-circle' width={100} height={100}>
                 Your browser does not support the canvas element.
