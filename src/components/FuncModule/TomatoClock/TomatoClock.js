@@ -26,6 +26,16 @@ function TomatoClock(){
         var progress = Math.PI * 2 / 100;
         //指定初始步长
         var steps = 20;
+        //画圆
+        ctx.strokeStyle = "#dddddd"
+        ctx.lineWidth = 20;
+        ctx.save();
+        ctx.beginPath();
+        //半径可以根据lineWidth改
+        ctx.arc(canvasX, canvasY, 90, 0, Math.PI * 2, false);
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
         //画进度环
         ctx.strokeStyle = "#47cab0"
         ctx.lineWidth = 20;
