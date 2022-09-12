@@ -19,6 +19,7 @@
 .clock{
     position:relative;
     display: flex;
+    width:30%;
     text-align: center;
     /* align-items: center; */
     line-height: 12rem;
@@ -30,6 +31,10 @@
     user-select: none;
     transition: .3s ease-in-out;
     height: 12rem;
+}
+.clock:hover{
+    background-color: #0000001A;
+    border-radius: 20px;
 }
 .digitalfont{
     font-family: 'DS-Digital';
