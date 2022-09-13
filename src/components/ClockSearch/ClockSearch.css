@@ -11,18 +11,17 @@
     src: url("../../font/DS-Digital\ Bold.ttf");
   }
 .clockSearch{
-    display:flex;
+    display:flex; 
     flex-direction: column;
     align-items: center;
 }
 
 .clock{
     position:relative;
-    display: flex;
+    /* display: flex; */
     width:30%;
     text-align: center;
     /* align-items: center; */
-    line-height: 12rem;
     font-size: 9rem;
     font-weight: 200;
     color:white;
@@ -36,11 +35,28 @@
     background-color: #0000001A;
     border-radius: 20px;
 }
+.clock-setting{
+    font-size: 1.5rem;
+    visibility: hidden;
+    position:absolute;
+    font-weight: 700;
+    top:5%;
+    right:3%;
+}
+.clock-day{
+    /* position:absolute; */
+    font-size: 1.5rem;
+
+}
+.clock:hover .clock-setting{
+    visibility: visible;
+}
 .digitalfont{
     font-family: 'DS-Digital';
 }
 .h,.m{
     display: inline-block;
+    /* line-height: 12rem; */
     /* font-family: 'DS-Digital'; */
     /* font-size: 100px; */
     width:9rem;

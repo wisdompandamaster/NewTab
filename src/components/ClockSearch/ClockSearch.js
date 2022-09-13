@@ -1,7 +1,7 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
 import fetchJsonp from 'fetch-jsonp'
-import { TranslationOutlined, SearchOutlined } from '@ant-design/icons'
+import { TranslationOutlined, SearchOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 // import { CodepenOutlined } from '@ant-design/icons'
@@ -149,6 +149,8 @@ function Search(){  //搜索框
 
 const ClockSearch = ()=>{     //时间显示 + 搜索框
 
+    const weekdays = ['一','二','三','四','五','六','天']
+
     const [now, setNow] = useState(new Date())
 
     const dispatch = useDispatch()
@@ -161,6 +163,10 @@ const ClockSearch = ()=>{     //时间显示 + 搜索框
         })
     }
 
+    const onSetClock = (e)=>{
+        e.stopPropagation();
+    }
+
     useEffect(()=>{                      //每次渲染都会调用该函数
         const t = setInterval(()=>{
             setNow(new Date())
@@ -170,7 +176,7 @@ const ClockSearch = ()=>{     //时间显示 + 搜索框
         }
     })
 
-    let h = now.getHours(), m = now.getMinutes() >= 10 ? now.getMinutes():"0"+now.getMinutes()
+    let h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0')
 
     const clear = useSelector(state=>state.clear)
     let top = clear? '8vh':'0vh'
@@ -182,11 +188,19 @@ const ClockSearch = ()=>{     //时间显示 + 搜索框
     return (
         <div className='clockSearch'>
         <div style={{top:top}} onClick={()=>onChangeClear()} className={'clock' + digitalfont}>
+        <span className='clock-setting' onClick={(e)=>onSetClock(e)}><UnorderedListOutlined />
+        </span>
+        <div>
             <div className='h'>{h}</div>
             :
             <div className='m'>{m}</div>
         </div>
+        <div className='clock-day'>{now.getFullYear() + " 年 " + (now.getMonth() + 1) + " 月 " + now.getDate() + " 日 "}<span style={{marginLeft:'2%'}}>{"星期" + weekdays[now.getDay()]}</span>
+        </div>
+        </div>
+        <div>
         <Search></Search>
+        </div>
         </div>
     )
 }
