@@ -65,12 +65,7 @@ function CalComponent() {
    const handleCancel = () => {
      setIsModalVisible(false);
    };
-  // const [persistedTodoList] = useLocalStorage(   
-  //   "todoList",
-  //    []
-  // );
-  // 从localstorage获得待办事项数据
-  // const [todos] = useState(persistedTodoList);
+  
    
    
   return (

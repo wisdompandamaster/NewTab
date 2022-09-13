@@ -18,18 +18,22 @@
 
 .clock{
     position:relative;
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width:30%;
     text-align: center;
+    border-radius: 20px;
     /* align-items: center; */
-    font-size: 9rem;
+    font-size: 7.5rem;
     font-weight: 200;
     color:white;
-    display: block;
+    /* display: block; */
     cursor: pointer;
     user-select: none;
     transition: .3s ease-in-out;
-    height: 12rem;
+    height: 13rem;
+    /* padding: 1%; */
 }
 .clock:hover{
     background-color: #0000001A;
@@ -53,6 +57,7 @@
 }
 .digitalfont{
     font-family: 'DS-Digital';
+    font-size: 8.5rem;
 }
 .h,.m{
     display: inline-block;

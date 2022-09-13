@@ -44,7 +44,7 @@ const FuncModal = (props)=>{
         closable={false}
         visible={props.visible}
         mask={true}
-        maskStyle={{backdropFilter:'blur(5px)',backgroundColor:'#0002'}}
+        maskStyle={{backdropFilter:'blur(0px)',backgroundColor:'#0002'}}
         bodyStyle={{background:"#00000000"}}
         onOk={props.onOk}
         footer={null}

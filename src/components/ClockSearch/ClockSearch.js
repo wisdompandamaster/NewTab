@@ -4,6 +4,7 @@ import fetchJsonp from 'fetch-jsonp'
 import { TranslationOutlined, SearchOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+import FuncModal from '../FuncModal/FuncModal'
 // import { CodepenOutlined } from '@ant-design/icons'
 
 let t = null;
@@ -18,6 +19,85 @@ function debounce(fn, time){    //防抖函数
   }
 }
 
+function Clock(){ // 时钟
+
+    const weekdays = ['一','二','三','四','五','六','天']
+
+    const [now, setNow] = useState(new Date())
+
+    const dispatch = useDispatch()
+
+     // modal组件控制函数
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+     // openNotification();
+      setIsModalVisible(true);
+    };
+    const handleOk = () => {
+      setIsModalVisible(false);
+    };
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+    
+    function onChangeClear(){
+        let value = clear? 0:1
+        dispatch({
+            type: 'CHANGE_CLEAR',
+            clear: value
+        })
+    }
+
+    const onSetClock = (e)=>{
+        e.stopPropagation();
+        showModal();
+    }
+
+    useEffect(()=>{                      //每次渲染都会调用该函数
+        const t = setInterval(()=>{
+            setNow(new Date())
+        }) 
+        return () => {                  //每次都执行此函数，清除定时器
+            clearTimeout(t)
+        }
+    })
+
+    let h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0')
+
+    const clear = useSelector(state=>state.clear)
+    let top = clear? '8vh':'0vh'
+
+    const timefont = useSelector(state=>state.timefont)
+
+    const digitalfont = timefont === 2 ? ' digitalfont':''  
+
+    return (
+        <>
+        <div style={{top:top}} onClick={()=>onChangeClear()} className={'clock' + digitalfont}>
+        <span className='clock-setting' onClick={(e)=>onSetClock(e)}><UnorderedListOutlined />
+        </span>
+        <div>
+            <div className='h'>{h}</div>
+            :
+            <div className='m'>{m}</div>
+        </div>
+        <div className='clock-day'>{now.getFullYear() + " 年 " + (now.getMonth() + 1) + " 月 " + now.getDate() + " 日 "}<span style={{marginLeft:'2%'}}>{"星期" + weekdays[now.getDay()]}</span>
+        </div>
+        </div>
+        <FuncModal
+            bodyStyle={{padding:'11px'}}
+            title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>时钟设置</div>}
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            width={'30vw'}
+        >
+            Hello
+        </FuncModal>
+        </>
+    )
+
+}
 
 function Search(){  //搜索框
 
@@ -149,58 +229,10 @@ function Search(){  //搜索框
 
 const ClockSearch = ()=>{     //时间显示 + 搜索框
 
-    const weekdays = ['一','二','三','四','五','六','天']
-
-    const [now, setNow] = useState(new Date())
-
-    const dispatch = useDispatch()
-    
-    function onChangeClear(){
-        let value = clear? 0:1
-        dispatch({
-            type: 'CHANGE_CLEAR',
-            clear: value
-        })
-    }
-
-    const onSetClock = (e)=>{
-        e.stopPropagation();
-    }
-
-    useEffect(()=>{                      //每次渲染都会调用该函数
-        const t = setInterval(()=>{
-            setNow(new Date())
-        }) 
-        return () => {                  //每次都执行此函数，清除定时器
-            clearTimeout(t)
-        }
-    })
-
-    let h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0')
-
-    const clear = useSelector(state=>state.clear)
-    let top = clear? '8vh':'0vh'
-
-    const timefont = useSelector(state=>state.timefont)
-
-    const digitalfont = timefont === 2 ? ' digitalfont':''  
-
     return (
         <div className='clockSearch'>
-        <div style={{top:top}} onClick={()=>onChangeClear()} className={'clock' + digitalfont}>
-        <span className='clock-setting' onClick={(e)=>onSetClock(e)}><UnorderedListOutlined />
-        </span>
-        <div>
-            <div className='h'>{h}</div>
-            :
-            <div className='m'>{m}</div>
-        </div>
-        <div className='clock-day'>{now.getFullYear() + " 年 " + (now.getMonth() + 1) + " 月 " + now.getDate() + " 日 "}<span style={{marginLeft:'2%'}}>{"星期" + weekdays[now.getDay()]}</span>
-        </div>
-        </div>
-        <div>
+        <Clock></Clock>
         <Search></Search>
-        </div>
         </div>
     )
 }
