@@ -19,11 +19,41 @@ function debounce(fn, time){    //防抖函数
   }
 }
 
-function Clock(){ // 时钟
+//显示时间的组件
+function DateTime(props){
 
+    const {timezone, city} = props
     const weekdays = ['一','二','三','四','五','六','天']
+    const [now, setNow] = useState(new Date(Number(new Date())-timezone*60*60*1000))
 
-    const [now, setNow] = useState(new Date())
+    useEffect(()=>{                      //每次渲染都会调用该函数
+        const t = setInterval(()=>{
+            setNow(new Date(Number(new Date())-timezone*60*60*1000))
+        }) 
+        return () => {                  //每次都执行此函数，清除定时器
+            clearTimeout(t)
+        }
+    })
+
+    let h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0')
+
+    return (
+        <div style={{margin:'0 1rem'}}>
+        <div style={{fontSize:'1.5rem',fontWeight:'600',fontFamily:'YaHei'}}>{city}</div>
+        <div>
+            <div className='h'>{h}</div>
+            :
+            <div className='m'>{m}</div>
+        </div>
+        <div className='clock-day'>{now.getFullYear() + " 年 " + (now.getMonth() + 1) + " 月 " + now.getDate() + " 日 "}<span style={{marginLeft:'2%'}}>{"星期" + weekdays[now.getDay()]}</span>
+        </div>
+        </div>
+    )
+
+}
+
+//时钟的功能
+function Clock(){ // 时钟
 
     const dispatch = useDispatch()
 
@@ -53,35 +83,21 @@ function Clock(){ // 时钟
         showModal();
     }
 
-    useEffect(()=>{                      //每次渲染都会调用该函数
-        const t = setInterval(()=>{
-            setNow(new Date())
-        }) 
-        return () => {                  //每次都执行此函数，清除定时器
-            clearTimeout(t)
-        }
-    })
-
-    let h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0')
-
     const clear = useSelector(state=>state.clear)
     let top = clear? '8vh':'0vh'
-
     const timefont = useSelector(state=>state.timefont)
-
     const digitalfont = timefont === 2 ? ' digitalfont':''  
+
 
     return (
         <>
         <div style={{top:top}} onClick={()=>onChangeClear()} className={'clock' + digitalfont}>
         <span className='clock-setting' onClick={(e)=>onSetClock(e)}><UnorderedListOutlined />
         </span>
-        <div>
-            <div className='h'>{h}</div>
-            :
-            <div className='m'>{m}</div>
-        </div>
-        <div className='clock-day'>{now.getFullYear() + " 年 " + (now.getMonth() + 1) + " 月 " + now.getDate() + " 日 "}<span style={{marginLeft:'2%'}}>{"星期" + weekdays[now.getDay()]}</span>
+        <div style={{display:'flex'}}>
+          <DateTime timezone={0} city={'北京'}/>
+          <DateTime timezone={7} city={'伦敦'}/>
+          <DateTime timezone={12} city={'纽约'}/>
         </div>
         </div>
         <FuncModal

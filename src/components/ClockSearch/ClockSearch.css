@@ -20,8 +20,9 @@
     position:relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width:30%;
+    justify-content: center;
+    /* width:30%; */
+    padding:0 3%;
     text-align: center;
     border-radius: 20px;
     /* align-items: center; */
