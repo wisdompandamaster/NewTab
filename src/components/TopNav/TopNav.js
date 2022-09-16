@@ -3,8 +3,6 @@ import '../../font/iconfont.css'
 import SetBackground from '../SetBackground/SetBackground';
 import SetApp from '../Apps/SetApp/SetApp'
 import SetFooter from '../MottoFooter/SetFooter/SetFooter';
-import SetClock from '../ClockSearch/SetClock/SetClock';
-import SetFuncCard from '../FuncCard/SetFuncCard/SetFuncCard';
 import { SetFuncCardStyle } from '../FuncCard/SetFuncCard/SetFuncCard';
 import Account from '../Account/Account'
 import React, { useState, memo } from 'react';
@@ -169,7 +167,6 @@ function SetFunction() {
     <div className='set_function'>
       <SetApp/>
       <SetFooter/>
-      <SetClock/>
       <SetFuncCardStyle/>
       <SetFunctionArea/>
     </div>

@@ -5,6 +5,7 @@ import { TranslationOutlined, SearchOutlined, UnorderedListOutlined } from '@ant
 import { useState, useEffect, memo } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import FuncModal from '../FuncModal/FuncModal'
+import SetClock from './SetClock/SetClock'
 // import { CodepenOutlined } from '@ant-design/icons'
 
 let t = null;
@@ -108,7 +109,7 @@ function Clock(){ // 时钟
             onCancel={handleCancel}
             width={'30vw'}
         >
-            Hello
+           <SetClock/>
         </FuncModal>
         </>
     )

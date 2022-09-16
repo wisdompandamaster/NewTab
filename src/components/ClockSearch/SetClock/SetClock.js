@@ -23,6 +23,7 @@ export default function SetClock(){
 
     return (
         <div>
+            <div style={{display:'flex',justifyContent:'space-between'}}>
             <span>时间样式</span>
             <span>
             <Radio.Group onChange={onChange} value={TimeFont}>
@@ -30,6 +31,16 @@ export default function SetClock(){
             <Radio value={2}>数码</Radio>
             </Radio.Group>
             </span>
+            </div>
+            <div style={{display:'flex',justifyContent:'space-between'}}>
+            <span>时间格式</span>
+            <span>
+            <Radio.Group onChange={onChange} value={TimeFont}>
+            <Radio value={1}>北京时间</Radio>
+            <Radio value={2}>世界时间</Radio>
+            </Radio.Group>
+            </span>
+            </div>
         </div>
     )
 }
