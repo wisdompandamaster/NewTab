@@ -12,7 +12,7 @@ export default function SetClock(){
     const TimeFont = useSelector(state=>state.timefont)
 
     const onChange = (e) => {
-        console.log('radio checked', e.target.value);
+        
         // setValue(e.target.value);
         dispatch({                       
           type: 'CHANGE_TIMEFONT',
@@ -29,15 +29,6 @@ export default function SetClock(){
             <Radio.Group onChange={onChange} value={TimeFont}>
             <Radio value={1}>普通</Radio>
             <Radio value={2}>数码</Radio>
-            </Radio.Group>
-            </span>
-            </div>
-            <div style={{display:'flex',justifyContent:'space-between'}}>
-            <span>时间格式</span>
-            <span>
-            <Radio.Group onChange={onChange} value={TimeFont}>
-            <Radio value={1}>北京时间</Radio>
-            <Radio value={2}>世界时间</Radio>
             </Radio.Group>
             </span>
             </div>

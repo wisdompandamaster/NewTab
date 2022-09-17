@@ -3,6 +3,7 @@ import '../../font/iconfont.css'
 import fetchJsonp from 'fetch-jsonp'
 import { TranslationOutlined, SearchOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
+import { Radio } from 'antd'
 import {useSelector, useDispatch} from 'react-redux'
 import FuncModal from '../FuncModal/FuncModal'
 import SetClock from './SetClock/SetClock'
@@ -57,7 +58,8 @@ function DateTime(props){
 function Clock(){ // 时钟
 
     const dispatch = useDispatch()
-
+    //时间模式 0 普通时间 1 世界时间 2 倒计时
+    const [timeType, setTimeType] = useState(1)
      // modal组件控制函数
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = () => {
@@ -84,10 +86,33 @@ function Clock(){ // 时钟
         showModal();
     }
 
+    const onChange = (e) =>{
+        setTimeType(e.target.value)
+    }
+
     const clear = useSelector(state=>state.clear)
     let top = clear? '8vh':'0vh'
     const timefont = useSelector(state=>state.timefont)
     const digitalfont = timefont === 2 ? ' digitalfont':''  
+
+    function ClockType(){
+        switch(timeType){
+            case 0:
+                return <DateTime timezone={0} city={''}/>;
+            case 1:
+                return (
+                    <>
+                    <DateTime timezone={0} city={'北京'}/>
+                    <DateTime timezone={7} city={'伦敦'}/>
+                    <DateTime timezone={12} city={'纽约'}/>
+                    </>
+                );
+            case 2:
+                return (
+                    <div>倒计时制作中</div>
+                );
+        }
+    }
 
 
     return (
@@ -96,9 +121,7 @@ function Clock(){ // 时钟
         <span className='clock-setting' onClick={(e)=>onSetClock(e)}><UnorderedListOutlined />
         </span>
         <div style={{display:'flex'}}>
-          <DateTime timezone={0} city={'北京'}/>
-          <DateTime timezone={7} city={'伦敦'}/>
-          <DateTime timezone={12} city={'纽约'}/>
+          { ClockType() }
         </div>
         </div>
         <FuncModal
@@ -110,6 +133,16 @@ function Clock(){ // 时钟
             width={'30vw'}
         >
            <SetClock/>
+           <div style={{display:'flex',justifyContent:'space-between'}}>
+            <span>时间格式</span>
+            <span>
+            <Radio.Group onChange={onChange} value={timeType}>
+            <Radio value={0}>普通时间</Radio>
+            <Radio value={1}>世界时间</Radio>
+            <Radio value={2}>倒计时</Radio>
+            </Radio.Group>
+            </span>
+           </div>
         </FuncModal>
         </>
     )
