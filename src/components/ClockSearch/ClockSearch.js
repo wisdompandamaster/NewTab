@@ -25,7 +25,7 @@ function debounce(fn, time){    //防抖函数
 function DateTime(props){
 
     const {timezone, city} = props
-    const weekdays = ['一','二','三','四','五','六','天']
+    const weekdays = ['天','一','二','三','四','五','六']
     const [now, setNow] = useState(new Date(Number(new Date())-timezone*60*60*1000))
 
     useEffect(()=>{                      //每次渲染都会调用该函数
@@ -104,7 +104,7 @@ function Clock(){ // 时钟
                     <>
                     <DateTime timezone={0} city={'北京'}/>
                     <DateTime timezone={7} city={'伦敦'}/>
-                    <DateTime timezone={12} city={'纽约'}/>
+                    {/* <DateTime timezone={12} city={'纽约'}/> */}
                     </>
                 );
             case 2:
