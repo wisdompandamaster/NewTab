@@ -76,8 +76,68 @@
     margin-left: 2rem;
 }
 
+/* 倒计时 */
+.countdown_content_clock{
+    /* overflow-y: scroll; */
+    height: 10rem;
+    /* margin-top: 2rem; */
+    /* position: relative;
+    top:1rem; */
+    /* border:1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* margin-top:10px; */
+    /* scroll-snap-type: y mandatory; */
+    /* scrollbar-width:none; */
 
+}
+.countdown_content_clock > div{
+    /* height:120px; */
+    /* margin-top: 30px; */
+    scroll-snap-align: end;
+}
 
+.countdown_content_clock > div div:nth-child(1){
+    text-align: center;
+    font-size: 2rem;
+    font-weight:800;
+    letter-spacing: 5px;
+    color:#19bbfc;
+}
+.countdown_content_clock > div div:nth-child(2){
+    text-align: center;
+    /* margin-top: 5px; */
+    font-size: 8rem;
+    font-weight:900;
+    letter-spacing: 8px;
+}
+.countdown_content_clock span{
+    font-size: 2rem;
+    letter-spacing: 0px;
+}
+/* .countdown_inclock_item{
+    position: relative;
+    top:0rem;
+}
+.countdown_slidein{
+    animation: countdown_slidin 1s;
+}
+@keyframes countdown_slidein {
+    0% {
+        opacity: 0;
+        top:3rem;
+    }  
+    100% {
+        opacity: 1;
+        top:0rem;
+    }  
+} */
+
+/* 滚动条样式 */
+.countdown_content_clock::-webkit-scrollbar{
+    width: 0px;
+}
 
 /* 搜索框 */
 .search{

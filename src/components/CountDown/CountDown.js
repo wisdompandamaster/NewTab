@@ -60,45 +60,6 @@ const CountDown = ()=>{
    },[dataSource])
     //表格配置
     const columns = [
-        // {
-        //     title: '活动名称',
-        //     dataIndex: 'title',
-        //     tooltip: '只读，使用form.getFieldValue获取不到值',
-        //     formItemProps: (form, { rowIndex }) => {
-        //         return {
-        //             rules: rowIndex > 1 ? [{ required: true, message: '此项为必填项' }] : [],
-        //         };
-        //     },
-        //     // 第一行不允许编辑
-        //     editable: (text, record, index) => {
-        //         return index !== 0;
-        //     },
-        //     width: '15%',
-        // },
-        // {
-        //     title: '活动名称二',
-        //     dataIndex: 'readonly',
-        //     tooltip: '只读，使用form.getFieldValue可以获取到值',
-        //     readonly: true,
-        //     width: '15%',
-        // },
-        // {
-        //     title: '状态',
-        //     key: 'state',
-        //     dataIndex: 'state',
-        //     valueType: 'select',
-        //     valueEnum: {
-        //         all: { text: '全部', status: 'Default' },
-        //         open: {
-        //             text: '未解决',
-        //             status: 'Error',
-        //         },
-        //         closed: {
-        //             text: '已解决',
-        //             status: 'Success',
-        //         },
-        //     },
-        // },
         {
             title: '倒计时项目',
             dataIndex: 'name',
@@ -166,7 +127,6 @@ const CountDown = ()=>{
                     </div>
             //继续写countdown 变换的代码
         )
-       
     })
 
     return (

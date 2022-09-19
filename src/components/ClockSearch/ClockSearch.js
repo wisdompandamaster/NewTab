@@ -1,5 +1,6 @@
 import './ClockSearch.css'
 import '../../font/iconfont.css'
+import useLocalStorage from "../../hooks/useLocalStorage";
 import fetchJsonp from 'fetch-jsonp'
 import { TranslationOutlined, SearchOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { useState, useEffect, memo } from 'react'
@@ -52,6 +53,56 @@ function DateTime(props){
         </div>
     )
 
+}
+
+//时钟显示的倒计时
+function CountDownInClock(){
+
+    const temp = []
+    const now = new Date()
+    //添加localstorage支持
+    const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
+    const [dataSource, setDataSource] = useState(countdownList);
+    const [itemIndex, setItemIndex] = useState(0)
+    
+    useEffect(()=>{
+        setcountdownList(dataSource)
+      //   setcountdown(dataSource)
+     },[dataSource])
+
+     const handleWheelCapture = (e) => {
+        // e.preventDefault();
+          e.stopPropagation();
+        //   console.log(e)
+          if(e.deltaY > 0 && itemIndex < dataSource.length - 1){
+             setItemIndex(itemIndex + 1);
+          }
+          if(e.deltaY < 0 && itemIndex >= 1){
+            setItemIndex(itemIndex - 1);
+         }
+    } 
+    
+    const no_countdown = <div style={{fontSize:"30px", height:"120px",width:"100%",textAlign:"center",lineHeight:"110px",fontWeight:"700",color:"#00000033",letterSpacing:"8px"}}>暂无倒计时，在倒计时卡片添加</div>
+
+    const have_countdown = dataSource.map((item,index)=>{
+        const timeRemainning = new Date(item.ddl) - now;
+        const day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
+        if(index === itemIndex)
+        return (
+                    <div key={item.id}>
+                    <div>距离{item.name}还剩</div>
+                    <div>{day}<span>days</span></div>
+                    </div>
+            //继续写countdown 变换的代码
+        )
+    })
+    return(
+        <div className='countdown_content_clock' onWheelCapture={handleWheelCapture}>
+            { 
+                dataSource.length > 0 ? have_countdown:no_countdown
+            }
+        </div>
+    )
 }
 
 //时钟的功能
@@ -109,7 +160,9 @@ function Clock(){ // 时钟
                 );
             case 2:
                 return (
-                    <div>倒计时制作中</div>
+                    <div>
+                        <CountDownInClock/>
+                    </div>
                 );
         }
     }
