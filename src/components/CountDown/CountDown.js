@@ -2,6 +2,7 @@ import './CountDown.css';
 import { Modal } from 'antd';
 import { EditableProTable } from '@ant-design/pro-components';
 import React, { memo, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import useLocalStorage from "../../hooks/useLocalStorage";
 import FuncCard from '../FuncCard/FuncCard';
 import FuncModal from '../FuncModal/FuncModal';
@@ -25,13 +26,13 @@ import FuncModal from '../FuncModal/FuncModal';
 const CountDown = ()=>{
 
     const temp = []
-    
+    const dispatch = useDispatch()
     //添加localstorage支持
     const [countdownList, setcountdownList] = useLocalStorage('countdownList',temp)
     // const [countdown, setcountdown] = useState(countdownList)
      //pro component 表格组件
-     const [editableKeys, setEditableRowKeys] = useState([]);
-     const [dataSource, setDataSource] = useState(countdownList);
+    const [editableKeys, setEditableRowKeys] = useState([]);
+    const [dataSource, setDataSource] = useState(countdownList);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -56,6 +57,10 @@ const CountDown = ()=>{
     // day = Math.floor(timeRemainning / 1000 / 60 / 60 / 24) + 1
    useEffect(()=>{
       setcountdownList(dataSource)
+      dispatch({
+        type: 'CHANGE_COUNTDOWNLIST',
+        countdownList: dataSource
+    })
     //   setcountdown(dataSource)
    },[dataSource])
     //表格配置
@@ -181,7 +186,7 @@ const CountDown = ()=>{
                 //     map.set(item.id, item);
                 // }
                 // dataSource = [...map.values()];
-                console.log(data)
+                // console.log(data)
                 // await waitTime(500);
                 // setDataSource(dataSource)
                 // setcountdown(dataSource)

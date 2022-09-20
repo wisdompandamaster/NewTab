@@ -107,6 +107,9 @@ const defalutState = {
     : ['i'],
     timefont:localStorage.getItem("timefont")? JSON.parse(localStorage.getItem("timefont")):1,
     cardstyle:localStorage.getItem("cardstyle") ? JSON.parse(localStorage.getItem("cardstyle")) : 1,
+    countdownList:localStorage.getItem("countdownList")
+    ? JSON.parse(localStorage.getItem("countdownList"))
+    : [],
 }
 
 //eslint-disable-next-line
@@ -188,6 +191,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 functionList: action.functionList,
+            }
+        case "CHANGE_COUNTDOWNLIST":
+            return {
+                ...state,
+                countdownList: action.countdownList,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {
