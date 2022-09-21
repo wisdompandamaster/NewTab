@@ -60,16 +60,10 @@ function CountDownInClock(){
 
     const temp = []
     const now = new Date()
-    //添加localstorage支持
     
     const dataSource = useSelector(state=>state.countdownList)
     const [itemIndex, setItemIndex] = useState(0)
     
-    // useEffect(()=>{
-    //     setcountdownList(dataSource)
-    //   //   setcountdown(dataSource)
-    //  },[dataSource])
-
      const handleWheelCapture = (e) => {
         // e.preventDefault();
           e.stopPropagation();

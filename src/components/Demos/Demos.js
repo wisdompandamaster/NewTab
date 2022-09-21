@@ -57,9 +57,9 @@ const Demos = ()=>{
             >
             <div style={{display:'grid',gridTemplateColumns:'repeat(3, calc(100%/3))', rowGap:'2%',margin:'1% 0 1% 0',height:'20vw',overflowY:'scroll'}}>
                {
-                 demoList.map((item)=>{
+                 demoList.map((item,index)=>{
                    return (
-                    <a href={item.src} target='_blank' style={{justifySelf:'center',position:'relative'}}>
+                    <a key={index} href={item.src} target='_blank' style={{justifySelf:'center',position:'relative'}}>
                      <div className='demo'><div>{item.name}</div></div>
                      <img src={item.imgPath} style={{width:'340px',height:'180px',borderRadius:'20px'}}>
                      </img>
