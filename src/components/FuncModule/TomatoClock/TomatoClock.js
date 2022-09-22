@@ -10,13 +10,13 @@ function TomatoClock(){
     const showModal = () => {
         setIsModalVisible(true);
     };
-    
+    let steps = 10;
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-
-    useEffect(()=>{
-        //获取元素创建画布
+    //TODO:学习 canvas requestAnimation useRef 等 hook
+    const drawcicle = (steps)=>{
+         //获取元素创建画布
         //无法使用document.getElementById()
         var mycanvas = circle.current;
         var ctx = mycanvas.getContext('2d')
@@ -27,23 +27,24 @@ function TomatoClock(){
         //一圈360度分成100份
         var progress = Math.PI * 2 / 100;
         //指定初始步长
-        var steps = 20;
+        // var steps = 20;
+        ctx.clearRect(0, 0, mycanvas.width, mycanvas.height)
         //画圆
         ctx.strokeStyle = "#dddddd"
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 15;
         ctx.save();
         ctx.beginPath();
         //半径可以根据lineWidth改
-        ctx.arc(canvasX, canvasY, 30, 0, Math.PI * 2, false);
+        ctx.arc(canvasX, canvasY, 40, 0, Math.PI * 2, false);
         ctx.stroke();
         ctx.closePath();
         ctx.restore();
         //画进度环
         ctx.strokeStyle = "#47cab0"
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 15;
         ctx.save();
         ctx.beginPath();
-        ctx.arc(canvasX, canvasY, 30, -Math.PI / 2, -Math.PI /2 + steps * progress, false);
+        ctx.arc(canvasX, canvasY, 40, -Math.PI / 2, -Math.PI /2 + steps * progress, false);
         ctx.stroke();
         ctx.closePath();
         ctx.restore();
@@ -53,6 +54,18 @@ function TomatoClock(){
         ctx.save();
         //没有考虑文字个数
         ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
+
+    }
+
+    const animate = ()=>{
+        window.requestAnimationFrame(function(){
+            if(steps < 90) animate();
+        })
+        steps += 0.5;
+        drawcicle(steps);
+    }
+    useEffect(()=>{
+        animate()   
     },[])
   
 
@@ -69,8 +82,8 @@ function TomatoClock(){
                 </div>
 
             </div> */}
-            <div className='rest'>
-                <canvas ref={circle} id='rest-circle' width={100} height={100} style={{border:'1px solid red'}}> 
+            <div className='rest' style={{height:'100%'}}>
+                <canvas ref={circle} width={110} height={110} id='rest-circle' style={{border:'0px solid red'}}> 
                 Your browser does not support the canvas element.
                 </canvas>
             </div>
