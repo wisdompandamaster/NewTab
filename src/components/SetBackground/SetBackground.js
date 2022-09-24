@@ -23,7 +23,7 @@ function debounce(fn){    //防抖函数
 function saveSettings(type, value){
   let url = defaultSetting.site + '/functions/savemysettings/' 
   async function save(){   
-    console.log('save运行')
+    // console.log('save运行')
     fetch(url,{
         method:'post',
         body:JSON.stringify({"type":type,"value":value}),
@@ -95,7 +95,7 @@ function UploadImg(){
 function ShowBackground(props){
 
     let imgList = props.data
-    console.log(imgList)
+    // console.log(imgList)
     const dispatch = useDispatch()
     const currentbg = useSelector(state=>state.currentbg)
 
@@ -113,7 +113,7 @@ function ShowBackground(props){
         <div className='showBackground'>
             {
                 imgList.map((item,index)=>{           //这里通过改行内样式，其实可以通过替换类
-                  console.log(item)
+                  // console.log(item)
                  let url = 'url('+ defaultSetting.imgSite + item +')' 
                  let boxShadow = currentbg===item? '5px 5px rgba(145, 241, 145,0.8),-5px 5px rgba(145, 241, 145,0.8),5px -5px rgba(145, 241, 145,0.8),-5px -5px rgba(145, 241, 145,0.8)':''
                  let spanStyle = currentbg===item? {opacity:1,backgroundColor:'rgba(145, 241, 145,0.8)'}:{}

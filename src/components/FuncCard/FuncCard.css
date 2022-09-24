@@ -5,6 +5,7 @@
     background: #FFFFFF;
     border-radius: 20px;
     overflow: hidden;
+    /* background-color: #FF5631; */
     /* display: flex;
     justify-content: center;
     align-items: center; */
@@ -14,6 +15,7 @@
 .filter{
     background: #FFFFFF55;
     backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(2px); */
     /* color: #FFFFFF; */
 }
 /* .dark,.dark span,.dark div{

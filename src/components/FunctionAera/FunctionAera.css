@@ -25,6 +25,10 @@
     position: relative;
     /* z-index: 2; */
     margin: 12px;
+    border-radius: 20px;
+    /* background-image: url(https://minio.wisdompanda.com/background/bg1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; */
     /* transform: scale(0.8); */
     /* display: inline-block; */
     /* transition: .5s ease-in; */

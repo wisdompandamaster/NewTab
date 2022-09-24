@@ -2,6 +2,8 @@ import './TomatoClock.css'
 import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
+import { Tag } from 'antd'
+import { PlayCircleFilled } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
 
 function TomatoClock(){
@@ -93,7 +95,7 @@ function TomatoClock(){
                 <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
                     <div>任务名</div>
                     <div>倒计时</div>
-                    <div>任务番茄数  操作按钮</div>
+                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / 3</Tag> <PlayCircleFilled /></div>
                 </div>
             </div>
          </div>
