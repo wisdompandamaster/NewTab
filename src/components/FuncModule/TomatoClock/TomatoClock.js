@@ -5,10 +5,12 @@ import { memo, useEffect, useState, useRef } from 'react'
 import { Tag } from 'antd'
 import { PlayCircleFilled } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
+import Item from 'antd/lib/list/Item'
 
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [item, setItem] = useState({name:'hello', round:3, time:'5'})
     const circle = useRef();
     const showModal = () => {
         setIsModalVisible(true);
@@ -66,6 +68,13 @@ function TomatoClock(){
         steps += 0.5;
         drawcicle(steps);
     }
+
+    // let timer = setInterval(countTime(), 1000)
+
+    // function countTime(){
+    //     clearInterval(timer)
+    // }
+
     useEffect(()=>{
         animate()   
     },[])
@@ -93,9 +102,11 @@ function TomatoClock(){
                 Your browser does not support the canvas element.
                 </canvas>
                 <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
-                    <div>任务名</div>
-                    <div>倒计时</div>
-                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / 3</Tag> <PlayCircleFilled /></div>
+                    <div>{item.name}</div>
+                    <div>
+                        {item.time}
+                    </div>
+                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag> <PlayCircleFilled /></div>
                 </div>
             </div>
          </div>
