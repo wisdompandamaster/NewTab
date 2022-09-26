@@ -10,7 +10,8 @@ import Item from 'antd/lib/list/Item'
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [item, setItem] = useState({name:'hello', round:3, time:'5'})
+    const [item, setItem] = useState({name:'hello', round:3, time:25})
+    const [count, setCount] = useState(item.time)
     const circle = useRef();
     const showModal = () => {
         setIsModalVisible(true);
@@ -68,15 +69,25 @@ function TomatoClock(){
         steps += 0.5;
         drawcicle(steps);
     }
-
-    // let timer = setInterval(countTime(), 1000)
-
-    // function countTime(){
-    //     clearInterval(timer)
-    // }
+    //倒计时
+    const onStartCount = (e)=>{
+        e.stopPropagation();
+        let tmp = count;
+        let timer = setInterval(function(){
+            // setCount(count - 1)
+           tmp--;
+            if(tmp == 0){
+               clearInterval(timer)
+            }
+            // setCount(tmp);
+            console.log(tmp)
+            // clearInterval(timer)
+        }, 1000);
+       
+    }
 
     useEffect(()=>{
-        animate()   
+        animate();
     },[])
   
 
@@ -89,14 +100,6 @@ function TomatoClock(){
          <span style={{fontSize:'1.2rem',fontWeight:'600',marginLeft:'5px'}}>10</span>
          </span>
          <div style={{height:'100%'}} onClick={showModal}>
-            {/* <div className='tomato-work'>
-                <div className='tomato-circle'>
-                    <div className='tomato-word'>
-                        <span>100%</span>
-                    </div>
-                </div>
-
-            </div> */}
             <div className='circle' style={{height:'75%',border:'0px solid red',display:'flex'}}>
                 <canvas ref={circle} width={110} height={110} id='rest-circle' style={{border:'0px solid red'}}> 
                 Your browser does not support the canvas element.
@@ -104,9 +107,9 @@ function TomatoClock(){
                 <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
                     <div>{item.name}</div>
                     <div>
-                        {item.time}
+                        {count}
                     </div>
-                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag> <PlayCircleFilled /></div>
+                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag><span style={{border:'1px solid red'}} onClick={onStartCount}><PlayCircleFilled /></span></div>
                 </div>
             </div>
          </div>
