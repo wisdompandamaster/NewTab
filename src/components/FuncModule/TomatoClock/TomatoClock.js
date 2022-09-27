@@ -10,9 +10,18 @@ import Item from 'antd/lib/list/Item'
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [item, setItem] = useState({name:'hello', round:3, time:25})
+    const [item, setItem] = useState({name:'hello', round:3, time:100})
     const [count, setCount] = useState(item.time)
     const circle = useRef();
+
+    useEffect(()=>{
+        animate();
+    },[])
+
+    useEffect(()=>{
+        animate();
+    },[count])
+
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -61,35 +70,30 @@ function TomatoClock(){
         //没有考虑文字个数
         ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
     }
-
+    //FIXME:还有大bug，一拖动就会疯狂报错，还有画的太频繁了
     const animate = ()=>{
+        let steps = Math.floor(((item.time - count)/item.time)*100)
         window.requestAnimationFrame(function(){
-            if(steps < 90) animate();
+            if(steps < 20 && steps > 0) animate();
         })
-        steps += 0.5;
+        // steps += 0.5;
+        // console.log(steps);
         drawcicle(steps);
     }
     //倒计时
+    // animate();
     const onStartCount = (e)=>{
+
         e.stopPropagation();
-        let tmp = count;
+        animate();
         let timer = setInterval(function(){
-            // setCount(count - 1)
-           tmp--;
-            if(tmp == 0){
+            setCount(count => count - 1)
+            if(count === 0){
                clearInterval(timer)
             }
-            // setCount(tmp);
-            console.log(tmp)
-            // clearInterval(timer)
         }, 1000);
        
     }
-
-    useEffect(()=>{
-        animate();
-    },[])
-  
 
     return (
         <FuncCard
@@ -107,9 +111,11 @@ function TomatoClock(){
                 <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
                     <div>{item.name}</div>
                     <div>
-                        {count}
+                        {String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}
                     </div>
-                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag><span style={{border:'1px solid red'}} onClick={onStartCount}><PlayCircleFilled /></span></div>
+                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag><span style={{border:'1px solid red'}} onClick={onStartCount}> 
+                       <PlayCircleFilled /> 
+                    </span></div>
                 </div>
             </div>
          </div>
