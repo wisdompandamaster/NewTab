@@ -3,19 +3,21 @@ import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
 import { Tag } from 'antd'
-import { PlayCircleFilled } from '@ant-design/icons'
+import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
 import Item from 'antd/lib/list/Item'
 
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [item, setItem] = useState({name:'hello', round:3, time:100})
+    const [item, setItem] = useState({name:'任务名', round:3, time:10})
     const [count, setCount] = useState(item.time)
     const circle = useRef();
+    const timer = useRef();
 
     useEffect(()=>{
         animate();
+      
     },[])
 
     useEffect(()=>{
@@ -55,7 +57,7 @@ function TomatoClock(){
         ctx.closePath();
         ctx.restore();
         //画进度环
-        ctx.strokeStyle = "#47cab0"
+        ctx.strokeStyle = steps == 100 ? "#ff000077":"#47cab0"
         ctx.lineWidth = 10;
         ctx.save();
         ctx.beginPath();
@@ -68,15 +70,21 @@ function TomatoClock(){
         ctx.font = "bold 18px Arial"; //可改
         ctx.save();
         //没有考虑文字个数
-        ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
+        // ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
+        ctx.fillText(String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0'), canvasX - 28, canvasY + 10);
+
     }
     //FIXME:还有大bug，一拖动就会疯狂报错，还有画的太频繁了
     const animate = ()=>{
         let steps = Math.floor(((item.time - count)/item.time)*100)
-        window.requestAnimationFrame(function(){
-            if(steps < 20 && steps > 0) animate();
-        })
-        // steps += 0.5;
+        // let frame = window.requestAnimationFrame(function(){
+        //     if(steps < 20 && steps >= 0){
+        //         animate();
+        //     }else{
+        //         cancelAnimationFrame(frame);
+        //     }
+        // })
+        // // steps += 0.5;
         // console.log(steps);
         drawcicle(steps);
     }
@@ -85,16 +93,24 @@ function TomatoClock(){
     const onStartCount = (e)=>{
 
         e.stopPropagation();
-        animate();
-        let timer = setInterval(function(){
-            setCount(count => count - 1)
-            if(count === 0){
-               clearInterval(timer)
-            }
+        // animate();
+        timer.current = setInterval(function(){
+            //异步更新时，需要在setState()中传入函数来调用前一个state值
+            setCount(count => {if(count <= 1) clearInterval(timer.current); return count - 1});
+            console.log(count)
         }, 1000);
-       
     }
 
+    const onStopCount = (e)=>{
+        e.stopPropagation();
+        clearInterval(timer.current)
+    }
+
+    const onReDoCount = (e)=>{
+        e.stopPropagation();
+        clearInterval(timer.current);
+        setCount(item.time);
+    }
     return (
         <FuncCard
          title = "番茄时钟"
@@ -103,19 +119,29 @@ function TomatoClock(){
          <img width={30} src={tomato}/>
          <span style={{fontSize:'1.2rem',fontWeight:'600',marginLeft:'5px'}}>10</span>
          </span>
-         <div style={{height:'100%'}} onClick={showModal}>
+         <div style={{height:'100%', padding:'0 5%'}} onClick={showModal}>
             <div className='circle' style={{height:'75%',border:'0px solid red',display:'flex'}}>
-                <canvas ref={circle} width={110} height={110} id='rest-circle' style={{border:'0px solid red'}}> 
+                <canvas ref={circle} width={110} height={110} id='rest-circle' style={{borderRight:'0px solid #ff000055'}}> 
                 Your browser does not support the canvas element.
                 </canvas>
                 <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
                     <div>{item.name}</div>
-                    <div>
+                    {/* <div>
                         {String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}
+                    </div> */}
+                    <Tag style={{width:'30%',margin:'0 auto'}} color="#ff000055" >0 / {item.round}</Tag>
+                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}>
+                    <span onClick={onStartCount} style={{marginRight:'4%'}}> 
+                        <PlayCircleOutlined /> 
+                    </span>
+                    <span onClick={onStopCount} style={{marginRight:'4%'}}> 
+                       <PauseCircleOutlined /> 
+                    </span>
+                    <span onClick={onReDoCount}> 
+                       <RedoOutlined />
+                    </span>
+
                     </div>
-                    <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}><Tag color="#ff000055" >0 / {item.round}</Tag><span style={{border:'1px solid red'}} onClick={onStartCount}> 
-                       <PlayCircleFilled /> 
-                    </span></div>
                 </div>
             </div>
          </div>
