@@ -18,7 +18,7 @@ const SwiperAera = ()=>{
      <Swiper className='swiper-no-swiping' 
         spaceBetween={0}
         slidesPerView={1}
-        loop={true}
+        //   loop={true}
         // FIXME:目前这里天气模块设置了loop后向后滑动时会显示空白
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
