@@ -12,15 +12,16 @@ function TomatoClock(){
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [item, setItem] = useState({name:'任务名', round:3, time:10})
     const [count, setCount] = useState(item.time)
-    const [isWork, setIsWork] = useState(false)
-    const [currentRound, setCurrentRound] = useState(1)
+    const [isWork, setIsWork] = useState(true)
+    const [currentRound, setCurrentRound] = useState(0)
     const [roundDone, setRoundDone] = useState(false)
     const circle = useRef();
     const timer = useRef();
 
     useEffect(()=>{
         animate();
-    },[])
+        setCount(item.time)
+    },[item])
 
     
 
@@ -99,7 +100,22 @@ function TomatoClock(){
         clearInterval(timer.current)
         timer.current = setInterval(function(){
             //异步更新时，需要在setState()中传入函数来调用前一个state值
-            setCount(count => {if(count <= 1) clearInterval(timer.current); return count - 1});
+            setCount(count => {
+                if(count <= 1){
+                    
+                    clearInterval(timer.current);
+                    //这里增加目前轮数
+                    if(isWork && currentRound < item.round){
+                        setCurrentRound(currentRound=>currentRound + 1)
+                    }
+                    //这里进行休息和学习状态的切换
+                    setIsWork(!isWork);
+                    setItem({...item,time:isWork ? 5:10})
+                }
+                return count - 1
+                }
+            );
+
         }, 1000);
     }
 
