@@ -24,3 +24,8 @@
 #rest-circle{
     margin-left:2%;
 }
+
+.tomato_icon:hover{
+    color:aqua;
+    transition:.3s ease-in-out;
+}

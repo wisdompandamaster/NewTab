@@ -2,15 +2,17 @@ import './TomatoClock.css'
 import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
-import { Tag } from 'antd'
-import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, SyncOutlined } from '@ant-design/icons'
+import { Tag, Progress } from 'antd'
+import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
-import Item from 'antd/lib/list/Item'
+import audio1 from '../../../asset/work.mp3'
+
+//canvas 绘画版本的进度
 
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [item, setItem] = useState({name:'任务名', round:3, time:10})
+    const [item, setItem] = useState({name:'任务名', round:1, time:10})
     const [count, setCount] = useState(item.time)
     const [isWork, setIsWork] = useState(true)
     const [currentRound, setCurrentRound] = useState(0)
@@ -62,7 +64,7 @@ function TomatoClock(){
         ctx.closePath();
         ctx.restore();
         //画进度环
-        ctx.strokeStyle = steps == 100 ? "#ff000077":"#47cab0"
+        ctx.strokeStyle = roundDone ? "#ff000077":"#47cab0"
         ctx.lineWidth = 10;
         ctx.save();
         ctx.beginPath();
@@ -96,21 +98,35 @@ function TomatoClock(){
     //倒计时
     // animate();
     const onStartCount = (e)=>{
+
         e.stopPropagation();
+        // let workaudio = new Audio(' work.mp3')
+        // workaudio.load();
+        // workaudio.play();
         clearInterval(timer.current)
         timer.current = setInterval(function(){
             //异步更新时，需要在setState()中传入函数来调用前一个state值
+            //这里因为是异步，没办法实时读取同一次里setstate的更新
             setCount(count => {
                 if(count <= 1){
-                    
                     clearInterval(timer.current);
+
+                    if(currentRound == item.round && !isWork){
+                        setRoundDone(true);
+                    }
                     //这里增加目前轮数
                     if(isWork && currentRound < item.round){
                         setCurrentRound(currentRound=>currentRound + 1)
                     }
+                    
                     //这里进行休息和学习状态的切换
-                    setIsWork(!isWork);
-                    setItem({...item,time:isWork ? 5:10})
+                    
+                    //在一个番茄钟结束时就不自动更新倒计时
+                    if(!(currentRound == item.round && !isWork)){
+                       setIsWork(!isWork);
+                       setItem({...item,time:isWork ? 5:10})
+                    }
+                    
                 }
                 return count - 1
                 }
@@ -130,9 +146,9 @@ function TomatoClock(){
         setCount(item.time);
 
         //测试用
-        setIsWork(!isWork);
-        setRoundDone(!roundDone);
-        setCurrentRound(currentRound=>(currentRound) % 3 + 1)
+        // setIsWork(!isWork);
+        // setRoundDone(!roundDone);
+        // setCurrentRound(currentRound=>(currentRound) % 3 + 1)
     }
     
     return (
@@ -148,10 +164,17 @@ function TomatoClock(){
                 <canvas ref={circle} width={110} height={110} id='rest-circle' style={{borderRight:'0px solid #ff000055'}}> 
                 Your browser does not support the canvas element.
                 </canvas>
-                <div style={{fontSize:'20px',fontWeight:'600',flex:'1',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
-                    <div>{item.name}
-                      <CheckCircleTwoTone twoToneColor="#52c41a" style={{fontSize:'20px', marginLeft:'3%', 
-                      display:currentRound === item.round && roundDone ? "inline-block":"none"}}/>
+                {/* <Progress
+                    type="circle"
+                    strokeColor={{
+                            '0%': '#108ee9',
+                            '100%': '#87d068',
+                    }}
+                    percent={Math.floor(((item.time - count)/item.time)*100)}
+                /> */}
+                <div style={{fontSize:'20px',fontWeight:'600',flex:'1',padding:'1% 0',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
+                    <div style={{textDecoration:roundDone ? 'line-through':'none',color:roundDone ? "#00000066":""}}>
+                        {item.name}
                     </div>
                     {/* <div>
                         {String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}
@@ -164,17 +187,26 @@ function TomatoClock(){
                      color="red"style={{display:isWork ? "inline-block":"none", marginRight:'0'}}>学习</Tag>
                     </div>
                     
-                    <div style={{display:'flex', alignItems:'center',justifyContent:'space-around', width:'60%', margin:'0 auto',cursor:'pointer',userSelect:'none'}}>
-                    <span onClick={onStartCount}> 
-                        <PlayCircleOutlined /> 
+                    <div style={{display:roundDone ? 'none':'flex', alignItems:'center',justifyContent:'space-around', width:'60%', margin:'0 auto',cursor:'pointer',userSelect:'none'}}>
+                    <span className='tomato_icon' onClick={onStartCount}> 
+                       <PlayCircleOutlined /> 
                     </span>
-                    <span onClick={onStopCount}> 
+                    <span className='tomato_icon' onClick={onStopCount}> 
                        <PauseCircleOutlined /> 
                     </span>
-                    <span onClick={onReDoCount}> 
+                    <span className='tomato_icon' onClick={onReDoCount}> 
                        <RedoOutlined />
                     </span>
-
+                    </div>
+                    <div style={{display:roundDone ? 'inline-block':'none'}}>
+                    {/* <Tag icon={<CheckCircleTwoTone twoToneColor="#52c41a"/>} style={{margin:'0',width:'100px'}} color="success">已完成</Tag>
+                    <CheckCircleTwoTone twoToneColor="#52c41a" style={{fontSize:'28px',
+                      display:roundDone ? "inline-block":"none"}}/>
+                    <CheckCircleOutlined style={{fontSize:'28px',
+                      display:roundDone ? "inline-block":"none", color:'#52c41a'}}/> */}
+                      <span className='tomato_icon' onClick={onReDoCount}> 
+                       <DeleteFilled />
+                    </span>
                     </div>
                 </div>
             </div>
