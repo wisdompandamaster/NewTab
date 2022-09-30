@@ -57,7 +57,7 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
           <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}/>{awayTeam}</span>
           <span className="score_time">
               {score_time}
-              <div style={{color:"red"}}>{item.boxscore.statusDesc}&nbsp;{item.boxscore.periodClock}</div>
+              <div style={{fontFamily:"SimHei, Serif",color:"#ff0000aa",fontWeight:'800',fontSize:'1.1rem'}}>{item.boxscore.statusDesc}&nbsp;{item.boxscore.periodClock}</div>
               <div>{item.seriesText}</div>
               {/* <div>{time}</div> */}
           </span>
