@@ -1,5 +1,5 @@
 import './Competition.css'
-import defaultSetting from '../../config';
+// import defaultSetting from '../../config';
 import { memo, useEffect, useState } from 'react';
 import FuncCard from '../FuncCard/FuncCard';
 
@@ -10,6 +10,9 @@ const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAl
 function NBA(props){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
                                          //还差一个滚动贴合
     const [games,setGames] = useState([])
+
+    //直接来自远程NBA网站的图片
+    const remote_logo_img = 'https://res.nba.cn/media/img/teams/logos/'
 
     let flag = []           //用来判断是否有比赛在进行中
 
@@ -45,8 +48,8 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
     },[])
 
     const have_game = games.map((item,index)=>{
-        let awayTeam = item.awayTeam.profile.name
-        let homeTeam = item.homeTeam.profile.name
+        let awayTeam = item.awayTeam.profile.displayAbbr
+        let homeTeam = item.homeTeam.profile.displayAbbr
         let time = new Date(item.profile.dateTimeEt)
         time = new Date(time.setHours(time.getHours() + 12))
         time = time.getHours() + " : " + time.toLocaleTimeString().slice(3,5)
@@ -54,14 +57,20 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
         let score_time = item.boxscore.status !== "1" ?  score:time
         return (
           <div key={index} className="nba">
-          <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}/>{awayTeam}</span>
+          <span className="nba_team"><img alt='logo' 
+        //   src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}
+             src={remote_logo_img + item.awayTeam.profile.abbr +'_logo.svg'}
+          />{awayTeam}</span>
           <span className="score_time">
               {score_time}
               <div style={{fontFamily:"SimHei, Serif",color:"#ff0000aa",fontWeight:'800',fontSize:'1.1rem'}}>{item.boxscore.statusDesc}&nbsp;{item.boxscore.periodClock}</div>
               <div>{item.seriesText}</div>
               {/* <div>{time}</div> */}
           </span>
-          <span className="nba_team"><img alt='logo' src={defaultSetting.imgSite + "nbalogo/" + homeTeam + '.png'}/>{homeTeam}</span>
+          <span className="nba_team"><img alt='logo' 
+        //   src={defaultSetting.imgSite + "nbalogo/" + homeTeam + '.png'}
+             src={remote_logo_img + item.homeTeam.profile.abbr +'_logo.svg'}
+          />{homeTeam}</span>
           </div>
         )
       })
