@@ -3,11 +3,11 @@ import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
 import { Tag, Progress } from 'antd'
-import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled } from '@ant-design/icons'
+import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled, TranslationOutlined, CheckOutlined } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
 import audio1 from '../../../asset/work.mp3'
 
-//canvas 绘画版本的进度
+//直接使用progress组件
 
 function TomatoClock(){
 
@@ -17,19 +17,21 @@ function TomatoClock(){
     const [isWork, setIsWork] = useState(true)
     const [currentRound, setCurrentRound] = useState(0)
     const [roundDone, setRoundDone] = useState(false)
-    const circle = useRef();
+
+    //获取dom画canvas
+    // const circle = useRef();
+
+    //方便清除定时器
     const timer = useRef();
 
     useEffect(()=>{
-        animate();
+        // animate();
         setCount(item.time)
     },[item])
 
-    
-
-    useEffect(()=>{
-        animate();
-    },[count])
+    // useEffect(()=>{
+    //     animate();
+    // },[count])
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -38,65 +40,67 @@ function TomatoClock(){
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-    //TODO:学习 canvas requestAnimation useRef 等 hook
-    const drawcicle = (steps)=>{
-         //获取元素创建画布
-        //无法使用document.getElementById()
-        var mycanvas = circle.current;
-        var ctx = mycanvas.getContext('2d')
-        //绘制的准备工作
-        //找到画布的中心点
-        var canvasX = mycanvas.width / 2;
-        var canvasY = mycanvas.height / 2;
-        //一圈360度分成100份
-        var progress = Math.PI * 2 / 100;
-        //指定初始步长
-        // var steps = 20;
-        ctx.clearRect(0, 0, mycanvas.width, mycanvas.height)
-        //画圆
-        ctx.strokeStyle = "#dddddd"
-        ctx.lineWidth = 10;
-        ctx.save();
-        ctx.beginPath();
-        //半径可以根据lineWidth改
-        ctx.arc(canvasX, canvasY, 45, 0, Math.PI * 2 , false);
-        ctx.stroke();
-        ctx.closePath();
-        ctx.restore();
-        //画进度环
-        ctx.strokeStyle = roundDone ? "#ff000077":"#47cab0"
-        ctx.lineWidth = 10;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(canvasX, canvasY, 45, -Math.PI / 2, -Math.PI /2 + steps * progress, false);
-        ctx.stroke();
-        ctx.closePath();
-        ctx.restore();
-        //绘制字体并指定位置
-        ctx.fillStyle = "#000000"; //可改
-        ctx.font = "bold 18px Arial"; //可改
-        ctx.save();
-        //没有考虑文字个数
-        // ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
-        ctx.fillText(String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0'), canvasX - 28, canvasY + 10);
 
-    }
-    //FIXME:还有大bug，使用requestAnimationFrame一拖动就会疯狂报错，还有画的太频繁了
-    const animate = ()=>{
-        let steps = Math.floor(((item.time - count)/item.time)*100)
-        // let frame = window.requestAnimationFrame(function(){
-        //     if(steps < 20 && steps >= 0){
-        //         animate();
-        //     }else{
-        //         cancelAnimationFrame(frame);
-        //     }
-        // })
-        // // steps += 0.5;
-        // console.log(steps);
-        drawcicle(steps);
-    }
-    //倒计时
-    // animate();
+    //TODO:学习 canvas requestAnimation useRef 等 hook
+    // const drawcicle = (steps)=>{
+    //      //获取元素创建画布
+    //     //无法使用document.getElementById()
+    //     var mycanvas = circle.current;
+    //     var ctx = mycanvas.getContext('2d')
+    //     //绘制的准备工作
+    //     //找到画布的中心点
+    //     var canvasX = mycanvas.width / 2;
+    //     var canvasY = mycanvas.height / 2;
+    //     //一圈360度分成100份
+    //     var progress = Math.PI * 2 / 100;
+    //     //指定初始步长
+    //     // var steps = 20;
+    //     ctx.clearRect(0, 0, mycanvas.width, mycanvas.height)
+    //     //画圆
+    //     ctx.strokeStyle = "#dddddd"
+    //     ctx.lineWidth = 10;
+    //     ctx.save();
+    //     ctx.beginPath();
+    //     //半径可以根据lineWidth改
+    //     ctx.arc(canvasX, canvasY, 45, 0, Math.PI * 2 , false);
+    //     ctx.stroke();
+    //     ctx.closePath();
+    //     ctx.restore();
+    //     //画进度环
+    //     ctx.strokeStyle = roundDone ? "#ff000077":"#47cab0"
+    //     ctx.lineWidth = 10;
+    //     ctx.save();
+    //     ctx.beginPath();
+    //     ctx.arc(canvasX, canvasY, 45, -Math.PI / 2, -Math.PI /2 + steps * progress, false);
+    //     ctx.stroke();
+    //     ctx.closePath();
+    //     ctx.restore();
+    //     //绘制字体并指定位置
+    //     ctx.fillStyle = "#000000"; //可改
+    //     ctx.font = "bold 18px Arial"; //可改
+    //     ctx.save();
+    //     //没有考虑文字个数
+    //     // ctx.fillText(steps.toFixed(0) + '%', canvasX - 20, canvasY + 10);
+    //     ctx.fillText(String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0'), canvasX - 28, canvasY + 10);
+
+    // }
+
+    //FIXME: 使用requestAnimationFrame有大bug，一拖动就会疯狂报错，还有画的太频繁了，造成卡顿
+    // const animate = ()=>{
+    //     let steps = Math.floor(((item.time - count)/item.time)*100)
+    //     // let frame = window.requestAnimationFrame(function(){
+    //     //     if(steps < 20 && steps >= 0){
+    //     //         animate();
+    //     //     }else{
+    //     //         cancelAnimationFrame(frame);
+    //     //     }
+    //     // })
+    //     // // steps += 0.5;
+    //     // console.log(steps);
+    //     drawcicle(steps);
+    // }
+
+    //番茄倒计时开始
     const onStartCount = (e)=>{
 
         e.stopPropagation();
@@ -135,11 +139,13 @@ function TomatoClock(){
         }, 1000);
     }
 
+    //番茄倒计时暂停
     const onStopCount = (e)=>{
         e.stopPropagation();
         clearInterval(timer.current)
     }
 
+    //番茄倒计时重置(只是当时一轮倒计时)
     const onReDoCount = (e)=>{
         e.stopPropagation();
         clearInterval(timer.current);
@@ -151,6 +157,11 @@ function TomatoClock(){
         // setCurrentRound(currentRound=>(currentRound) % 3 + 1)
     }
     
+    //删除某个番茄钟任务
+    const onDeleteCount = (e)=>{
+        e.stopPropagation();
+    } 
+    
     return (
         <FuncCard
          title = "番茄时钟"
@@ -161,18 +172,31 @@ function TomatoClock(){
          </span>
          <div style={{height:'100%', padding:'0 5%'}} onClick={showModal}>
             <div className='circle' style={{height:'75%',border:'0px solid red',display:'flex'}}>
-                <canvas ref={circle} width={110} height={110} id='rest-circle' style={{borderRight:'0px solid #ff000055'}}> 
+                
+                {/* <canvas ref={circle} width={110} height={110} id='rest-circle' style={{borderRight:'0px solid #ff000055'}}> 
                 Your browser does not support the canvas element.
-                </canvas>
-                {/* <Progress
+                </canvas> */}
+                <Progress
+                    width={110}
+                    strokeWidth={8}
+                    style={{border:'0px solid red',transform:'translateX(15%)',marginTop:'2.5%'}}
                     type="circle"
-                    strokeColor={{
-                            '0%': '#108ee9',
-                            '100%': '#87d068',
-                    }}
+                    //渐变颜色
+                    // strokeColor={{
+                    //         '0%': '#108ee9',
+                    //         '100%': '#87d068',
+                    // }}
                     percent={Math.floor(((item.time - count)/item.time)*100)}
-                /> */}
-                <div style={{fontSize:'20px',fontWeight:'600',flex:'1',padding:'1% 0',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
+                    format={(percent)=>{
+                        if(percent < 100){
+                            return <span style={{fontWeight:'600'}}>{String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}</span>
+                        }else{
+                            return <span style={{fontSize:'36px'}}><CheckOutlined /></span>
+                        }
+                    }}
+
+                />
+                <div style={{fontSize:'20px',fontWeight:'600',flex:'1',padding:'1% 0',textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'space-around',border:'0px solid red'}}>
                     <div style={{textDecoration:roundDone ? 'line-through':'none',color:roundDone ? "#00000066":""}}>
                         {item.name}
                     </div>
@@ -204,7 +228,7 @@ function TomatoClock(){
                       display:roundDone ? "inline-block":"none"}}/>
                     <CheckCircleOutlined style={{fontSize:'28px',
                       display:roundDone ? "inline-block":"none", color:'#52c41a'}}/> */}
-                      <span className='tomato_icon' onClick={onReDoCount}> 
+                    <span className='tomato_icon' onClick={onDeleteCount}> 
                        <DeleteFilled />
                     </span>
                     </div>
