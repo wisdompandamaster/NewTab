@@ -37,7 +37,7 @@
     /* padding: 1%; */
 }
 .clock:hover{
-    background-color: #0000001A;
+    background-color: #00000055;
     border-radius: 20px;
 }
 .clock-setting{
@@ -45,6 +45,7 @@
     visibility: hidden;
     position:absolute;
     font-weight: 700;
+    color:aqua;
     top:5%;
     right:3%;
 }

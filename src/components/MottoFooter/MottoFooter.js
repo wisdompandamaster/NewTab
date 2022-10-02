@@ -1,6 +1,7 @@
 import { memo, useEffect, useState } from 'react'
 import './MottoFooter.css'
 import { message } from 'antd'
+import { UnorderedListOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
 import useLocalStorage from "../../hooks/useLocalStorage";
 
@@ -39,6 +40,10 @@ const MottoFooter = ()=>{  //格言脚注
 
     //let motto = JSON.parse(localStorage.getItem('motto'))
 
+    const onSetFotter = (e)=>{
+        e.stopPropagation();
+    } 
+
     // console.log(motto2.hitokoto)
     const clipMotto = () => {
         navigator.clipboard
@@ -49,6 +54,7 @@ const MottoFooter = ()=>{  //格言脚注
 
     return (
         <div onClick={clipMotto} style={{visibility: footerexist ? 'visible':'hidden'}}  className='motto'>
+            <span onClick={onSetFotter} style={{position:'absolute',right:'3%',color:'aqua'}}><UnorderedListOutlined/></span>
             <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div><span>--{motto.from}--</span><span>{motto.from_who}</span>
         </div>
     )
