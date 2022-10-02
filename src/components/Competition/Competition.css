@@ -12,11 +12,8 @@
     border-radius: 20px;
     transition: .1s ease-in;
 }
-.competition:active{
-    transform: scale(0.95);
-}
 
-.competition .com_left {
+/* .competition .com_left {
     display: inline-block;
     margin-top: 13px;
 }
@@ -59,7 +56,7 @@
     height: 25px;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 /* .com_right span:hover{
     background-color:#00000022;
 } */
@@ -68,20 +65,20 @@
     height: 120px;
     /* background-color:#00000011; */
     margin: 5px auto 0 auto;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     border-radius: 20px;
 }
 .com_board::-webkit-scrollbar{
     width: 0px;
-  }
+}
 .com_board a{
     /* display: block; */
     color: #000000;
 }
 .com_board a>div{
-  overflow-y: scroll;
-  height: 120px;
-  scroll-snap-type: y mandatory;
+  /* overflow-y: scroll; */
+   height: 120px;
+  /* scroll-snap-type: y mandatory; */
   /* 滚动贴合 */
 }
 .com_board a>div::-webkit-scrollbar{
@@ -93,7 +90,7 @@
     height: 100%;
     margin-top:-1.5%;
     justify-content: space-around;
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
 }
 .nba_team{
    display: inline-flex;

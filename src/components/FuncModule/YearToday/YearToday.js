@@ -22,7 +22,6 @@ export default function YearToday(){
     const handleWheelCapture = (e) => {
         // e.preventDefault();
           e.stopPropagation();
-          console.log(e)
           if(e.deltaY > 0 && itemIndex < yearToday.length - 1){
              setItemIndex(itemIndex + 1);
           }

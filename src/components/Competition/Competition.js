@@ -10,6 +10,7 @@ const no_game = <div style={{fontSize:"30px", height:"120px",width:"100%",textAl
 function NBA(props){                     //修复了一个bug，但是还没弄清原因，初步判断是state的更新问题
                                          //还差一个滚动贴合
     const [games,setGames] = useState([])
+    const [itemIndex, setItemIndex] = useState(0)
 
     //直接来自远程NBA网站的图片
     const remote_logo_img = 'https://res.nba.cn/media/img/teams/logos/'
@@ -19,6 +20,12 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
     const handleWheelCapture = (e)=>{
       if(games.length > 1){
         e.stopPropagation();
+      }
+      if(e.deltaY > 0 && itemIndex < games.length - 1){
+        setItemIndex(itemIndex + 1);
+      }
+      if(e.deltaY < 0 && itemIndex >= 1){
+       setItemIndex(itemIndex - 1);
       }
     }
 
@@ -55,8 +62,9 @@ function NBA(props){                     //修复了一个bug，但是还没弄�
         time = time.getHours() + " : " + time.toLocaleTimeString().slice(3,5)
         let score = item.boxscore.awayScore + " - " + item.boxscore.homeScore
         let score_time = item.boxscore.status !== "1" ?  score:time
+        if(index === itemIndex)
         return (
-          <div key={index} className="nba">
+          <div key={index} className="nba slidein">
           <span className="nba_team"><img alt='logo' 
         //   src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}
              src={remote_logo_img + item.awayTeam.profile.abbr +'_logo.svg'}
@@ -113,9 +121,13 @@ const Competition = ()=>{
                 <span onMouseOver={()=>setType(1)} style={{backgroundColor:(type===1? '#00000022':'#ffffff')}}>LOL</span>
                 <span onMouseOver={()=>setType(2)} style={{backgroundColor:(type===2? '#00000022':'#ffffff')}}>围棋</span>
             </div> */}
+            {/* 
+                NBA官网: https://china.nba.cn/
+                腾讯视频: https://v.qq.com/channel/nba
+            */}
             <div className="com_board">
                 {/* 这里是FuncCard 尝试封装type的一个尝试 */}
-                <a style={{display:(type===0?'block':'none')}} href='https://china.nba.cn/' rel="noreferrer" target='_blank'><NBA/></a>
+                <a style={{display:(type===0?'block':'none')}} href='https://v.qq.com/channel/nba' rel="noreferrer" target='_blank'><NBA/></a>
                 <a style={{display:(type===1?'block':'none')}} href='https://lpl.qq.com/' rel="noreferrer" target='_blank'>{no_game}</a>
                 <a style={{display:(type===2?'block':'none')}} href='#' rel="noreferrer" target='_blank'>{no_game}</a>
                 {/* <div></div>

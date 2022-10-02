@@ -8,6 +8,8 @@ import FuncModal from '../FuncModal/FuncModal';
 import GitHubCalendar from 'react-github-calendar';
 import ActivityCalendar from 'react-activity-calendar';
 import { Solar, Lunar, HolidayUtil, SolarWeek, SolarUtil } from 'lunar-javascript';
+import Lottie from 'react-lottie'
+import solarsystem from '../../asset/solar-system.json';
 
 export const accessWeekday = {
     "0": "星期日",
@@ -44,6 +46,16 @@ function CalComponent() {
   let yx = l.getYueXiang(); //月相
   let wh = l.getWuHou(); //物候
   let jqwh = l.getHou(); //节气 + 第几候
+
+  //lottie动画设定
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: solarsystem,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
   
   const handleTodoDatePos = (date)=>{
      let TodoDatePos = date.getFullYear() + '/'+ (date.getMonth() + 1) + '/' + date.getDate()
@@ -185,6 +197,11 @@ function CalComponent() {
               <span>节气 物候</span>
               <span>{jqwh}</span><span>{wh}</span>
             </div>
+          </div>
+          <div style={{width:'96%',background:'#00000055',borderRadius:'10px',margin:'3% auto 0 auto'}} onClick={showModal}>
+           <Lottie options={defaultOptions}
+              height={'120%'}
+              width={'100%'}/>
           </div>
         </div>
         </div>
