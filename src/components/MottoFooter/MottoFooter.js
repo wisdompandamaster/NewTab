@@ -8,6 +8,64 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 
 //这里总结一下localStorage用法
 
+//那年今日脚注版本
+const YearToday = ()=>{
+
+    const [yearToday, setYearToday] = useState([])
+    const [itemIndex, setItemIndex] = useState(0)
+
+    let month = ((new Date()).getMonth() + 1).toString().padStart(2,'0')
+    let day = 'S' + month + ((new Date()).getDate()).toString().padStart(2,'0')
+
+    //那年今日 api
+    let url = 'https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history@latest/baiduhistory/json/'+ month + '.json'
+
+    useEffect(()=>{
+        fetch(url).then((res)=>res.json())
+        .then((json)=>{setYearToday(json[day])})
+    },[])
+
+    const handleWheelCapture = (e) => {
+        // e.preventDefault();
+          e.stopPropagation();
+
+          //循环滚动
+          if(e.deltaY > 0 && itemIndex < yearToday.length - 1){
+             setItemIndex(itemIndex + 1);
+          }
+          if(e.deltaY < 0 && itemIndex >= 1){
+            setItemIndex(itemIndex - 1);
+          }
+          if(e.deltaY > 0 && itemIndex == yearToday.length - 1){
+            setItemIndex(0);
+          }
+          if(e.deltaY < 0 && itemIndex == 0){
+            setItemIndex(yearToday.length - 1);
+          }
+    } 
+
+    return (
+            <div  onWheelCapture={handleWheelCapture}>
+                {
+                    yearToday && yearToday.map((item, index)=>{
+                    if(index == itemIndex){
+                        return (
+                            <div className='slidein'>
+                            <div style={{color:'#fffa',fontStyle:'italic',fontWeight:500}}>A.D.{item.year}</div>
+                            <div>
+                            {"「  "}
+                            <div style={{display:'inline-block'}} dangerouslySetInnerHTML={{__html: item.title}}/>
+                            {"  」"}
+                            </div>
+                            </div>
+                        )
+                    }
+                    })
+                }
+            </div>
+    )
+}
+
 
 const MottoFooter = ()=>{  //格言脚注
 
@@ -72,10 +130,14 @@ const MottoFooter = ()=>{  //格言脚注
     }
 
     return (
-        <div>
-        <div onClick={clipMotto} style={{visibility: footerexist ? 'visible':'hidden'}}  className='motto'>
-            <span onClick={onSetFotter} style={{position:'absolute',right:'3%',color:'aqua'}}><UnorderedListOutlined/></span>
-            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div><span>--{motto.from}--</span><span>{motto.from_who}</span>
+        <div style={{visibility: footerexist ? 'visible':'hidden'}} className="footer">
+        <span onClick={onSetFotter} style={{position:'absolute',right:'3%',color:'aqua'}}><UnorderedListOutlined/></span>
+        <div style={{display: footerType === 1 ? "inline-block":"none"}} onClick={clipMotto}>
+            <span>--{motto.from}--</span><span>{motto.from_who}</span>
+            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>
+        </div>
+        <div style={{display: footerType === 0 ? "inline-block":"none"}}>
+            <YearToday/>
         </div>
         <FuncModal
         bodyStyle={{padding:'11px'}}

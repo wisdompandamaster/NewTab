@@ -1,4 +1,4 @@
-.motto{
+.footer{
     position: absolute;
     font-size: 20px;
     font-weight: 600;
@@ -12,13 +12,13 @@
     color: white;
     cursor: pointer;
 }
-.motto span{
-    visibility:hidden;
-    font-size: 18px;
-}
-.motto:hover {
+.footer:hover {
     background-color: #00000055;
 }
-.motto:hover span{
+.footer:hover span{
     visibility:visible;
 }
+.footer span{
+    visibility:hidden;
+    font-size: 18px;
+} 
