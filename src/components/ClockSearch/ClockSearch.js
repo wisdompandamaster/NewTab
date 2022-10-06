@@ -245,7 +245,7 @@ function Search(){  //搜索框
     const translate = (text)=>{
         setPreSearch([])
         const w = window.open('_black')
-        w.location.href = 'https://translate.google.cn/?sl=auto&tl=en&text='+ text + '&op=translate' 
+        w.location.href = 'https://translate.volcengine.com/translate?&text='+ text + '&op=translate' 
         setQuery('')
     }
 
