@@ -2,7 +2,7 @@ import './TomatoClock.css'
 import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
-import { Tag, Progress } from 'antd'
+import { Tag, Progress, InputNumber } from 'antd'
 import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled, TranslationOutlined, CheckOutlined } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
 import audio1 from '../../../asset/work.mp3'
@@ -17,6 +17,7 @@ function TomatoClock(){
     const [isWork, setIsWork] = useState(true)
     const [currentRound, setCurrentRound] = useState(0)
     const [roundDone, setRoundDone] = useState(false)
+
 
     //获取dom画canvas
     // const circle = useRef();
@@ -36,7 +37,7 @@ function TomatoClock(){
     const showModal = () => {
         setIsModalVisible(true);
     };
-    let steps = 10;
+     
     const handleCancel = () => {
         setIsModalVisible(false);
     };
@@ -161,7 +162,22 @@ function TomatoClock(){
     const onDeleteCount = (e)=>{
         e.stopPropagation();
     } 
+
+    //数字框change
+    const onNumberChange = (e)=>{
+        // console.log(e)
+    }
     
+    const SetTomatoClock = ()=>{
+        return (
+            <div style={{display:'flex', flexDirection:'column'}}>
+              <InputNumber defaultValue={25} onChange={onNumberChange} />
+              <InputNumber defaultValue={5} onChange={onNumberChange} /> 
+              <InputNumber defaultValue={3} onChange={onNumberChange} /> 
+            </div>
+        )
+    }
+
     return (
         <FuncCard
          title = "番茄时钟"
@@ -238,7 +254,7 @@ function TomatoClock(){
         <FuncModal
           title={<div style={{fontSize:'30px',letterSpacing:'10px'}}>设置番茄钟</div>} visible={isModalVisible}  width={'600px'} onCancel={handleCancel}
         >
-            
+            <SetTomatoClock/>
         </FuncModal>
          
         </FuncCard>

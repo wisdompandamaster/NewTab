@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react'
 import './MottoFooter.css'
-import { message, Radio } from 'antd'
+import { message, Radio, Popover } from 'antd'
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
 import FuncModal from '../FuncModal/FuncModal'
@@ -71,6 +71,7 @@ const MottoFooter = ()=>{  //格言脚注
 
     //const [footerset, setFooterSet] = useLocalStorage('footerset',{})
     const [motto, setMotto] = useState({})        //之后添加左键复制，右键刷新,或者添加菜单
+    // 脚注类型 0 一言 1 那年今日
     const [footerType, setFooterType] = useState(0)
     const footerexist = useSelector(state=>state.footerexist)
     const footerkinds = useSelector(state=>state.footerkinds)
@@ -100,11 +101,6 @@ const MottoFooter = ()=>{  //格言脚注
 
     //let motto = JSON.parse(localStorage.getItem('motto'))
 
-    const onSetFotter = (e)=>{
-        e.stopPropagation();
-        showModal();
-    } 
-
     // console.log(motto2.hitokoto)
     const clipMotto = () => {
         navigator.clipboard
@@ -112,52 +108,31 @@ const MottoFooter = ()=>{  //格言脚注
         .then(()=>{message.success('已成功复制到剪贴板')})
     }
 
-     // modal组件控制函数
-     const [isModalVisible, setIsModalVisible] = useState(false);
-     const showModal = () => {
-      // openNotification();
-       setIsModalVisible(true);
-     };
-     const handleOk = () => {
-       setIsModalVisible(false);
-     };
-     const handleCancel = () => {
-       setIsModalVisible(false);
-     };
-
      const onChange = (e) =>{
         setFooterType(e.target.value)
     }
 
-    return (
-        <div style={{visibility: footerexist ? 'visible':'hidden'}} className="footer">
-        <span onClick={onSetFotter} style={{position:'absolute',right:'3%',color:'aqua'}}><UnorderedListOutlined/></span>
-        <div style={{display: footerType === 1 ? "inline-block":"none"}} onClick={clipMotto}>
-            <span>--{motto.from}--</span><span>{motto.from_who}</span>
-            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>
-        </div>
-        <div style={{display: footerType === 0 ? "inline-block":"none"}}>
-            <YearToday/>
-        </div>
-        <FuncModal
-        bodyStyle={{padding:'11px'}}
-        title={<div style={{fontSize:'25px',fontWeight:'500',letterSpacing:'8px',marginLeft:'24px'}}>Fotter设置</div>}
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        width={'30vw'}
-    >
-       {/* <SetClock/> */}
-       <div style={{display:'flex',justifyContent:'space-between'}}>
-        <span>底部内容</span>
-        <span>
-        <Radio.Group onChange={onChange} value={footerType}>
+    const content = (
+        <Radio.Group onChange={onChange} value={footerType} style={{display:'flex',justifyContent:'space-between',flexDirection:'column'}}>
         <Radio value={0}>一言</Radio>
         <Radio value={1}>那年今日</Radio>
         </Radio.Group>
+    )
+
+    return (
+        <div style={{visibility: footerexist ? 'visible':'hidden'}} className="footer">
+        <span style={{position:'absolute',right:'3%',color:'aqua'}}>
+            <Popover placement="right" content={content} trigger="hover">
+                <UnorderedListOutlined/>
+            </Popover>
         </span>
-       </div>
-       </FuncModal>
+        <div style={{display: footerType ? "none":"inline-block"}} onClick={clipMotto}>
+            <span>--{motto.from}--</span><span>{motto.from_who}</span>
+            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>
+        </div>
+        <div style={{display: footerType ? "inline-block":"none"}}>
+            <YearToday/>
+        </div>
        </div>
     )
 }
