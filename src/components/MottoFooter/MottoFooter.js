@@ -25,6 +25,21 @@ const YearToday = ()=>{
         .then((json)=>{setYearToday(json[day])})
     },[])
 
+    useEffect(()=>{
+
+       const t = setInterval(()=>{
+            // getMotto()
+            setItemIndex(itemIndex => Math.floor((itemIndex + 1) % yearToday.length))
+            // console.log('定时切换')
+       },60000)              //60s自动更换一次
+
+       return ()=>{
+           clearTimeout(t)
+       }
+
+    },[yearToday])
+
+
     const handleWheelCapture = (e) => {
         // e.preventDefault();
           e.stopPropagation();
@@ -76,17 +91,18 @@ const MottoFooter = ()=>{  //格言脚注
     const footerexist = useSelector(state=>state.footerexist)
     const footerkinds = useSelector(state=>state.footerkinds)
 
+    let kinds = footerkinds.reduce((pre,cur,i)=>{         //还没加到localstorage
+        return pre + 'c=' + cur + '&'
+    },'')
+    let url = 'https://v1.hitokoto.cn/?'+kinds+'type=json'   
+    
+    async function getMotto(){           
+        fetch(url).then((response)=>response.json())
+        .then((data)=>{localStorage.setItem('motto',JSON.stringify(data));setMotto(data)}
+        ).catch((e)=>console.log("motto error"));
+    }
+
     useEffect(()=>{
-        let kinds = footerkinds.reduce((pre,cur,i)=>{         //还没加到localstorage
-            return pre + 'c=' + cur + '&'
-        },'')
-        let url = 'https://v1.hitokoto.cn/?'+kinds+'type=json'   
-        
-        async function getMotto(){           
-            fetch(url).then((response)=>response.json())
-            .then((data)=>{localStorage.setItem('motto',JSON.stringify(data));setMotto(data)}
-            ).catch((e)=>console.log("motto error"));
-        }
         getMotto()
         const t = setInterval(()=>{
              getMotto()
@@ -112,6 +128,11 @@ const MottoFooter = ()=>{  //格言脚注
         setFooterType(e.target.value)
     }
 
+    const handleWheelCapture = (e)=>{
+        e.stopPropagation();
+        getMotto();
+    }
+
     const content = (
         <Radio.Group onChange={onChange} value={footerType} style={{display:'flex',justifyContent:'space-between',flexDirection:'column'}}>
         <Radio value={0}>一言</Radio>
@@ -126,9 +147,9 @@ const MottoFooter = ()=>{  //格言脚注
                 <UnorderedListOutlined/>
             </Popover>
         </span>
-        <div style={{display: footerType ? "none":"inline-block"}} onClick={clipMotto}>
-            <span>--{motto.from}--</span><span>{motto.from_who}</span>
-            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>
+        <div style={{display: footerType ? "none":"inline-block"}} onClick={clipMotto} onWheelCapture={handleWheelCapture}>
+           <span>--{motto.from}--</span><span>{motto.from_who}</span>
+           <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>    
         </div>
         <div style={{display: footerType ? "inline-block":"none"}}>
             <YearToday/>
@@ -136,5 +157,6 @@ const MottoFooter = ()=>{  //格言脚注
        </div>
     )
 }
+
 
 export default memo(MottoFooter); //防止父组件背景改变时引发的重复渲染
