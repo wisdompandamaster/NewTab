@@ -14,8 +14,9 @@ function TomatoClock(){
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [studyTime, setStudyTime] = useState(10)
     const [restTime, setRestTime] = useState(5)
+    const [time, setTime] = useState(studyTime)
     const [item, setItem] = useState({name:'任务名', round:1})
-    const [count, setCount] = useState(studyTime)    //倒计时
+    const [count, setCount] = useState(time)    //倒计时
     const [isWork, setIsWork] = useState(true)       //是否是工作时间
     const [currentRound, setCurrentRound] = useState(0)  //目前第几个番茄钟
     const [roundDone, setRoundDone] = useState(false)    //一轮专注和休息是否结束
@@ -29,12 +30,18 @@ function TomatoClock(){
 
     useEffect(()=>{
         // animate();
-        setCount(studyTime)
+        setCount(time)
     },[item])
 
     useEffect(()=>{
         setCount(studyTime)
+        setTime(studyTime)
     },[studyTime,restTime])
+
+    useEffect(()=>{
+        setCount(time)
+    },[time])
+
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -133,7 +140,7 @@ function TomatoClock(){
                     if(!(currentRound == item.round && !isWork)){
                        setIsWork(!isWork);
                     //    setItem({...item,time:isWork ? 5:10})
-                       setCount(isWork? restTime:studyTime)
+                       setTime(isWork? restTime:studyTime)
                     }
                 }
                 return count - 1
@@ -153,7 +160,7 @@ function TomatoClock(){
     const onReDoCount = (e)=>{
         e.stopPropagation();
         clearInterval(timer.current);
-        setCount(studyTime);
+        setCount(time);
 
         //测试用
         // setIsWork(!isWork);
@@ -214,7 +221,7 @@ function TomatoClock(){
                     //         '0%': '#108ee9',
                     //         '100%': '#87d068',
                     // }}
-                    percent={Math.floor((((isWork ? studyTime:restTime) - count)/(isWork ? studyTime:restTime))*100)}
+                    percent={Math.floor(((time - count)/time)*100)}
                     format={(percent)=>{
                         if(percent < 100){
                             return <span style={{fontWeight:'600'}}>{String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}</span>
