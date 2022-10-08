@@ -12,11 +12,13 @@ import audio1 from '../../../asset/work.mp3'
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [item, setItem] = useState({name:'任务名', round:1, time:10})
-    const [count, setCount] = useState(item.time)
-    const [isWork, setIsWork] = useState(true)
-    const [currentRound, setCurrentRound] = useState(0)
-    const [roundDone, setRoundDone] = useState(false)
+    const [studyTime, setStudyTime] = useState(10)
+    const [restTime, setRestTime] = useState(5)
+    const [item, setItem] = useState({name:'任务名', round:1})
+    const [count, setCount] = useState(studyTime)    //倒计时
+    const [isWork, setIsWork] = useState(true)       //是否是工作时间
+    const [currentRound, setCurrentRound] = useState(0)  //目前第几个番茄钟
+    const [roundDone, setRoundDone] = useState(false)    //一轮专注和休息是否结束
 
 
     //获取dom画canvas
@@ -27,12 +29,12 @@ function TomatoClock(){
 
     useEffect(()=>{
         // animate();
-        setCount(item.time)
+        setCount(studyTime)
     },[item])
 
-    // useEffect(()=>{
-    //     animate();
-    // },[count])
+    useEffect(()=>{
+        setCount(studyTime)
+    },[studyTime,restTime])
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -88,7 +90,7 @@ function TomatoClock(){
 
     //FIXME: 使用requestAnimationFrame有大bug，一拖动就会疯狂报错，还有画的太频繁了，造成卡顿
     // const animate = ()=>{
-    //     let steps = Math.floor(((item.time - count)/item.time)*100)
+    //     let steps = Math.floor(((studyTime - count)/studyTime)*100)
     //     // let frame = window.requestAnimationFrame(function(){
     //     //     if(steps < 20 && steps >= 0){
     //     //         animate();
@@ -102,6 +104,7 @@ function TomatoClock(){
     // }
 
     //番茄倒计时开始
+    
     const onStartCount = (e)=>{
 
         e.stopPropagation();
@@ -129,9 +132,9 @@ function TomatoClock(){
                     //在一个番茄钟结束时就不自动更新倒计时
                     if(!(currentRound == item.round && !isWork)){
                        setIsWork(!isWork);
-                       setItem({...item,time:isWork ? 5:10})
+                    //    setItem({...item,time:isWork ? 5:10})
+                       setCount(isWork? restTime:studyTime)
                     }
-                    
                 }
                 return count - 1
                 }
@@ -150,7 +153,7 @@ function TomatoClock(){
     const onReDoCount = (e)=>{
         e.stopPropagation();
         clearInterval(timer.current);
-        setCount(item.time);
+        setCount(studyTime);
 
         //测试用
         // setIsWork(!isWork);
@@ -164,16 +167,25 @@ function TomatoClock(){
     } 
 
     //数字框change
-    const onNumberChange = (e)=>{
-        // console.log(e)
-    }
+    // const onNumberChange = (value)=>{
+    //     console.log(e)
+    // }
     
     const SetTomatoClock = ()=>{
         return (
-            <div style={{display:'flex', flexDirection:'column'}}>
-              <InputNumber defaultValue={25} onChange={onNumberChange} />
-              <InputNumber defaultValue={5} onChange={onNumberChange} /> 
-              <InputNumber defaultValue={3} onChange={onNumberChange} /> 
+            <div className='set-tomato-clock' style={{display:'flex', flexDirection:'column'}}> 
+            <div>
+                <span>{'专注时间'}</span>
+                <InputNumber defaultValue={studyTime} onChange={(value)=>{setStudyTime(value);setIsWork(true);setCurrentRound(0)}} />
+            </div>
+            <div>
+                <span>{'休息时间'}</span>
+                <InputNumber defaultValue={restTime} onChange={(value)=>{setRestTime(value);setIsWork(true);setCurrentRound(0)}} />
+            </div>
+            {/* <div>
+                <span>{'番茄钟数'}</span>
+                <InputNumber defaultValue={3} onChange={(value)=>{}} />
+            </div> */}
             </div>
         )
     }
@@ -202,7 +214,7 @@ function TomatoClock(){
                     //         '0%': '#108ee9',
                     //         '100%': '#87d068',
                     // }}
-                    percent={Math.floor(((item.time - count)/item.time)*100)}
+                    percent={Math.floor((((isWork ? studyTime:restTime) - count)/(isWork ? studyTime:restTime))*100)}
                     format={(percent)=>{
                         if(percent < 100){
                             return <span style={{fontWeight:'600'}}>{String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}</span>

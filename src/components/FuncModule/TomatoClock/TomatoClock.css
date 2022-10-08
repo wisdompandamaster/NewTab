@@ -29,3 +29,15 @@
     color:aqua;
     transition:.3s ease-in-out;
 }
+
+.set-tomato-clock{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.set-tomato-clock > div{
+     display: flex;
+     align-items: center;
+}
+.set-tomato-clock div > span{
+    margin-right:3%;
+}
