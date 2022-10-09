@@ -2,10 +2,11 @@ import './TomatoClock.css'
 import FuncCard from '../../FuncCard/FuncCard'
 import FuncModal from '../../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
-import { Tag, Progress, InputNumber } from 'antd'
+import { Tag, Progress, InputNumber, Input, Form, Button } from 'antd'
 import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled, TranslationOutlined, CheckOutlined } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
 import audio1 from '../../../asset/work.mp3'
+import FormItem from 'antd/lib/form/FormItem'
 
 //直接使用progress组件
 
@@ -178,22 +179,42 @@ function TomatoClock(){
     //     console.log(e)
     // }
     
-    const SetTomatoClock = ()=>{
+    const SetTomatoClock = (props)=>{
+
+        const {setTomatoItem} = props
+
+        const createItem = (values)=>{
+            // console.log(values);
+            setTomatoItem(values);
+        }
+
         return (
-            <div className='set-tomato-clock' style={{display:'flex', flexDirection:'column'}}> 
-            <div>
-                <span>{'专注时间'}</span>
-                <InputNumber defaultValue={studyTime} onChange={(value)=>{setStudyTime(value);setIsWork(true);setCurrentRound(0)}} />
+            <div style={{fontSize:'1.2rem',fontWeight:'600',display:'flex',justifyContent:'space-around'}}>
+            <Form style={{border:'1px solid red'}} onFinish={createItem}>
+            <FormItem label="任务名" name="name">
+                <Input bordered={false} placeholder="输入任务名" style={{width:'100%',borderBottom:'1px solid blue',fontSize:'1rem'}}/>
+            </FormItem>
+            <FormItem label="番茄钟数" name="round" initialValue={3}>
+                <InputNumber/>
+            </FormItem>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Button type="primary" htmlType="submit">
+                    创建任务
+                </Button>
+            </Form.Item>
+            </Form>
+            <div style={{display:'flex',flexDirection:'column'}}> 
+              <div>
+               {'专注时间 '} 
+              <InputNumber defaultValue={studyTime} onChange={(value)=>{setStudyTime(value);setIsWork(true);setCurrentRound(0)}} />
+              </div>
+              <div>
+               {'休息时间 '}
+              <InputNumber defaultValue={restTime} onChange={(value)=>{setRestTime(value);setIsWork(true);setCurrentRound(0)}} />
+              </div>
             </div>
-            <div>
-                <span>{'休息时间'}</span>
-                <InputNumber defaultValue={restTime} onChange={(value)=>{setRestTime(value);setIsWork(true);setCurrentRound(0)}} />
             </div>
-            {/* <div>
-                <span>{'番茄钟数'}</span>
-                <InputNumber defaultValue={3} onChange={(value)=>{}} />
-            </div> */}
-            </div>
+           
         )
     }
 
@@ -273,7 +294,7 @@ function TomatoClock(){
         <FuncModal
           title={<div style={{fontSize:'30px',letterSpacing:'10px'}}>设置番茄钟</div>} visible={isModalVisible}  width={'600px'} onCancel={handleCancel}
         >
-            <SetTomatoClock/>
+            <SetTomatoClock setTomatoItem={setItem}/>
         </FuncModal>
          
         </FuncCard>
