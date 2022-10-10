@@ -13,11 +13,11 @@ import FormItem from 'antd/lib/form/FormItem'
 function TomatoClock(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [studyTime, setStudyTime] = useState(10)
+    const [studyTime, setStudyTime] = useState(25)
     const [restTime, setRestTime] = useState(5)
     const [time, setTime] = useState(studyTime)
     const [item, setItem] = useState({name:'任务名', round:1})
-    const [count, setCount] = useState(time)    //倒计时
+    const [count, setCount] = useState(time*60)    //倒计时
     const [isWork, setIsWork] = useState(true)       //是否是工作时间
     const [currentRound, setCurrentRound] = useState(0)  //目前第几个番茄钟
     const [roundDone, setRoundDone] = useState(false)    //一轮专注和休息是否结束
@@ -31,16 +31,16 @@ function TomatoClock(){
 
     useEffect(()=>{
         // animate();
-        setCount(time)
+        setCount(time*60)
     },[item])
 
     useEffect(()=>{
-        setCount(studyTime)
+        setCount(studyTime*60)
         setTime(studyTime)
     },[studyTime,restTime])
 
     useEffect(()=>{
-        setCount(time)
+        setCount(time*60)
     },[time])
 
 
@@ -161,7 +161,7 @@ function TomatoClock(){
     const onReDoCount = (e)=>{
         e.stopPropagation();
         clearInterval(timer.current);
-        setCount(time);
+        setCount(time*60);
 
         //测试用
         // setIsWork(!isWork);
@@ -189,13 +189,22 @@ function TomatoClock(){
         }
 
         return (
-            <div style={{fontSize:'1.2rem',fontWeight:'600',display:'flex',justifyContent:'space-around'}}>
-            <Form style={{border:'1px solid red'}} onFinish={createItem}>
-            <FormItem label="任务名" name="name">
-                <Input bordered={false} placeholder="输入任务名" style={{width:'100%',borderBottom:'1px solid blue',fontSize:'1rem'}}/>
+            <div style={{fontSize:'1.2rem',fontWeight:'600',display:'flex',justifyContent:'center'}}>
+            <Form 
+              style={{border:'0px solid red',padding:'20px 20px 0 20px',background:'#fff5',borderRadius:'10px',flex:'1',marginRight:'10px'}} 
+              onFinish={createItem}
+            >
+            <FormItem label={<div style={{fontSize:'1.2rem'}}>任务名</div>} name="name" 
+            rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+                <Input bordered={false} placeholder="输入任务名" style={{width:'100%',borderBottom:'0px solid blue',fontSize:'1rem',background:'#0002'}}/>
             </FormItem>
-            <FormItem label="番茄钟数" name="round" initialValue={3}>
-                <InputNumber/>
+            <FormItem label={<div style={{fontSize:'1.2rem'}}>番茄钟数</div>} name="round" initialValue={3}>
+                <InputNumber bordered={false} style={{background:'#0002'}}/>
             </FormItem>
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button type="primary" htmlType="submit">
@@ -203,14 +212,14 @@ function TomatoClock(){
                 </Button>
             </Form.Item>
             </Form>
-            <div style={{display:'flex',flexDirection:'column'}}> 
-              <div>
+            <div style={{display:'flex',flexDirection:'column',padding:'0 20px',borderRadius:'10px',background:'#fff5',justifyContent:'center'}}> 
+              <div style={{marginBottom:'20%'}}>
                {'专注时间 '} 
-              <InputNumber defaultValue={studyTime} onChange={(value)=>{setStudyTime(value);setIsWork(true);setCurrentRound(0)}} />
+              <InputNumber style={{background:'#0002',marginLeft:'10px'}} bordered={false} defaultValue={studyTime} onChange={(value)=>{setStudyTime(value);setIsWork(true);setCurrentRound(0)}} />
               </div>
               <div>
                {'休息时间 '}
-              <InputNumber defaultValue={restTime} onChange={(value)=>{setRestTime(value);setIsWork(true);setCurrentRound(0)}} />
+              <InputNumber style={{background:'#0002',marginLeft:'10px'}} bordered={false} defaultValue={restTime} onChange={(value)=>{setRestTime(value);setIsWork(true);setCurrentRound(0)}} />
               </div>
             </div>
             </div>
