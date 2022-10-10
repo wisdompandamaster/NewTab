@@ -251,7 +251,7 @@ function TomatoClock(){
                     //         '0%': '#108ee9',
                     //         '100%': '#87d068',
                     // }}
-                    percent={Math.floor(((time - count)/time)*100)}
+                    percent={Math.floor(((time*60 - count)/(time*60))*100)}
                     format={(percent)=>{
                         if(percent < 100){
                             return <span style={{fontWeight:'600'}}>{String(Math.floor((count / 60 % 60))).padStart(2,'0') + ' : ' + String((count % 60)).padStart(2,'0')}</span>
