@@ -16,7 +16,7 @@ function TomatoClock(){
     const [studyTime, setStudyTime] = useState(25)
     const [restTime, setRestTime] = useState(5)
     const [time, setTime] = useState(studyTime)
-    const [item, setItem] = useState({name:'任务名', round:1})
+    const [item, setItem] = useState({name:'一个番茄', round:1})
     const [count, setCount] = useState(time*60)    //倒计时
     const [isWork, setIsWork] = useState(true)       //是否是工作时间
     const [currentRound, setCurrentRound] = useState(0)  //目前第几个番茄钟
