@@ -5,7 +5,8 @@ import { memo, useEffect, useState, useRef } from 'react'
 import { Tag, Progress, InputNumber, Input, Form, Button } from 'antd'
 import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled, TranslationOutlined, CheckOutlined } from '@ant-design/icons'
 import tomato from '../../../asset/Tomato.png'
-import audio1 from '../../../asset/work.mp3'
+import workaudio from '../../../asset/work.mp3'
+import restaudio from '../../../asset/rest.mp3'
 import FormItem from 'antd/lib/form/FormItem'
 
 //直接使用progress组件
@@ -22,6 +23,10 @@ function TomatoClock(){
     const [currentRound, setCurrentRound] = useState(0)  //目前第几个番茄钟
     const [roundDone, setRoundDone] = useState(false)    //一轮专注和休息是否结束
 
+    let work_audio = new Audio(workaudio)
+    // work_audio.loop = true
+    let rest_audio = new Audio(restaudio)
+    // rest_audio.loop = true
 
     //获取dom画canvas
     // const circle = useRef();
@@ -30,8 +35,16 @@ function TomatoClock(){
     const timer = useRef();
 
     useEffect(()=>{
+        // work_audio.pause()
+        // rest_audio.pause()
+    },[])
+
+    useEffect(()=>{
         // animate();
-        setCount(time*60)
+        setCount(studyTime*60)
+        setTime(studyTime)
+        setCurrentRound(0)
+        setIsWork(true)
     },[item])
 
     useEffect(()=>{
@@ -41,6 +54,8 @@ function TomatoClock(){
 
     useEffect(()=>{
         setCount(time*60)
+        // work_audio.pause()
+        // rest_audio.pause()
     },[time])
 
 
@@ -119,6 +134,8 @@ function TomatoClock(){
         // let workaudio = new Audio(' work.mp3')
         // workaudio.load();
         // workaudio.play();
+        // work_audio.pause()
+        // rest_audio.pause()
         clearInterval(timer.current)
         timer.current = setInterval(function(){
             //异步更新时，需要在setState()中传入函数来调用前一个state值
@@ -142,6 +159,8 @@ function TomatoClock(){
                        setIsWork(!isWork);
                     //    setItem({...item,time:isWork ? 5:10})
                        setTime(isWork? restTime:studyTime)
+                       isWork ? work_audio.play():rest_audio.play()
+
                     }
                 }
                 return count - 1
