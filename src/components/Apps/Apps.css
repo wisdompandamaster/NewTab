@@ -15,10 +15,13 @@
   text-align: center;
   background-color: #ffffff00;
 }
+.apps_sortableItem:hover img{
+  box-shadow:0 0 25px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255) inset;
+}
+
 .apps_sortableItem a{
-  transition: 0.3s ease-in;
+  transition: 0.2s ease-out;
    position: relative; 
-    
    width: 60px;
    min-height: 60px;
    /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
