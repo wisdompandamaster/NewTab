@@ -6,6 +6,7 @@ import defaultSetting from './config'
 import FunctionAera from './components/FunctionAera/FunctionAera';
 import MottoFooter from './components/MottoFooter/MottoFooter';
 import Menulist from './components/Menulist/Menulist'
+import ClickMenu from './components/ClickMenu/ClickMenu'
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect } from 'react';
 import cookie from 'react-cookies';
@@ -70,6 +71,7 @@ function App() {
       {/* <Menulist/> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
+       <ClickMenu></ClickMenu>
        <SwiperAera></SwiperAera>
        <MottoFooter></MottoFooter>
     </div>
