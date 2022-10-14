@@ -6,6 +6,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect} from 'react';
 import {  Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+// import ClickMenu from "../ClickMenu/ClickMenu";
 
 export default function Apps() {
 
@@ -32,6 +33,7 @@ export default function Apps() {
 
   const handleContextMenu = (e,b)=>{
       e.preventDefault();
+      e.stopPropagation();
       dispatch({
         type: "CHANGE_DELETEAPP",
         deleteApp: !b,
@@ -89,8 +91,8 @@ const SortableList = SortableContainer(({items}) => {
   //   return (   //因为click事件会引发拖动，所以这里click没有生效，设置transition解决了
   //     <a rel="noreferrer" key={item.name} href={item.href} target={'_blank'} ><img alt={item.name} src={item.imgPath}/></a>
   //   )
-  // }             
-  
+  // }  
+
   return (
       // <div className="Apps">{myApps.map((item, i) => renderItem(item))}</div>
       //通过给SortableList 设置最小拖动距离来激活点击事件（distance 单位px）

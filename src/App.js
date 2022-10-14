@@ -8,7 +8,7 @@ import MottoFooter from './components/MottoFooter/MottoFooter';
 import Menulist from './components/Menulist/Menulist'
 import ClickMenu from './components/ClickMenu/ClickMenu'
 import {useSelector, useDispatch} from 'react-redux'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
 
@@ -59,21 +59,56 @@ function App() {
   const cover = useSelector(state=>state.cover)
   const currentbg = useSelector(state=>state.currentbg)
 
+  const [position,setPosition] = useState({left:'0px',top:'0px',display:'none'})
+  
+  //右键菜单出现的位置
+  const showMenu = (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    const winWidth = window.innerWidth
+    const winHeight = window.innerHeight
+    console.log(e);
+    let x = e.clientX;
+    let y = e.clientY; 
+    // console.log(x)
+    x = x > winWidth - 150 ? winWidth - 150:x
+    y = y > winHeight - 188 ? winHeight - 188:y
+    // console.log(x)
+    setPosition({left:String(x) + 'px',top:String(y)+'px',display:'inline-block'})
+  }
+  
+  //取消App Func删除状态, 取消右键菜单状态
+  window.onclick = (e)=>{
+    setPosition({...position,display:'none'})
+    dispatch({
+      type: 'CHANGE_DELETEAPP',
+      deleteApp:false,
+    });
+    dispatch({
+      type: 'CHANGE_DELETEFUNC',
+      deleteFunc:false,
+    });
+  }
+
    
   let blurNum = 'blur(' + blur/4 + 'px)'
   let scale ='scale(' + (1 + blur * 0.0008) + ')'
   let coverNum = cover * 0.01
   let background = 'url('+ defaultSetting.imgSite + currentbg +')'
   return (
-    <div className="App">
+    <div className="App" onContextMenu={e=>showMenu(e)}>
       <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
       <div className='mask' style={{opacity:coverNum}}></div>
       {/* <Menulist/> */}
+      {/* <div onContextMenu={e=>e.stopPropagation()}> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
-       <ClickMenu></ClickMenu>
+       <div style={{display:position.display,position:'absolute',left:position.left,top:position.top}}>
+       <ClickMenu />
+       </div>
        <SwiperAera></SwiperAera>
        <MottoFooter></MottoFooter>
+      {/* </div> */}
     </div>
     
      

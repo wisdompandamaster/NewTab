@@ -4,7 +4,7 @@
     width: 85vw;
     height:22vw;
     margin: 0 auto;
-    z-index: 0;
+    /* z-index: 999; */
     border:0px solid black;
     border-radius: 20px;
     /* height: 50vh; */
