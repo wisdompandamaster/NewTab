@@ -59,6 +59,8 @@ function App() {
   const blur = useSelector(state=>state.blur)
   const cover = useSelector(state=>state.cover)
   const currentbg = useSelector(state=>state.currentbg)
+  const deleteApp = useSelector(state=>state.deleteApp)
+  const deleteFunc = useSelector(state=>state.deleteFunc)
 
   const [position,setPosition] = useState({left:'0px',top:'0px',display:'none'})
 
@@ -70,24 +72,27 @@ function App() {
     e.stopPropagation();
     const winWidth = window.innerWidth
     const winHeight = window.innerHeight
-    console.log(e);
+    // console.log(e);
     let x = e.clientX;
     let y = e.clientY; 
     // console.log(x)
-    x = x > winWidth - menu.current.lastChild.clientWidth ? winWidth - menu.current.lastChild.clientWidth:x
-    y = y > winHeight - menu.current.lastChild.clientHeight ? winHeight - menu.current.lastChild.clientHeight:y
+    x = x > winWidth - 120 ? winWidth - 120:x
+    y = y > winHeight - 102 ? winHeight - 102:y
     // console.log(x)
     setPosition({left:String(x) + 'px',top:String(y)+'px',display:'inline-block'})
-    console.log(menu)
+    // console.log(menu)
   }
   
   //取消App Func删除状态, 取消右键菜单状态
   window.onclick = (e)=>{
-    setPosition({...position,display:'none'})
+    if(position.display !== 'none')
+    setPosition({...position,display:'none'});
+    if(deleteApp)
     dispatch({
       type: 'CHANGE_DELETEAPP',
       deleteApp:false,
     });
+    if(deleteFunc)
     dispatch({
       type: 'CHANGE_DELETEFUNC',
       deleteFunc:false,

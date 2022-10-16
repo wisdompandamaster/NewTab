@@ -60,6 +60,7 @@ const FunctionAera = ()=>{   //中间的功能组件，放在里面
   },[functionList])
 
   const handleContextMenu = (e,b)=>{
+    e.stopPropagation();
     e.preventDefault();
     dispatch({
       type: "CHANGE_DELETEFUNC",
