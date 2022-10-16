@@ -8,9 +8,10 @@ import MottoFooter from './components/MottoFooter/MottoFooter';
 import Menulist from './components/Menulist/Menulist'
 import ClickMenu from './components/ClickMenu/ClickMenu'
 import {useSelector, useDispatch} from 'react-redux'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
+import { ConsoleSqlOutlined } from '@ant-design/icons';
 
 
 //FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
@@ -60,6 +61,8 @@ function App() {
   const currentbg = useSelector(state=>state.currentbg)
 
   const [position,setPosition] = useState({left:'0px',top:'0px',display:'none'})
+
+  const menu = useRef()
   
   //右键菜单出现的位置
   const showMenu = (e)=>{
@@ -71,10 +74,11 @@ function App() {
     let x = e.clientX;
     let y = e.clientY; 
     // console.log(x)
-    x = x > winWidth - 150 ? winWidth - 150:x
-    y = y > winHeight - 188 ? winHeight - 188:y
+    x = x > winWidth - menu.current.lastChild.clientWidth ? winWidth - menu.current.lastChild.clientWidth:x
+    y = y > winHeight - menu.current.lastChild.clientHeight ? winHeight - menu.current.lastChild.clientHeight:y
     // console.log(x)
     setPosition({left:String(x) + 'px',top:String(y)+'px',display:'inline-block'})
+    console.log(menu)
   }
   
   //取消App Func删除状态, 取消右键菜单状态
@@ -103,7 +107,7 @@ function App() {
       {/* <div onContextMenu={e=>e.stopPropagation()}> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
-       <div style={{display:position.display,position:'absolute',left:position.left,top:position.top}}>
+       <div style={{display:position.display,position:'absolute',left:position.left,top:position.top}} ref={menu}>
        <ClickMenu />
        </div>
        <SwiperAera></SwiperAera>

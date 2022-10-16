@@ -1,31 +1,40 @@
 .menu-wrapper{
-    width:150px;
-    background: #fff5;
+    width:120px;
+    background: #fffd;
     border-radius: 10px;
     position:absolute;
     z-index: 4;
 }
 .menu-wrapper ul{
     padding-inline-start:0;
+    margin-bottom: 0;
+    font-family: 'SimHei';
+}
+.menu-wrapper i{
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
 }
 .menu-wrapper .menu{
-    padding:10px 12px;
+    padding:3px 5px;
 }
 .menu-content .menu-item{
     list-style: none;
-    font-size: 22px;
-    height:50px;
+    /* font-size: 10px; */
+    height:30px;
     display:flex;
     padding:0 5px;
     align-items: center;
     border-radius: 5px;
     margin-bottom: 2px;
-    background: #0003;
+    /* background: #0003; */
 }
 .menu-content .menu-item:hover{
-    background: #0005;
+    background: #0002;
 }
 .menu-content .menu-item span{
-    font-size: 19px;
+    /* font-size: 10px; */
     margin-left:8px;
 }

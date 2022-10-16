@@ -1,5 +1,5 @@
 import './ClickMenu.css'
-import { DownloadOutlined } from '@ant-design/icons'
+import { DownloadOutlined, AppstoreAddOutlined, LinkOutlined } from '@ant-design/icons'
 import { memo } from 'react'
  
 
@@ -16,14 +16,14 @@ function ClickMenu(){
                 </li>
                 <li className='menu-item'>
                     <i className='menu-uil'>
-                     <DownloadOutlined />
-                     <span>World</span>
+                    <LinkOutlined />
+                     <span>添加图标</span>
                     </i>
                 </li>
                 <li className='menu-item'>
                     <i className='menu-uil'>
-                     <DownloadOutlined />
-                     <span>javascript</span>
+                    <AppstoreAddOutlined />
+                     <span>添加功能</span>
                     </i>
                 </li>
             </ul>
