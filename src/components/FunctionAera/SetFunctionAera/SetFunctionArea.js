@@ -1,7 +1,7 @@
 import './SetFunctionArea.css'
 import { memo, useState } from 'react';
 import { Button, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import FuncModal from "../../FuncModal/FuncModal";
 import News from '../../News/News'
@@ -75,13 +75,10 @@ const SetFunctionArea = ()=>{
 
     return (
         <div>
-        <span style={{marginRight:'60px'}}>添加 Cards</span>
-        <Button
-        type="dash"
-        onClick={showModal}
-        >
-         添加
-        </Button>
+        <i className='menu-uil' onClick={showModal}>
+            <AppstoreAddOutlined />
+            <span>添加功能</span>
+        </i>
         <FuncModal width="42vw"
          title={<div style={{display:'inline-flex',alignItems:'center',color:'white'}}>
              <span style={{fontSize:'25px'}}>添加 Card</span> 

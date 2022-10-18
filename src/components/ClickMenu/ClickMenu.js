@@ -1,13 +1,15 @@
 import './ClickMenu.css'
 import { DownloadOutlined, AppstoreAddOutlined, LinkOutlined } from '@ant-design/icons'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import defaultSetting from '../../config'
+import SetFunctionArea from '../FunctionAera/SetFunctionAera/SetFunctionArea';
  
 
 function ClickMenu(){
 
     const currentbg = useSelector(state=>state.currentbg)
+    const [setFunc,setSetFunc] = useState(false)
 
     const downloadWallPaper = (e)=>{
         // e.stopPropagation();
@@ -38,10 +40,7 @@ function ClickMenu(){
                     </i>
                 </li>
                 <li className='menu-item'>
-                    <i className='menu-uil'>
-                    <AppstoreAddOutlined />
-                     <span>添加功能</span>
-                    </i>
+                    <SetFunctionArea  />
                 </li>
             </ul>
             </div>
