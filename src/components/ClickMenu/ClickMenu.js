@@ -4,12 +4,12 @@ import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import defaultSetting from '../../config'
 import SetFunctionArea from '../FunctionAera/SetFunctionAera/SetFunctionArea';
+import SetApp from '../Apps/SetApp/SetApp'
  
 
 function ClickMenu(){
 
     const currentbg = useSelector(state=>state.currentbg)
-    const [setFunc,setSetFunc] = useState(false)
 
     const downloadWallPaper = (e)=>{
         // e.stopPropagation();
@@ -27,17 +27,14 @@ function ClickMenu(){
         <div className='menu-wrapper'>
          <div className='menu'>
             <ul className='menu-content'>
-                <li className='menu-item'>
+                <li className='menu-item'> 
                     <i className='menu-uil' onClick={downloadWallPaper}>
                      <DownloadOutlined />
                      <span>下载壁纸</span>
                     </i>
                 </li>
                 <li className='menu-item'>
-                    <i className='menu-uil'>
-                    <LinkOutlined />
-                     <span>添加图标</span>
-                    </i>
+                   <SetApp/>
                 </li>
                 <li className='menu-item'>
                     <SetFunctionArea  />

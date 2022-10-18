@@ -12,8 +12,8 @@
     /* background-color: #ffffff4D; */
 }
 .sortable{
-    /* position: relative; */
-    /* z-index: 1; */
+    /* position: relative;
+    z-index: 1; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,7 +23,7 @@
 }
 .sortableItem{
     position: relative;
-    /* z-index: 2; */
+    z-index: 2;
     margin: 12px;
     border-radius: 20px;
     /* background-image: url(https://minio.wisdompanda.com/background/bg1.jpg);

@@ -11,6 +11,8 @@
     align-items: center; */
     transition: .2s ease-in;
     /* backdrop-filter: blur(50px); */
+    /* border: 1px solid red; */
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 .filter{
     background: #FFFFFF55;

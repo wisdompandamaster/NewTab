@@ -12,7 +12,7 @@ import Douyin from "../../../AppIcons/Douyin.svg";
 import {useSelector,useDispatch} from 'react-redux';
 import React, { useState, useEffect, useRef} from 'react';
 import { Form, Input, Button, message, Modal, Switch } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, LinkOutlined } from '@ant-design/icons';
 import FuncModal from '../../FuncModal/FuncModal';
 
 //专门用来设置Apps   
@@ -222,13 +222,10 @@ export default function SetApp(){
 
   return (
     <div>
-      <span style={{marginRight:'60px'}}>添加APPS</span>
-      <Button
-        type="dash"
-        onClick={showModal}
-      >
-         添加
-      </Button>
+      <i className='menu-uil' onClick={showModal}>
+        <LinkOutlined />
+        <span>添加图标</span>
+      </i>
       <FuncModal width="45vw"
       title={<div style={{display:'inline-flex',alignItems:'center',color:'white'}}>
              <span style={{fontSize:'25px'}}>添加 APP</span> 

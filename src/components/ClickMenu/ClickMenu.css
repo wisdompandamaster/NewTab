@@ -32,6 +32,12 @@
     margin-bottom: 2px;
     /* background: #0003; */
 }
+.menu-item i{
+    height:100%;
+    display:flex;
+    align-items: center;
+
+}
 .menu-content .menu-item:hover{
     background: #0002;
 }
