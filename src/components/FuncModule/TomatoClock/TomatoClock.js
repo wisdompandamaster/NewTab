@@ -252,7 +252,7 @@ function TomatoClock(){
         >
          <span style={{position:'absolute',top:'5%', right:'5%',display:'flex',alignItems:'center'}}>
          <img width={30} src={tomato}/>
-         <span style={{fontSize:'1.2rem',fontWeight:'600',marginLeft:'5px'}}>10</span>
+         {/* <span style={{fontSize:'1.2rem',fontWeight:'600',marginLeft:'5px'}}>10</span> */}
          </span>
          <div style={{height:'100%', padding:'0 5%'}} onClick={showModal}>
             <div className='circle' style={{height:'75%',border:'0px solid red',display:'flex'}}>

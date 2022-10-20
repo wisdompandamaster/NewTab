@@ -143,12 +143,13 @@ const MottoFooter = ()=>{  //格言脚注
     return (
         <div style={{visibility: footerexist ? 'visible':'hidden'}} className="footer">
         <span style={{position:'absolute',right:'3%',color:'aqua'}}>
-            <Popover placement="right" content={content} trigger="hover">
+            <Popover placement="right" content={content} trigger="hover" color='#fff5'  overlayInnerStyle={{borderRadius:'10px',padding:'0'}}>
                 <UnorderedListOutlined/>
             </Popover>
         </span>
         <div style={{display: footerType ? "none":"inline-block"}} onClick={clipMotto} onWheelCapture={handleWheelCapture}>
-           <span>--{motto.from}--</span><span>{motto.from_who}</span>
+           <span style={{color:'#fffa',fontStyle:'italic',fontWeight:500}}>--{motto.from}--</span>
+           <span style={{color:'#fffa',fontStyle:'italic',fontWeight:500}}>{motto.from_who}</span>
            <div>{'< '}&nbsp;<em>{motto.hitokoto}</em>{'>'}</div>    
         </div>
         <div style={{display: footerType ? "inline-block":"none"}}>
