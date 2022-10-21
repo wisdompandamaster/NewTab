@@ -77,7 +77,7 @@ function App() {
     let y = e.clientY; 
     // console.log(x)
     x = x > winWidth - 120 ? winWidth - 120:x
-    y = y > winHeight - 102 ? winHeight - 102:y
+    y = y > winHeight - 166 ? winHeight - 166:y
     // console.log(x)
     setPosition({left:String(x) + 'px',top:String(y)+'px',display:'inline-block'})
     // console.log(menu)

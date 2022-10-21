@@ -1,10 +1,11 @@
 import './ClickMenu.css'
-import { DownloadOutlined, AppstoreAddOutlined, LinkOutlined } from '@ant-design/icons'
+import { DownloadOutlined, SwapOutlined, CodeOutlined } from '@ant-design/icons'
 import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import defaultSetting from '../../config'
 import SetFunctionArea from '../FunctionAera/SetFunctionAera/SetFunctionArea';
 import SetApp from '../Apps/SetApp/SetApp'
+import Snippets from '../Snippets/Snippets'
  
 
 function ClickMenu(){
@@ -38,6 +39,15 @@ function ClickMenu(){
                 </li>
                 <li className='menu-item'>
                     <SetFunctionArea  />
+                </li>
+                <li className='menu-item'>
+                    <Snippets />
+                </li>
+                <li className='menu-item'> 
+                    <i className='menu-uil'>
+                     <CodeOutlined />
+                     <span>命令模式</span>
+                    </i>
                 </li>
             </ul>
             </div>

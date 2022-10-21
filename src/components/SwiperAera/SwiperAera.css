@@ -8,4 +8,5 @@
     border:0px solid black;
     border-radius: 20px;
     /* height: 50vh; */
+    user-select: none;
 }

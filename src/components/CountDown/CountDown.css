@@ -33,12 +33,14 @@
     text-align: center;
     margin-top: 5px;
     font-size: 55px;
-    font-weight:900;
-    letter-spacing: 8px;
+    font-family: 'Microsoft Yahei';
+    font-weight:800;
+    letter-spacing: 4px;
 }
 .countdown_content span{
-    font-size: 30px;
-    letter-spacing: 0px;
+    font-size:30px;
+    margin-left: 2%;
+    letter-spacing:0;
 }
 
 /* 滚动条样式 */

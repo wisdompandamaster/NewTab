@@ -15,8 +15,8 @@ import CountDown from '../../CountDown/CountDown'
 import ServerMonitor from '../../ServerMonitor/ServerMonitor'
 import ToolKit from '../../ToolKit/ToolKit'
 import Demos from '../../Demos/Demos'
-import Memo from '../../Memo/Memo'
-import YearToday from '../../FuncModule/YearToday/YearToday';
+// import Snippets from '../../Snippets/Snippets'
+// import YearToday from '../../FuncModule/YearToday/YearToday';
 import TomatoClock from '../../FuncModule/TomatoClock/TomatoClock'
  
 
@@ -39,9 +39,9 @@ const SetFunctionArea = ()=>{
                {id:8, node:<ServerMonitor/>},
                {id:9, node:<ToolKit/>},
                {id:10, node:<Demos/>},
-               {id:11, node:<Memo/>},
-               {id:12, node:<YearToday/>},
-               {id:13, node:<TomatoClock/>}
+              //  {id:11, node:<Memo/>},
+              //  {id:11, node:<YearToday/>},
+               {id:12, node:<TomatoClock/>}
               ]
     
       const showModal = () => {
