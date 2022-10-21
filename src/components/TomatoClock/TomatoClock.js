@@ -1,12 +1,12 @@
 import './TomatoClock.css'
-import FuncCard from '../../FuncCard/FuncCard'
-import FuncModal from '../../FuncModal/FuncModal'
+import FuncCard from '../FuncCard/FuncCard'
+import FuncModal from '../FuncModal/FuncModal'
 import { memo, useEffect, useState, useRef } from 'react'
 import { Tag, Progress, InputNumber, Input, Form, Button } from 'antd'
 import { PlayCircleOutlined, PauseCircleOutlined, RedoOutlined, CheckCircleTwoTone, CheckCircleOutlined, SyncOutlined, DeleteFilled, TranslationOutlined, CheckOutlined } from '@ant-design/icons'
-import tomato from '../../../asset/Tomato.png'
-import workaudio from '../../../asset/work.mp3'
-import restaudio from '../../../asset/rest.mp3'
+import tomato from '../../asset/Tomato.png'
+import workaudio from '../../asset/work.mp3'
+import restaudio from '../../asset/rest.mp3'
 import FormItem from 'antd/lib/form/FormItem'
 
 //直接使用progress组件

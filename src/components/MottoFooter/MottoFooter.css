@@ -22,3 +22,16 @@
     visibility:hidden;
     font-size: 18px;
 } 
+
+.slidein{
+    animation: slide 1s;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }  
+    100% {
+        opacity: 1;
+    }  
+}

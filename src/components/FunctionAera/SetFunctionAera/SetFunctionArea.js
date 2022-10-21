@@ -17,7 +17,7 @@ import ToolKit from '../../ToolKit/ToolKit'
 import Demos from '../../Demos/Demos'
 // import Snippets from '../../Snippets/Snippets'
 // import YearToday from '../../FuncModule/YearToday/YearToday';
-import TomatoClock from '../../FuncModule/TomatoClock/TomatoClock'
+import TomatoClock from '../../TomatoClock/TomatoClock'
  
 
 //FIXME:style have some problem
@@ -41,7 +41,7 @@ const SetFunctionArea = ()=>{
                {id:10, node:<Demos/>},
               //  {id:11, node:<Memo/>},
               //  {id:11, node:<YearToday/>},
-               {id:12, node:<TomatoClock/>}
+               {id:11, node:<TomatoClock/>}
               ]
     
       const showModal = () => {
