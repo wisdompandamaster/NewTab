@@ -23,6 +23,7 @@ function App() {
    //页面加载前需要请求的数据
   const dispatch = useDispatch()
 
+
   useEffect(()=>{             //获取setting数据
     let url2 = defaultSetting.site + '/functions/getmysettings/'
     async function getSettings(){   
@@ -57,8 +58,9 @@ function App() {
     }
   },[])
 
-  //便签内容
-  const contents = [{id:1,content:'Some Samples'}]
+   //便签内容
+   const snippets = useSelector(state=>state.snippets) 
+ 
   // 拖拽便签组件
   const [disabled, setDisabled] = useState(false);
   const [bounds, setBounds] = useState({
@@ -135,6 +137,8 @@ function App() {
   let scale ='scale(' + (1 + blur * 0.0008) + ')'
   let coverNum = cover * 0.01
   let background = 'url('+ defaultSetting.imgSite + currentbg +')'
+
+
   return (
     <div className="App" onContextMenu={e=>showMenu(e)}>
       <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
@@ -150,16 +154,16 @@ function App() {
        <MottoFooter></MottoFooter>
       {/* </div> */}
       {
-        contents.map((item,index)=>{
+        snippets.map((item,index)=>{
             return (
-              
                <Draggable
                disabled={disabled}
-               bounds={bounds}
+               bounds={'parent'}
                onStart={(event, uiData) => onStart(event, uiData)}
+               key={item.id}
                >
-               <div className='snippets-container' ref={draggleRef}>
-                <Snippets content={item.content} />
+               <div className='snippets-container'>
+                <Snippets id={item.id}/>
                </div>
                </Draggable>
             )

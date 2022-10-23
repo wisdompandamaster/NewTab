@@ -166,6 +166,7 @@ const CountDown = ()=>{
         <EditableProTable rowKey="id" headerTitle="" maxLength={5}  
         recordCreatorProps={ {
                 position:'bottom',
+                //TODO:ID改成唯一性的uuid
                 record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),  //新建一行时的记录标识
             }
             } loading={false}  

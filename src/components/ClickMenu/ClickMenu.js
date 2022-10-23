@@ -28,11 +28,13 @@ function ClickMenu(){
         <div className='menu-wrapper'>
          <div className='menu'>
             <ul className='menu-content'>
-                <li className='menu-item'> 
+                <li className='menu-item'>
+                    <div> 
                     <i className='menu-uil' onClick={downloadWallPaper}>
                      <DownloadOutlined />
                      <span>下载壁纸</span>
                     </i>
+                    </div>
                 </li>
                 <li className='menu-item'>
                    <SetApp/>
@@ -44,10 +46,12 @@ function ClickMenu(){
                     <SnippetsInMenu />
                 </li>
                 <li className='menu-item'> 
+                    <div>
                     <i className='menu-uil'>
                      <CodeOutlined />
                      <span>命令模式</span>
                     </i>
+                    </div>
                 </li>
             </ul>
             </div>

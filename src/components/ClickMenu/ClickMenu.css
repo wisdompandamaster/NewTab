@@ -14,7 +14,6 @@
     font-style: normal;
     font-size: 1rem;
     font-weight: 600;
-    cursor: pointer;
     letter-spacing: 1px;
     user-select: none;
 }
@@ -26,17 +25,18 @@
     /* font-size: 10px; */
     height:30px;
     display:flex;
-    padding:0 5px;
+    /* padding:0 5px; */
     align-items: center;
     border-radius: 5px;
     margin-bottom: 2px;
     /* background: #0003; */
 }
-.menu-item i{
+.menu-item > div{
     height:100%;
+    width:100%;
     display:flex;
     align-items: center;
-
+    cursor: pointer;
 }
 .menu-content .menu-item:hover{
     background: #0002;

@@ -7,6 +7,8 @@
     box-shadow: 0 0 7px rgba(0,0,0,0.15);
     resize: none;
     background-color: #fffa;
-    font-family: sans-serif;
+    font-family: 'SimHei';
     font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
