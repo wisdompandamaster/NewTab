@@ -12,6 +12,9 @@ import { useEffect, useState, useRef } from 'react';
 import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
 import { ConsoleSqlOutlined } from '@ant-design/icons';
+import { Snippets } from './components/Snippets/Snippets'
+import Draggable from 'react-draggable';
+import { conversionMomentValue } from '@ant-design/pro-utils';
 
 
 //FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
@@ -54,6 +57,34 @@ function App() {
     }
   },[])
 
+  //便签内容
+  const contents = [{id:1,content:'Some Samples'}]
+  // 拖拽便签组件
+  const [disabled, setDisabled] = useState(false);
+  const [bounds, setBounds] = useState({
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+  });
+  const draggleRef = useRef(null);
+  const onStart = (_event, uiData) => {
+    //可拖拽区域长宽
+    const { clientWidth, clientHeight } = window.document.documentElement;
+    //拖拽组件长宽
+    const targetRect = draggleRef.current?.getBoundingClientRect();
+     
+    if (!targetRect) {
+      return;
+    }
+    
+    setBounds({
+      left: -targetRect.left + uiData.x,
+      right: clientWidth - (targetRect.right - uiData.x),
+      top: -targetRect.top + uiData.y,
+      bottom: clientHeight - (targetRect.bottom - uiData.y),
+    });
+  };
 
 
   const blur = useSelector(state=>state.blur)
@@ -118,6 +149,22 @@ function App() {
        <SwiperAera></SwiperAera>
        <MottoFooter></MottoFooter>
       {/* </div> */}
+      {
+        contents.map((item,index)=>{
+            return (
+              
+               <Draggable
+               disabled={disabled}
+               bounds={bounds}
+               onStart={(event, uiData) => onStart(event, uiData)}
+               >
+               <div className='snippets-container' ref={draggleRef}>
+                <Snippets content={item.content} />
+               </div>
+               </Draggable>
+            )
+        })
+      }
     </div>
     
      

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import defaultSetting from '../../config'
 import SetFunctionArea from '../FunctionAera/SetFunctionAera/SetFunctionArea';
 import SetApp from '../Apps/SetApp/SetApp'
-import Snippets from '../Snippets/Snippets'
+import { SnippetsInMenu } from '../Snippets/Snippets'
  
 
 function ClickMenu(){
@@ -41,7 +41,7 @@ function ClickMenu(){
                     <SetFunctionArea  />
                 </li>
                 <li className='menu-item'>
-                    <Snippets />
+                    <SnippetsInMenu />
                 </li>
                 <li className='menu-item'> 
                     <i className='menu-uil'>

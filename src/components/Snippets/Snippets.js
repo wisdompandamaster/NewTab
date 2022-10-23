@@ -2,7 +2,20 @@ import './Snippets.css'
 import { memo,useState } from 'react'
 import { SnippetsOutlined } from '@ant-design/icons'
 
-const Snippets = ()=>{
+const Snippets = memo((props)=>{
+
+   const { content } = props
+
+   return (
+      <div>
+      <textarea className="snippets" style={{diplay:'none'}}>
+         {content}
+      </textarea>
+      </div>
+   )
+})
+
+const SnippetsInMenu = memo(()=>{
 
       return (
          <div>
@@ -11,8 +24,7 @@ const Snippets = ()=>{
               <span>便利贴</span>
             </i>
          </div>
-         
       )
-}
+})
 
-export default memo(Snippets);
+export {  SnippetsInMenu, Snippets };

@@ -290,3 +290,10 @@ hr.todo-hr {
   border: 1px solid #ffffff;
   border-radius: 20px;
 }
+
+.snippets-container{
+    position: absolute;
+    z-index: 2;
+    top:100px;
+    left:200px;
+}
