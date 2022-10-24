@@ -59,7 +59,7 @@ export default function SetFooter(){
 
     return (
       <div style={{display:'flex',alignItems:'center'}}>
-      <span style={{marginRight:'10px'}}>编辑格言</span>
+      <span style={{marginRight:'10px'}}>页面底部</span>
       {/* 下次更新完设置格言这一部分 5.23 */}
       <Select
       mode="multiple"

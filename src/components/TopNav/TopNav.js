@@ -165,10 +165,10 @@ function SetFunction() {
   
   return (
     <div className='set_function'>
-      <SetApp/>
+      {/* <SetApp/> */}
       <SetFooter/>
       <SetFuncCardStyle/>
-      <SetFunctionArea/>
+      {/* <SetFunctionArea/> */}
     </div>
   );
 }
@@ -223,7 +223,7 @@ function Setting() {
             <SetBackground></SetBackground>
           </Panel>
           <Panel
-            header={<div className="panel-title">功能组件设置</div>}
+            header={<div className="panel-title">页面样式设置</div>}
             key="2"
             className="setting-panel"
           >
