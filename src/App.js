@@ -11,7 +11,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useEffect, useState, useRef } from 'react';
 import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
-import { ConsoleSqlOutlined } from '@ant-design/icons';
+import { DragOutlined } from '@ant-design/icons';
 import { Snippets } from './components/Snippets/Snippets'
 import Draggable from 'react-draggable';
 import { conversionMomentValue } from '@ant-design/pro-utils';
@@ -161,8 +161,10 @@ function App() {
                bounds={'parent'}
                onStart={(event, uiData) => onStart(event, uiData)}
                key={item.id}
+               handle="strong"
                >
                <div className='snippets-container'>
+                <strong style={{position:'absolute',top:'8px',right:'10px',zIndex:'4',fontSize:'20px',cursor:'pointer'}}><DragOutlined /></strong>
                 <Snippets id={item.id}/>
                </div>
                </Draggable>
