@@ -3,9 +3,9 @@ import './App.css';
 import ClockSearch from './components/ClockSearch/ClockSearch';
 import TopNav from './components/TopNav/TopNav';
 import defaultSetting from './config'
-import FunctionAera from './components/FunctionAera/FunctionAera';
-import MottoFooter from './components/MottoFooter/MottoFooter';
-import Menulist from './components/Menulist/Menulist'
+// import FunctionAera from './components/FunctionAera/FunctionAera';
+import {MottoFooter} from './components/MottoFooter/MottoFooter';
+// import Menulist from './components/Menulist/Menulist'
 import ClickMenu from './components/ClickMenu/ClickMenu'
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect, useState, useRef } from 'react';
@@ -14,7 +14,7 @@ import SwiperAera from './components/SwiperAera/SwiperAera';
 import { DragOutlined } from '@ant-design/icons';
 import { Snippets } from './components/Snippets/Snippets'
 import Draggable from 'react-draggable';
-import { conversionMomentValue } from '@ant-design/pro-utils';
+// import { conversionMomentValue } from '@ant-design/pro-utils';
 
 
 //FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
