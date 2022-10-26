@@ -136,12 +136,13 @@ function App() {
   let blurNum = 'blur(' + blur/4 + 'px)'
   let scale ='scale(' + (1 + blur * 0.0008) + ')'
   let coverNum = cover * 0.01
-  let background = 'url('+ defaultSetting.imgSite + currentbg +')'
-
+  let myBackground = 'url('+ defaultSetting.imgSite + currentbg +')'
+  //bing每日壁纸接口,别人写的
+  // let bingBackground = 'url(https://api.oneneko.com/v1/bing_today)'
 
   return (
     <div className="App" onContextMenu={e=>showMenu(e)}>
-      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
+      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:myBackground,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
       <div className='mask' style={{opacity:coverNum}}></div>
       {/* <Menulist/> */}
       {/* <div onContextMenu={e=>e.stopPropagation()}> */}

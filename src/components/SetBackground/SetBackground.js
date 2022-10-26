@@ -1,6 +1,6 @@
 import './SetBackground.css';
 import {useSelector, useDispatch} from 'react-redux';
-import { Upload, message, Slider, Modal, Tabs } from 'antd';
+import { Upload, message, Slider, Modal, Tabs, Switch } from 'antd';
 import React, { useState, useEffect, memo } from 'react';
 import { InboxOutlined,CheckOutlined } from '@ant-design/icons';
 import defaultSetting from '../../config';
@@ -192,9 +192,12 @@ const SetBackground = ()=>{
      return (
        <>
         <div className='setBackground'>
-          <div className='backgroundImg' style={{backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}><div onClick={showModal}>更改背景</div></div>
+          <div className='backgroundImg' style={{backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
+            <div onClick={showModal}>更改背景</div>
+          </div>
           <div style={{margin:'10px 5px',display:'flex',alignItems:'center'}}><Slider className='backgroundCover' defaultValue={cover} onChange={onChangeCover} onAfterChange={onAfterChange} /><span>遮罩浓度</span></div>
           <div style={{margin:'10px 5px',display:'flex',alignItems:'center'}}><Slider className='backgroundBlur' defaultValue={blur} onChange={onChangeBlur} onAfterChange={onAfterChange} /><span>模糊程度</span></div> 
+          <div style={{display:'flex',alignItems:'center'}}><span style={{marginRight:'3%',fontWeight:'600'}}>必应壁纸 </span><Switch/></div> 
         </div>
         <Modal title={<div style={{fontSize:'30px',fontWeight:700,letterSpacing:'10px',marginLeft:'34px'}}>壁纸</div>} width={'940px'}  footer={null} visible={isModalVisible}   onCancel={handleCancel}>
             <Tabs type='card' style={{height:'550px',}} tabPosition='left'>   {/*二级页面左边的标签页*/}
