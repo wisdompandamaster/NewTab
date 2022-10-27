@@ -155,13 +155,18 @@ function App() {
 
       const changeRandomBackground = ()=>{
           setLoading(true);
-          //TODO:同步待优化 
+
+          //先缓存图片
+          //先用new Image() 把图片缓存，再用
+          // 有一个问题，后端每次请求会有防抖，同一时间内多次请求，会返回相同的图片，这也是缓存的作用
+          //所以两次请求之间的间隔很重要，要在防抖时间内，保证请求的是同一张图片，保证缓存有效
+          //又要保证时间足够图片请求和加载到内存
+          let img = new Image()
+          img.src = (randomBackground == random1 ? random2:random1).substring(4).replace(')','')
+
           setTimeout(()=>{
             setRandomBackground(randomBackground == random1 ? random2:random1)
-            setLoading(false);
-            // console.log('set')
-          },1500)         
-          // console.log(randomBackground)
+          },1000)        
       }
 
       return (
