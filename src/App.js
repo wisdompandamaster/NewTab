@@ -8,10 +8,10 @@ import {MottoFooter} from './components/MottoFooter/MottoFooter';
 // import Menulist from './components/Menulist/Menulist'
 import ClickMenu from './components/ClickMenu/ClickMenu'
 import {useSelector, useDispatch} from 'react-redux'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, memo } from 'react';
 import cookie from 'react-cookies';
 import SwiperAera from './components/SwiperAera/SwiperAera';
-import { DragOutlined } from '@ant-design/icons';
+import { DragOutlined, SyncOutlined } from '@ant-design/icons';
 import { Snippets } from './components/Snippets/Snippets'
 import Draggable from 'react-draggable';
 // import { conversionMomentValue } from '@ant-design/pro-utils';
@@ -23,6 +23,10 @@ function App() {
    //页面加载前需要请求的数据
   const dispatch = useDispatch()
 
+   //两个随机壁纸api
+  let random1 =  'url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)'
+  let random2 =  'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
+  const [randomBackground,setRandomBackground] = useState(random1)
 
   useEffect(()=>{             //获取setting数据
     let url2 = defaultSetting.site + '/functions/getmysettings/'
@@ -136,24 +140,55 @@ function App() {
   let blurNum = 'blur(' + blur/4 + 'px)'
   let scale ='scale(' + (1 + blur * 0.0008) + ')'
   let coverNum = cover * 0.01
+  //自己选的壁纸
   let myBackground = 'url('+ defaultSetting.imgSite + currentbg +')'
   //bing每日壁纸接口,别人写的
-  // let bingBackground = 'url(https://api.oneneko.com/v1/bing_today)'
+  let bingBackground = 'url(https://api.oneneko.com/v1/bing_today)'
+  //随机壁纸接口
+  // let randomBackground = 'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
+  let background = [myBackground,bingBackground,randomBackground]
+
+  // TODO:图片预加载和缓存
+  const ChangeBg = memo(()=>{
+     
+      const [loading,setLoading] = useState(false);
+
+      const changeRandomBackground = ()=>{
+          setLoading(true);
+          //TODO:同步待优化 
+          setTimeout(()=>{
+            setRandomBackground(randomBackground == random1 ? random2:random1)
+            setLoading(false);
+            // console.log('set')
+          },1500)         
+          // console.log(randomBackground)
+      }
+
+      return (
+        <div style={{position:'fixed',bottom:'3%',right:'2%',zIndex:3,fontSize:'35px',width:'50px',height:'50px',background:'#0007',color:'#fff6',textAlign:'center',lineHeight:'50px',borderRadius:'10px',cursor:'pointer'}}>
+        <SyncOutlined spin={loading} onClick={changeRandomBackground}/>
+      </div>
+      )
+  })
 
   return (
     <div className="App" onContextMenu={e=>showMenu(e)}>
-      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:myBackground,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
+      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background[2],backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
       <div className='mask' style={{opacity:coverNum}}></div>
       {/* <Menulist/> */}
       {/* <div onContextMenu={e=>e.stopPropagation()}> */}
        <TopNav></TopNav>
        <ClockSearch></ClockSearch>
+       {/* 右键菜单 */}
        <div style={{display:position.display,position:'absolute',left:position.left,top:position.top}} ref={menu}>
        <ClickMenu />
        </div>
+       {/* 滑动区域 */}
        <SwiperAera></SwiperAera>
+       {/* 脚注 */}
        <MottoFooter></MottoFooter>
       {/* </div> */}
+      {/* 便利贴 */}
       {
         snippets.map((item,index)=>{
             return (
@@ -170,8 +205,10 @@ function App() {
                </div>
                </Draggable>
             )
-        })
+      })
       }
+      {/* 随机壁纸切换 */}
+      <ChangeBg/>
     </div>
     
      
