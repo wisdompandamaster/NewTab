@@ -155,22 +155,33 @@ function App() {
 
       const changeRandomBackground = ()=>{
           setLoading(true);
-
+          console.log('loading')
           //先缓存图片
           //先用new Image() 把图片缓存，再用
           // 有一个问题，后端每次请求会有防抖，同一时间内多次请求，会返回相同的图片，这也是缓存的作用
           //所以两次请求之间的间隔很重要，要在防抖时间内，保证请求的是同一张图片，保证缓存有效
           //又要保证时间足够图片请求和加载到内存
+          //还有一种是不定等待时间，等图片加载好
           let img = new Image()
           img.src = (randomBackground == random1 ? random2:random1).substring(4).replace(')','')
 
-          setTimeout(()=>{
-            setRandomBackground(randomBackground == random1 ? random2:random1)
-          },1000)        
+          let timer = setInterval(()=>{
+            //等图片加载好再放出来,等待时间不定
+            if(img.complete){
+              clearInterval(timer)
+              setRandomBackground('url('+img.src+')')
+            }
+          },10)
+          
+          // setTimeout(()=>{
+            
+          //   console.log(img.complete)
+          //   console.log(img.src)
+          // },1000)        
       }
 
       return (
-        <div style={{position:'fixed',bottom:'3%',right:'2%',zIndex:3,fontSize:'35px',width:'50px',height:'50px',background:'#0007',color:'#fff6',textAlign:'center',lineHeight:'50px',borderRadius:'10px',cursor:'pointer'}}>
+        <div style={{position:'fixed',bottom:'3%',right:'2%',zIndex:3,fontSize:'35px',width:'50px',height:'50px',background:'#0007',color:'#fff8',textAlign:'center',lineHeight:'50px',borderRadius:'10px',cursor:'pointer'}}>
         <SyncOutlined spin={loading} onClick={changeRandomBackground}/>
       </div>
       )
