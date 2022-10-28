@@ -7,8 +7,8 @@
   /* z-index:999; */
   bottom: 0vh;
   margin: 0 auto 20px auto;
-  width:84vw;
-  height:20vw;
+  width: 84vw;
+  height: 20vw;
   border-radius: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -16,30 +16,29 @@
   text-align: center;
   background-color: #ffffff00;
 }
-.apps_sortableItem:hover img{
-  box-shadow:0 0 25px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255) inset;
+.apps_sortableItem:hover img {
+  box-shadow: 0 0 25px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255) inset;
 }
 
-.apps_sortableItem a{
+.apps_sortableItem a {
   transition: 0.2s ease-out;
-   position: relative; 
-   width: 60px;
-   min-height: 60px;
-   /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
+  position: relative;
+  width: 60px;
+  min-height: 60px;
+  /* 这个transition挺重要，和事件执行有关，这个时间要比外面的慢，才先执行，待弄懂 */
 }
 
-.apps_sortableItem a img{  
- 
-   width: 4.5vw;
-   min-width: 60px;
-   max-width: 4.5vw;
-   border-radius: 20px;
-   transition:0.2s ease-in-out;
+.apps_sortableItem a img {
+  width: 4.5vw;
+  min-width: 60px;
+  max-width: 4.5vw;
+  border-radius: 20px;
+  transition: 0.2s ease-in-out;
 }
-.apps_sortable{
+.apps_sortable {
   display: grid;
-  grid-template-columns: repeat(8,calc(100% / 8));
-  grid-template-rows: repeat(3, calc(100%/3));
+  grid-template-columns: repeat(8, calc(100% / 8));
+  grid-template-rows: repeat(3, calc(100% / 3));
   justify-content: center;
   justify-items: center;
   overflow-x: hidden;
@@ -50,45 +49,46 @@
    transform: scale(0);
    transition:2s ease-in-out;
 } */
-.apps_sortableItem{
+.apps_sortableItem {
   width: 100%;
   height: 100%;
-  display:flex;
+  display: flex;
   align-items: center;
   position: relative;
   z-index: 2;
 }
-.shake{
+.shake {
   animation: icon_shake 0.2s infinite;
 }
-.apps_sortableItem button{
+.apps_sortableItem button {
   position: relative;
   margin-top: -50%;
-  left:66%;
+  left: 66%;
   z-index: 1;
 }
 /* .Apps:active {
   transform: scale(0.8);
 } */
 @keyframes icon_shake {
-  0%{
-    transform:rotate(3deg);
+  0% {
+    transform: rotate(3deg);
   }
-  25%{
-    transform:rotate(0);
+  25% {
+    transform: rotate(0);
   }
-  50%{
-    transform:rotate(-3deg);
+  50% {
+    transform: rotate(-3deg);
   }
-  75%{
-    transform:rotate(0deg);
+  75% {
+    transform: rotate(0deg);
   }
-  100%{
-    transform:rotate(3deg);
+  100% {
+    transform: rotate(3deg);
   }
 }
 
-.apps_sortable::-webkit-scrollbar,.Apps::-webkit-scrollbar{
+.apps_sortable::-webkit-scrollbar,
+.Apps::-webkit-scrollbar {
   width: 0px;
 }
 /* div::-webkit-scrollbar-thumb {

@@ -5,9 +5,11 @@
 <!-- Add buttons here -->
 
 <!-- Describe your project in brief -->
+
 NewTab 新标签页是一个集合多种信息和工具的自制浏览器首页
 
 ![](./public/banner.png)
+
 <!-- The project title should be self explanotory and try not to make it a mouthful. (Although exceptions exist- **awesome-readme-writing-guide-for-open-source-projects** - would have been a cool name)
 
 Add a cover/banner image for your README. **Why?** Because it easily **grabs people's attention** and it **looks cool**(*duh!obviously!*).
@@ -16,7 +18,7 @@ The best dimensions for the banner is **1280x650px**. You could also use this fo
 
 I personally use [**Canva**](https://www.canva.com/) for creating the banner images. All the basic stuff is **free**(*you won't need the pro version in most cases*).
 
-There are endless badges that you could use in your projects. And they do depend on the project. Some of the ones that I commonly use in every projects are given below. 
+There are endless badges that you could use in your projects. And they do depend on the project. Some of the ones that I commonly use in every projects are given below.
 
 I use [**Shields IO**](https://shields.io/) for making badges. It is a simple and easy to use tool that you can use for almost all your badge cravings. -->
 
@@ -25,22 +27,28 @@ I use [**Shields IO**](https://shields.io/) for making badges. It is a simple an
 <!-- ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
 : This badge shows the version of the current release. -->
 
-![GitHub last commit](https://img.shields.io/github/last-commit/wisdompandamaster/NewTab)  ![GitHub issues](https://img.shields.io/github/issues-raw/wisdompandamaster/NewTab) ![GitHub pull requests](https://img.shields.io/github/issues-pr/wisdompandamaster/NewTab)
+![GitHub last commit](https://img.shields.io/github/last-commit/wisdompandamaster/NewTab) ![GitHub issues](https://img.shields.io/github/issues-raw/wisdompandamaster/NewTab) ![GitHub pull requests](https://img.shields.io/github/issues-pr/wisdompandamaster/NewTab)
+
 <!-- : This is also a dynamic badge that tracks pull requests. This notifies the maintainers of the project when a new pull request comes. -->
 
 <!-- ![GitHub All Releases](https://img.shields.io/github/downloads/wisdompandamaster/NewTab): If you are not like me and your project gets a lot of downloads(*I envy you*) then you should have a badge that shows the number of downloads! This lets others know how **Awesome** your project is and is worth contributing to. -->
 
 ![GitHub](https://img.shields.io/github/license/wisdompandamaster/NewTab)
+
 <!-- : This shows what kind of open-source license your project uses. This is good idea as it lets people know how they can use your project for themselves. -->
 
 <!-- ![Tweet](https://img.shields.io/twitter/url?style=flat-square&logo=twitter&url=https%3A%2F%2Fnavendu.me%2Fnsfw-filter%2Findex.html): This is not essential but it is a cool way to let others know about your project! Clicking this button automatically opens twitter and writes a tweet about your project and link to it. All the user has to do is to click tweet. Isn't that neat? -->
+
 ## Demo-Preview
-[在线Demo](https://newtab.wisdompanda.com)
+
+[在线 Demo](https://newtab.wisdompanda.com)
+
 <!-- Add a demo for your project -->
 
 <!-- After you have written about your project, it is a good idea to have a demo/preview(**video/gif/screenshots** are good options) of your project so that people can know what to expect in your project. You could also add the demo in the previous section with the product description.
 
 Here is a random GIF as a placeholder.-->
+
 ![Demo1](./public/demo1.png)
 ![Demo2](./public//Demo2.png)
 ![Demo3](./public//Demo3.png)
@@ -66,9 +74,10 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 - [Footer](#footer) -->
 
 ## Installation
+
 <!-- [(Back to top)](#table-of-contents) -->
 
-<!-- *You might have noticed the **Back to top** button(if not, please notice, it's right there!). This is a good idea because it makes your README **easy to navigate.*** 
+<!-- *You might have noticed the **Back to top** button(if not, please notice, it's right there!). This is a good idea because it makes your README **easy to navigate.***
 
 The first one should be how to install(how to generally use your project or set-up for editing in their machine).
 
@@ -82,18 +91,18 @@ A method I use is after completing the README, I go through the instructions fro
 
 To use this project, first clone the repo on your device using the command below:
 
-```git init```
+`git init`
 
-```git clone https://github.com/wisdompandamaster/NewTab.git```
+`git clone https://github.com/wisdompandamaster/NewTab.git`
 
 Then start it with npm:
 
+`cd newtab`
 
-```cd newtab```     
+`npm install`
 
-```npm install```
+`npm start`
 
-```npm start``` 
 <!-- # Usage
 [(Back to top)](#table-of-contents) -->
 
@@ -129,7 +138,7 @@ A good idea is to also display the sponsors with their organisation logos or bad
 <!-- ### Adding new features or fixing bugs
 [(Back to top)](#table-of-contents) -->
 
-<!-- This is to give people an idea how they can raise issues or feature requests in your projects. 
+<!-- This is to give people an idea how they can raise issues or feature requests in your projects.
 
 You could also give guidelines for submitting and issue or a pull request to your project.
 
@@ -138,6 +147,7 @@ Personally and by standard, you should use a [issue template](https://github.com
 You could also add contact details for people to get in touch with you regarding your project. -->
 
 ## License
+
 NewTab codebase license is MIT, Please refer to the LICENSE file for detailed information.
 
 <!-- Adding the license to README is a good practice so that people can easily refer to it.

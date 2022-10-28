@@ -5,11 +5,11 @@ import "./index.css";
 function AddItemInput({ onSubmit }) {
   const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setInput(e.target.value);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === "Enter") {
       onSubmit({
         id: Math.floor(Math.random() * 10000),
@@ -22,11 +22,11 @@ function AddItemInput({ onSubmit }) {
   };
 
   return (
-    <div id="add-item-input">
-      <PlusOutlined id="plus-icon" />
+    <div id='add-item-input'>
+      <PlusOutlined id='plus-icon' />
       <input
-        type="text"
-        placeholder="✍️ Add item..."
+        type='text'
+        placeholder='✍️ Add item...'
         value={input}
         onChange={handleChange}
         onKeyDown={handleKeyDown}

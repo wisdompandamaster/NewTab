@@ -6,7 +6,7 @@ import TodoItems from "./TodoItems";
 
 function TodoModal({ todos, setTodos, completeTodo }) {
   const [, setPersistedTodoList] = useLocalStorage("todoList", []);
-  const addTodo = (todo) => {
+  const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
@@ -15,8 +15,8 @@ function TodoModal({ todos, setTodos, completeTodo }) {
     setPersistedTodoList(newTodos);
   };
 
-  const removeTodo = (id) => {
-    const aftTodos = [...todos].filter((todo) => todo.id !== id);
+  const removeTodo = id => {
+    const aftTodos = [...todos].filter(todo => todo.id !== id);
     setTodos(aftTodos);
     setPersistedTodoList(aftTodos);
   };
@@ -25,7 +25,7 @@ function TodoModal({ todos, setTodos, completeTodo }) {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return;
     }
-    let updateTodos = todos.map((todo) => {
+    let updateTodos = todos.map(todo => {
       if (todo.id === id) {
         todo = newValue;
       }
@@ -35,7 +35,7 @@ function TodoModal({ todos, setTodos, completeTodo }) {
     setPersistedTodoList(updateTodos);
   };
 
-  const getItemsCountText = (todos) => {
+  const getItemsCountText = todos => {
     const meta = getMeta(todos);
     let itemCountText = "";
     if (meta.completed.length === 0) {
@@ -50,7 +50,7 @@ function TodoModal({ todos, setTodos, completeTodo }) {
   const itemCountText = getItemsCountText(todos);
 
   return (
-    <div className="todo-modal" style={{maxHeight:'60vh'}}>
+    <div className='todo-modal' style={{ maxHeight: "60vh" }}>
       <AddItemInput onSubmit={addTodo} />
       <TodoItems
         todos={getMeta(todos).uncompleted}
@@ -58,8 +58,8 @@ function TodoModal({ todos, setTodos, completeTodo }) {
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
-      <hr className="todo-hr" />
-      <h1 id="items-completed-header">{itemCountText}</h1>
+      <hr className='todo-hr' />
+      <h1 id='items-completed-header'>{itemCountText}</h1>
       <TodoItems
         todos={getMeta(todos).completed}
         completeTodo={completeTodo}

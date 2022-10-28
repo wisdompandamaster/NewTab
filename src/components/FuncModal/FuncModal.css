@@ -1,57 +1,59 @@
 /* Modal磨砂 */
-.react-draggable .ant-modal-content{
-    background: #FFFFFF55;
-    /* -webkit-backdrop-filter: blur(20px); */
-    backdrop-filter: blur(20px);
-    /* transition: all 2s ease-in-out; */
-   }
-.react-draggable .ant-modal-header{
-    background: #FFFFFF00;
-    border-bottom: 0;
-    /* -webkit-backdrop-filter: blur(20px); */
-    backdrop-filter: blur(20px);
-    /* transition: all 2s ease-in-out; */
-   }
+.react-draggable .ant-modal-content {
+  background: #ffffff55;
+  /* -webkit-backdrop-filter: blur(20px); */
+  backdrop-filter: blur(20px);
+  /* transition: all 2s ease-in-out; */
+}
+.react-draggable .ant-modal-header {
+  background: #ffffff00;
+  border-bottom: 0;
+  /* -webkit-backdrop-filter: blur(20px); */
+  backdrop-filter: blur(20px);
+  /* transition: all 2s ease-in-out; */
+}
 /* News磨砂 */
 /* 修改tabpane的背景颜色 */
-.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab{
-    background:#ffffff00;
+.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab {
+  background: #ffffff00;
 }
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
-    border:0;
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  border: 0;
 }
-.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab-active{
-    background:#ffffffaa;
+.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #ffffffaa;
 }
-.ant-tabs-dropdown-menu{
-    background:#ffffffaa;
+.ant-tabs-dropdown-menu {
+  background: #ffffffaa;
 }
-.ant-tabs-dropdown-menu::-webkit-scrollbar{
-    width: 3px;  
+.ant-tabs-dropdown-menu::-webkit-scrollbar {
+  width: 3px;
 }
 .ant-tabs-dropdown-menu::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 4px #00000033;
-    background: rgba(0,0,0,0.2);
-  }
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px #00000033;
+  background: rgba(0, 0, 0, 0.2);
+}
 .ant-tabs-dropdown-menu::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    background: rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
 }
 /* Table磨砂 */
 .ant-table-thead > tr > th {
-    background:#fafafa99;
+  background: #fafafa99;
 }
-.ant-table{
-    background:#fff0;
+.ant-table {
+  background: #fff0;
 }
-.ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-tbody > tr > td.ant-table-cell-row-hover{
-    background:#fff5;
+.ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-tbody > tr > td.ant-table-cell-row-hover {
+  background: #fff5;
 }
-.ant-btn-dashed{
-    background:#fff6;
+.ant-btn-dashed {
+  background: #fff6;
 }
-.ant-btn-dashed:hover, .ant-btn-dashed:focus{
-    background:#fff9; 
-} 
+.ant-btn-dashed:hover,
+.ant-btn-dashed:focus {
+  background: #fff9;
+}

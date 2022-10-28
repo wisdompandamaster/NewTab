@@ -161,14 +161,13 @@
   font-size: 16px;
   font-weight: 700;
 }
-.set_function > div{
+.set_function > div {
   display: flex;
   justify-content: space-between;
   /* margin-top:5px; */
   height: 40px;
   align-items: center;
 }
-
 
 /* 滚动条样式 */
 .ant-drawer-body::-webkit-scrollbar {

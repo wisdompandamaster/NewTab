@@ -1,20 +1,19 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 /* 笔记的部分CSS */
-.note-card{
+.note-card {
   /* position: absolute; */
   /* width: 18vw;
   height: 8.5vw;
@@ -22,36 +21,36 @@ code {
   top: 205px; */
   width: 352px;
   height: 165px;
-  background: #FFFFFF;
-  border: 0px solid #E5E5E5;
+  background: #ffffff;
+  border: 0px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 20px;
-  transition: .1s ease-in;
+  transition: 0.1s ease-in;
 }
 
-.note-card:active{
+.note-card:active {
   transform: scale(0.95);
 }
 
-.note-header{
+.note-header {
   height: 20%;
   border-radius: 20px;
 }
-.note-icon{
+.note-icon {
   position: relative;
   width: 6px;
   height: 14px;
   left: 18px;
   top: 21px;
 
-  background: linear-gradient(180deg, #6CB9FF 0%, #3355FF 100%);
+  background: linear-gradient(180deg, #6cb9ff 0%, #3355ff 100%);
   box-shadow: 0px 3px 6px rgba(55, 135, 255, 0.8);
   border-radius: 20px;
 }
-.note-title{
+.note-title {
   position: relative;
   left: 36px;
-  top:2px;
+  top: 2px;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -60,7 +59,7 @@ code {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
 }
-.note-body{
+.note-body {
   display: flex;
   flex-direction: column;
   font-family: PingFang SC;
@@ -73,12 +72,12 @@ code {
 
   margin: 5px 19px 5px 18px;
 }
-.note-content{
+.note-content {
   height: 30px;
   line-height: 17px;
   padding: 6px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }

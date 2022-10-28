@@ -1,52 +1,52 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 /* 全局CSS样式 */
 
-:root{
+:root {
   /* 定义CSS变量，之后设置简单模式，浅色或深色模式的时候可以用*/
-  --dark-color:#0000004D;
+  --dark-color: #0000004d;
 }
-body{
+body {
   line-height: normal;
   min-width: 800px;
 }
 .App {
   position: absolute;
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
   /* background-color: #59887c4d; */
 }
-.mask{
-   width: 100vw;
-   height: 100vh;
-   position: fixed;
-   background-color: #000;
-}
-.background{
+.mask {
   width: 100vw;
-   height: 100vh;
-   position: fixed;
-   transition: background-image .3s ease-in-out;
-    /*通过缩放来去掉白边  */
+  height: 100vh;
+  position: fixed;
+  background-color: #000;
 }
-.clockSearch{
-    display:flex;
-    justify-content: center;
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  transition: background-image 0.3s ease-in-out;
+  /*通过缩放来去掉白边  */
 }
-
+.clockSearch {
+  display: flex;
+  justify-content: center;
+}
 
 /* -------------更改的antd modal组件样式--------- */
-.ant-modal-header{
-   border-radius: 10px;
+.ant-modal-header {
+  border-radius: 10px;
 }
 .ant-modal-content {
-  border-radius: 10px; 
+  border-radius: 10px;
 }
-.ant-modal-close-x:hover{
-   background-color: #0000004D;
-   border-radius: 0 10px 0 0;
+.ant-modal-close-x:hover {
+  background-color: #0000004d;
+  border-radius: 0 10px 0 0;
 }
-.ant-collapse > .ant-collapse-item:last-child,.ant-collapse-borderless > .ant-collapse-item:last-child .ant-collapse-header{
+.ant-collapse > .ant-collapse-item:last-child,
+.ant-collapse-borderless > .ant-collapse-item:last-child .ant-collapse-header {
   border-radius: 10px;
 }
 
@@ -64,17 +64,17 @@ body{
   top:205px; */
   padding-bottom: 10px;
   /* font-family: ; */
-  padding-top:10px;
+  padding-top: 10px;
   background: #ffffff;
   border: 0px solid #ffffff;
   border-radius: 20px;
-  transition: .1s ease-in;
+  transition: 0.1s ease-in;
 }
 #todo-app:active {
   transform: scale(0.95);
 }
 
-#todo-container{
+#todo-container {
   display: flex;
   height: 100%;
   max-height: 165px;
@@ -158,7 +158,7 @@ body{
 
 #items-container {
   width: 60%;
-  height:145px;
+  height: 145px;
   display: flex;
   margin-top: -25px;
   flex-direction: column;
@@ -200,7 +200,7 @@ body{
   text-overflow: ellipsis;
 }
 
-.item-completed{
+.item-completed {
   /* text-decoration: line-through; */
   opacity: 0.2;
 }
@@ -275,8 +275,8 @@ hr.todo-hr {
   border: 0.5px solid rgb(211, 211, 211);
 }
 
-.react-datepicker__input-container{
-   top:-11px;
+.react-datepicker__input-container {
+  top: -11px;
 }
 
 /* 天气组件的CSS */
@@ -291,9 +291,9 @@ hr.todo-hr {
   border-radius: 20px;
 }
 
-.snippets-container{
-    position: absolute;
-    z-index: 2;
-    top:100px;
-    left:200px;
+.snippets-container {
+  position: absolute;
+  z-index: 2;
+  top: 100px;
+  left: 200px;
 }

@@ -1,47 +1,47 @@
-.menu-wrapper{
-    width:120px;
-    background: #fffd;
-    border-radius: 10px;
-    position:absolute;
-    z-index: 4;
+.menu-wrapper {
+  width: 120px;
+  background: #fffd;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 4;
 }
-.menu-wrapper ul{
-    padding-inline-start:0;
-    margin-bottom: 0;
-    font-family: 'SimHei';
+.menu-wrapper ul {
+  padding-inline-start: 0;
+  margin-bottom: 0;
+  font-family: "SimHei";
 }
-.menu-wrapper i{
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    user-select: none;
+.menu-wrapper i {
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  user-select: none;
 }
-.menu-wrapper .menu{
-    padding:3px 5px;
+.menu-wrapper .menu {
+  padding: 3px 5px;
 }
-.menu-content .menu-item{
-    list-style: none;
-    /* font-size: 10px; */
-    height:30px;
-    display:flex;
-    /* padding:0 5px; */
-    align-items: center;
-    border-radius: 5px;
-    margin-bottom: 2px;
-    /* background: #0003; */
+.menu-content .menu-item {
+  list-style: none;
+  /* font-size: 10px; */
+  height: 30px;
+  display: flex;
+  /* padding:0 5px; */
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  /* background: #0003; */
 }
-.menu-item > div{
-    height:100%;
-    width:100%;
-    display:flex;
-    align-items: center;
-    cursor: pointer;
+.menu-item > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
-.menu-content .menu-item:hover{
-    background: #0002;
+.menu-content .menu-item:hover {
+  background: #0002;
 }
-.menu-content .menu-item span{
-    /* font-size: 10px; */
-    margin-left:8px;
+.menu-content .menu-item span {
+  /* font-size: 10px; */
+  margin-left: 8px;
 }

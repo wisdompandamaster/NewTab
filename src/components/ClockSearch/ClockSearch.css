@@ -1,121 +1,120 @@
 @font-face {
-    font-family: 'UnidreamLED';
-    src:url(../../font/UnidreamLED.eot); /***兼容ie9***/
-    src:url(../../font/UnidreamLED.eot?#iefix)format('embedded-opentype'), /***兼容ie6-ie8***/
-    url('../../font/UnidreamLED.woff') format('woff'), 
-    local('UnidreamLED'), url("../../font/UnidreamLED.woff");/***默认使用本地的***/
-  }
-  @font-face {
-    font-family: "DS-Digital"; 
-    /* 这个是定义字体的名称 */
-    src: url("../../font/DS-Digital\ Bold.ttf");
-  }
-.clockSearch{
-    display:flex; 
-    flex-direction: column;
-    align-items: center;
+  font-family: "UnidreamLED";
+  src: url(../../font/UnidreamLED.eot); /***兼容ie9***/
+  src: url(../../font/UnidreamLED.eot?#iefix) format("embedded-opentype"),
+    /***兼容ie6-ie8***/ url("../../font/UnidreamLED.woff") format("woff"),
+    local("UnidreamLED"), url("../../font/UnidreamLED.woff"); /***默认使用本地的***/
+}
+@font-face {
+  font-family: "DS-Digital";
+  /* 这个是定义字体的名称 */
+  src: url("../../font/DS-Digital\ Bold.ttf");
+}
+.clockSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.clock{
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* width:30%; */
-    padding:0 3%;
-    text-align: center;
-    border-radius: 20px;
-    /* align-items: center; */
-    font-size: 6.5rem;
-    font-weight: 200;
-    color:white;
-    /* display: block; */
-    cursor: pointer;
-    user-select: none;
-    transition: .3s ease-in-out;
-    height: 13rem;
-    /* padding: 1%; */
+.clock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width:30%; */
+  padding: 0 3%;
+  text-align: center;
+  border-radius: 20px;
+  /* align-items: center; */
+  font-size: 6.5rem;
+  font-weight: 200;
+  color: white;
+  /* display: block; */
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+  height: 13rem;
+  /* padding: 1%; */
 }
-.clock:hover{
-    background-color: #00000055;
-    border-radius: 20px;
+.clock:hover {
+  background-color: #00000055;
+  border-radius: 20px;
 }
-.clock-setting{
-    font-size: 1.5rem;
-    visibility: hidden;
-    position:absolute;
-    font-weight: 700;
-    color:aqua;
-    top:5%;
-    right:3%;
+.clock-setting {
+  font-size: 1.5rem;
+  visibility: hidden;
+  position: absolute;
+  font-weight: 700;
+  color: aqua;
+  top: 5%;
+  right: 3%;
 }
-.clock-day{
-    /* position:absolute; */
-    font-size: 1.5rem;
-
+.clock-day {
+  /* position:absolute; */
+  font-size: 1.5rem;
 }
-.clock:hover .clock-setting{
-    visibility: visible;
+.clock:hover .clock-setting {
+  visibility: visible;
 }
-.digitalfont{
-    font-family: 'DS-Digital';
-    font-size: 8.5rem;
+.digitalfont {
+  font-family: "DS-Digital";
+  font-size: 8.5rem;
 }
-.h,.m{
-    display: inline-block;
-    /* line-height: 12rem; */
-    /* font-family: 'DS-Digital'; */
-    /* font-size: 100px; */
-    width:9rem;
+.h,
+.m {
+  display: inline-block;
+  /* line-height: 12rem; */
+  /* font-family: 'DS-Digital'; */
+  /* font-size: 100px; */
+  width: 9rem;
 }
-.h{
-    text-align: right;
-    margin-right: 2rem;
+.h {
+  text-align: right;
+  margin-right: 2rem;
 }
-.m{
-    text-align: left;
-    margin-left: 2rem;
+.m {
+  text-align: left;
+  margin-left: 2rem;
 }
 
 /* 倒计时 */
-.countdown_content_clock{
-    /* overflow-y: scroll; */
-    height: 10rem;
-    /* margin-top: 2rem; */
-    /* position: relative;
+.countdown_content_clock {
+  /* overflow-y: scroll; */
+  height: 10rem;
+  /* margin-top: 2rem; */
+  /* position: relative;
     top:1rem; */
-    /* border:1px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    /* margin-top:10px; */
-    /* scroll-snap-type: y mandatory; */
-    /* scrollbar-width:none; */
+  /* border:1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* margin-top:10px; */
+  /* scroll-snap-type: y mandatory; */
+  /* scrollbar-width:none; */
+}
+.countdown_content_clock > div {
+  /* height:120px; */
+  /* margin-top: 30px; */
+  scroll-snap-align: end;
+}
 
+.countdown_content_clock > div div:nth-child(1) {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: #19bbfc;
 }
-.countdown_content_clock > div{
-    /* height:120px; */
-    /* margin-top: 30px; */
-    scroll-snap-align: end;
+.countdown_content_clock > div div:nth-child(2) {
+  text-align: center;
+  /* margin-top: 5px; */
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 8px;
 }
-
-.countdown_content_clock > div div:nth-child(1){
-    text-align: center;
-    font-size: 2rem;
-    font-weight:800;
-    letter-spacing: 5px;
-    color:#19bbfc;
-}
-.countdown_content_clock > div div:nth-child(2){
-    text-align: center;
-    /* margin-top: 5px; */
-    font-size: 8rem;
-    font-weight:900;
-    letter-spacing: 8px;
-}
-.countdown_content_clock span{
-    font-size: 2rem;
-    letter-spacing: 0px;
+.countdown_content_clock span {
+  font-size: 2rem;
+  letter-spacing: 0px;
 }
 /* .countdown_inclock_item{
     position: relative;
@@ -136,160 +135,161 @@
 } */
 
 /* 滚动条样式 */
-.countdown_content_clock::-webkit-scrollbar{
-    width: 0px;
+.countdown_content_clock::-webkit-scrollbar {
+  width: 0px;
 }
 
 /* 搜索框 */
-.search{
-    width:40vw;
-    height:6vh;
-    position:relative;
-    z-index:2;
-    margin-top:3vh;
-    min-width: 600px;
-    min-height: 50px;
-    background-color: #ffffffcc;
-    border-radius: 50px;
-    transition: .3s ease-in-out;
+.search {
+  width: 40vw;
+  height: 6vh;
+  position: relative;
+  z-index: 2;
+  margin-top: 3vh;
+  min-width: 600px;
+  min-height: 50px;
+  background-color: #ffffffcc;
+  border-radius: 50px;
+  transition: 0.3s ease-in-out;
 }
-.engine{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 0;
-    outline: none;
-    border: none;
-    width:4vw;
-    min-width: 80px;
-    height:6vh;
-    min-height: 50px;
-    cursor:pointer;
-    line-height: 6vh;
-    border-radius: 50px 0 0 50px;
-    background-color: #ffffffcc;
-    /* transition:0.5s; */
+.engine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0;
+  outline: none;
+  border: none;
+  width: 4vw;
+  min-width: 80px;
+  height: 6vh;
+  min-height: 50px;
+  cursor: pointer;
+  line-height: 6vh;
+  border-radius: 50px 0 0 50px;
+  background-color: #ffffffcc;
+  /* transition:0.5s; */
 }
 
-.engine:hover{
-    background-color: #00000026;
+.engine:hover {
+  background-color: #00000026;
 }
-.engine:focus + .engineList{
-    display: flex;
+.engine:focus + .engineList {
+  display: flex;
 }
-.engineList{
-    display:none;
-    position: absolute;
-    z-index: 3;
-    margin-top:6px;
-    padding:5px;
-    /* width:126px; */
-    min-width: 96px;
-    border-radius: 10px;
-    background-color:#ffffffEB;
-    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.32), inset 0px 4px 4px rgba(255, 255, 255, 0.2);
-    transition: 0.2s;
+.engineList {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  margin-top: 6px;
+  padding: 5px;
+  /* width:126px; */
+  min-width: 96px;
+  border-radius: 10px;
+  background-color: #ffffffeb;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.32),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.2);
+  transition: 0.2s;
 }
-.engineList li{
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    height:6vh;
-    min-height: 36px;
-    width:100px;
-    margin:2px 2px;
-    list-style: none;
-    color:rgba(0, 0, 0, 0.6);
-    line-height: 6vh;
-    border-radius: 10px;
-    font-size: 2vh;
-    font-weight:500;
-    cursor:pointer;
+.engineList li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 6vh;
+  min-height: 36px;
+  width: 100px;
+  margin: 2px 2px;
+  list-style: none;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 6vh;
+  border-radius: 10px;
+  font-size: 2vh;
+  font-weight: 500;
+  cursor: pointer;
 }
-.engineList li span{  
-    display: block;
-    color:rgba(0, 0, 0, 0.6);
+.engineList li span {
+  display: block;
+  color: rgba(0, 0, 0, 0.6);
 }
-.engineList li:hover{
-    background-color: #0000001A;
+.engineList li:hover {
+  background-color: #0000001a;
 }
-.search input{
-    /* font-family: Microsoft YaHei ; */
-    color:#0c0c0c;
-    display: inline-block;
-    position:absolute;
-    font-size: 1.2rem;
-    height:6vh;
-    min-height: 50px;
-    width: 30vw;
-    outline: none;
-    border: none;
-    padding: 0 0 0 10px;
-    background-color: #ffffff00;
+.search input {
+  /* font-family: Microsoft YaHei ; */
+  color: #0c0c0c;
+  display: inline-block;
+  position: absolute;
+  font-size: 1.2rem;
+  height: 6vh;
+  min-height: 50px;
+  width: 30vw;
+  outline: none;
+  border: none;
+  padding: 0 0 0 10px;
+  background-color: #ffffff00;
 }
 .search > span {
-    display: inline-flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    color: #302f2fcc;
-    border-radius: 50%;
-    height:6vh;
-    min-height: 50px;
-    width:6vh;
-    min-width: 50px;
-    right:0;
+  display: inline-flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  color: #302f2fcc;
+  border-radius: 50%;
+  height: 6vh;
+  min-height: 50px;
+  width: 6vh;
+  min-width: 50px;
+  right: 0;
 }
-.search > span:hover{
-    background-color: #00000026;
+.search > span:hover {
+  background-color: #00000026;
 }
-.search input:focus + .presearch-list{
-    display:block;
+.search input:focus + .presearch-list {
+  display: block;
 }
-.presearch-list{
-    width:100%;
-    background:#fffd;
-    border-radius: 10px;
-    display:none;
-    position: absolute;
-    /* backdrop-filter: blur(20px); */
-    overflow: hidden;
-    margin-top:6px;
-    transition: .3s ease-in-out;
+.presearch-list {
+  width: 100%;
+  background: #fffd;
+  border-radius: 10px;
+  display: none;
+  position: absolute;
+  /* backdrop-filter: blur(20px); */
+  overflow: hidden;
+  margin-top: 6px;
+  transition: 0.3s ease-in-out;
 }
 
-.presearch-list div{
-    font-size:20px;
-    padding:2px;
-    padding-left:10px;
-    font-weight: 600;
-    transition: .3s ease-out;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.presearch-list div {
+  font-size: 20px;
+  padding: 2px;
+  padding-left: 10px;
+  font-weight: 600;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.presearch-list > div div{
-    width:50%;
-    /* overflow: hidden; */
+.presearch-list > div div {
+  width: 50%;
+  /* overflow: hidden; */
 }
-.presearch-list > div:hover{
-    background-color: #0003;
+.presearch-list > div:hover {
+  background-color: #0003;
 }
-.pre-hover{
-    background-color: #0003;
+.pre-hover {
+  background-color: #0003;
 }
-.pre-div-hover{
-    margin-left:calc(50% - 20px);
-    transform: translateX(-50%);
-    display: inline-block;
-    text-align: center;
+.pre-div-hover {
+  margin-left: calc(50% - 20px);
+  transform: translateX(-50%);
+  display: inline-block;
+  text-align: center;
 }
-.presearch-list div:hover div{
-    margin-left:calc(50% - 20px);
-    transform: translateX(-50%);
-    display: inline-block;
-    text-align: center;
+.presearch-list div:hover div {
+  margin-left: calc(50% - 20px);
+  transform: translateX(-50%);
+  display: inline-block;
+  text-align: center;
 }

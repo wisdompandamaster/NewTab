@@ -1,64 +1,63 @@
-.login_form{
-    display: flex;
-    flex-wrap: wrap;
-    width: 271px;
-    margin: 0 auto;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 700;
+.login_form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 271px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
 }
-.login_form label{
-    width:100%;
-    margin: 5px auto;
+.login_form label {
+  width: 100%;
+  margin: 5px auto;
+}
+.login_form input {
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-left: 10px;
+  line-height: 30px;
+  outline: none;
+}
+.login_form input:nth-child(3) {
+  background: linear-gradient(180deg, #6cdcff 0%, #3355ff 100%);
+  box-shadow: 0px 4px 10px rgba(17, 84, 255, 0.6);
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5em;
+  color: #ffffff;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+.login_form input:nth-child(3):active {
+  transform: scale(0.9);
+}
+form.login_form + div {
+  width: 274px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 10px auto 0 auto;
+}
+.noaccount {
+  position: relative;
+  width: 120px;
+  text-align: center;
+  height: 17px;
+  margin: 10px auto -15px auto;
+  top: -20px;
+  background-color: #ffffff;
+  line-height: 17px;
+}
 
-}
-.login_form input{
-    display: block;
-    width: 100%;
-    height: 30px;
-    margin-top: 5px;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-    padding-left: 10px;
-    line-height: 30px;
-    outline: none;
-}
-.login_form input:nth-child(3){
-    background: linear-gradient(180deg, #6CDCFF 0%, #3355FF 100%);
-    box-shadow: 0px 4px 10px rgba(17, 84, 255, 0.6);
-    border: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    letter-spacing: 0.5em;
-    color: #FFFFFF;
-    transition: .3s ease-in;
-    cursor: pointer;
-}
-.login_form input:nth-child(3):active{
-    transform: scale(0.9);
-}
-form.login_form + div{
-    width: 274px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    margin: 10px auto 0 auto;
-}
-.noaccount{
-    position: relative;
-    width: 120px;
-    text-align: center;
-    height: 17px;
-    margin: 10px auto -15px auto;
-    top: -20px;
-    background-color: #FFFFFF;
-    line-height: 17px;
-}
-
-.onsignin{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: 700;
+.onsignin {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 700;
 }

@@ -18,15 +18,15 @@
   height: 1em;
   width: 1em;
   margin-right: 1em;
-  margin-left:0.5em;
-  margin-top:0.5em;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
   cursor: pointer;
 }
 
 .todo-text {
   width: 90%;
   margin-right: 1em;
-  margin-top:0.5em;
+  margin-top: 0.5em;
 }
 
 .todo-text textarea {

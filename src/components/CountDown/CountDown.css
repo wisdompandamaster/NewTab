@@ -1,51 +1,50 @@
-.CountDown{
-    /* width: 18vw;
+.CountDown {
+  /* width: 18vw;
     height: 8.5vw; */
-    width: 352px;
-    height: 165px;
-    background: #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 20px;
-    transition: .1s ease-in;
+  width: 352px;
+  height: 165px;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transition: 0.1s ease-in;
 }
-.countdown_content{
-    overflow-y: scroll;
-    height: 120px;
-    /* margin-top:10px; */
-    scroll-snap-type: y mandatory;
-    /* scrollbar-width:none; */
+.countdown_content {
+  overflow-y: scroll;
+  height: 120px;
+  /* margin-top:10px; */
+  scroll-snap-type: y mandatory;
+  /* scrollbar-width:none; */
+}
+.countdown_content > div {
+  /* height:120px; */
+  margin-top: 30px;
+  scroll-snap-align: end;
+}
 
+.countdown_content > div div:nth-child(1) {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #31c5ff;
 }
-.countdown_content > div{
-    /* height:120px; */
-    margin-top: 30px;
-    scroll-snap-align: end;
+.countdown_content > div div:nth-child(2) {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 55px;
+  font-family: "Microsoft Yahei";
+  font-weight: 800;
+  letter-spacing: 4px;
 }
-
-.countdown_content > div div:nth-child(1){
-    text-align: center;
-    font-size: 20px;
-    font-weight:800;
-    letter-spacing: 3px;
-    color:#31c5ff;
-}
-.countdown_content > div div:nth-child(2){
-    text-align: center;
-    margin-top: 5px;
-    font-size: 55px;
-    font-family: 'Microsoft Yahei';
-    font-weight:800;
-    letter-spacing: 4px;
-}
-.countdown_content span{
-    font-size:30px;
-    margin-left: 2%;
-    letter-spacing:0;
+.countdown_content span {
+  font-size: 30px;
+  margin-left: 2%;
+  letter-spacing: 0;
 }
 
 /* 滚动条样式 */
-.countdown_content::-webkit-scrollbar{
-    width: 0px;
+.countdown_content::-webkit-scrollbar {
+  width: 0px;
 }
 /* 设置滚动滑块 */
 /* .newsList::-webkit-scrollbar-thumb {
@@ -59,7 +58,7 @@
     background: rgba(0,0,0,0.1);
 } */
 
-/* CSS实现滚动贴合  用在组件里面*/   
+/* CSS实现滚动贴合  用在组件里面*/
 /* main{
     scroll-snap-type:y mandatory;  强制滚动
     scroll-padding: 80px;   贴合时的padding,如有粘滞元素的时候

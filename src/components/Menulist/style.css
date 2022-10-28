@@ -1,17 +1,18 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
-.contextMenu{
-    position: absolute;
-    width: 152px;
-    padding: 4px;
-    z-index: 5;
-    box-shadow: 0 1px 4px rgba(28,28,32,.04), 0 8px 24px rgba(28,28,32,.12);
-    border-radius: 10px;
-    background: white;
-    opacity: 1;
-    visibility: visible;
-    overflow: hidden;
-    transition: opacity 0.2s ease, height .3s ease, visibility 0.3s ease;
+.contextMenu {
+  position: absolute;
+  width: 152px;
+  padding: 4px;
+  z-index: 5;
+  box-shadow: 0 1px 4px rgba(28, 28, 32, 0.04),
+    0 8px 24px rgba(28, 28, 32, 0.12);
+  border-radius: 10px;
+  background: white;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+  transition: opacity 0.2s ease, height 0.3s ease, visibility 0.3s ease;
 }
 /* body{
     cursor: pointer;
@@ -21,52 +22,52 @@
     visibility: visible;
 } */
 
-.contextMenu-list{
-    list-style: none;
+.contextMenu-list {
+  list-style: none;
 }
 
-.contextMenu-item{
-    line-height: 22px;
-    color: #25262b;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-    transition: background .3s ease;
+.contextMenu-item {
+  line-height: 22px;
+  color: #25262b;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background 0.3s ease;
 }
 
 .contextMenu-item:hover {
-    background: #f5f5f6;
+  background: #f5f5f6;
 }
 
-.contextMenu-item-divider{
-    height: 1px;
-    margin: 4px 8px;
-    background: #f5f5f6;
+.contextMenu-item-divider {
+  height: 1px;
+  margin: 4px 8px;
+  background: #f5f5f6;
 }
 
 .contextMenu-item-danger {
-    color:#ff6f66;
+  color: #ff6f66;
 }
 
-.contextMenu-item-danger:hover{
-    background: #fdd9d8;
+.contextMenu-item-danger:hover {
+  background: #fdd9d8;
 }
 
-img.viewBackground{
-    position: relative;
-    overflow: hidden !important;
-    object-fit: fill;
+img.viewBackground {
+  position: relative;
+  overflow: hidden !important;
+  object-fit: fill;
 }
 
 .leftMouse div.ant-modal-body {
-    padding: 0 ; 
-    font-size: 0; 
-    line-height: 1; 
-  }
+  padding: 0;
+  font-size: 0;
+  line-height: 1;
+}
 .leftMouse div.ant-modal-content {
   position: relative;
   background-color: #00000000 !important;
@@ -74,4 +75,4 @@ img.viewBackground{
   border-radius: 4px;
   background-clip: padding-box;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
-  }
+}

@@ -1,63 +1,63 @@
- .functionAera{
-    position: relative;
-    bottom: 0vh;
-    margin: 0 auto 20px auto;
-    width:84vw;
-    height:20vw;
-    border-radius: 20px;
-    border: 0px solid black;
-    overflow:hidden;
-    /* transform: scale(0.95); */
-    /* filter: blur(0px)!important */
-    /* background-color: #ffffff4D; */
+.functionAera {
+  position: relative;
+  bottom: 0vh;
+  margin: 0 auto 20px auto;
+  width: 84vw;
+  height: 20vw;
+  border-radius: 20px;
+  border: 0px solid black;
+  overflow: hidden;
+  /* transform: scale(0.95); */
+  /* filter: blur(0px)!important */
+  /* background-color: #ffffff4D; */
 }
-.sortable{
-    /* position: relative;
+.sortable {
+  /* position: relative;
     z-index: 1; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* display: inline-grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* display: inline-grid;
     grid-template-columns: repeat(4, 352px);
     grid-template-rows: repeat(auto-fill, 180px); */
 }
-.sortableItem{
-    position: relative;
-    z-index: 2;
-    margin: 12px;
-    border-radius: 20px;
-    /* background-image: url(https://minio.wisdompanda.com/background/bg1.jpg);
+.sortableItem {
+  position: relative;
+  z-index: 2;
+  margin: 12px;
+  border-radius: 20px;
+  /* background-image: url(https://minio.wisdompanda.com/background/bg1.jpg);
     background-size: cover;
     background-repeat: no-repeat; */
-    /* transform: scale(0.8); */
-    /* display: inline-block; */
-    /* transition: .5s ease-in; */
+  /* transform: scale(0.8); */
+  /* display: inline-block; */
+  /* transition: .5s ease-in; */
 }
 /* .sortableItem:active{
     transform: scale(0.95);
 } */
-.sortableItem > button{
-    position: absolute;
-    right:0;
-    z-index: 1;
+.sortableItem > button {
+  position: absolute;
+  right: 0;
+  z-index: 1;
 }
-.funcshake{
-    animation: func_shake 0.2s infinite;
+.funcshake {
+  animation: func_shake 0.2s infinite;
 }
 @keyframes func_shake {
-    0%{
-      transform:rotate(1deg);
-    }
-    25%{
-      transform:rotate(0);
-    }
-    50%{
-      transform:rotate(-1deg);
-    }
-    75%{
-      transform:rotate(0deg);
-    }
-    100%{
-      transform:rotate(1deg);
-    }
+  0% {
+    transform: rotate(1deg);
+  }
+  25% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
 }

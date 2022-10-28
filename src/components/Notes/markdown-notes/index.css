@@ -1,3 +1,4 @@
-.button-type-image ,.button-type-fullscreen{
-    display: none !important;
+.button-type-image,
+.button-type-fullscreen {
+  display: none !important;
 }

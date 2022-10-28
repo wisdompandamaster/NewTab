@@ -1,37 +1,37 @@
-.footer{
-    position: absolute;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    left: 50%;
-    bottom: 1vh;
-    transform: translateX(-50%);
-    /* background-color: #000000CC; */
-    border-radius: 10px;
-    padding:10px 50px;
-    color: white;
-    cursor: pointer;
+.footer {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  left: 50%;
+  bottom: 1vh;
+  transform: translateX(-50%);
+  /* background-color: #000000CC; */
+  border-radius: 10px;
+  padding: 10px 50px;
+  color: white;
+  cursor: pointer;
 }
 .footer:hover {
-    background-color: #00000055;
+  background-color: #00000055;
 }
-.footer:hover span{
-    visibility:visible;
+.footer:hover span {
+  visibility: visible;
 }
-.footer span{
-    visibility:hidden;
-    font-size: 18px;
-} 
+.footer span {
+  visibility: hidden;
+  font-size: 18px;
+}
 
-.slidein{
-    animation: slide 1s;
+.slidein {
+  animation: slide 1s;
 }
 
 @keyframes slide {
-    0% {
-        opacity: 0;
-    }  
-    100% {
-        opacity: 1;
-    }  
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

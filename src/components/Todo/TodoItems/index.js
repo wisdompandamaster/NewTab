@@ -12,12 +12,12 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
   const defaultEditValue = { id: null, value: "" };
   const [edit, setEdit] = useState(defaultEditValue);
 
-  const submitUpdate = (value) => {
+  const submitUpdate = value => {
     updateTodo(edit.id, value);
     setEdit(defaultEditValue);
   };
 
-  const cancelEdit = (e) => {
+  const cancelEdit = e => {
     if (e.keyCode === 27) {
       setEdit(defaultEditValue);
     }
@@ -29,21 +29,21 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
 
   return todos.map((todo, index) => {
     return (
-      <div 
+      <div
         className={todo.isCompleted ? "item complete" : "item"}
         key={index}
         onKeyDown={cancelEdit}
       >
-        <div className="todo-icon" onClick={(e) => completeTodo(e, todo.id) }>
+        <div className='todo-icon' onClick={e => completeTodo(e, todo.id)}>
           {todo.isCompleted ? (
-            <CheckCircleTwoTone twoToneColor="#52c41a" className="completed" />
+            <CheckCircleTwoTone twoToneColor='#52c41a' className='completed' />
           ) : (
-            <IconFont type="icon-bx-circle" className="uncompleted" />
+            <IconFont type='icon-bx-circle' className='uncompleted' />
           )}
         </div>
         <div
           key={todo.id}
-          className="todo-text"
+          className='todo-text'
           onDoubleClick={() => setEdit({ id: todo.id, value: todo.text })}
         >
           {todo.id === edit.id && !todo.isCompleted ? (
@@ -54,17 +54,17 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
             />
           ) : (
             <>
-              <p className="text">{todo.text}</p>
-              <p className="date">{todo.date}</p>
+              <p className='text'>{todo.text}</p>
+              <p className='date'>{todo.date}</p>
             </>
           )}
         </div>
-        <div className="edit-icon">
+        <div className='edit-icon'>
           <EditOutlined
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
           />
         </div>
-        <div className="delete-icon">
+        <div className='delete-icon'>
           <DeleteFilled onClick={() => removeTodo(todo.id)} />
         </div>
       </div>

@@ -12,11 +12,11 @@ function EditItemInput({ date, edit, onSubmit }) {
     textRef.current.setSelectionRange(-1, -1);
   }, []);
 
-  const editText = (e) => {
+  const editText = e => {
     setInput(e.target.value);
   };
 
-  const changeDate = (date) => {
+  const changeDate = date => {
     setStartDate(date);
     onSubmit({
       id: edit.id,
@@ -26,7 +26,7 @@ function EditItemInput({ date, edit, onSubmit }) {
     });
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === "Enter") {
       onSubmit({
         id: edit.id,
@@ -39,7 +39,7 @@ function EditItemInput({ date, edit, onSubmit }) {
   };
 
   return (
-    <div className="edit-text">
+    <div className='edit-text'>
       <textarea
         ref={textRef}
         defaultValue={input}
