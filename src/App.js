@@ -164,20 +164,9 @@ function App() {
           //还有一种是不定等待时间，等图片加载好
           let img = new Image()
           img.src = (randomBackground == random1 ? random2:random1).substring(4).replace(')','')
-
-          let timer = setInterval(()=>{
-            //等图片加载好再放出来,等待时间不定
-            if(img.complete){
-              clearInterval(timer)
-              setRandomBackground('url('+img.src+')')
-            }
-          },10)
-          
-          // setTimeout(()=>{
-            
-          //   console.log(img.complete)
-          //   console.log(img.src)
-          // },1000)        
+          img.onload = ()=>{
+            setRandomBackground('url('+img.src+')')
+          }
       }
 
       return (
