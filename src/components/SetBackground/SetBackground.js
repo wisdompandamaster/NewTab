@@ -1,8 +1,8 @@
 import './SetBackground.css';
 import {useSelector, useDispatch} from 'react-redux';
-import { Upload, message, Slider, Modal, Tabs, Switch } from 'antd';
+import { Upload, message, Slider, Modal, Tabs, Radio } from 'antd';
 import React, { useState, useEffect, memo } from 'react';
-import { InboxOutlined,CheckOutlined } from '@ant-design/icons';
+import { InboxOutlined,CheckOutlined, CompassOutlined } from '@ant-design/icons';
 import defaultSetting from '../../config';
 import cookie from 'react-cookies';
 
@@ -129,6 +129,7 @@ const SetBackground = ()=>{
 
     const { TabPane } = Tabs;
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [bgType, setBgType] = useState(1)
 
     const dispatch = useDispatch()
     const state = useSelector(state=>state)
@@ -188,18 +189,25 @@ const SetBackground = ()=>{
      setIsModalVisible(false);
    };
 
+   const changeBgType = (e)=>{
+      setBgType(e.target.value)
+   }
+
  
      return (
        <>
         <div className='setBackground'>
-          <div className='backgroundImg' style={{backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
+          <div className='backgroundImg' style={{backgroundImage:background,backgroundSize:'cover',backgroundRepeat:'no-repeat',}}>
             <div onClick={showModal}>更改背景</div>
           </div>
           <div style={{margin:'10px 5px',display:'flex',alignItems:'center'}}><Slider className='backgroundCover' defaultValue={cover} onChange={onChangeCover} onAfterChange={onAfterChange} /><span>遮罩浓度</span></div>
           <div style={{margin:'10px 5px',display:'flex',alignItems:'center'}}><Slider className='backgroundBlur' defaultValue={blur} onChange={onChangeBlur} onAfterChange={onAfterChange} /><span>模糊程度</span></div> 
-          <div style={{display:'flex',alignItems:'center'}}>
-            <span style={{marginRight:'3%',fontWeight:'600'}}>必应壁纸 </span><Switch/>
-            <span style={{marginRight:'3%',fontWeight:'600'}}>随机壁纸 </span><Switch/>
+          <div style={{display:'flex',alignItems:'center',justifyContent:'center',fontWeight:600,background:'#0001',padding:'3% 0',borderRadius:'20px'}}>
+            <Radio.Group onChange={changeBgType} value={bgType} style={{display:'flex',justifyContent:'space-around',width:'100%'}}>
+              <Radio value={1}>自选 </Radio>
+              <Radio value={2}>必应 </Radio>
+              <Radio value={3}>随机 </Radio>
+            </Radio.Group>
           </div> 
         </div>
         <Modal title={<div style={{fontSize:'30px',fontWeight:700,letterSpacing:'10px',marginLeft:'34px'}}>壁纸</div>} width={'940px'}  footer={null} visible={isModalVisible}   onCancel={handleCancel}>

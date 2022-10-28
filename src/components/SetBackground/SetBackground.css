@@ -22,15 +22,20 @@
 .backgroundImg div:hover {
     background-color: #000000DD;
 }
-
+.setBackground{
+    user-select: none;
+}
 .setBackground span{
     margin-left: 10px;
-    user-select: none;
+}
+.setBackground > div:nth-child(4) span{
+    margin-left: 0px;
 }
 .backgroundCover, .backgroundBlur{
     width: 70%;
     display: inline-block;
 }
+
 
 .showBackground{
     font-size: 0;
