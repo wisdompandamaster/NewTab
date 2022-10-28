@@ -19,6 +19,7 @@
     "no-unused-vars": 1,
     "react/react-in-jsx-scope":"off",
     "react/prop-types":"off",
-    "react/display-name": 1
+    "react/display-name": 1,
+    "react/jsx-key": 1
   }
 }
