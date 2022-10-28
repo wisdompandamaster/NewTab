@@ -11,13 +11,21 @@ import { SnippetsInMenu } from '../Snippets/Snippets'
 function ClickMenu(){
 
     const currentbg = useSelector(state=>state.currentbg)
+    const bgType = useSelector(state=>state.bgtype)
 
     const downloadWallPaper = (e)=>{
+
+        const bgurl = [
+            defaultSetting.imgSite + currentbg,
+            'https://api.oneneko.com/v1/bing_today',
+            'https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images',
+        ]
         // e.stopPropagation();
         //创造 a 标签来下载
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = defaultSetting.imgSite + currentbg;
+        a.download = 'bg.jpg';
         document.body.appendChild(a);
         a.click();  // 自动触发点击a标签的click事件
         document.body.removeChild(a);

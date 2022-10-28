@@ -111,6 +111,7 @@ const defalutState = {
     ? JSON.parse(localStorage.getItem("countdownList"))
     : [],
     snippets:[],
+    bgtype:3,
 }
 
 //eslint-disable-next-line
@@ -202,6 +203,11 @@ export default (state = defalutState,action) =>{
             return {
                 ...state,
                 snippets:action.snippets,
+            }
+        case "CHANGE_BGTYPE":
+            return {
+                ...state,
+                bgtype:action.bgtype,
             }
         // case "CHANGE_FUNCTIONLIST":
         //     return {

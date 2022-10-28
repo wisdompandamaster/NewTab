@@ -19,7 +19,7 @@ function debounce(fn){    //防抖函数
 }
 
 
-//上传存储设置(函数非组件)  待加防抖  这个地方的问题在于,由于请求频率过高，后台接收不一定按顺序
+//上传存储设置(函数非组件) 
 function saveSettings(type, value){
   let url = defaultSetting.site + '/functions/savemysettings/' 
   async function save(){   
@@ -129,7 +129,7 @@ const SetBackground = ()=>{
 
     const { TabPane } = Tabs;
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [bgType, setBgType] = useState(1)
+    const bgType = useSelector(state=>state.bgtype)
 
     const dispatch = useDispatch()
     const state = useSelector(state=>state)
@@ -190,7 +190,10 @@ const SetBackground = ()=>{
    };
 
    const changeBgType = (e)=>{
-      setBgType(e.target.value)
+      dispatch({
+        type: 'CHANGE_BGTYPE',
+        bgtype: e.target.value
+      })
    }
 
  

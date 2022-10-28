@@ -27,6 +27,7 @@ function App() {
   let random1 =  'url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)'
   let random2 =  'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
   const [randomBackground,setRandomBackground] = useState(random1)
+  const bgType = useSelector(state=>state.bgtype)
 
   useEffect(()=>{             //获取setting数据
     let url2 = defaultSetting.site + '/functions/getmysettings/'
@@ -146,39 +147,45 @@ function App() {
   let bingBackground = 'url(https://api.oneneko.com/v1/bing_today)'
   //随机壁纸接口
   // let randomBackground = 'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
-  let background = [myBackground,bingBackground,randomBackground]
+  let background = [myBackground, bingBackground, randomBackground]
 
-  // TODO:图片预加载和缓存
-  const ChangeBg = memo(()=>{
+  //子组件：随机壁纸切换
+  const ChangeBg = memo((props)=>{
      
+      const { display } = props
       const [loading,setLoading] = useState(false);
 
       const changeRandomBackground = ()=>{
           setLoading(true);
-          console.log('loading')
+          // console.log('loading')
           //先缓存图片
           //先用new Image() 把图片缓存，再用
           // 有一个问题，后端每次请求会有防抖，同一时间内多次请求，会返回相同的图片，这也是缓存的作用
           //所以两次请求之间的间隔很重要，要在防抖时间内，保证请求的是同一张图片，保证缓存有效
           //又要保证时间足够图片请求和加载到内存
           //还有一种是不定等待时间，等图片加载好
+
+          //有可以绕过跨域的代理api 可以自己部署源码
           let img = new Image()
           img.src = (randomBackground == random1 ? random2:random1).substring(4).replace(')','')
+
+          // fetch('https://circumvent-cors.herokuapp.com/'+img.src).then(response=>console.log(response.body))
+          
           img.onload = ()=>{
             setRandomBackground('url('+img.src+')')
           }
       }
 
       return (
-        <div style={{position:'fixed',bottom:'3%',right:'2%',zIndex:3,fontSize:'35px',width:'50px',height:'50px',background:'#0007',color:'#fff8',textAlign:'center',lineHeight:'50px',borderRadius:'10px',cursor:'pointer'}}>
+        <div style={{position:'fixed',bottom:'3%',right:'2%',zIndex:3,fontSize:'35px',width:'50px',height:'50px',background:'#0007',color:'#fff8',textAlign:'center',lineHeight:'50px',borderRadius:'10px',cursor:'pointer',display:display}}>
         <SyncOutlined spin={loading} onClick={changeRandomBackground}/>
-      </div>
+       </div>
       )
   })
 
   return (
     <div className="App" onContextMenu={e=>showMenu(e)}>
-      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background[2],backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
+      <div className='background' style={{filter:blurNum,transform:scale,backgroundImage:background[bgType - 1],backgroundSize:'cover',backgroundRepeat:'no-repeat'}}></div>
       <div className='mask' style={{opacity:coverNum}}></div>
       {/* <Menulist/> */}
       {/* <div onContextMenu={e=>e.stopPropagation()}> */}
@@ -213,7 +220,7 @@ function App() {
       })
       }
       {/* 随机壁纸切换 */}
-      <ChangeBg/>
+      <ChangeBg display={bgType === 3 ? 'block':'none'}/>
     </div>
     
      
