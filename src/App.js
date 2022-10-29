@@ -22,6 +22,14 @@ function App() {
   //页面加载前需要请求的数据
   const dispatch = useDispatch();
 
+  //提前加载图片缓存
+  // const imgList = useSelector(state => state.onlineimglist);
+  // imgList.map(item => {
+  //   let img = new Image();
+  //   let url = defaultSetting.imgSite + item;
+  //   img.src = url;
+  // });
+
   //两个随机壁纸api
   let random1 =
     "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
@@ -54,8 +62,8 @@ function App() {
             currentbg: res["current_bg"],
           });
           localStorage.setItem("currentbg", res["current_bg"]);
-        })
-        // .catch(e => console.log("error"));
+        });
+      // .catch(e => console.log("error"));
     }
     if (cookie.load("status") === "200") {
       getSettings();
@@ -157,7 +165,7 @@ function App() {
   let background = [myBackground, bingBackground, randomBackground];
 
   //子组件：随机壁纸切换
-  const ChangeBg = memo(props => {
+  function ChangeBg(props) {
     const { display } = props;
     const [loading, setLoading] = useState(false);
 
@@ -206,7 +214,7 @@ function App() {
         <SyncOutlined spin={loading} onClick={changeRandomBackground} />
       </div>
     );
-  });
+  }
 
   return (
     <div className='App' onContextMenu={e => showMenu(e)}>

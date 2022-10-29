@@ -2,11 +2,7 @@ import "./SetBackground.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Upload, message, Slider, Modal, Tabs, Radio } from "antd";
 import React, { useState, useEffect, memo } from "react";
-import {
-  InboxOutlined,
-  CheckOutlined,
-  CompassOutlined,
-} from "@ant-design/icons";
+import { InboxOutlined, CheckOutlined } from "@ant-design/icons";
 import defaultSetting from "../../config";
 import cookie from "react-cookies";
 
@@ -99,14 +95,13 @@ function UploadImg() {
 }
 
 function ShowBackground(props) {
-  const data = props;
+  const { data } = props;
   let imgList = data;
-  // console.log(imgList)
+
   const dispatch = useDispatch();
   const currentbg = useSelector(state => state.currentbg);
 
   function onChangeBg(e, value) {
-    console.log(value);
     dispatch({
       type: "CHANGE_BG",
       currentbg: value,
