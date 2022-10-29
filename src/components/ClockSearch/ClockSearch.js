@@ -76,7 +76,6 @@ function DateTime(props) {
 
 //时钟显示的倒计时
 function CountDownInClock() {
-  const temp = [];
   const now = new Date();
 
   const dataSource = useSelector(state => state.countdownList);
@@ -277,6 +276,9 @@ function Search() {
   const preUrl = [
     "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=7548,32606,1463,31254,32046,32672,32116,7564,32692,26350&wd=",
   ];
+
+  //TODO:搜索历史待完成
+  const history = [];
 
   const change = (n, e) => {
     setSelect(n);
