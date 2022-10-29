@@ -22,13 +22,13 @@ function App() {
   //页面加载前需要请求的数据
   const dispatch = useDispatch();
 
-  //提前加载图片缓存
-  // const imgList = useSelector(state => state.onlineimglist);
-  // imgList.map(item => {
-  //   let img = new Image();
-  //   let url = defaultSetting.imgSite + item;
-  //   img.src = url;
-  // });
+  //提前加载背景图片缓存
+  const imgList = useSelector(state => state.onlineimglist);
+  imgList.map(item => {
+    let img = new Image();
+    let url = defaultSetting.imgSite + item;
+    img.src = url;
+  });
 
   //两个随机壁纸api
   let random1 =

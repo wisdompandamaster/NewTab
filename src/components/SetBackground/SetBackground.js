@@ -31,12 +31,11 @@ function saveSettings(type, value) {
         "Content-Type": "application/json",
       },
       credentials: "include",
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.msg);
-      })
-      .catch(e => console.log("error"));
+    }).then(response => response.json());
+    // .then(data => {
+    //   console.log(data.msg);
+    // })
+    // .catch(e => console.log("error"));
   }
   if (cookie.load("status") === "200") {
     debounce(save)();
@@ -55,7 +54,7 @@ function UploadImg() {
     onChange(info) {
       const { status, response } = info.file;
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        // console.log(info.file, info.fileList);
       }
       if (status === "done") {
         //每上传完一次文件会返回一次服务端返回值
