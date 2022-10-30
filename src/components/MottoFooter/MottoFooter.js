@@ -67,7 +67,7 @@ const YearToday = () => {
         yearToday.map((item, index) => {
           if (index == itemIndex) {
             return (
-              <div className='slidein'>
+              <div key={index} className='slidein'>
                 <div
                   style={{
                     color: "#fffa",

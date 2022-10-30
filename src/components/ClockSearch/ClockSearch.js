@@ -1,6 +1,5 @@
 import "./ClockSearch.css";
 import "../../font/iconfont.css";
-import useLocalStorage from "../../hooks/useLocalStorage";
 import fetchJsonp from "fetch-jsonp";
 import {
   TranslationOutlined,
@@ -141,7 +140,7 @@ function Clock() {
 
   const dispatch = useDispatch();
   //时间模式 0 普通时间 1 世界时间 2 倒计时
-  const [timeType, setTimeType] = useState(1);
+  const [timeType, setTimeType] = useState(0);
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {

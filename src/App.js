@@ -24,7 +24,8 @@ function App() {
 
   //提前加载背景图片缓存
   const imgList = useSelector(state => state.onlineimglist);
-  imgList.map(item => {
+  const mybglist = useSelector(state => state.mybglist);
+  imgList.concat(mybglist).map(item => {
     let img = new Image();
     let url = defaultSetting.imgSite + item;
     img.src = url;

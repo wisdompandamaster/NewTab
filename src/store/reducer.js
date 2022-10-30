@@ -132,7 +132,7 @@ const defalutState = {
     : ["i"],
   timefont: localStorage.getItem("timefont")
     ? JSON.parse(localStorage.getItem("timefont"))
-    : 1,
+    : 0,
   cardstyle: localStorage.getItem("cardstyle")
     ? JSON.parse(localStorage.getItem("cardstyle"))
     : 1,
@@ -145,7 +145,7 @@ const defalutState = {
 
 //eslint-disable-next-line
 export default (state = defalutState, action) => {
-  console.log("action", action);
+  // console.log("action", action);
   switch (action.type) {
     case "CHANGE_COVER":
       return {
