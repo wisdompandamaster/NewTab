@@ -277,17 +277,40 @@ function Search() {
   ];
 
   //TODO:搜索历史待完成
-  const history = [{ q: "添加" }, { q: "历史搜索" }];
+  // const history = [{ q: "添加" }, { q: "历史搜索" }];
+  let oldhistory = localStorage.getItem("searchHistory")
+    ? JSON.parse(localStorage.getItem("searchHistory"))
+    : [];
+
+  const [history, setHistory] = useState(oldhistory);
+
+  // useEffect(() => {
+  //   console.log(history);
+  //   // localStorage.setItem("searchHistory", history);
+  // }, [history]);
 
   const change = (n, e) => {
     setSelect(n);
   };
 
   const search = (url, text) => {
+    //保存历史搜索
+    // let history = localStorage.getItem("searchHistory")
+    //   ? JSON.parse(localStorage.getItem("searchHistory"))
+    //   : [];
+
     setPreSearch([]);
     const w = window.open("_black");
     w.location.href = url + text;
     setQuery("");
+    setHistory(history => history.concat({ q: text }));
+    // history.push({ q: text });
+    localStorage.setItem(
+      "searchHistory",
+      JSON.stringify(history.concat({ q: text }))
+    );
+    //去焦点
+    focus();
   };
 
   const handleChange = e => {
