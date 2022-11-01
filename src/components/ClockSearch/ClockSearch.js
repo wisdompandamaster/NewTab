@@ -277,7 +277,7 @@ function Search() {
   ];
 
   //TODO:搜索历史待完成
-  const history = [];
+  const history = [{ q: "添加" }, { q: "历史搜索" }];
 
   const change = (n, e) => {
     setSelect(n);
@@ -402,7 +402,7 @@ function Search() {
         ) : (
           ""
         )}
-        {presearch.map((item, index) => {
+        {(query ? presearch : history).map((item, index) => {
           if (index + 2 === preselect && query !== item.q) {
             setQuery(item.q);
           }
