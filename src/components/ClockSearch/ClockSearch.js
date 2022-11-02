@@ -252,6 +252,12 @@ function Search() {
   const cardstyles = ["", " filter"];
 
   let top = clear ? "14vh" : "0vh";
+  //TODO:搜索历史待完成
+  // const history = [{ q: "添加" }, { q: "历史搜索" }];
+  let oldhistory = localStorage.getItem("searchHistory")
+    ? JSON.parse(localStorage.getItem("searchHistory"))
+    : [];
+  const [history, setHistory] = useState(oldhistory);
   const [select, setSelect] = useState(1);
   const [preselect, setPreSelect] = useState(0);
   const [query, setQuery] = useState("");
@@ -276,18 +282,12 @@ function Search() {
     "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=7548,32606,1463,31254,32046,32672,32116,7564,32692,26350&wd=",
   ];
 
-  //TODO:搜索历史待完成
-  // const history = [{ q: "添加" }, { q: "历史搜索" }];
-  let oldhistory = localStorage.getItem("searchHistory")
-    ? JSON.parse(localStorage.getItem("searchHistory"))
-    : [];
-
-  const [history, setHistory] = useState(oldhistory);
-
-  // useEffect(() => {
-  //   console.log(history);
-  //   // localStorage.setItem("searchHistory", history);
-  // }, [history]);
+  //query 为空时，显示历史搜索
+  useEffect(() => {
+    if (query == "") {
+      setPreSearch(history);
+    }
+  }, []);
 
   const change = (n, e) => {
     setSelect(n);
@@ -298,17 +298,21 @@ function Search() {
     // let history = localStorage.getItem("searchHistory")
     //   ? JSON.parse(localStorage.getItem("searchHistory"))
     //   : [];
-
+    setQuery("");
     setPreSearch([]);
     const w = window.open("_black");
     w.location.href = url + text;
-    setQuery("");
-    setHistory(history => history.concat({ q: text }));
+    setHistory(history => {
+      let newhistory = [...history];
+      if (history.length > 9) {
+        newhistory.pop();
+      }
+      newhistory.unshift({ q: text });
+      localStorage.setItem("searchHistory", JSON.stringify(newhistory));
+      return newhistory;
+    });
     // history.push({ q: text });
-    localStorage.setItem(
-      "searchHistory",
-      JSON.stringify(history.concat({ q: text }))
-    );
+
     //去焦点
     focus();
   };
@@ -408,7 +412,7 @@ function Search() {
       {/* 右边 */}
       {/* 搜索联想词 */}
       <div className='presearch-list'>
-        {query ? (
+        {query || history ? (
           <div
             className={1 === preselect ? "pre-hover" : ""}
             onMouseDown={() => translate(query)}
@@ -419,13 +423,13 @@ function Search() {
               className={1 === preselect ? "pre-div-hover" : ""}
               style={{ display: "inline-block" }}
             >
-              {query}
+              {query ? query : history[0].q}
             </div>
           </div>
         ) : (
           ""
         )}
-        {(query ? presearch : history).map((item, index) => {
+        {presearch.map((item, index) => {
           if (index + 2 === preselect && query !== item.q) {
             setQuery(item.q);
           }
