@@ -261,7 +261,7 @@ function Search() {
   const [select, setSelect] = useState(1);
   const [preselect, setPreSelect] = useState(0);
   const [query, setQuery] = useState("");
-  const [presearch, setPreSearch] = useState([]);
+  const [presearch, setPreSearch] = useState(oldhistory);
   const icons = [
     "icon-google",
     "icon-baidu",
@@ -282,12 +282,16 @@ function Search() {
     "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=7548,32606,1463,31254,32046,32672,32116,7564,32692,26350&wd=",
   ];
 
-  //query 为空时，显示历史搜索
+  // query 为空时，显示历史搜索
   useEffect(() => {
     if (query == "") {
       setPreSearch(history);
     }
-  }, []);
+  }, [query]);
+
+  useEffect(() => {
+    console.log(presearch);
+  }, [presearch]);
 
   const change = (n, e) => {
     setSelect(n);
@@ -299,7 +303,7 @@ function Search() {
     //   ? JSON.parse(localStorage.getItem("searchHistory"))
     //   : [];
     setQuery("");
-    setPreSearch([]);
+    // setPreSearch(history);
     const w = window.open("_black");
     w.location.href = url + text;
     setHistory(history => {
@@ -324,7 +328,7 @@ function Search() {
       fetchJsonp(preUrl[0] + e.target.value, { jsonpCallback: "cb" })
         .then(res => res.json())
         .then(json => {
-          json.g ? setPreSearch(json.g) : setPreSearch([]);
+          json.g ? setPreSearch(json.g) : setPreSearch(history);
         });
     };
     // fetch(preUrl[1]+e.target.value).then((res)=>{res.json()})
@@ -332,7 +336,7 @@ function Search() {
   };
 
   const translate = text => {
-    setPreSearch([]);
+    // setPreSearch(history);
     const w = window.open("_black");
     w.location.href =
       "https://translate.volcengine.com/translate?&text=" +
