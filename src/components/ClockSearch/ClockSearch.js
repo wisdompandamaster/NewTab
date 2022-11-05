@@ -261,7 +261,7 @@ function Search() {
   const [select, setSelect] = useState(1);
   const [preselect, setPreSelect] = useState(0);
   const [query, setQuery] = useState("");
-  const [presearch, setPreSearch] = useState(oldhistory);
+  const [presearch, setPreSearch] = useState(history);
   const icons = [
     "icon-google",
     "icon-baidu",
@@ -289,9 +289,9 @@ function Search() {
     }
   }, [query]);
 
-  useEffect(() => {
-    console.log(presearch);
-  }, [presearch]);
+  // useEffect(() => {
+  //   console.log(presearch);
+  // }, [presearch]);
 
   const change = (n, e) => {
     setSelect(n);
@@ -302,8 +302,10 @@ function Search() {
     // let history = localStorage.getItem("searchHistory")
     //   ? JSON.parse(localStorage.getItem("searchHistory"))
     //   : [];
-    setQuery("");
+    // setQuery("");
     // setPreSearch(history);
+    setQuery("");
+    setPreSelect(0);
     const w = window.open("_black");
     w.location.href = url + text;
     setHistory(history => {
@@ -313,12 +315,14 @@ function Search() {
       }
       newhistory.unshift({ q: text });
       localStorage.setItem("searchHistory", JSON.stringify(newhistory));
+      // 同时更新presearch
+      setPreSearch(newhistory);
       return newhistory;
     });
     // history.push({ q: text });
 
     //去焦点
-    focus();
+    // focus();
   };
 
   const handleChange = e => {
@@ -443,6 +447,7 @@ function Search() {
               key={index}
               className={index + 2 === preselect ? "pre-hover" : ""}
               onMouseDown={() => {
+                // setQuery(item.q);
                 search(urls[select], item.q);
               }}
             >
