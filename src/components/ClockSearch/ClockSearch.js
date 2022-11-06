@@ -5,6 +5,7 @@ import {
   TranslationOutlined,
   SearchOutlined,
   UnorderedListOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { useState, useEffect, memo } from "react";
 import { Radio } from "antd";
@@ -313,7 +314,8 @@ function Search() {
       if (history.length > 9) {
         newhistory.pop();
       }
-      newhistory.unshift({ q: text });
+      // type: 0 历史 1 联想词
+      newhistory.unshift({ q: text, type: 0 });
       localStorage.setItem("searchHistory", JSON.stringify(newhistory));
       // 同时更新presearch
       setPreSearch(newhistory);
@@ -458,6 +460,9 @@ function Search() {
                 style={{ display: "inline-block" }}
               >
                 {item ? item.q : ""}
+                <span style={{ display: item?.type ? "none" : "inline-block" }}>
+                  <CloseOutlined />
+                </span>
               </div>
             </div>
           );
