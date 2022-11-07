@@ -34,7 +34,8 @@ function App() {
   //两个随机壁纸api
   let random1 =
     "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
-  let random2 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)";
+  // let random2 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)"; //暂时停止服务
+  let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";
   const [randomBackground, setRandomBackground] = useState(random1);
   const bgType = useSelector(state => state.bgtype);
 
