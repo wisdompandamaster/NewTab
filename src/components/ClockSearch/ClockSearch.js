@@ -8,7 +8,7 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { useState, useEffect, memo } from "react";
-import { Radio } from "antd";
+import { Radio, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import FuncModal from "../FuncModal/FuncModal";
 import SetClock from "./SetClock/SetClock";
@@ -379,6 +379,17 @@ function Search() {
     }
   };
 
+  const deleteHitory = (e, index) => {
+    e.stopPropagation();
+    // 让 input 框不失去焦点
+    e.preventDefault();
+    let newhistory = [...history];
+    newhistory.splice(index, 1);
+    setHistory(newhistory);
+    setPreSearch(newhistory);
+    localStorage.setItem("searchHistory", JSON.stringify(newhistory));
+    // console.log(index);
+  };
   return (
     <div style={{ top: top }} className={"search" + cardstyles[cardstyle]}>
       {/* 左边 */}
@@ -416,7 +427,9 @@ function Search() {
         onKeyDown={e => {
           inputKeyDown(e);
         }}
+        style={{ width: "80%" }}
         type='text'
+        // allowClear
         onChange={handleChange}
         value={query}
         placeholder='输入并查找'
@@ -427,7 +440,7 @@ function Search() {
         {query || history ? (
           <div
             className={1 === preselect ? "pre-hover" : ""}
-            onMouseDown={() => translate(query ? query : history[0].q)}
+            onMouseDown={() => translate(query ? query : history[0]?.q)}
             style={{ paddingLeft: "1.5%" }}
           >
             <TranslationOutlined />
@@ -435,7 +448,7 @@ function Search() {
               className={1 === preselect ? "pre-div-hover" : ""}
               style={{ display: "inline-block" }}
             >
-              {query ? query : history[0].q}
+              {query ? query : history[0]?.q}
             </div>
           </div>
         ) : (
@@ -468,6 +481,7 @@ function Search() {
                   display: item?.type ? "none" : "inline-block",
                 }}
                 className='search-history-delete'
+                onMouseDown={e => deleteHitory(e, index)}
               >
                 <CloseOutlined />
               </span>
