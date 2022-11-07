@@ -2,11 +2,11 @@ import { useState, memo, React } from "react";
 import Calendar from "react-calendar";
 import "./CalComponent.css";
 import { useSelector, useDispatch } from "react-redux";
-import useLocalStorage from "../../hooks/useLocalStorage";
+// import useLocalStorage from "../../hooks/useLocalStorage";
 import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
 import GitHubCalendar from "react-github-calendar";
-import ActivityCalendar from "react-activity-calendar";
+// import ActivityCalendar from "react-activity-calendar";
 import {
   Solar,
   Lunar,
@@ -268,25 +268,27 @@ function CalComponent() {
                   <span>{jqwh}</span>
                   <span>{wh}</span>
                 </div>
+                <hr />
               </div>
               <div
                 style={{
                   width: "96%",
-                  background: "#00000055",
+                  background: "#fff0",
                   borderRadius: "10px",
-                  margin: "3% auto 0 auto",
+                  margin: "2% auto 2% auto",
                 }}
-                onClick={showModal}
+                // onClick={showModal}
               >
                 <Lottie
                   options={defaultOptions}
-                  height={"120%"}
+                  // height={"180%"}
                   width={"100%"}
                 />
               </div>
             </div>
           </div>
           <hr />
+          {/* GitHub贡献墙 */}
           <div
             style={{
               fontSize: "20px",

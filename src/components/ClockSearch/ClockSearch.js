@@ -343,12 +343,14 @@ function Search() {
 
   const translate = text => {
     // setPreSearch(history);
+    // console.log(text);
     const w = window.open("_black");
     w.location.href =
       "https://translate.volcengine.com/translate?&text=" +
       text +
       "&op=translate";
     setQuery("");
+    setPreSelect(0);
   };
 
   const inputKeyDown = e => {
@@ -356,7 +358,7 @@ function Search() {
     switch (e.key) {
       case "Enter":
         if (preselect === 1) {
-          translate(query);
+          translate(query ? query : history[0].q);
         } else {
           search(urls[select], query);
         }
@@ -425,7 +427,7 @@ function Search() {
         {query || history ? (
           <div
             className={1 === preselect ? "pre-hover" : ""}
-            onMouseDown={() => translate(query)}
+            onMouseDown={() => translate(query ? query : history[0].q)}
             style={{ paddingLeft: "1.5%" }}
           >
             <TranslationOutlined />
@@ -460,10 +462,15 @@ function Search() {
                 style={{ display: "inline-block" }}
               >
                 {item ? item.q : ""}
-                <span style={{ display: item?.type ? "none" : "inline-block" }}>
-                  <CloseOutlined />
-                </span>
               </div>
+              <span
+                style={{
+                  display: item?.type ? "none" : "inline-block",
+                }}
+                className='search-history-delete'
+              >
+                <CloseOutlined />
+              </span>
             </div>
           );
         })}
