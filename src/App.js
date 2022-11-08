@@ -25,11 +25,6 @@ function App() {
   //提前加载背景图片缓存
   const imgList = useSelector(state => state.onlineimglist);
   const mybglist = useSelector(state => state.mybglist);
-  imgList.concat(mybglist).map(item => {
-    let img = new Image();
-    let url = defaultSetting.imgSite + item;
-    img.src = url;
-  });
 
   //两个随机壁纸api
   let random1 =
@@ -70,6 +65,12 @@ function App() {
     if (cookie.load("status") === "200") {
       getSettings();
     }
+    //提前加载
+    imgList.concat(mybglist).map(item => {
+      let img = new Image();
+      let url = defaultSetting.imgSite + item;
+      img.src = url;
+    });
     //组件卸载时启动
     return () => {};
   }, []);
