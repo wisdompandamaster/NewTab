@@ -390,6 +390,7 @@ function Search() {
     localStorage.setItem("searchHistory", JSON.stringify(newhistory));
     // console.log(index);
   };
+
   return (
     <div style={{ top: top }} className={"search" + cardstyles[cardstyle]}>
       {/* 左边 */}
@@ -437,7 +438,7 @@ function Search() {
       {/* 右边 */}
       {/* 搜索联想词 */}
       <div className='presearch-list'>
-        {query || history ? (
+        {query || (history.length == 0 ? false : history) ? (
           <div
             className={1 === preselect ? "pre-hover" : ""}
             onMouseDown={() => translate(query ? query : history[0]?.q)}
