@@ -185,7 +185,7 @@ function Clock() {
         return (
           <>
             <DateTime timezone={0} city={"北京"} />
-            <DateTime timezone={7} city={"伦敦"} />
+            <DateTime timezone={8} city={"伦敦"} />
             {/* <DateTime timezone={12} city={'纽约'}/> */}
           </>
         );
@@ -309,8 +309,13 @@ function Search() {
     setPreSelect(0);
     const w = window.open("_black");
     w.location.href = url + text;
+
     setHistory(history => {
       let newhistory = [...history];
+      //去重
+      newhistory = newhistory.reduce((pre, cur) => {
+        return cur.q !== text ? pre.concat(cur) : pre;
+      }, []);
       if (history.length > 9) {
         newhistory.pop();
       }
