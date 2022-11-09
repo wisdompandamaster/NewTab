@@ -308,7 +308,8 @@ function Search() {
     setQuery("");
     setPreSelect(0);
     const w = window.open("_black");
-    w.location.href = url + text;
+    // 使用 encodeURIComponent 转义text中的特殊字符如&
+    w.location.href = url + encodeURIComponent(text);
 
     setHistory(history => {
       let newhistory = [...history];
@@ -352,7 +353,7 @@ function Search() {
     const w = window.open("_black");
     w.location.href =
       "https://translate.volcengine.com/translate?&text=" +
-      text +
+      encodeURIComponent(text) +
       "&op=translate";
     setQuery("");
     setPreSelect(0);
