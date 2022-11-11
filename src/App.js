@@ -31,6 +31,8 @@ function App() {
     "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
   // let random2 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)"; //暂时停止服务
   let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";
+  //TODO:unsplash API
+  // let random2 = "url(https://source.unsplash.com/random)";
   const [randomBackground, setRandomBackground] = useState(random1);
   const bgType = useSelector(state => state.bgtype);
 
@@ -184,6 +186,7 @@ function App() {
 
       //有可以绕过跨域的代理api 可以自己部署源码
       let img = new Image();
+      // img.src = (randomBackground == random1 ? random2 : random1)
       img.src = (randomBackground == random1 ? random2 : random1)
         .substring(4)
         .replace(")", "");

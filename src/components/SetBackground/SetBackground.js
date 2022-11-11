@@ -5,6 +5,7 @@ import React, { useState, useEffect, memo } from "react";
 import { InboxOutlined, CheckOutlined } from "@ant-design/icons";
 import defaultSetting from "../../config";
 import cookie from "react-cookies";
+import FuncModal from "../FuncModal/FuncModal";
 
 let t = null;
 function debounce(fn) {
@@ -275,7 +276,7 @@ const SetBackground = () => {
           </Radio.Group>
         </div>
       </div>
-      <Modal
+      <FuncModal
         title={
           <div
             style={{
@@ -306,7 +307,7 @@ const SetBackground = () => {
             <UploadImg></UploadImg>
           </TabPane>
         </Tabs>
-      </Modal>
+      </FuncModal>
     </>
   );
 };

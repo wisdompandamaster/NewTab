@@ -114,6 +114,8 @@ const defalutState = {
     "background/cool-background2.png",
     "background/cool-background3.png",
     "background/cool-background4.svg",
+    "background/cool-background5.png",
+    "background/cool-background6.svg",
   ],
   clear: 1,
   TodoDatePos: new Date().toLocaleDateString(),
