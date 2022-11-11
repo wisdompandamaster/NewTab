@@ -8,13 +8,14 @@
   bottom: 0vh;
   margin: 0 auto 20px auto;
   width: 84vw;
-  height: 20vw;
+  /* height: 20vw; */
   border-radius: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
   font-size: small;
   text-align: center;
   background-color: #ffffff00;
+  transition: 0.3s ease-in-out;
 }
 .apps_sortableItem:hover img {
   box-shadow: 0 0 25px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255) inset;
@@ -38,7 +39,7 @@
 .apps_sortable {
   display: grid;
   grid-template-columns: repeat(8, calc(100% / 8));
-  grid-template-rows: repeat(3, calc(100% / 3));
+  grid-template-rows: none;
   justify-content: center;
   justify-items: center;
   overflow-x: hidden;

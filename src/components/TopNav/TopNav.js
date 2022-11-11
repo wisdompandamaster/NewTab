@@ -2,6 +2,7 @@ import "./TopNav.css";
 import "../../font/iconfont.css";
 import SetBackground from "../SetBackground/SetBackground";
 import SetApp from "../Apps/SetApp/SetApp";
+import { SetTimePos } from "../ClockSearch/ClockSearch";
 import { SetFooter } from "../MottoFooter/MottoFooter";
 import { SetFuncCardStyle } from "../FuncCard/SetFuncCard/SetFuncCard";
 import Account from "../Account/Account";
@@ -191,6 +192,7 @@ function SetFunction() {
       {/* <SetApp/> */}
       <SetFooter />
       <SetFuncCardStyle />
+      <SetTimePos />
       {/* <SetFunctionArea/> */}
     </div>
   );
@@ -211,8 +213,11 @@ function Setting() {
   };
 
   return (
-    <div className='setting'>
-      <span onMouseDown={showDrawer} className='icon-shezhi iconfont'></span>
+    <>
+      <span
+        onMouseDown={showDrawer}
+        className='setting icon-shezhi iconfont'
+      ></span>
       <Drawer
         drawerStyle={{ backgroundColor: "rgb(245,245,245)" }}
         maskStyle={{ backgroundColor: "rgb(0,0,0,.1)" }}
@@ -273,18 +278,18 @@ function Setting() {
           ></Panel>
         </Collapse>
       </Drawer>
-    </div>
+    </>
   );
 }
 
 const TopNav = () => {
   //顶部导航
 
-  const clear = useSelector(state => state.clear);
-  let opacity = clear ? 0 : 1;
+  // const clear = useSelector(state => state.clear);
+  // let opacity = clear ? 0 : 1;
   return (
     <div>
-      <CheckMode></CheckMode>
+      {/* <CheckMode></CheckMode> */}
       <User></User>
       <Setting></Setting>
     </div>

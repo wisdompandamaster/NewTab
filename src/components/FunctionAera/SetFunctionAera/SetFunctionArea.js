@@ -2,7 +2,7 @@ import "./SetFunctionArea.css";
 import { memo, useState } from "react";
 import { Button, message } from "antd";
 import { PlusOutlined, AppstoreAddOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FuncModal from "../../FuncModal/FuncModal";
 import News from "../../News/News";
 import Todo from "../../Todo/Todo";
@@ -18,12 +18,13 @@ import Demos from "../../Demos/Demos";
 // import Snippets from '../../Snippets/Snippets'
 // import YearToday from '../../FuncModule/YearToday/YearToday';
 import TomatoClock from "../../TomatoClock/TomatoClock";
+import { useEffect } from "react";
 
 //FIXME:style have some problem
 
 const SetFunctionArea = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  let timePos = useSelector(state => state.timePos);
   const dispatch = useDispatch();
 
   const funcs = [
@@ -55,9 +56,11 @@ const SetFunctionArea = () => {
     setIsModalVisible(false);
   };
 
+  let funcNum = timePos ? 12 : 8;
+
   const addFunc = id => {
     let newList = JSON.parse(localStorage.getItem("functionList"));
-    if (newList.indexOf(id) === -1 && newList.length < 8) {
+    if (newList.indexOf(id) === -1 && newList.length < funcNum) {
       newList.push(id);
       localStorage.setItem("functionList", JSON.stringify(newList));
       dispatch({

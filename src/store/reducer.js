@@ -147,6 +147,7 @@ const defalutState = {
     : [],
   snippets: [],
   bgtype: 3,
+  timePos: 0,
 };
 
 //eslint-disable-next-line
@@ -242,6 +243,11 @@ export default (state = defalutState, action) => {
       return {
         ...state,
         bgtype: action.bgtype,
+      };
+    case "CHANGE_TIMEPOS":
+      return {
+        ...state,
+        timePos: action.timePos,
       };
     // case "CHANGE_FUNCTIONLIST":
     //     return {

@@ -1,5 +1,5 @@
 import "./Snippets.css";
-import { memo, useState } from "react";
+import { memo } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SnippetsOutlined } from "@ant-design/icons";

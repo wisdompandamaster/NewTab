@@ -48,6 +48,7 @@ const FunctionAera = () => {
 
   const funcdeleteMode = useSelector(state => state.deleteFunc);
   const functionList = useSelector(state => state.functionList);
+  let timePos = useSelector(state => state.timePos);
 
   //先重新排列这些组件，统一组件大小
   // let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
@@ -107,6 +108,8 @@ const FunctionAera = () => {
   const deleteFunc = id => {
     let newList = items;
     //删除数组中指定元素
+    if (newList.length > 8) newList = newList.slice(0, 8);
+    // console.log(newList);
     newList.splice(newList.indexOf(id), 1);
     setItems(newList);
     localStorage.setItem("functionList", JSON.stringify(newList));
@@ -128,8 +131,10 @@ const FunctionAera = () => {
     );
   };
 
+  let height = timePos ? "30vw" : "20vw";
+
   return (
-    <div className='functionAera'>
+    <div className='functionAera' style={{ height: height }}>
       <SortableList
         distance={funcdeleteMode ? 0 : 2}
         axis='xy'

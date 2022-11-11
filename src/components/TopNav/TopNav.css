@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 
-.setting span {
+.setting {
   position: absolute;
   right: 30px;
   top: 2vh;

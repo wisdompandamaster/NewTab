@@ -50,7 +50,7 @@ function Todo() {
           setTodos(JSON.parse(data.res));
           setPersistedTodoList(JSON.parse(data.res));
         });
-        // .catch(e => console.log(e.message));
+      // .catch(e => console.log(e.message));
     }
     if (cookie.load("status") === "200") {
       //获取数据
@@ -76,10 +76,9 @@ function Todo() {
           "Content-Type": "application/json",
         },
         credentials: "include",
-      })
-        .then(response => response.json());
-        // .then(data => {})
-        // .catch(e => console.log("error"));
+      }).then(response => response.json());
+      // .then(data => {})
+      // .catch(e => console.log("error"));
     }
 
     if (cookie.load("status") === "200") {

@@ -5,7 +5,7 @@ import {
   CodeOutlined,
 } from "@ant-design/icons";
 import { memo, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import defaultSetting from "../../config";
 import SetFunctionArea from "../FunctionAera/SetFunctionAera/SetFunctionArea";
 import SetApp from "../Apps/SetApp/SetApp";
@@ -14,6 +14,9 @@ import { SnippetsInMenu } from "../Snippets/Snippets";
 function ClickMenu() {
   const currentbg = useSelector(state => state.currentbg);
   const bgType = useSelector(state => state.bgtype);
+  const clear = useSelector(state => state.clear);
+
+  const dispatch = useDispatch();
 
   const downloadWallPaper = e => {
     const bgurl = [
@@ -31,6 +34,14 @@ function ClickMenu() {
     a.click(); // 自动触发点击a标签的click事件
     document.body.removeChild(a);
   };
+
+  function onChangeClear() {
+    let value = clear ? 0 : 1;
+    dispatch({
+      type: "CHANGE_CLEAR",
+      clear: value,
+    });
+  }
 
   return (
     <div className='menu-wrapper'>
@@ -55,7 +66,7 @@ function ClickMenu() {
           </li>
           <li className='menu-item'>
             <div>
-              <i className='menu-uil'>
+              <i className='menu-uil' onClick={onChangeClear}>
                 <CodeOutlined />
                 <span>命令模式</span>
               </i>

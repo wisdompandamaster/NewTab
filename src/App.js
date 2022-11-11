@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import "./App.css";
 import ClockSearch from "./components/ClockSearch/ClockSearch";
+import { Clock, Search } from "./components/ClockSearch/ClockSearch";
 import TopNav from "./components/TopNav/TopNav";
 import defaultSetting from "./config";
 // import FunctionAera from './components/FunctionAera/FunctionAera';
@@ -17,6 +18,23 @@ import Draggable from "react-draggable";
 // import { conversionMomentValue } from '@ant-design/pro-utils';
 
 //FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
+
+/** 页面结构：
+ *
+ * 背景图片
+ * 遮罩层
+ * --2vh
+ * TopNav 最上层
+ * ------ 6vh
+ * Clock 时间
+ * Search 搜索框
+ * Swiper 滑动区域
+ *------- 90vh
+ * FooterMotto 脚注
+ * Snippets 便利贴
+ * ChangeBg 背景切换按钮
+ * ClickMenu 右键菜单
+ */
 
 function App() {
   //页面加载前需要请求的数据
@@ -224,6 +242,7 @@ function App() {
 
   return (
     <div className='App' onContextMenu={e => showMenu(e)}>
+      {/* 背景图片层 */}
       <div
         className='background'
         style={{
@@ -234,28 +253,25 @@ function App() {
           backgroundRepeat: "no-repeat",
         }}
       ></div>
+      {/* 遮罩层 */}
       <div className='mask' style={{ opacity: coverNum }}></div>
-      {/* <Menulist/> */}
-      {/* <div onContextMenu={e=>e.stopPropagation()}> */}
+      {/* 导航栏 */}
       <TopNav></TopNav>
-      <ClockSearch></ClockSearch>
-      {/* 右键菜单 */}
-      <div
-        style={{
-          display: position.display,
-          position: "absolute",
-          left: position.left,
-          top: position.top,
-        }}
-        ref={menu}
-      >
-        <ClickMenu />
-      </div>
+      {/* 时间 */}
+
+      <Clock></Clock>
+
+      {/* 搜索 */}
+
+      <Search></Search>
+
+      {/* <ClockSearch></ClockSearch> */}
       {/* 滑动区域 */}
+
       <SwiperAera></SwiperAera>
+
       {/* 脚注 */}
       <MottoFooter></MottoFooter>
-      {/* </div> */}
       {/* 便利贴 */}
       {snippets.map((item, index) => {
         return (
@@ -284,8 +300,20 @@ function App() {
           </Draggable>
         );
       })}
-      {/* 随机壁纸切换 */}
+      {/* 随机壁纸切换按钮 */}
       <ChangeBg display={bgType === 3 ? "block" : "none"} />
+      {/* 右键菜单 */}
+      <div
+        style={{
+          display: position.display,
+          position: "absolute",
+          left: position.left,
+          top: position.top,
+        }}
+        ref={menu}
+      >
+        <ClickMenu />
+      </div>
     </div>
   );
 }

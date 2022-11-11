@@ -135,13 +135,40 @@ function CountDownInClock() {
   );
 }
 
+const SetTimePos = memo(() => {
+  const timePos = useSelector(state => state.timePos);
+  const dispatch = useDispatch();
+  const onChange = e => {
+    //console.log('radio checked', e.target.value);
+    // setValue(e.target.value);
+    dispatch({
+      type: "CHANGE_TIMEPOS",
+      timePos: e.target.value,
+    });
+  };
+
+  return (
+    <div>
+      <span>Time Position</span>
+      <span>
+        <Radio.Group value={timePos} onChange={onChange}>
+          <Radio value={0}>Norm</Radio>
+          <Radio value={1}>Top</Radio>
+        </Radio.Group>
+      </span>
+    </div>
+  );
+});
 //时钟的功能
-function Clock() {
+const Clock = memo(() => {
   // 时钟
 
   const dispatch = useDispatch();
   //时间模式 0 普通时间 1 世界时间 2 倒计时
   const [timeType, setTimeType] = useState(0);
+  const timePos = useSelector(state => state.timePos);
+
+  let display = timePos ? "none" : "inline-block";
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -173,7 +200,7 @@ function Clock() {
   };
 
   const clear = useSelector(state => state.clear);
-  let top = clear ? "8vh" : "0vh";
+  let top = clear ? "10vh" : "3vh";
   const timefont = useSelector(state => state.timefont);
   const digitalfont = timefont === 2 ? " digitalfont" : "";
 
@@ -201,9 +228,9 @@ function Clock() {
   return (
     <>
       <div
-        style={{ top: top }}
+        style={{ top: top, display: display }}
         onClick={() => onChangeClear()}
-        className={"clock" + digitalfont}
+        className={"clock fade_in" + digitalfont}
       >
         <span className='clock-setting' onClick={e => onSetClock(e)}>
           <UnorderedListOutlined />
@@ -243,16 +270,17 @@ function Clock() {
       </FuncModal>
     </>
   );
-}
+});
 
-function Search() {
+const Search = memo(() => {
   //搜索框
 
   const clear = useSelector(state => state.clear);
+  const timePos = useSelector(state => state.timePos);
   const cardstyle = useSelector(state => state.cardstyle);
   const cardstyles = ["", " filter"];
 
-  let top = clear ? "14vh" : "0vh";
+  let top = clear ? "40vh" : timePos ? "10vh" : "28vh";
   //TODO:搜索历史待完成
   // const history = [{ q: "添加" }, { q: "历史搜索" }];
   let oldhistory = localStorage.getItem("searchHistory")
@@ -311,22 +339,23 @@ function Search() {
     // 使用 encodeURIComponent 转义text中的特殊字符如&
     w.location.href = url + encodeURIComponent(text);
 
-    setHistory(history => {
-      let newhistory = [...history];
-      //去重
-      newhistory = newhistory.reduce((pre, cur) => {
-        return cur.q !== text ? pre.concat(cur) : pre;
-      }, []);
-      if (history.length > 9) {
-        newhistory.pop();
-      }
-      // type: 0 历史 1 联想词
-      newhistory.unshift({ q: text, type: 0 });
-      localStorage.setItem("searchHistory", JSON.stringify(newhistory));
-      // 同时更新presearch
-      setPreSearch(newhistory);
-      return newhistory;
-    });
+    if (text !== "")
+      setHistory(history => {
+        let newhistory = [...history];
+        //去重
+        newhistory = newhistory.reduce((pre, cur) => {
+          return cur.q !== text ? pre.concat(cur) : pre;
+        }, []);
+        if (history.length > 9) {
+          newhistory.pop();
+        }
+        // type: 0 历史 1 联想词
+        newhistory.unshift({ q: text, type: 0 });
+        localStorage.setItem("searchHistory", JSON.stringify(newhistory));
+        // 同时更新presearch
+        setPreSearch(newhistory);
+        return newhistory;
+      });
     // history.push({ q: text });
 
     //去焦点
@@ -505,7 +534,7 @@ function Search() {
       ></span>
     </div>
   );
-}
+});
 
 const ClockSearch = () => {
   //时间显示 + 搜索框
@@ -518,4 +547,4 @@ const ClockSearch = () => {
   );
 };
 
-export default memo(ClockSearch);
+export { Clock, Search, SetTimePos };

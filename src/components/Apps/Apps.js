@@ -13,6 +13,9 @@ export default function Apps() {
   const deleteMode = useSelector(state => state.deleteApp);
   const myApps = useSelector(state => state.myApps);
   const [items, setItems] = useState(myApps);
+  let timePos = useSelector(state => state.timePos);
+
+  let height = timePos ? "30vw" : "20vw";
 
   useEffect(() => {
     //这一行让Apps SetApps 拖拽时可以同步变换
@@ -98,7 +101,7 @@ export default function Apps() {
   return (
     // <div className="Apps">{myApps.map((item, i) => renderItem(item))}</div>
     //通过给SortableList 设置最小拖动距离来激活点击事件（distance 单位px）
-    <div className='Apps'>
+    <div className='Apps' style={{ height: height }}>
       <SortableList
         distance={1}
         axis='xy'
