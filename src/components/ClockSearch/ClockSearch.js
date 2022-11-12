@@ -149,11 +149,11 @@ const SetTimePos = memo(() => {
 
   return (
     <div>
-      <span>Time Position</span>
+      <span>时间位置</span>
       <span>
         <Radio.Group value={timePos} onChange={onChange}>
-          <Radio value={0}>Norm</Radio>
-          <Radio value={1}>Top</Radio>
+          <Radio value={0}>页面</Radio>
+          <Radio value={1}>顶部</Radio>
         </Radio.Group>
       </span>
     </div>

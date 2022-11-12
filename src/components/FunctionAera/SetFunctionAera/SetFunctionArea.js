@@ -22,27 +22,27 @@ import { useEffect } from "react";
 
 //FIXME:style have some problem
 
-const SetFunctionArea = () => {
+const funcs = [
+  { id: 0, node: <News /> },
+  { id: 1, node: <Todo /> },
+  { id: 2, node: <Pictures /> },
+  { id: 3, node: <Notes /> },
+  { id: 4, node: <Weather /> },
+  { id: 5, node: <CalComponent /> },
+  { id: 6, node: <CountDown /> },
+  { id: 7, node: <Competition /> },
+  { id: 8, node: <ServerMonitor /> },
+  { id: 9, node: <ToolKit /> },
+  { id: 10, node: <Demos /> },
+  //  {id:11, node:<Memo/>},
+  //  {id:11, node:<YearToday/>},
+  { id: 11, node: <TomatoClock /> },
+];
+
+const SetFunctionArea = memo(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   let timePos = useSelector(state => state.timePos);
   const dispatch = useDispatch();
-
-  const funcs = [
-    { id: 0, node: <News /> },
-    { id: 1, node: <Todo /> },
-    { id: 2, node: <Pictures /> },
-    { id: 3, node: <Notes /> },
-    { id: 4, node: <Weather /> },
-    { id: 5, node: <CalComponent /> },
-    { id: 6, node: <CountDown /> },
-    { id: 7, node: <Competition /> },
-    { id: 8, node: <ServerMonitor /> },
-    { id: 9, node: <ToolKit /> },
-    { id: 10, node: <Demos /> },
-    //  {id:11, node:<Memo/>},
-    //  {id:11, node:<YearToday/>},
-    { id: 11, node: <TomatoClock /> },
-  ];
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -129,6 +129,6 @@ const SetFunctionArea = () => {
       </FuncModal>
     </div>
   );
-};
+});
 
-export default memo(SetFunctionArea);
+export { SetFunctionArea, funcs };

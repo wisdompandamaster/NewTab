@@ -7,7 +7,7 @@ import {
 import { memo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import defaultSetting from "../../config";
-import SetFunctionArea from "../FunctionAera/SetFunctionAera/SetFunctionArea";
+import { SetFunctionArea } from "../FunctionAera/SetFunctionAera/SetFunctionArea";
 import SetApp from "../Apps/SetApp/SetApp";
 import { SnippetsInMenu } from "../Snippets/Snippets";
 

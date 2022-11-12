@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { memo, useState } from "react";
 import { useSelector } from "react-redux";
 import "./FuncCard.css";
@@ -25,6 +26,10 @@ const FuncCard = props => {
   const classlist = props.className ? " " + props.className : ""; //原来的类名
 
   const cardstyles = ["", " filter"];
+
+  useEffect(() => {
+    // console.log(title);
+  }, []);
 
   return (
     <div className={"funcCard" + if_title + classlist + cardstyles[cardstyle]}>

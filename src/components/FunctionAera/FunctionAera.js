@@ -21,26 +21,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { memo, useEffect, useState } from "react";
 import { Button } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
+import { funcs } from "./SetFunctionAera/SetFunctionArea";
 
 //TODO: 1.服务器性能监控模块，2. 前端工具箱模块 3. 股票信息模块 4. 图片上传图床模块 5. 博客文章显示（改写笔记） 6. 日历添加打卡功能 7. 那年今日 8.桌面宠物或者人偶
 
 // type 0 为装饰类  1 为功能类
-const funcs = [
-  { id: 0, node: <News />, type: "1" },
-  { id: 1, node: <Todo />, type: "1" },
-  { id: 2, node: <Pictures />, type: "0" },
-  { id: 3, node: <Notes />, type: "1" },
-  { id: 4, node: <Weather />, type: "1" },
-  { id: 5, node: <CalComponent />, type: "1" },
-  { id: 6, node: <CountDown />, type: "1" },
-  { id: 7, node: <Competition />, type: "1" },
-  { id: 8, node: <ServerMonitor />, type: "1" },
-  { id: 9, node: <ToolKit />, type: "1" },
-  { id: 10, node: <Demos />, type: "0" },
-  //  {id:11, node:<Memo/>},
-  //  {id:11, node:<YearToday/>},
-  { id: 11, node: <TomatoClock />, type: "1" },
-];
+// const funcs = [
+//   { id: 0, node: <News />, type: "1" },
+//   { id: 1, node: <Todo />, type: "1" },
+//   { id: 2, node: <Pictures />, type: "0" },
+//   { id: 3, node: <Notes />, type: "1" },
+//   { id: 4, node: <Weather />, type: "1" },
+//   { id: 5, node: <CalComponent />, type: "1" },
+//   { id: 6, node: <CountDown />, type: "1" },
+//   { id: 7, node: <Competition />, type: "1" },
+//   { id: 8, node: <ServerMonitor />, type: "1" },
+//   { id: 9, node: <ToolKit />, type: "1" },
+//   { id: 10, node: <Demos />, type: "0" },
+//   //  {id:11, node:<Memo/>},
+//   //  {id:11, node:<YearToday/>},
+//   { id: 11, node: <TomatoClock />, type: "1" },
+// ];
 
 //测试上传
 const FunctionAera = () => {
