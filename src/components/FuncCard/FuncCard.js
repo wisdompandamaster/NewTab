@@ -28,7 +28,10 @@ const FuncCard = props => {
   const cardstyles = ["", " filter"];
 
   useEffect(() => {
-    // console.log(title);
+    // console.log("Effect " + title);
+    // return () => {
+    //   console.log("destroy" + title);
+    // };
   }, []);
 
   return (
