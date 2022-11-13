@@ -68,7 +68,7 @@ function ClickMenu() {
             <div>
               <i className='menu-uil' onClick={onChangeClear}>
                 <CodeOutlined />
-                <span>命令模式</span>
+                <span>简洁模式</span>
               </i>
             </div>
           </li>
