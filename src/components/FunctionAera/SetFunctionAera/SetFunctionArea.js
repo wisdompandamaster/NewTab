@@ -19,6 +19,7 @@ import Demos from "../../Demos/Demos";
 // import YearToday from '../../FuncModule/YearToday/YearToday';
 import TomatoClock from "../../TomatoClock/TomatoClock";
 import { useEffect } from "react";
+import WoodenFish from "../../WoodenFish/WoodenFish";
 
 //FIXME:style have some problem
 
@@ -37,6 +38,7 @@ const funcs = [
   //  {id:11, node:<Memo/>},
   //  {id:11, node:<YearToday/>},
   { id: 11, node: <TomatoClock /> },
+  { id: 12, node: <WoodenFish /> },
 ];
 
 const SetFunctionArea = memo(() => {

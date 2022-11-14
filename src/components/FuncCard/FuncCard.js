@@ -9,6 +9,7 @@ import "./FuncCard.css";
  * title         （Stirng）
  * iconStyle      (CSS Style)
  * kinds          ([])
+ * width          (String 没有就默认 352px)
  * changeType()
  * className
  *
@@ -17,7 +18,7 @@ import "./FuncCard.css";
 //加入filter:blur
 const FuncCard = props => {
   const cardstyle = useSelector(state => state.cardstyle);
-  const { title, iconStyle, kinds } = props;
+  const { title, iconStyle, kinds, width } = props;
 
   const [type, setType] = useState(0);
 
@@ -35,7 +36,10 @@ const FuncCard = props => {
   }, []);
 
   return (
-    <div className={"funcCard" + if_title + classlist + cardstyles[cardstyle]}>
+    <div
+      className={"funcCard" + if_title + classlist + cardstyles[cardstyle]}
+      style={{ width: width || "352px" }}
+    >
       {title ? ( //标题
         <div className='cardTitle'>
           <div style={iconStyle}></div>

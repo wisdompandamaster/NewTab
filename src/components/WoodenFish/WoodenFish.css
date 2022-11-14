@@ -1,0 +1,39 @@
+.woodenfish:active img {
+  animation: run 0.3s ease-in-out;
+}
+@keyframes run {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.woodenfish_tag {
+  position: absolute;
+  top: 35%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  font-weight: 800;
+  font-family: "KaiTi";
+  color: #fff;
+  opacity: 0;
+}
+
+.woodenfish:active .woodenfish_tag {
+  animation: yan 0.3s ease-out;
+}
+
+@keyframes yan {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    /* color: black; */
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+}
