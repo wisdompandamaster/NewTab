@@ -20,6 +20,7 @@ import Demos from "../../Demos/Demos";
 import TomatoClock from "../../TomatoClock/TomatoClock";
 import { useEffect } from "react";
 import WoodenFish from "../../WoodenFish/WoodenFish";
+import FormHabit from "../../FormHabit/FormHabit";
 
 //FIXME:style have some problem
 
@@ -39,6 +40,7 @@ const funcs = [
   //  {id:11, node:<YearToday/>},
   { id: 11, node: <TomatoClock /> },
   { id: 12, node: <WoodenFish /> },
+  { id: 13, node: <FormHabit /> },
 ];
 
 const SetFunctionArea = memo(() => {

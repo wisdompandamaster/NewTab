@@ -16,7 +16,7 @@ function WoodenFish() {
   };
   return (
     <div>
-      <FuncCard width='175px' title='电子木鱼'>
+      <FuncCard width='165px' title='电子木鱼'>
         <div className='woodenfish' onClick={addCount}>
           <img
             width={130}
