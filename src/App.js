@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import "./App.css";
 import ClockSearch from "./components/ClockSearch/ClockSearch";
-import { Clock, Search } from "./components/ClockSearch/ClockSearch";
+import { Clock, Search, TopClock } from "./components/ClockSearch/ClockSearch";
 import TopNav from "./components/TopNav/TopNav";
 import defaultSetting from "./config";
 // import FunctionAera from './components/FunctionAera/FunctionAera';
@@ -257,14 +257,13 @@ function App() {
       <div className='mask' style={{ opacity: coverNum }}></div>
       {/* 导航栏 */}
       <TopNav></TopNav>
+      <div style={{ position: "absolute", top: "3vh", right: "5vw" }}>
+        <TopClock />
+      </div>
       {/* 时间 */}
-
       <Clock></Clock>
-
       {/* 搜索 */}
-
       <Search></Search>
-
       {/* <ClockSearch></ClockSearch> */}
       {/* 滑动区域 */}
 

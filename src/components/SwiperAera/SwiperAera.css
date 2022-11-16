@@ -8,6 +8,7 @@
   margin: 0 auto;
   /* z-index: 999; */
   border: 0px solid black;
+  overflow: visible;
   border-radius: 20px;
   /* height: 50vh; */
   user-select: none;

@@ -272,6 +272,10 @@ const Clock = memo(() => {
   );
 });
 
+const TopClock = memo(() => {
+  return <div>状态栏时钟</div>;
+});
+
 const Search = memo(() => {
   //搜索框
 
@@ -547,4 +551,4 @@ const ClockSearch = () => {
   );
 };
 
-export { Clock, Search, SetTimePos };
+export { Clock, Search, SetTimePos, TopClock };
