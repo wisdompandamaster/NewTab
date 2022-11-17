@@ -43,6 +43,7 @@ function App() {
   //提前加载背景图片缓存
   const imgList = useSelector(state => state.onlineimglist);
   const mybglist = useSelector(state => state.mybglist);
+  const timePos = useSelector(state => state.timePos);
 
   //两个随机壁纸api
   let random1 =
@@ -257,7 +258,14 @@ function App() {
       <div className='mask' style={{ opacity: coverNum }}></div>
       {/* 导航栏 */}
       <TopNav></TopNav>
-      <div style={{ position: "absolute", top: "3vh", right: "5vw" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "2vh",
+          right: "5vw",
+          display: timePos ? "inline-block" : "none",
+        }}
+      >
         <TopClock />
       </div>
       {/* 时间 */}

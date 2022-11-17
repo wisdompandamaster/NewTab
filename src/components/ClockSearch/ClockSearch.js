@@ -273,7 +273,38 @@ const Clock = memo(() => {
 });
 
 const TopClock = memo(() => {
-  return <div>状态栏时钟</div>;
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    //每次渲染都会调用该函数
+    const t = setInterval(() => {
+      setNow(new Date());
+    });
+    return () => {
+      //每次都执行此函数，清除定时器
+      clearTimeout(t);
+    };
+  });
+  return (
+    <div
+      style={{
+        color: "#fffa",
+        background: "#0009",
+        fontWeight: "600",
+        fontSize: "20px",
+        height: "32px",
+        lineHeight: "32px",
+        padding: "0 16px",
+        borderRadius: "16px",
+      }}
+    >
+      {/* <DateTime timezone={0} /> */}
+      {String(now.getHours()).padStart(2, "0") +
+        " : " +
+        String(now.getMinutes()).padStart(2, "0") +
+        " : " +
+        String(now.getSeconds()).padStart(2, "0")}
+    </div>
+  );
 });
 
 const Search = memo(() => {
