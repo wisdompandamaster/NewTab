@@ -37,17 +37,25 @@ const FuncModal = props => {
   return (
     <div onContextMenu={e => handleContextMenu(e)}>
       <Modal
-        title={props.title}
-        width={props.width}
-        height={props.height}
+        // title={props.title}
+        // width={props.width}
+        // height={props.height}
+        width={"50%"}
+        // height={"500px"}
         closable={false}
         visible={props.visible}
         mask={true}
-        maskStyle={{ backdropFilter: "blur(0px)", backgroundColor: "#0002" }}
-        bodyStyle={{ background: "#00000000" }}
+        style={{
+          top: "25%",
+        }}
+        maskStyle={{ backdropFilter: "blur(2px)", backgroundColor: "#0004" }}
+        // bodyStyle={{ background: "#00000000", height: "50vh" }}
+        bodyStyle={{ background: "#fff8", height: "50vh" }}
         onOk={props.onOk}
         footer={null}
         onCancel={props.onCancel}
+        // antd Modal 弹出动画
+        transitionName='ant-slide-up'
         modalRender={modal => (
           <Draggable
             disabled={disabled}

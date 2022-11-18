@@ -274,6 +274,9 @@ const Clock = memo(() => {
 
 const TopClock = memo(() => {
   const [now, setNow] = useState(new Date());
+  const clear = useSelector(state => state.clear);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     //每次渲染都会调用该函数
     const t = setInterval(() => {
@@ -284,8 +287,20 @@ const TopClock = memo(() => {
       clearTimeout(t);
     };
   });
+
+  const handleClick = e => {
+    e.stopPropagation();
+    // e.preventDefault();
+    let value = clear ? 0 : 1;
+    dispatch({
+      type: "CHANGE_CLEAR",
+      clear: value,
+    });
+  };
+
   return (
     <div
+      onClick={handleClick}
       style={{
         color: "#fffa",
         background: "#0009",
@@ -295,6 +310,8 @@ const TopClock = memo(() => {
         lineHeight: "32px",
         padding: "0 16px",
         borderRadius: "16px",
+        userSelect: "none",
+        cursor: "pointer",
       }}
     >
       {/* <DateTime timezone={0} /> */}

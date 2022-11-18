@@ -87,7 +87,8 @@ const defaultIcons = [
 const defalutState = {
   cover: localStorage.getItem("cover") || 20,
   blur: localStorage.getItem("blur") || 0,
-  currentbg: localStorage.getItem("currentbg") || "background/bg9.png",
+  currentbg:
+    localStorage.getItem("currentbg") || "background/cool-background1.png",
   mybglist: localStorage.getItem("mybglist")
     ? JSON.parse(localStorage.getItem("mybglist"))
     : [],
@@ -147,8 +148,8 @@ const defalutState = {
     ? JSON.parse(localStorage.getItem("countdownList"))
     : [],
   snippets: [],
-  bgtype: 3,
-  timePos: 0,
+  bgtype: 1,
+  timePos: 1,
 };
 
 //eslint-disable-next-line
