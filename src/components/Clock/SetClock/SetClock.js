@@ -1,6 +1,6 @@
 import "./SetClock.css";
 import { Radio } from "antd";
-import { useState, React } from "react";
+import { React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 

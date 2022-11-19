@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import "./App.css";
-import ClockSearch from "./components/ClockSearch/ClockSearch";
-import { Clock, Search, TopClock } from "./components/ClockSearch/ClockSearch";
+import { Clock, TopClock } from "./components/Clock/Clock";
+import Search from "./components/Search/Search";
 import TopNav from "./components/TopNav/TopNav";
 import defaultSetting from "./config";
 // import FunctionAera from './components/FunctionAera/FunctionAera';
@@ -9,7 +9,7 @@ import { MottoFooter } from "./components/MottoFooter/MottoFooter";
 // import Menulist from './components/Menulist/Menulist'
 import ClickMenu from "./components/ClickMenu/ClickMenu";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState, useRef, memo } from "react";
+import { useEffect, useState, useRef } from "react";
 import cookie from "react-cookies";
 import SwiperAera from "./components/SwiperAera/SwiperAera";
 import { DragOutlined, SyncOutlined } from "@ant-design/icons";

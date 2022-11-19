@@ -1,8 +1,8 @@
 import "./TopNav.css";
 import "../../font/iconfont.css";
 import SetBackground from "../SetBackground/SetBackground";
-import SetApp from "../Apps/SetApp/SetApp";
-import { SetTimePos } from "../ClockSearch/ClockSearch";
+// import SetApp from "../Apps/SetApp/SetApp";
+import { SetTimePos } from "../Clock/Clock";
 import { SetFooter } from "../MottoFooter/MottoFooter";
 import { SetFuncCardStyle } from "../FuncCard/SetFuncCard/SetFuncCard";
 import Account from "../Account/Account";
