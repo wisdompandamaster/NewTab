@@ -80,7 +80,7 @@ function NBA(props) {
     let awayTeam = item.awayTeam.profile.displayAbbr;
     let homeTeam = item.homeTeam.profile.displayAbbr;
     let time = new Date(item.profile.dateTimeEt);
-    time = new Date(time.setHours(time.getHours() + 12));
+    time = new Date(time.setHours(time.getHours() + 13));
     time = time.getHours() + " : " + time.toLocaleTimeString().slice(3, 5);
     let score = item.boxscore.awayScore + " - " + item.boxscore.homeScore;
     let score_time = item.boxscore.status !== "1" ? score : time;

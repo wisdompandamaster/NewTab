@@ -168,3 +168,7 @@ span .newsItemNum {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
 }
+
+.ant-tabs-dropdown {
+  background-color: #fff;
+}

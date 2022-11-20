@@ -272,10 +272,10 @@ function NewsDetail(props) {
   const data = props.dataSource;
 
   return (
-    <>
+    <div style={{ padding: "1% 0" }}>
       <List
         className='newsList'
-        style={{ height: "500px", overflowY: "scroll" }}
+        style={{ height: "56vh", overflowY: "scroll" }}
         size='small'
         dataSource={data.content}
         renderItem={item => (
@@ -301,7 +301,7 @@ function NewsDetail(props) {
           </List.Item>
         )}
       />
-    </>
+    </div>
   );
 }
 
@@ -342,13 +342,13 @@ const News = () => {
           </div>
         }
         visible={isModalVisible}
-        width={"900px"}
+        // width={"900px"}
         onCancel={handleCancel}
       >
         <>
           <Tabs
             type='card'
-            style={{ height: "500px", background: "#ffffff66" }}
+            style={{ height: "100%", background: "#ffffff66" }}
             tabPosition='left'
           >
             {" "}
