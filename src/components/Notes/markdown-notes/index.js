@@ -57,13 +57,29 @@ const MarkdownNotes = noteData => {
         <MdEditor
           placeholder='写点什么吧'
           value={notesValue?.text}
-          style={{ height: "500px", maxWidth: "790px", width: "100%" }}
+          style={{ height: "100%", maxWidth: "790px", width: "100%" }}
           shortcuts={true}
           renderHTML={text => mdParser.render(text)}
           onChange={handleEditorChange}
         />
       ) : (
-        <div style={{ height: "500px", maxWidth: "790px", width: "100%" }} />
+        <div
+          style={{
+            fontSize: "30px",
+            height: "50px",
+            width: "100%",
+            textAlign: "center",
+            lineHeight: "50px",
+            position: "relative",
+            top: "50%",
+            transform: "translateY(-50%)",
+            fontWeight: "700",
+            color: "#00000033",
+            letterSpacing: "8px",
+          }}
+        >
+          暂无笔记
+        </div>
       )}
     </>
   );
