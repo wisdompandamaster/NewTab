@@ -1,12 +1,13 @@
 .demo {
-  width: 340px;
-  height: 180px;
+  width: 300px;
+  height: 150px;
   position: absolute;
-  border-radius: 20px;
+  border-radius: 10px;
   background: #fff0;
   z-index: 1;
   transition: 0.3s ease-in-out;
   backdrop-filter: blur(10px) brightness(0.5);
+  /* border: 1px solid blue; */
 }
 .demo:hover {
   /* background:#0008; */
@@ -19,7 +20,7 @@
   transform: translate(-50%, -50%);
   opacity: 1;
   /* background-color: #fff0; */
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   color: #fffb;
   text-align: center;

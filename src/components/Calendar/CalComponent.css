@@ -225,11 +225,12 @@ div.todo {
 }
 .cal-detail {
   width: 60%;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
   margin-right: 1%;
   padding: 5px;
   background-color: #f0f0f088;
   font-size: 25px;
+  /* border: 1px solid grey; */
 }
 .cal-detail-item {
   height: 60px;

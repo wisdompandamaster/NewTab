@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 // import useLocalStorage from "../../hooks/useLocalStorage";
 import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
-import GitHubCalendar from "react-github-calendar";
 // import ActivityCalendar from "react-activity-calendar";
 import {
   Solar,
@@ -164,16 +163,23 @@ function CalComponent() {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={"50vw"}
+        // width={"50vw"}
       >
         <div
           style={{
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
+            height: "100%",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              height: "100%",
+            }}
+          >
             <Calendar
               className='cal-detail'
               tileClassName='cal-detail-item'
@@ -230,9 +236,8 @@ function CalComponent() {
               style={{
                 width: "39%",
                 flex: "1",
-                marginBottom: "2%",
                 borderRadius: "10px",
-                background: "#f0f0f088",
+                background: "#f0f0f000",
               }}
             >
               <div
@@ -273,9 +278,9 @@ function CalComponent() {
               <div
                 style={{
                   width: "96%",
-                  background: "#fff0",
+                  background: "#0000",
                   borderRadius: "10px",
-                  margin: "2% auto 2% auto",
+                  margin: "12% auto 2% auto",
                 }}
                 // onClick={showModal}
               >
@@ -287,9 +292,9 @@ function CalComponent() {
               </div>
             </div>
           </div>
-          <hr />
+          {/* <hr /> */}
           {/* GitHub贡献墙 */}
-          <div
+          {/* <div
             style={{
               fontSize: "20px",
               fontWeight: "700",
@@ -299,7 +304,7 @@ function CalComponent() {
           >
             GitHub 贡献墙
           </div>
-          <GitHubCalendar username='wisdompandamaster' />
+          <GitHubCalendar username='wisdompandamaster' /> */}
           {/* <GitHubCalendar username="peng-zhihui" /> */}
         </div>
       </FuncModal>

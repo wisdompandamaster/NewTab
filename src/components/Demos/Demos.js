@@ -4,6 +4,7 @@ import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
 import Lottie from "react-lottie";
 import motorbike from "../../asset/motorbike.json";
+import GitHubCalendar from "react-github-calendar";
 // import astronaut from '../../asset/astronaut.json';
 // import solarsystem from '../../asset/solarsystem.json'
 
@@ -89,7 +90,7 @@ const Demos = () => {
         <Lottie options={defaultOptions} height={"120%"} width={"100%"} />
       </div>
       <FuncModal
-        bodyStyle={{ padding: "11px" }}
+        // bodyStyle={{ padding: "11px" }}
         title={
           <div
             style={{
@@ -105,16 +106,19 @@ const Demos = () => {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={"57vw"}
+        // width={"57vw"}
       >
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, calc(100%/3))",
-            rowGap: "2%",
-            margin: "1% 0 1% 0",
-            height: "20vw",
-            overflowY: "scroll",
+            // rowGap: "2%",
+            // margin: "1% 0 1% 0",
+            // height: "10vw",
+            // border: "1px solid red",
+            height: "66%",
+            // flex: 1,
+            // overflowY: "scroll",
           }}
         >
           {demoList.map((item, index) => {
@@ -123,7 +127,11 @@ const Demos = () => {
                 key={index}
                 href={item.src}
                 target='_blank'
-                style={{ justifySelf: "center", position: "relative" }}
+                style={{
+                  justifySelf: "center",
+                  position: "relative",
+                  // border: "1px solid green",
+                }}
                 rel='noreferrer'
               >
                 <div className='demo'>
@@ -132,14 +140,32 @@ const Demos = () => {
                 <img
                   src={item.imgPath}
                   style={{
-                    width: "340px",
-                    height: "180px",
-                    borderRadius: "20px",
+                    width: "300px",
+                    height: "150px",
+                    borderRadius: "10px",
                   }}
                 ></img>
               </a>
             );
           })}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            height: "32%",
+            position: "absolute",
+            marginLeft: "50%",
+            transform: "translateX(-50%)",
+            width: "98%",
+            borderRadius: "10px",
+            padding: "1.5% 1% 1% 1%",
+            background: "#f0f0f088",
+            left: 0,
+            bottom: "2%",
+          }}
+        >
+          <GitHubCalendar username='wisdompandamaster' />
         </div>
       </FuncModal>
     </FuncCard>
