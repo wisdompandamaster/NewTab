@@ -7,7 +7,7 @@
 }
 
 .item:hover {
-  background-color: rgb(220, 243, 208);
+  background-color: rgba(126, 247, 152, 0.5);
 }
 
 .item:hover input {
@@ -59,7 +59,7 @@ p.text {
 
 .uncompleted:hover,
 .edit-icon:hover path {
-  fill: rgb(67, 239, 169);
+  fill: rgb(68, 0, 255);
 }
 
 .completed:hover path {

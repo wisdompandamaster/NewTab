@@ -27,49 +27,70 @@ function TodoItems({ todos, completeTodo, removeTodo, updateTodo }) {
     scriptUrl: "//at.alicdn.com/t/font_3180970_ek9le05bzhc.js",
   });
 
-  return todos.map((todo, index) => {
-    return (
-      <div
-        className={todo.isCompleted ? "item complete" : "item"}
-        key={index}
-        onKeyDown={cancelEdit}
-      >
-        <div className='todo-icon' onClick={e => completeTodo(e, todo.id)}>
-          {todo.isCompleted ? (
-            <CheckCircleTwoTone twoToneColor='#52c41a' className='completed' />
-          ) : (
-            <IconFont type='icon-bx-circle' className='uncompleted' />
-          )}
-        </div>
+  return todos.length ? (
+    todos.map((todo, index) => {
+      return (
         <div
-          key={todo.id}
-          className='todo-text'
-          onDoubleClick={() => setEdit({ id: todo.id, value: todo.text })}
+          className={todo.isCompleted ? "item complete" : "item"}
+          key={index}
+          onKeyDown={cancelEdit}
         >
-          {todo.id === edit.id && !todo.isCompleted ? (
-            <EditItemInput
-              date={todo.date}
-              edit={edit}
-              onSubmit={submitUpdate}
+          <div className='todo-icon' onClick={e => completeTodo(e, todo.id)}>
+            {todo.isCompleted ? (
+              <CheckCircleTwoTone
+                twoToneColor='#52c41a'
+                className='completed'
+              />
+            ) : (
+              <IconFont type='icon-bx-circle' className='uncompleted' />
+            )}
+          </div>
+          <div
+            key={todo.id}
+            className='todo-text'
+            onDoubleClick={() => setEdit({ id: todo.id, value: todo.text })}
+          >
+            {todo.id === edit.id && !todo.isCompleted ? (
+              <EditItemInput
+                date={todo.date}
+                edit={edit}
+                onSubmit={submitUpdate}
+              />
+            ) : (
+              <>
+                <p className='text'>{todo.text}</p>
+                <p className='date'>{todo.date}</p>
+              </>
+            )}
+          </div>
+          <div className='edit-icon'>
+            <EditOutlined
+              onClick={() => setEdit({ id: todo.id, value: todo.text })}
             />
-          ) : (
-            <>
-              <p className='text'>{todo.text}</p>
-              <p className='date'>{todo.date}</p>
-            </>
-          )}
+          </div>
+          <div className='delete-icon'>
+            <DeleteFilled onClick={() => removeTodo(todo.id)} />
+          </div>
         </div>
-        <div className='edit-icon'>
-          <EditOutlined
-            onClick={() => setEdit({ id: todo.id, value: todo.text })}
-          />
-        </div>
-        <div className='delete-icon'>
-          <DeleteFilled onClick={() => removeTodo(todo.id)} />
-        </div>
-      </div>
-    );
-  });
+      );
+    })
+  ) : (
+    <div
+      style={{
+        fontSize: "30px",
+        height: "120px",
+        width: "100%",
+        textAlign: "center",
+        lineHeight: "110px",
+        fontWeight: "700",
+        color: "#00000033",
+        letterSpacing: "8px",
+        marginTop: "35%",
+      }}
+    >
+      暂无内容
+    </div>
+  );
 }
 
 export default TodoItems;

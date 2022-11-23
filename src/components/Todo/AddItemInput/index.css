@@ -5,6 +5,9 @@
   align-items: center;
   margin-bottom: 2%;
   border-radius: 10px;
+  position: absolute;
+  width: 97%;
+  z-index: 3;
 }
 
 #add-item-input #plus-icon,

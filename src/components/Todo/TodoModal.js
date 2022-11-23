@@ -3,6 +3,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { getMeta } from "./Todo.js";
 import AddItemInput from "./AddItemInput";
 import TodoItems from "./TodoItems";
+import "./TodoModal.css";
 
 function TodoModal({ todos, setTodos, completeTodo }) {
   const [, setPersistedTodoList] = useLocalStorage("todoList", []);
@@ -50,22 +51,52 @@ function TodoModal({ todos, setTodos, completeTodo }) {
   const itemCountText = getItemsCountText(todos);
 
   return (
-    <div className='todo-modal' style={{ maxHeight: "60vh" }}>
+    <div
+      className='todo-modal'
+      style={{
+        maxHeight: "60vh",
+        overflowY: "scroll",
+      }}
+    >
       <AddItemInput onSubmit={addTodo} />
-      <TodoItems
-        todos={getMeta(todos).uncompleted}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
-        updateTodo={updateTodo}
-      />
-      <hr className='todo-hr' />
-      <h1 id='items-completed-header'>{itemCountText}</h1>
-      <TodoItems
-        todos={getMeta(todos).completed}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
-        updateTodo={updateTodo}
-      />
+      <div
+        style={{
+          display: "flex",
+          position: "absolute",
+          top: "12%",
+          height: "86%",
+          width: "97%",
+          background: "#f0f0f088",
+          borderRadius: "10px",
+        }}
+      >
+        <span
+          style={{
+            width: "50%",
+            background: "#f0f0f0",
+            padding: "1% 1%",
+            overflowY: "scroll",
+            borderRadius: "10px",
+          }}
+        >
+          <TodoItems
+            todos={getMeta(todos).uncompleted}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+            updateTodo={updateTodo}
+          />
+        </span>
+        {/* <hr className='todo-hr' />
+      <h1 id='items-completed-header'>{itemCountText}</h1> */}
+        <span style={{ width: "50%", padding: "1% 1%", overflowY: "scroll" }}>
+          <TodoItems
+            todos={getMeta(todos).completed}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+            updateTodo={updateTodo}
+          />
+        </span>
+      </div>
     </div>
   );
 }
