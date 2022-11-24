@@ -108,8 +108,12 @@ const FunctionAera = () => {
 
   const deleteFunc = id => {
     let newList = items;
+    let cover = items.reduce((pre, cur) => {
+      return pre + funcs[cur].cover;
+    }, 0);
+    // console.log(cover);
     //删除数组中指定元素
-    if (newList.length > 8) newList = newList.slice(0, 8);
+    if (cover > 16) newList = newList.slice(0, 8);
     // console.log(newList);
     newList.splice(newList.indexOf(id), 1);
     setItems(newList);

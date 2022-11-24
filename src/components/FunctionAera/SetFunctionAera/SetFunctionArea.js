@@ -25,22 +25,22 @@ import FormHabit from "../../FormHabit/FormHabit";
 //FIXME:style have some problem
 
 const funcs = [
-  { id: 0, node: <News /> },
-  { id: 1, node: <Todo /> },
-  { id: 2, node: <Pictures /> },
-  { id: 3, node: <Notes /> },
-  { id: 4, node: <Weather /> },
-  { id: 5, node: <CalComponent /> },
-  { id: 6, node: <CountDown /> },
-  { id: 7, node: <Competition /> },
-  { id: 8, node: <ServerMonitor /> },
-  { id: 9, node: <ToolKit /> },
-  { id: 10, node: <Demos /> },
+  { id: 0, node: <News />, cover: 2 },
+  { id: 1, node: <Todo />, cover: 2 },
+  { id: 2, node: <Pictures />, cover: 2 },
+  { id: 3, node: <Notes />, cover: 1 },
+  { id: 4, node: <Weather />, cover: 2 },
+  { id: 5, node: <CalComponent />, cover: 2 },
+  { id: 6, node: <CountDown />, cover: 2 },
+  { id: 7, node: <Competition />, cover: 2 },
+  { id: 8, node: <ServerMonitor />, cover: 2 },
+  { id: 9, node: <ToolKit />, cover: 2 },
+  { id: 10, node: <Demos />, cover: 2 },
   //  {id:11, node:<Memo/>},
   //  {id:11, node:<YearToday/>},
-  { id: 11, node: <TomatoClock /> },
-  { id: 12, node: <WoodenFish /> },
-  { id: 13, node: <FormHabit /> },
+  { id: 11, node: <TomatoClock />, cover: 2 },
+  { id: 12, node: <WoodenFish />, cover: 1 },
+  { id: 13, node: <FormHabit />, cover: 1 },
 ];
 
 const SetFunctionArea = memo(() => {
@@ -60,11 +60,15 @@ const SetFunctionArea = memo(() => {
     setIsModalVisible(false);
   };
 
-  let funcNum = timePos ? 12 : 8;
+  let funcNum = timePos ? 24 : 16;
 
   const addFunc = id => {
     let newList = JSON.parse(localStorage.getItem("functionList"));
-    if (newList.indexOf(id) === -1 && newList.length < funcNum) {
+    let cover = newList.reduce((pre, cur) => {
+      return pre + funcs[cur].cover;
+    }, 0);
+    // && cover < funcNum 限制组件个数
+    if (newList.indexOf(id) === -1) {
       newList.push(id);
       localStorage.setItem("functionList", JSON.stringify(newList));
       dispatch({
