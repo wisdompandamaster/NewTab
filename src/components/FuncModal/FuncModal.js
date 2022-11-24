@@ -40,17 +40,17 @@ const FuncModal = props => {
         // title={props.title}
         // width={props.width}
         // height={props.height}
-        width={"50%"}
+        width={props.width || "50%"}
         // height={"500px"}
         closable={false}
         visible={props.visible}
         mask={true}
         style={{
-          top: "20%",
+          top: props.top || "20%",
         }}
         maskStyle={{ backdropFilter: "blur(2px)", backgroundColor: "#0004" }}
         // bodyStyle={{ background: "#00000000", height: "50vh" }}
-        bodyStyle={{ background: "#fff8", height: "60vh" }}
+        bodyStyle={{ background: "#fff8", height: props.height || "60vh" }}
         onOk={props.onOk}
         footer={null}
         onCancel={props.onCancel}
