@@ -98,6 +98,7 @@ const Notes = () => {
           background: "linear-gradient(180deg, #6CB9FF 0%, #3355FF 100%)",
           boxShadow: "0px 3px 6px rgba(55, 135, 255, 0.8)",
         }}
+        width='165px'
       >
         {/* <header className="note-header">
                     <div className="note-icon"/>

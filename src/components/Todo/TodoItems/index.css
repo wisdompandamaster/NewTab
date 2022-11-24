@@ -19,7 +19,7 @@
   width: 1em;
   margin-right: 1em;
   margin-left: 0.5em;
-  margin-top: 0.5em;
+  margin-top: 1.5em;
   cursor: pointer;
 }
 
@@ -42,7 +42,8 @@
 }
 
 p.text {
-  font-size: 1em;
+  font-size: 1.3em;
+  font-weight: 600;
   margin: auto;
 }
 
