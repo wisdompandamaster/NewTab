@@ -92,9 +92,10 @@ const Demos = () => {
       <FuncModal
         // bodyStyle={{ padding: "11px" }}
         // 测试全屏modal
-        height='100vh'
-        width='100vw'
-        top='0'
+        // height='100vh'
+        // width='100vw'
+        expand='true'
+        // top='0'
         title={
           <div
             style={{

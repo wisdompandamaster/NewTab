@@ -1,10 +1,12 @@
 import { Modal } from "antd";
+import { ExpandOutlined } from "@ant-design/icons";
 import "./FuncModal.css";
 import { useState, useRef, memo } from "react";
 import Draggable from "react-draggable";
 
 const FuncModal = props => {
   const [disabled, setDisabled] = useState(false);
+  const [full, setFull] = useState(false);
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
@@ -40,17 +42,22 @@ const FuncModal = props => {
         // title={props.title}
         // width={props.width}
         // height={props.height}
-        width={props.width || "50%"}
+        width={full ? "100vw" : props.width || "50%"}
         // height={"500px"}
         closable={false}
         visible={props.visible}
         mask={true}
         style={{
-          top: props.top || "20%",
+          top: full ? "0" : "20%",
+          transition: ".1s ease-in",
         }}
         maskStyle={{ backdropFilter: "blur(2px)", backgroundColor: "#0004" }}
         // bodyStyle={{ background: "#00000000", height: "50vh" }}
-        bodyStyle={{ background: "#fff8", height: props.height || "60vh" }}
+        bodyStyle={{
+          background: "#fff8",
+          height: full ? "100vh" : props.height || "60vh",
+          borderRadius: full ? "0" : "10px",
+        }}
         onOk={props.onOk}
         footer={null}
         onCancel={props.onCancel}
@@ -66,6 +73,13 @@ const FuncModal = props => {
           </Draggable>
         )}
       >
+        <div
+          className='expand'
+          style={{ display: props.expand ? "inline-block" : "none" }}
+          onClick={() => setFull(!full)}
+        >
+          <ExpandOutlined />
+        </div>
         {props.children}
       </Modal>
     </div>
