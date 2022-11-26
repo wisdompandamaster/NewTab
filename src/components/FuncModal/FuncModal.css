@@ -61,10 +61,10 @@
 .expand {
   border-radius: 0.1rem;
   position: absolute;
-  padding: 3px 5px;
+  padding: 3px 8px;
   z-index: 4;
   right: 1%;
-  top: 1%;
+  top: 0%;
 }
 .expand:hover {
   background-color: #0008;

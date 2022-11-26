@@ -63,8 +63,8 @@ function TodoModal({ todos, setTodos, completeTodo }) {
         style={{
           display: "flex",
           position: "absolute",
-          top: "12%",
-          height: "86%",
+          top: "14%",
+          height: "84%",
           width: "97%",
           background: "#f0f0f088",
           borderRadius: "10px",

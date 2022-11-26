@@ -228,6 +228,7 @@ function Todo() {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        expand={true}
       >
         <TodoModal
           todos={todos}

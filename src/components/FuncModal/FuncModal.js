@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { ExpandOutlined } from "@ant-design/icons";
+import { ExpandOutlined, CloseOutlined } from "@ant-design/icons";
 import "./FuncModal.css";
 import { useState, useRef, memo } from "react";
 import Draggable from "react-draggable";
@@ -7,6 +7,7 @@ import Draggable from "react-draggable";
 const FuncModal = props => {
   const [disabled, setDisabled] = useState(false);
   const [full, setFull] = useState(false);
+  const [visible, setVisible] = useState(props.visible);
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
@@ -42,21 +43,25 @@ const FuncModal = props => {
         // title={props.title}
         // width={props.width}
         // height={props.height}
-        width={full ? "100vw" : props.width || "50%"}
+        width={full ? "100vw" : props.width || "50vw"}
         // height={"500px"}
         closable={false}
         visible={props.visible}
         mask={true}
         style={{
           top: full ? "0" : "20%",
-          transition: ".1s ease-in",
+          borderRadius: full ? "0" : "10px",
+          // width: full ? "100vw" : props.width || "50vw",
+          // transition: ".2s ease-in",
         }}
         maskStyle={{ backdropFilter: "blur(2px)", backgroundColor: "#0004" }}
         // bodyStyle={{ background: "#00000000", height: "50vh" }}
         bodyStyle={{
           background: "#fff8",
           height: full ? "100vh" : props.height || "60vh",
+          width: "100%",
           borderRadius: full ? "0" : "10px",
+          // transition: ".1s ease-in",
         }}
         onOk={props.onOk}
         footer={null}
