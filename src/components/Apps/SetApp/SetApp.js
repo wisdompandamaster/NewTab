@@ -245,7 +245,7 @@ export default function SetApp() {
         <span>添加图标</span>
       </i>
       <FuncModal
-        width='45vw'
+        // width='45vw'
         title={
           <div
             style={{
@@ -255,12 +255,6 @@ export default function SetApp() {
             }}
           >
             <span style={{ fontSize: "25px" }}>添加 APP</span>
-            <span
-              style={{ fontSize: "15px", position: "absolute", right: "10%" }}
-            >
-              <Switch checked={iscustom} onChange={onChange} />
-            </span>
-            <span style={{ position: "absolute", right: "2.5%" }}>自定义</span>
           </div>
         }
         closable={false}
@@ -269,6 +263,17 @@ export default function SetApp() {
         onCancel={handleCancel}
       >
         <div className='set_apps'>
+          <span
+            style={{
+              fontSize: "15px",
+              position: "absolute",
+              right: "0%",
+              top: "0%",
+            }}
+          >
+            <Switch checked={iscustom} onChange={onChange} />
+          </span>
+          {/* <span style={{ position: "absolute", right: "5%" }}>自定义</span> */}
           <Form
             form={form}
             style={{ width: "100%" }}
