@@ -99,8 +99,8 @@ export default function SetApp() {
   //const [cards, setCards] = useState(apps);
   const [items, setItems] = useState(myApps);
   const [iconlist, setIconList] = useState([]);
-
-  const [iscustom, setIsCustom] = useState(false);
+  // 暂时关闭选择
+  const [iscustom, setIsCustom] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -200,7 +200,7 @@ export default function SetApp() {
   };
 
   const onValuesChange = (changedValue, allValue) => {
-    if (!iscustom) {
+    if (iscustom) {
       let url =
         "https://infinity-api.infinitynewtab.com/get-icons?lang=zh-CN&page=0&type=search&keyword=" +
         changedValue.name;
@@ -263,7 +263,7 @@ export default function SetApp() {
         onCancel={handleCancel}
       >
         <div className='set_apps'>
-          <span
+          {/* <span
             style={{
               fontSize: "15px",
               position: "absolute",
@@ -272,7 +272,7 @@ export default function SetApp() {
             }}
           >
             <Switch checked={iscustom} onChange={onChange} />
-          </span>
+          </span> */}
           {/* <span style={{ position: "absolute", right: "5%" }}>自定义</span> */}
           <Form
             form={form}
@@ -343,7 +343,7 @@ export default function SetApp() {
         </div>
         <div
           className='icon_list'
-          style={{ display: iscustom ? "none" : "grid" }}
+          style={{ display: !iscustom ? "none" : "grid" }}
         >
           {iconlist.map((item, index) => {
             if (!item.isInfinity)
