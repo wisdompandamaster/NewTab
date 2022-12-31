@@ -252,7 +252,7 @@ hr {
 .ant-modal-body {
   border-radius: 10px;
   overflow: scroll;
-  padding: 3% 1.5% 1.5% 1.5%;
+  padding: 1.5% 1.5% 1.5% 1.5%;
 }
 
 .ant-modal-body::-webkit-scrollbar {

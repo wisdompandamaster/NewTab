@@ -449,7 +449,7 @@ function TomatoClock() {
           </div>
         }
         visible={isModalVisible}
-        width={"600px"}
+        // width={"600px"}
         onCancel={handleCancel}
       >
         <SetTomatoClock setTomatoItem={setItem} />

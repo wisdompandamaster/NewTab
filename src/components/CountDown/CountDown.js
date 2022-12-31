@@ -191,7 +191,7 @@ const CountDown = () => {
           </div>
         }
         visible={isModalVisible}
-        width={"600px"}
+        // width={"600px"}
         onCancel={handleCancel}
       >
         {/* {   //这里等着用列表组件来添加

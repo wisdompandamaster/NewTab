@@ -113,7 +113,7 @@ const FunctionAera = () => {
     }, 0);
     // console.log(cover);
     //删除数组中指定元素
-    if (cover > 16) newList = newList.slice(0, 8);
+    // if (cover > 16) newList = newList.slice(0, 8);
     // console.log(newList);
     newList.splice(newList.indexOf(id), 1);
     setItems(newList);

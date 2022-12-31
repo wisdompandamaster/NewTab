@@ -163,7 +163,7 @@ function CalComponent() {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        expand={true}
+        // expand={true}
         // width={"50vw"}
       >
         <div

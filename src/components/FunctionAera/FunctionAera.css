@@ -6,7 +6,7 @@
   height: 20vw;
   border-radius: 20px;
   border: 0px solid black;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   transition: 0.3s ease-in-out;
   /* transform: scale(0.95); */
   /* filter: blur(0px)!important */

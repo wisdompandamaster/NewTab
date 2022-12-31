@@ -68,7 +68,7 @@ const SetFunctionArea = memo(() => {
       return pre + funcs[cur].cover;
     }, 0);
     // && cover < funcNum 限制组件个数
-    if (newList.indexOf(id) === -1) {
+    if (newList.indexOf(id) === -1 && cover < funcNum) {
       newList.push(id);
       localStorage.setItem("functionList", JSON.stringify(newList));
       dispatch({
