@@ -10,9 +10,9 @@ import { memo } from "react";
 
 const SwiperAera = () => {
   const clear = useSelector(state => state.clear);
-  const timePos = useSelector(state => state.timePos);
+  // const timePos = useSelector(state => state.timePos);
   let display = clear ? "none" : "block";
-  let top = timePos ? "25vh" : "43vh";
+  let top = "25vh";
 
   return (
     <div

@@ -13,9 +13,9 @@ export default function Apps() {
   const deleteMode = useSelector(state => state.deleteApp);
   const myApps = useSelector(state => state.myApps);
   const [items, setItems] = useState(myApps);
-  let timePos = useSelector(state => state.timePos);
+  // let timePos = useSelector(state => state.timePos);
 
-  let height = timePos ? "30vw" : "20vw";
+  let height = "30vw";
 
   useEffect(() => {
     //这一行让Apps SetApps 拖拽时可以同步变换

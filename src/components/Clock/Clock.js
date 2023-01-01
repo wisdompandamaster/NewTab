@@ -1,3 +1,6 @@
+/**
+ * Clock 停用，暂时使用 TopClock
+ */
 import "./Clock.css";
 import "../../font/iconfont.css";
 import { UnorderedListOutlined } from "@ant-design/icons";
@@ -147,9 +150,9 @@ const Clock = memo(() => {
   const dispatch = useDispatch();
   //时间模式 0 普通时间 1 世界时间 2 倒计时
   const [timeType, setTimeType] = useState(0);
-  const timePos = useSelector(state => state.timePos);
+  // const timePos = useSelector(state => state.timePos);
 
-  let display = timePos ? "none" : "inline-block";
+  let display = "none";
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {

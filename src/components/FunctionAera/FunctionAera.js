@@ -49,7 +49,7 @@ const FunctionAera = () => {
 
   const funcdeleteMode = useSelector(state => state.deleteFunc);
   const functionList = useSelector(state => state.functionList);
-  let timePos = useSelector(state => state.timePos);
+  // let timePos = useSelector(state => state.timePos);
 
   //先重新排列这些组件，统一组件大小
   // let functionList = localStorage.getItem('functionList')? localStorage.getItem('functionList'):"[0,1,2,3,4,5,6,7]"
@@ -136,7 +136,7 @@ const FunctionAera = () => {
     );
   };
 
-  let height = timePos ? "30vw" : "20vw";
+  let height = "30vw";
 
   return (
     <div className='functionAera' style={{ height: height }}>

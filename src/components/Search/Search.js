@@ -27,11 +27,11 @@ function Search() {
   //搜索框
 
   const clear = useSelector(state => state.clear);
-  const timePos = useSelector(state => state.timePos);
+  // const timePos = useSelector(state => state.timePos);
   const cardstyle = useSelector(state => state.cardstyle);
   const cardstyles = ["", " filter"];
 
-  let top = clear ? "40vh" : timePos ? "10vh" : "28vh";
+  let top = clear ? "40vh" : "10vh";
   //TODO:搜索历史待完成
   // const history = [{ q: "添加" }, { q: "历史搜索" }];
   let oldhistory = localStorage.getItem("searchHistory")
