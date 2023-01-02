@@ -2,7 +2,7 @@ import "./TopNav.css";
 import "../../font/iconfont.css";
 import SetBackground from "../SetBackground/SetBackground";
 // import SetApp from "../Apps/SetApp/SetApp";
-import { SetTimePos } from "../Clock/Clock";
+// import { SetTimePos } from "../Clock/Clock";
 import { SetFooter } from "../MottoFooter/MottoFooter";
 import { SetFuncCardStyle } from "../FuncCard/SetFuncCard/SetFuncCard";
 import Account from "../Account/Account";
@@ -18,9 +18,9 @@ import {
   message,
 } from "antd";
 import { UserOutlined, GithubOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import defaultSetting from "../../config";
-import SetFunctionArea from "../FunctionAera/SetFunctionAera/SetFunctionArea";
+// import SetFunctionArea from "../FunctionAera/SetFunctionAera/SetFunctionArea";
 
 // function CheckMode(){   //深浅色模式切换
 //    return (
@@ -192,7 +192,7 @@ function SetFunction() {
       {/* <SetApp/> */}
       <SetFooter />
       <SetFuncCardStyle />
-      <SetTimePos />
+      {/* <SetTimePos /> */}
       {/* <SetFunctionArea/> */}
     </div>
   );
