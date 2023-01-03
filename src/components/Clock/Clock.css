@@ -135,3 +135,13 @@
 .countdown_content_clock::-webkit-scrollbar {
   width: 0px;
 }
+.top-clock > div {
+  display: none;
+  background-color: #0009;
+  margin-top: 0.5vh;
+  border-radius: 16px;
+  padding: 0 16px;
+}
+.top-clock:hover div {
+  display: block;
+}

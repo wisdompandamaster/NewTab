@@ -284,6 +284,7 @@ const TopClock = memo(() => {
 
   return (
     <div
+      className='top-clock'
       onClick={handleClick}
       style={{
         color: "#fffa",
@@ -299,11 +300,19 @@ const TopClock = memo(() => {
       }}
     >
       {/* <DateTime timezone={0} /> */}
-      {String(now.getHours()).padStart(2, "0") +
-        " : " +
-        String(now.getMinutes()).padStart(2, "0") +
-        " : " +
-        String(now.getSeconds()).padStart(2, "0")}
+      <span>
+        {String(now.getHours()).padStart(2, "0") +
+          " : " +
+          String(now.getMinutes()).padStart(2, "0") +
+          " : " +
+          String(now.getSeconds()).padStart(2, "0")}
+      </span>
+      <div>
+        <span style={{ fontSize: "1.1rem" }}>伦敦</span>
+        {String(now.getHours() - 8).padStart(2, "0") +
+          " : " +
+          String(now.getMinutes()).padStart(2, "0")}
+      </div>
     </div>
   );
 });
