@@ -136,12 +136,22 @@
   width: 0px;
 }
 .top-clock > div {
+  position: absolute;
+  left: -25%;
+  z-index: 4;
   display: none;
   background-color: #0009;
   margin-top: 0.5vh;
   border-radius: 16px;
-  padding: 0 16px;
+  padding: 5px 16px;
+  width: 10vw;
 }
-.top-clock:hover div {
-  display: block;
+.top-clock:hover > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.top-clock > div > div {
+  display: flex;
+  justify-content: space-between;
 }

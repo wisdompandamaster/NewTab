@@ -308,10 +308,26 @@ const TopClock = memo(() => {
           String(now.getSeconds()).padStart(2, "0")}
       </span>
       <div>
-        <span style={{ fontSize: "1.1rem" }}>伦敦</span>
-        {String(now.getHours() - 8).padStart(2, "0") +
-          " : " +
-          String(now.getMinutes()).padStart(2, "0")}
+        <div>
+          <span style={{ fontSize: "1.1rem" }}>伦敦</span>
+          <span>
+            {String(now.getHours() - 8).padStart(2, "0") +
+              " : " +
+              String(now.getMinutes()).padStart(2, "0") +
+              " : " +
+              String(now.getSeconds()).padStart(2, "0")}
+          </span>
+        </div>
+        <div>
+          <span style={{ fontSize: "1.1rem" }}>伦敦</span>
+          <span>
+            {String(now.getHours() - 8).padStart(2, "0") +
+              " : " +
+              String(now.getMinutes()).padStart(2, "0") +
+              " : " +
+              String(now.getSeconds()).padStart(2, "0")}
+          </span>
+        </div>
       </div>
     </div>
   );
