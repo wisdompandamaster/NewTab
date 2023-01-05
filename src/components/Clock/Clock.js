@@ -319,7 +319,7 @@ const TopClock = memo(() => {
           </span>
         </div>
         <div>
-          <span style={{ fontSize: "1.1rem" }}>伦敦</span>
+          <span style={{ fontSize: "1.1rem" }}>纽约</span>
           <span>
             {String(now.getHours() - 8).padStart(2, "0") +
               " : " +
