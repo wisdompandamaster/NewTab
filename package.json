@@ -24,7 +24,7 @@
     "immutability-helper": "^3.1.1",
     "js-md5": "^0.7.3",
     "jsonp": "^0.2.1",
-    "lunar-javascript": "^1.2.33",
+    "lunar-javascript": "^1.2.37",
     "markdown-it": "^12.3.2",
     "minio": "^7.0.26",
     "prismjs": "^1.29.0",
@@ -69,7 +69,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {    
+  "devDependencies": {
     "eslint": "^8.26.0",
     "prettier": "^2.7.1",
     "react-redux": "^7.2.6",
