@@ -261,6 +261,9 @@ const TopClock = memo(() => {
   const [lnow, setLnow] = useState(
     new Date(Number(new Date()) - 8 * 60 * 60 * 1000)
   );
+  const [nnow, setNnow] = useState(
+    new Date(Number(new Date()) - 12 * 60 * 60 * 1000)
+  );
   const clear = useSelector(state => state.clear);
   const dispatch = useDispatch();
 
@@ -269,6 +272,7 @@ const TopClock = memo(() => {
     const t = setInterval(() => {
       setNow(new Date());
       setLnow(new Date(Number(new Date()) - 8 * 60 * 60 * 1000));
+      setNnow(new Date(Number(new Date()) - 12 * 60 * 60 * 1000));
     });
     return () => {
       //每次都执行此函数，清除定时器
@@ -325,11 +329,11 @@ const TopClock = memo(() => {
         <div>
           <span style={{ fontSize: "1.1rem" }}>纽约</span>
           <span>
-            {String(now.getHours() - 8).padStart(2, "0") +
+            {String(nnow.getHours()).padStart(2, "0") +
               " : " +
-              String(now.getMinutes()).padStart(2, "0") +
+              String(nnow.getMinutes()).padStart(2, "0") +
               " : " +
-              String(now.getSeconds()).padStart(2, "0")}
+              String(nnow.getSeconds()).padStart(2, "0")}
           </span>
         </div>
       </div>
