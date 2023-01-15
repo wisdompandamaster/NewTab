@@ -21,6 +21,7 @@ import TomatoClock from "../../TomatoClock/TomatoClock";
 import { useEffect } from "react";
 import WoodenFish from "../../WoodenFish/WoodenFish";
 import FormHabit from "../../FormHabit/FormHabit";
+import StockMarket from "../../StockMarket/StockMarket";
 
 //FIXME:style have some problem
 
@@ -41,6 +42,7 @@ const funcs = [
   { id: 11, node: <TomatoClock />, cover: 2 },
   { id: 12, node: <WoodenFish />, cover: 1 },
   { id: 13, node: <FormHabit />, cover: 1 },
+  { id: 14, node: <StockMarket />, cover: 1 },
 ];
 
 const SetFunctionArea = memo(() => {
@@ -87,18 +89,18 @@ const SetFunctionArea = memo(() => {
         <span>添加功能</span>
       </i>
       <FuncModal
-        width='42vw'
-        title={
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              color: "white",
-            }}
-          >
-            <span style={{ fontSize: "25px" }}>添加 Card</span>
-          </div>
-        }
+        // width='42vw'
+        // title={
+        //   <div
+        //     style={{
+        //       display: "inline-flex",
+        //       alignItems: "center",
+        //       color: "white",
+        //     }}
+        //   >
+        //     <span style={{ fontSize: "25px" }}>添加 Card</span>
+        //   </div>
+        // }
         closable={false}
         visible={isModalVisible}
         onOk={handleOk}
@@ -108,9 +110,9 @@ const SetFunctionArea = memo(() => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 50%)",
-            height: "50vh",
+            height: "100%",
             rowGap: "3%",
-            margin: "1% 0 1% 0",
+            // margin: "1% 0 1% 0",
             overflowY: "scroll",
           }}
         >
@@ -121,7 +123,10 @@ const SetFunctionArea = memo(() => {
                 key={index}
                 style={{ justifySelf: "center", position: "relative" }}
               >
-                <div className='addfunc'>
+                <div
+                  className='addfunc'
+                  style={{ width: item.cover > 1 ? "352px" : "165px" }}
+                >
                   <Button
                     shape='circle'
                     icon={<PlusOutlined />}

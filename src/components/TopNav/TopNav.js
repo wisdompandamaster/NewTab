@@ -67,6 +67,7 @@ function User() {
         }
         visible={isModalVisible}
         width={"330px"}
+        height={"50vh"}
         onCancel={handleCancel}
       >
         {/* <div className='userlog'><UserOutlined /></div>

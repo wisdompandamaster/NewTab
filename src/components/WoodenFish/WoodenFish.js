@@ -16,7 +16,14 @@ function WoodenFish() {
   };
   return (
     <div>
-      <FuncCard width='165px' title='电子木鱼'>
+      <FuncCard
+        width='165px'
+        title='电子木鱼'
+        iconStyle={{
+          background: "linear-gradient(180deg, #ffd6ef 14.58%, #ffd600 100%)",
+          boxShadow: "0px 3px 6px #ffd600",
+        }}
+      >
         <div className='woodenfish' onClick={addCount}>
           <img
             width={130}

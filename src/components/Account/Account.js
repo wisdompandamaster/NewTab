@@ -56,7 +56,7 @@ export default function Account() {
   if (cookie.load("status") === "200") {
     //如果已经登录
     return (
-      <div className='onsignin'>
+      <div className='onsignin' style={{ marginBottom: "10px" }}>
         {cookie.load("username")}
         <Button danger onClick={onSignOut}>
           退出登录
@@ -65,7 +65,7 @@ export default function Account() {
     );
   } else
     return (
-      <>
+      <div style={{ marginBottom: "10px" }}>
         <form onSubmit={handleSubmit} className='login_form'>
           <label>
             用户名:
@@ -93,6 +93,6 @@ export default function Account() {
         <div className='noaccount'>
           <div>没有账户？ 注册</div>
         </div>
-      </>
+      </div>
     );
 }

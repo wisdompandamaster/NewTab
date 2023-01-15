@@ -120,6 +120,10 @@ const ToolKit = () => {
     <FuncCard
       title='工具箱'
       kinds={["前端", "学术", "其它"]}
+      iconStyle={{
+        background: "linear-gradient(180deg, #082aff 14.58%, #083aff 100%)",
+        boxShadow: "0px 3px 6px #083aff",
+      }}
       changeType={handleChangeType}
     >
       <div className='toolkit'>

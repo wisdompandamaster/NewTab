@@ -305,7 +305,13 @@ function TomatoClock() {
   };
 
   return (
-    <FuncCard title='番茄时钟'>
+    <FuncCard
+      title='番茄时钟'
+      iconStyle={{
+        background: "linear-gradient(180deg, #ff4a38 14.58%, #ff4a08 100%)",
+        boxShadow: "0px 3px 6px #ff4a08",
+      }}
+    >
       <span
         style={{
           position: "absolute",

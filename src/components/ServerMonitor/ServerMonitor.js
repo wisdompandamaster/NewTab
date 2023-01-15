@@ -33,6 +33,10 @@ const ServerMonitor = () => {
       title='服务器监控'
       kinds={["性能", "网络", "负载"]}
       changeType={handleChangeType}
+      iconStyle={{
+        background: "linear-gradient(180deg, #00e0ff 14.58%, #00b0ff 100%)",
+        boxShadow: "0px 3px 6px #00b0ff",
+      }}
     >
       <div
         style={{
