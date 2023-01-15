@@ -211,8 +211,8 @@ const CountDown = () => {
             maxLength={5}
             recordCreatorProps={{
               position: "bottom",
-              //TODO:ID改成唯一性的uuid
-              record: () => ({ id: (Math.random() * 1000000).toFixed(0) }), //新建一行时的记录标识
+              // (Math.random() * 1000000).toFixed(0) 旧的用random做的id
+              record: () => ({ id: crypto.randomUUID() }), //新建一行时的记录标识
             }}
             loading={false}
             columns={columns}

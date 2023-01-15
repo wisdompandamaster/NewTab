@@ -84,6 +84,7 @@ const Notes = () => {
     if (notesData.length === 0) setNoteIndex(0);
     const data = notesData.concat([
       { id: nanoid(), value: "无内容", text: "" },
+      // 使用nanoid而不是uuid,引用nanoid包
     ]);
     setNotesData(data);
     setNotesList(data);

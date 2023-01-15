@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import "./index.css";
+import { nanoid } from "nanoid";
 
 function AddItemInput({ onSubmit }) {
   const [input, setInput] = useState("");
@@ -12,7 +13,7 @@ function AddItemInput({ onSubmit }) {
   const handleKeyDown = e => {
     if (e.key === "Enter") {
       onSubmit({
-        id: Math.floor(Math.random() * 10000),
+        id: nanoid(),
         isCompleted: false,
         text: input,
         date: new Date().toLocaleDateString(),
