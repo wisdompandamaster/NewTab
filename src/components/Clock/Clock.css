@@ -137,14 +137,14 @@
 }
 .top-clock > div {
   position: absolute;
-  left: -25%;
+  left: -85%;
   z-index: 4;
   display: none;
   background-color: #0009;
   margin-top: 0.5vh;
   border-radius: 16px;
   padding: 5px 16px;
-  width: 10vw;
+  width: 14vw;
 }
 .top-clock:hover > div {
   display: flex;
