@@ -258,8 +258,6 @@ const Clock = memo(() => {
 
 const TopClock = memo(() => {
   const [now, setNow] = useState(new Date());
-  let lnow = new Date(Number(now) - 8 * 60 * 60 * 1000);
-  let nnow = new Date(Number(now) - 13 * 60 * 60 * 1000);
 
   const clear = useSelector(state => state.clear);
   const dispatch = useDispatch();
@@ -275,6 +273,24 @@ const TopClock = memo(() => {
       clearTimeout(t);
     };
   });
+
+  function CityTime(props) {
+    return (
+      <div className='city-time'>
+        <span style={{ fontSize: "1.1rem" }}>{props.city}</span>
+        <span>
+          {props.timezone.getMonth() + 1 + " / " + props.timezone.getDate()}
+        </span>
+        <span>
+          {String(props.timezone.getHours()).padStart(2, "0") +
+            " : " +
+            String(props.timezone.getMinutes()).padStart(2, "0") +
+            " : " +
+            String(props.timezone.getSeconds()).padStart(2, "0")}
+        </span>
+      </div>
+    );
+  }
 
   const handleClick = e => {
     e.stopPropagation();
@@ -312,7 +328,7 @@ const TopClock = memo(() => {
           String(now.getSeconds()).padStart(2, "0")}
       </span>
       <div>
-        <div>
+        {/* <div>
           <span style={{ fontSize: "1.1rem" }}>伦敦</span>
           <span>{lnow.getMonth() + 1 + " / " + lnow.getDate()}</span>
           <span>
@@ -322,8 +338,17 @@ const TopClock = memo(() => {
               " : " +
               String(lnow.getSeconds()).padStart(2, "0")}
           </span>
-        </div>
-        <div>
+        </div> */}
+        <CityTime
+          city={"伦敦"}
+          timezone={new Date(Number(now) - 8 * 60 * 60 * 1000)}
+        />
+        <CityTime
+          city={"纽约"}
+          timezone={new Date(Number(now) - 13 * 60 * 60 * 1000)}
+        />
+
+        {/* <div>
           <span style={{ fontSize: "1.1rem" }}>纽约</span>
           <span>{nnow.getMonth() + 1 + " / " + nnow.getDate()}</span>
           <span>
@@ -333,7 +358,7 @@ const TopClock = memo(() => {
               " : " +
               String(nnow.getSeconds()).padStart(2, "0")}
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
