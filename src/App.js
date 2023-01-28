@@ -46,10 +46,11 @@ function App() {
   // const timePos = useSelector(state => state.timePos);
 
   //两个随机壁纸api
-  let random1 =
-    "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
-  // let random2 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)"; //暂时停止服务
-  let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";
+  let random1 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)";
+  // let random2 = "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
+  // 随机bing壁纸
+  let random2 = "url(https://bing.img.run/rand_uhd.php)";
+  // let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";//暂时停止服务
   //TODO:unsplash API
   // let random2 = "url(https://source.unsplash.com/random)";
   const [randomBackground, setRandomBackground] = useState(random1);
@@ -183,7 +184,8 @@ function App() {
   //自己选的壁纸
   let myBackground = "url(" + defaultSetting.imgSite + currentbg + ")";
   //bing每日壁纸接口,别人写的
-  let bingBackground = "url(https://api.oneneko.com/v1/bing_today)";
+  // let bingBackground = "url(https://api.oneneko.com/v1/bing_today)";
+  let bingBackground = "url(https://bing.img.run/uhd.php)";
   //随机壁纸接口
   // let randomBackground = 'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
   let background = [myBackground, bingBackground, randomBackground];
