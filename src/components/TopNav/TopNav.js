@@ -54,7 +54,7 @@ function User() {
         onClick={showModal}
         className='avatar'
         icon={<UserOutlined />}
-        src='https://joeschmoe.io/api/v1/random'
+        src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
       />
       <Modal
         closable={false}
