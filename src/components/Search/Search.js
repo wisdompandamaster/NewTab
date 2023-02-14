@@ -214,6 +214,7 @@ function Search() {
         onKeyDown={e => {
           inputKeyDown(e);
         }}
+        onContextMenu={e => e.stopPropagation()}
         style={{ width: "80%" }}
         type='text'
         // allowClear
