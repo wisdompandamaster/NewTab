@@ -20,6 +20,7 @@ import {
 import { UserOutlined, GithubOutlined } from "@ant-design/icons";
 // import { useSelector } from "react-redux";
 import defaultSetting from "../../config";
+import confetti from "canvas-confetti";
 // import SetFunctionArea from "../FunctionAera/SetFunctionAera/SetFunctionArea";
 
 // function CheckMode(){   //深浅色模式切换
@@ -282,10 +283,44 @@ function Setting() {
             header={<div className='panel-title'>实验室</div>}
             key='6'
             className='setting-panel'
-          ></Panel>
+          >
+            <Confetti />
+          </Panel>
         </Collapse>
       </Drawer>
     </>
+  );
+}
+
+function Confetti() {
+  let colors = ["#bb0000", "#ffffff"];
+  // let end = Date.now() + 15 * 1000;
+  function frame() {
+    confetti({
+      particleCount: 30,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+    confetti({
+      particleCount: 30,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+  }
+  return (
+    <div>
+      <button
+        onClick={() => {
+          frame();
+        }}
+      >
+        canvas-confetti
+      </button>
+    </div>
   );
 }
 
