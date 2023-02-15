@@ -277,6 +277,12 @@ function Setting() {
             key='5'
             className='setting-panel'
           ></Panel>
+          {/* 实验性的功能 */}
+          <Panel
+            header={<div className='panel-title'>实验室</div>}
+            key='6'
+            className='setting-panel'
+          ></Panel>
         </Collapse>
       </Drawer>
     </>
