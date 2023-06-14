@@ -46,10 +46,12 @@ function App() {
   // const timePos = useSelector(state => state.timePos);
 
   //两个随机壁纸api
-  let random1 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)";
-  // let random2 = "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
+  // let random1 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)";
+  let random1 = "url(https://api.yimian.xyz/img?type=wallpaper)";
+  // "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
   // 随机bing壁纸
-  let random2 = "url(https://bing.img.run/rand_uhd.php)";
+  let random2 = "url(https://api.likepoems.com/img/bing)";
+  // let random2 = "url(https://bing.img.run/rand_uhd.php)";
   // let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";//暂时停止服务
   //TODO:unsplash API
   // let random2 = "url(https://source.unsplash.com/random)";
@@ -184,10 +186,12 @@ function App() {
   //自己选的壁纸
   let myBackground = "url(" + defaultSetting.imgSite + currentbg + ")";
   //bing每日壁纸接口,别人写的
-  // let bingBackground = "url(https://api.oneneko.com/v1/bing_today)";
-  let bingBackground = "url(https://bing.img.run/uhd.php)";
+  let bingBackground = "url(https://api.oneneko.com/v1/bing_today)";
+  // let bingBackground = "url(https://bing.img.run/uhd.php)";
   //随机壁纸接口
   // let randomBackground = 'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
+  // let randomBackground = "url(https://api.likepoems.com/img/bing)";
+
   let background = [myBackground, bingBackground, randomBackground];
 
   //子组件：随机壁纸切换
@@ -207,7 +211,7 @@ function App() {
 
       //有可以绕过跨域的代理api 可以自己部署源码
       let img = new Image();
-      // img.src = (randomBackground == random1 ? random2 : random1)
+      // img.src = randomBackground == random1 ? random2 : random1;
       img.src = (randomBackground == random1 ? random2 : random1)
         .substring(4)
         .replace(")", "");

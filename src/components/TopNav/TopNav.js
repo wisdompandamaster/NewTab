@@ -55,7 +55,8 @@ function User() {
         onClick={showModal}
         className='avatar'
         icon={<UserOutlined />}
-        src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+        src='https://xsgames.co/randomusers/avatar.php?g=pixel&key=1'
+        // 随机头像另一个api: https://api.multiavatar.com/Starcrasher.png
       />
       <Modal
         closable={false}

@@ -213,6 +213,7 @@ const SetBackground = () => {
       type: "CHANGE_BGTYPE",
       bgtype: e.target.value,
     });
+    localStorage.setItem("bgtype", e.target.value);
   };
 
   return (

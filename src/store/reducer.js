@@ -148,7 +148,9 @@ const defalutState = {
     ? JSON.parse(localStorage.getItem("countdownList"))
     : [],
   snippets: [],
-  bgtype: 1,
+  bgtype: localStorage.getItem("bgtype")
+    ? JSON.parse(localStorage.getItem("bgtype"))
+    : 1,
   timePos: 1,
 };
 
