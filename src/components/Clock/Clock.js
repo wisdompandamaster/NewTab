@@ -341,11 +341,13 @@ const TopClock = memo(() => {
         </div> */}
         <CityTime
           city={"伦敦"}
-          timezone={new Date(Number(now) - 8 * 60 * 60 * 1000)}
+          // 夏令时 7 小时，冬令时 8 小时
+          timezone={new Date(Number(now) - 7 * 60 * 60 * 1000)}
         />
         <CityTime
           city={"纽约"}
-          timezone={new Date(Number(now) - 13 * 60 * 60 * 1000)}
+          // 夏令时 12 小时，冬令时 13 小时
+          timezone={new Date(Number(now) - 12 * 60 * 60 * 1000)}
         />
 
         {/* <div>
