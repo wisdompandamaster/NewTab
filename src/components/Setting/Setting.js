@@ -1,6 +1,7 @@
 import confetti from "canvas-confetti";
 import { GithubOutlined } from "@ant-design/icons";
-import { Drawer, Collapse, Form, Input, Button } from "antd";
+import { Drawer, Collapse, Form, Input, Button, Switch } from "antd";
+import { useState } from "react";
 import SetBackground from "../SetBackground/SetBackground";
 import "../../font/iconfont.css";
 // import SetApp from "../Apps/SetApp/SetApp";
@@ -9,9 +10,34 @@ import { SetFooter } from "../MottoFooter/MottoFooter";
 import { SetFuncCardStyle } from "../FuncCard/SetFuncCard/SetFuncCard";
 // 实验功能一：纸屑
 function Confetti() {
+  const [disable, setDisable] = useState(true);
   let colors = ["#bb0000", "#ffffff"];
+  var defaults = {
+    spread: 360,
+    ticks: 50,
+    gravity: 0,
+    decay: 0.94,
+    startVelocity: 30,
+    shapes: ["star"],
+    colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+  };
   // let end = Date.now() + 15 * 1000;
+
   function frame() {
+    // 星星礼花
+    confetti({
+      ...defaults,
+      particleCount: 40,
+      scalar: 1.2,
+      shapes: ["star"],
+    });
+    confetti({
+      ...defaults,
+      particleCount: 10,
+      scalar: 0.75,
+      shapes: ["circle"],
+    });
+    // 两边礼花
     confetti({
       particleCount: 30,
       angle: 60,
@@ -26,16 +52,36 @@ function Confetti() {
       origin: { x: 1 },
       colors: colors,
     });
+    // 中心随机方向礼花
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    confetti({
+      angle: randomInRange(55, 125),
+      spread: randomInRange(50, 70),
+      particleCount: randomInRange(50, 100),
+      origin: { y: 0.6 },
+    });
   }
   return (
-    <div>
-      <button
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Button
         onClick={() => {
           frame();
         }}
+        type='primary'
+        ghost
+        disabled={disable}
       >
         canvas-confetti
-      </button>
+      </Button>
+      <Switch onChange={checked => setDisable(!checked)} />
     </div>
   );
 }
