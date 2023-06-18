@@ -45,16 +45,9 @@ function App() {
   const mybglist = useSelector(state => state.mybglist);
   // const timePos = useSelector(state => state.timePos);
 
-  //两个随机壁纸api
-  // let random1 = "url(https://api.ixiaowai.cn/gqapi/gqapi.php)";
-  let random1 = "url(https://api.yimian.xyz/img?type=wallpaper)";
-  // "url(https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images)";
-  // 随机bing壁纸
-  let random2 = "url(https://api.likepoems.com/img/bing)";
-  // let random2 = "url(https://bing.img.run/rand_uhd.php)";
-  // let random2 = "url(https://tu.ltyuanfang.cn/api/fengjing.php)";//暂时停止服务
-  //TODO:unsplash API
-  // let random2 = "url(https://source.unsplash.com/random)";
+  let random1 = defaultSetting.randomBg1;
+  let random2 = defaultSetting.randomBg2;
+
   const [randomBackground, setRandomBackground] = useState(random1);
   const bgType = useSelector(state => state.bgtype);
 
@@ -185,13 +178,7 @@ function App() {
   let coverNum = cover * 0.01;
   //自己选的壁纸
   let myBackground = "url(" + defaultSetting.imgSite + currentbg + ")";
-  //bing每日壁纸接口,别人写的
-  let bingBackground = "url(https://api.oneneko.com/v1/bing_today)";
-  // let bingBackground = "url(https://bing.img.run/uhd.php)";
-  //随机壁纸接口
-  // let randomBackground = 'url(https://api.ixiaowai.cn/gqapi/gqapi.php)'
-  // let randomBackground = "url(https://api.likepoems.com/img/bing)";
-
+  let bingBackground = defaultSetting.bingBg;
   let background = [myBackground, bingBackground, randomBackground];
 
   //子组件：随机壁纸切换
