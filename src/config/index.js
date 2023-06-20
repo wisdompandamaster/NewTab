@@ -1,10 +1,10 @@
 const defaultSetting = {
   imgSite: "https://minio.wisdompanda.com/",
-  // site: "https://newtab.wisdompanda.com/api",
+  site: "https://newtab.wisdompanda.com/api",
   // local test
   // site: "http://127.0.0.1:8000",
   // temp site
-  site: "http://101.43.98.53:8000",
+  // site: "http://101.43.98.53:8000",
   bingBg: "url(https://api.oneneko.com/v1/bing_today)",
   randomBg1: "url(https://api.yimian.xyz/img?type=wallpaper)",
   randomBg2: "url(https://api.likepoems.com/img/bing)",
