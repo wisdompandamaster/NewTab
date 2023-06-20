@@ -6,6 +6,7 @@ import { InboxOutlined, CheckOutlined } from "@ant-design/icons";
 import defaultSetting from "../../config";
 import cookie from "react-cookies";
 import FuncModal from "../FuncModal/FuncModal";
+import axios from "axios";
 
 let t = null;
 function debounce(fn) {
@@ -214,12 +215,18 @@ const SetBackground = () => {
       bgtype: e.target.value,
     });
     localStorage.setItem("bgtype", e.target.value);
+    // 代理实验
     if (e.target.value == 2) {
-      fetch(defaultSetting.bingBg).then(data => console.log(data.url));
+      // fetch(defaultSetting.bingBg).then(data => console.log(data.url));
+      fetch("https://api.yimian.xyz/img?type=wallpaper", {
+        redirect: "manual",
+      }).then(data => console.log(data));
     }
-    // if (e.target.value == 3) {
-    //   fetch(defaultSetting.randomBg2).then(data => console.log(data));
-    // }
+    if (e.target.value == 3) {
+      fetch("/bg/img?type=wallpaper", { redirect: "manual" }).then(data =>
+        console.log(data)
+      );
+    }
   };
 
   return (
