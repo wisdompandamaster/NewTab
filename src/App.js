@@ -45,8 +45,8 @@ function App() {
   const mybglist = useSelector(state => state.mybglist);
   // const timePos = useSelector(state => state.timePos);
 
-  let random1 = defaultSetting.randomBg1;
-  let random2 = defaultSetting.randomBg2;
+  let random1 = "url(" + defaultSetting.randomBg1 + ")";
+  let random2 = "url(" + defaultSetting.randomBg2 + ")";
 
   const [randomBackground, setRandomBackground] = useState(random1);
   const bgType = useSelector(state => state.bgtype);
@@ -178,7 +178,7 @@ function App() {
   let coverNum = cover * 0.01;
   //自己选的壁纸
   let myBackground = "url(" + defaultSetting.imgSite + currentbg + ")";
-  let bingBackground = defaultSetting.bingBg;
+  let bingBackground = "url(" + defaultSetting.bingBg + ")";
   let background = [myBackground, bingBackground, randomBackground];
 
   //子组件：随机壁纸切换

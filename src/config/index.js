@@ -5,9 +5,9 @@ const defaultSetting = {
   // site: "http://127.0.0.1:8000",
   // temp site
   // site: "http://101.43.98.53:8000",
-  bingBg: "url(https://api.oneneko.com/v1/bing_today)",
-  randomBg1: "url(https://api.yimian.xyz/img?type=wallpaper)",
-  randomBg2: "url(https://api.likepoems.com/img/bing)",
+  bingBg: "https://api.oneneko.com/v1/bing_today",
+  randomBg1: "https://api.yimian.xyz/img?type=wallpaper",
+  randomBg2: "https://api.likepoems.com/img/bing",
 };
 
 export default defaultSetting;

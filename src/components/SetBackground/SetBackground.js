@@ -214,6 +214,12 @@ const SetBackground = () => {
       bgtype: e.target.value,
     });
     localStorage.setItem("bgtype", e.target.value);
+    if (e.target.value == 2) {
+      fetch(defaultSetting.bingBg).then(data => console.log(data.url));
+    }
+    // if (e.target.value == 3) {
+    //   fetch(defaultSetting.randomBg2).then(data => console.log(data));
+    // }
   };
 
   return (
