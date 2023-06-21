@@ -213,6 +213,28 @@ const SetBackground = () => {
       bgtype: e.target.value,
     });
     localStorage.setItem("bgtype", e.target.value);
+    if (e.target.value == 2) {
+      fetch("https://api.oneneko.com/v1/bing_today").then(data => {
+        dispatch({
+          type: "CHANGE_BG",
+          currentbg: data.url,
+        });
+        localStorage.setItem("currentbg", data.url);
+        saveSettings("current_bg", data.url); //上传修改的背景数据
+      });
+    }
+    if (e.target.value == 3) {
+      fetch("/api/img/getrandombg/")
+        .then(response => response.json())
+        .then(data => {
+          dispatch({
+            type: "CHANGE_BG",
+            currentbg: data.url,
+          });
+          localStorage.setItem("currentbg", data.url);
+          saveSettings("current_bg", data.url); //上传修改的背景数据
+        });
+    }
     // 代理实验
     // if (e.target.value == 2) {
     //   // fetch(defaultSetting.bingBg).then(data => console.log(data.url));

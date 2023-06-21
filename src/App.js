@@ -45,10 +45,10 @@ function App() {
   const mybglist = useSelector(state => state.mybglist);
   // const timePos = useSelector(state => state.timePos);
 
-  let random1 = "url(" + defaultSetting.randomBg1 + ")";
-  let random2 = "url(" + defaultSetting.randomBg2 + ")";
+  // let random1 = "url(" + defaultSetting.randomBg1 + ")";
+  // let random2 = "url(" + defaultSetting.randomBg2 + ")";
 
-  const [randomBackground, setRandomBackground] = useState(random1);
+  // const [randomBackground, setRandomBackground] = useState(random1);
   const bgType = useSelector(state => state.bgtype);
 
   useEffect(() => {
@@ -176,9 +176,10 @@ function App() {
   let scale = "scale(" + (1 + blur * 0.0008) + ")";
   let coverNum = cover * 0.01;
   //自己选的壁纸
-  let myBackground = "url(" + "/pic/" + currentbg + ")";
-  let bingBackground = "url(" + defaultSetting.bingBg + ")";
-  let background = [myBackground, bingBackground, randomBackground];
+  // let myBackground = "url(" + "/pic/" + currentbg + ")";
+  // let bingBackground = "url(" + defaultSetting.bingBg + ")";
+  // let background = [myBackground, bingBackground, randomBackground];
+  let background = "url(" + currentbg + ")";
 
   //子组件：随机壁纸切换
   function ChangeBg(props) {
@@ -196,17 +197,24 @@ function App() {
       //还有一种是不定等待时间，等图片加载好
 
       //有可以绕过跨域的代理api 可以自己部署源码
-      let img = new Image();
+
       // img.src = randomBackground == random1 ? random2 : random1;
-      img.src = (randomBackground == random1 ? random2 : random1)
-        .substring(4)
-        .replace(")", "");
+      fetch("/api/img/getrandombg/")
+        .then(res => res.json())
+        .then(data => {
+          let img = new Image();
+          img.src = data.url;
+          img.onload = () => {
+            dispatch({
+              type: "CHANGE_BG",
+              currentbg: data.url,
+            });
+            localStorage.setItem("currentbg", data.url);
+            saveSettings("current_bg", data.url); //上传修改的背景数据
+          };
+        });
 
       // fetch('https://circumvent-cors.herokuapp.com/'+img.src).then(response=>console.log(response.body))
-
-      img.onload = () => {
-        setRandomBackground("url(" + img.src + ")");
-      };
     };
 
     return (
@@ -241,7 +249,7 @@ function App() {
         style={{
           filter: blurNum,
           transform: scale,
-          backgroundImage: background[bgType - 1],
+          backgroundImage: background,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
