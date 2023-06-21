@@ -194,7 +194,7 @@ function NewsBrief() {
     //这里目前页面刷新一次才请求一次，后续需要定时请求更新，并且添加节流
 
     async function getList() {
-      fetch("/api/news/get")
+      fetch("/api/news/get/")
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("briefList", JSON.stringify(data.briefres));
