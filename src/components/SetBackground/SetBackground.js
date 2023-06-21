@@ -102,12 +102,13 @@ function ShowBackground(props) {
   const currentbg = useSelector(state => state.currentbg);
 
   function onChangeBg(e, value) {
+    let url = "/pic/" + value;
     dispatch({
       type: "CHANGE_BG",
-      currentbg: value,
+      currentbg: url,
     });
-    localStorage.setItem("currentbg", value);
-    saveSettings("current_bg", value); //上传修改的背景数据
+    localStorage.setItem("currentbg", url);
+    saveSettings("current_bg", url); //上传修改的背景数据
   }
 
   return (
