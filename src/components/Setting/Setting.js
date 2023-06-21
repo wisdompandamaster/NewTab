@@ -103,7 +103,7 @@ function ContactUs() {
   const [form] = Form.useForm();
 
   const onFinish = values => {
-    fetch(defaultSetting.site + "/account/comments/", {
+    fetch("/api/account/comments/", {
       method: "POST",
       body: JSON.stringify(values.user),
     })

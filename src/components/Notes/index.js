@@ -7,7 +7,6 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import NoesTabs from "./noesTabs";
 import { nanoid } from "nanoid";
 import cookie from "react-cookies";
-import defaultSetting from "../../config";
 import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
 
@@ -18,9 +17,8 @@ const Notes = () => {
   const [isNotesVisible, setNotesVisible] = useState(false); // 弹框
 
   useEffect(() => {
-    let url = defaultSetting.site + "/functions/getmynotes/";
     async function getNotes() {
-      fetch(url, {
+      fetch("/api/functions/getmynotes/", {
         credentials: "include",
       })
         .then(response => response.json())
@@ -59,9 +57,8 @@ const Notes = () => {
   // 是否显示弹框
   const isShowModal = () => {
     setNotesVisible(!isNotesVisible);
-    let url = defaultSetting.site + "/functions/savemynotes/";
     async function saveNotes() {
-      fetch(url, {
+      fetch("/api/functions/savemynotes/", {
         method: "post",
         body: JSON.stringify(notesData),
         headers: {

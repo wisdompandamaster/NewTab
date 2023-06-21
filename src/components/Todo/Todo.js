@@ -5,7 +5,6 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import TodoModal from "./TodoModal";
 import { useSelector, useDispatch } from "react-redux";
 import cookie from "react-cookies";
-import defaultSetting from "../../config/index";
 import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
 
@@ -40,9 +39,8 @@ function Todo() {
     }, new Set());
 
   useEffect(() => {
-    let url = defaultSetting.site + "/functions/getmytodos/";
     async function getTodos() {
-      fetch(url, {
+      fetch("/api/functions/getmytodos/", {
         credentials: "include",
       })
         .then(response => response.json())
@@ -67,9 +65,8 @@ function Todo() {
       TodoDates: TodoDates,
     });
 
-    let url = defaultSetting.site + "/functions/savemytodos/";
     async function saveTodos() {
-      fetch(url, {
+      fetch("/api/functions/savemytodos/", {
         method: "post",
         body: JSON.stringify(todos),
         headers: {

@@ -1,10 +1,9 @@
 import "./News.css";
 import "../../font/iconfont.css";
-import defaultSetting from "../../config";
 import React, { memo, useEffect, useState } from "react";
 import FuncCard from "../FuncCard/FuncCard";
 import FuncModal from "../FuncModal/FuncModal";
-import { Modal, Tooltip, Tabs, List, Typography } from "antd";
+import { Tooltip, Tabs, List, Typography } from "antd";
 
 let initialData = [
   {
@@ -194,9 +193,8 @@ function NewsBrief() {
   useEffect(() => {
     //这里目前页面刷新一次才请求一次，后续需要定时请求更新，并且添加节流
 
-    let url = defaultSetting.site + "/news/get/";
     async function getList() {
-      fetch(url)
+      fetch("/api/news/get")
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("briefList", JSON.stringify(data.briefres));

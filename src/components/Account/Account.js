@@ -1,6 +1,5 @@
 import { Button, message } from "antd";
 import { useState } from "react";
-import defaultSetting from "../../config/index";
 import "./Account.css";
 import cookie from "react-cookies";
 
@@ -10,12 +9,10 @@ export default function Account() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    let url = defaultSetting.site + "/account/signin/";
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
-    console.log(username, password);
-    fetch(url, {
+    fetch("/api/account/signin/", {
       method: "post",
       body: data,
       credentials: "include",
@@ -35,8 +32,7 @@ export default function Account() {
 
   const onSignOut = e => {
     e.preventDefault();
-    let url = defaultSetting.site + "/account/signout/";
-    fetch(url, {
+    fetch("/api/account/signout/", {
       method: "get",
       credentials: "include",
     })

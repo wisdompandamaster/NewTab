@@ -23,10 +23,9 @@ function debounce(fn) {
 
 //上传存储设置(函数非组件)
 function saveSettings(type, value) {
-  let url = defaultSetting.site + "/functions/savemysettings/";
   async function save() {
     // console.log('save运行')
-    fetch(url, {
+    fetch("/api/functions/savemysettings/", {
       method: "post",
       body: JSON.stringify({ type: type, value: value }),
       headers: {
@@ -52,7 +51,7 @@ function UploadImg() {
     name: "file",
     multiple: true,
     withCredentials: true,
-    action: defaultSetting.site + "/img/uploadmybg/",
+    action: "/api/img/uploadmybg/",
     onChange(info) {
       const { status, response } = info.file;
       if (status !== "uploading") {
@@ -116,7 +115,7 @@ function ShowBackground(props) {
       {imgList.map((item, index) => {
         //这里通过改行内样式，其实可以通过替换类
         // console.log(item)
-        let url = "url(" + defaultSetting.imgSite + item + ")";
+        let url = "url(" + "/pic/" + item + ")";
         let boxShadow =
           currentbg === item
             ? "5px 5px rgba(145, 241, 145,0.8),-5px 5px rgba(145, 241, 145,0.8),5px -5px rgba(145, 241, 145,0.8),-5px -5px rgba(145, 241, 145,0.8)"
@@ -160,9 +159,8 @@ const SetBackground = () => {
   const mybglist = state.mybglist;
 
   useEffect(() => {
-    let url = defaultSetting.site + "/img/getmybglist/";
     async function getList() {
-      fetch(url, {
+      fetch("/api/img/getmybglist/", {
         credentials: "include",
       })
         .then(response => response.json())
@@ -178,7 +176,7 @@ const SetBackground = () => {
     getList();
   }, []);
 
-  let background = "url(" + defaultSetting.imgSite + currentbg + ")";
+  let background = "url(" + currentbg + ")";
 
   function onChangeCover(value) {
     dispatch({
@@ -216,17 +214,17 @@ const SetBackground = () => {
     });
     localStorage.setItem("bgtype", e.target.value);
     // 代理实验
-    if (e.target.value == 2) {
-      // fetch(defaultSetting.bingBg).then(data => console.log(data.url));
-      fetch("https://api.yimian.xyz/img?type=wallpaper", {
-        redirect: "manual",
-      }).then(data => console.log(data));
-    }
-    if (e.target.value == 3) {
-      fetch("/bg/img?type=wallpaper", { redirect: "manual" }).then(data =>
-        console.log(data)
-      );
-    }
+    // if (e.target.value == 2) {
+    //   // fetch(defaultSetting.bingBg).then(data => console.log(data.url));
+    //   fetch("https://api.yimian.xyz/img?type=wallpaper", {
+    //     redirect: "manual",
+    //   }).then(data => console.log(data));
+    // }
+    // if (e.target.value == 3) {
+    //   fetch("/bg/img?type=wallpaper", { redirect: "manual" }).then(data =>
+    //     console.log(data)
+    //   );
+    // }
   };
 
   return (

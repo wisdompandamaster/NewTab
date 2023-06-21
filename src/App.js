@@ -53,9 +53,8 @@ function App() {
 
   useEffect(() => {
     //获取setting数据
-    let url2 = defaultSetting.site + "/functions/getmysettings/";
     async function getSettings() {
-      fetch(url2, {
+      fetch("/api/functions/getmysettings/", {
         credentials: "include",
       })
         .then(response => response.json())
@@ -85,7 +84,7 @@ function App() {
     //提前加载
     imgList.concat(mybglist).map(item => {
       let img = new Image();
-      let url = defaultSetting.imgSite + item;
+      let url = "/pic/" + item;
       img.src = url;
     });
     //组件卸载时启动
@@ -177,7 +176,7 @@ function App() {
   let scale = "scale(" + (1 + blur * 0.0008) + ")";
   let coverNum = cover * 0.01;
   //自己选的壁纸
-  let myBackground = "url(" + defaultSetting.imgSite + currentbg + ")";
+  let myBackground = "url(" + "/pic/" + currentbg + ")";
   let bingBackground = "url(" + defaultSetting.bingBg + ")";
   let background = [myBackground, bingBackground, randomBackground];
 

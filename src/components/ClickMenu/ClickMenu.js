@@ -6,7 +6,6 @@ import {
 } from "@ant-design/icons";
 import { memo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import defaultSetting from "../../config";
 import { SetFunctionArea } from "../FunctionAera/SetFunctionAera/SetFunctionArea";
 import SetApp from "../Apps/SetApp/SetApp";
 import { SnippetsInMenu } from "../Snippets/Snippets";
@@ -20,7 +19,7 @@ function ClickMenu() {
 
   const downloadWallPaper = e => {
     const bgurl = [
-      defaultSetting.imgSite + currentbg,
+      "/img/" + currentbg,
       "https://api.oneneko.com/v1/bing_today",
       "https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images",
     ];
@@ -28,7 +27,7 @@ function ClickMenu() {
     //创造 a 标签来下载
     const a = document.createElement("a");
     a.style.display = "none";
-    a.href = defaultSetting.imgSite + currentbg;
+    a.href = "/img/" + currentbg;
     a.download = "bg.jpg";
     document.body.appendChild(a);
     a.click(); // 自动触发点击a标签的click事件

@@ -1,5 +1,4 @@
 import "./Competition.css";
-// import defaultSetting from '../../config';
 import { memo, useEffect, useState } from "react";
 import FuncCard from "../FuncCard/FuncCard";
 
@@ -90,7 +89,6 @@ function NBA(props) {
           <span className='nba_team'>
             <img
               alt='logo'
-              //   src={defaultSetting.imgSite + "nbalogo/" + awayTeam + '.png'}
               src={remote_logo_img + item.awayTeam.profile.abbr + "_logo.svg"}
             />
             {awayTeam}
@@ -113,7 +111,6 @@ function NBA(props) {
           <span className='nba_team'>
             <img
               alt='logo'
-              //   src={defaultSetting.imgSite + "nbalogo/" + homeTeam + '.png'}
               src={remote_logo_img + item.homeTeam.profile.abbr + "_logo.svg"}
             />
             {homeTeam}

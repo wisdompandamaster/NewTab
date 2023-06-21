@@ -8,10 +8,10 @@ module.exports = function (app) {
       changeOrigin: true, //控制服务器中收到的请求头中host字段的值
       pathRewrite: { "^/api": "" }, //重写请求路径
     }),
-    createProxyMiddleware("/bg", {
-      target: "https://api.yimian.xyz",
+    createProxyMiddleware("/pic", {
+      target: "http://101.43.98.53:9000",
       changeOrigin: true,
-      pathRewrite: { "^/bg": "" },
+      pathRewrite: { "^/pic": "" },
     })
   );
 };

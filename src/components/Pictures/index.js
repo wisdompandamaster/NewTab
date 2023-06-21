@@ -1,6 +1,5 @@
 import React, { useState, useEffect, memo } from "react";
-import defaultSetting from "../../config";
-import { Carousel, Modal, Table, Upload, Button, Image, message } from "antd";
+import { Carousel, Table, Upload, Button, Image, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 // import data from './data';
 import "./style.css";
@@ -18,9 +17,8 @@ const Pictures = () => {
   const [myimglist, setMyImgList] = useState(initialList);
 
   useEffect(() => {
-    let url = defaultSetting.site + "/img/getmyimglist/";
     async function getList() {
-      fetch(url, {
+      fetch("/api/img/getmyimglist/", {
         credentials: "include",
       })
         .then(response => response.json())
@@ -48,8 +46,7 @@ const Pictures = () => {
 
   const deletePic = pic => {
     console.log("delete pic");
-    let url =
-      defaultSetting.site + "/img/deletemyimg/?file_name=" + pic.split("/")[1];
+    let url = "/api/img/deletemyimg/?file_name=" + pic.split("/")[1];
     fetch(url, {
       credentials: "include",
     })
@@ -67,7 +64,7 @@ const Pictures = () => {
       dataIndex: "",
       key: "",
       render: text => {
-        let url = defaultSetting.imgSite + text;
+        let url = "/pic/" + text;
         return (
           <>
             <Image width={80} height={45} alt={text} src={url} />
@@ -108,7 +105,7 @@ const Pictures = () => {
   const props = {
     name: "file",
     withCredentials: true,
-    action: defaultSetting.site + "/img/uploadmyimg/",
+    action: "/api/img/uploadmyimg/",
     onChange(info) {
       const { status, response } = info.file;
       if (status !== "uploading") {
@@ -132,7 +129,7 @@ const Pictures = () => {
             {
               // picData.map(() => { })
               myimglist.map((item, index) => {
-                let url = defaultSetting.imgSite + item;
+                let url = "/pic/" + item;
                 return (
                   <div className='panel' key={index}>
                     <img
