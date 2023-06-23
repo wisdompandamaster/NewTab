@@ -170,21 +170,31 @@ let initialData = [
   },
 ];
 
-//节流函数，待验证是否有效
+//使用时间戳的节流函数，不准确，时间戳,第一次触发立即执行
+let lastTime = 0;
+function throttle(fn, delay) {
+  return function () {
+    const nowTime = Date.now();
+    console.log(nowTime - lastTime);
+    if (nowTime - lastTime > delay) {
+      fn.apply(this, arguments);
+      lastTime = nowTime;
+    }
+  };
+}
 
+// 使用定时器的节流函数，第一次触发不会执行,但是最后一次会延迟
+// let timer = null;
 // function throttle(fn, delay) {
-// let curTime = Date.now();
-//   return function() {
-//       let context = this,
-//           args = arguments,
-//           nowTime = Date.now();
-//       // 如果两次时间间隔超过了指定时间，则执行函数。
-//       if (nowTime - curTime >= delay) {
-//         curTime = Date.now();
-//         return fn.apply(context, args);
-//       }
-//     };
-//   }
+//   return function () {
+//     if (!timer) {
+//       timer = setTimeout(() => {
+//         fn.apply(this, arguments);
+//         timer = null;
+//       }, delay);
+//     }
+//   };
+// }
 
 function NewsBrief() {
   //热榜简单面板
@@ -192,8 +202,7 @@ function NewsBrief() {
   // useEffect 异步请求数据，写入localstorage, 从local里面读取数据
   useEffect(() => {
     //这里目前页面刷新一次才请求一次，后续需要定时请求更新，并且添加节流
-
-    async function getList() {
+    function getList() {
       fetch("/api/news/get/")
         .then(response => response.json())
         .then(data => {
@@ -202,8 +211,8 @@ function NewsBrief() {
         })
         .catch(e => console.log("error"));
     }
-
-    getList();
+    // 节流时间60s
+    throttle(getList, 100000)();
   }, []);
 
   function handleClick(e) {
