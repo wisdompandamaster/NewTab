@@ -311,6 +311,9 @@ const News = () => {
     ? JSON.parse(localStorage.getItem("resList"))
     : initialData;
 
+  //去除不想看的热搜，比如购物的
+  resList.splice(0, 4);
+
   const showModal = () => {
     setIsModalVisible(true);
   };
