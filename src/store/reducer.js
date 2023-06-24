@@ -88,7 +88,8 @@ const defalutState = {
   cover: localStorage.getItem("cover") || 20,
   blur: localStorage.getItem("blur") || 0,
   currentbg:
-    localStorage.getItem("currentbg") || "background/cool-background1.png",
+    localStorage.getItem("currentbg") ||
+    "https://minio.wisdompanda.com/background/cool-background1.png",
   mybglist: localStorage.getItem("mybglist")
     ? JSON.parse(localStorage.getItem("mybglist"))
     : [],
@@ -147,7 +148,7 @@ const defalutState = {
   snippets: [],
   bgtype: localStorage.getItem("bgtype")
     ? JSON.parse(localStorage.getItem("bgtype"))
-    : 1,
+    : 2,
   timePos: 1,
 };
 

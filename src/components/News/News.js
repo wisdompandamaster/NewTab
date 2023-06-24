@@ -31,6 +31,7 @@ function throttle(fn, delay) {
 //   };
 // }
 
+//新闻简版
 function NewsBrief() {
   //热榜简单面板
   const [type, setType] = useState(0);
