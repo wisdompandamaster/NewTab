@@ -100,15 +100,32 @@ function ShowBackground(props) {
 
   const dispatch = useDispatch();
   const currentbg = useSelector(state => state.currentbg);
+  const bgtype = useSelector(state => state.bgtype);
+  const [chosenone, setChosenOne] = useState(currentbg.replace("/pic/", ""));
+
+  // bgtype变为 1 时，改 currentbg
+  useEffect(() => {
+    if (bgtype == 1) {
+      let url = "/pic/" + chosenone;
+      dispatch({
+        type: "CHANGE_BG",
+        currentbg: url,
+      });
+      localStorage.setItem("currentbg", url);
+    }
+  }, [bgtype]);
 
   function onChangeBg(e, value) {
-    let url = "/pic/" + value;
-    dispatch({
-      type: "CHANGE_BG",
-      currentbg: url,
-    });
-    localStorage.setItem("currentbg", url);
-    saveSettings("current_bg", url); //上传修改的背景数据
+    setChosenOne(value);
+    if (bgtype == 1) {
+      let url = "/pic/" + value;
+      dispatch({
+        type: "CHANGE_BG",
+        currentbg: url,
+      });
+      localStorage.setItem("currentbg", url);
+      saveSettings("current_bg", url); //上传修改的背景数据
+    }
   }
 
   return (
@@ -118,11 +135,11 @@ function ShowBackground(props) {
         // console.log(item)
         let url = "url(" + "/pic/" + item + ")";
         let boxShadow =
-          currentbg === item
+          chosenone === item
             ? "5px 5px rgba(145, 241, 145,0.8),-5px 5px rgba(145, 241, 145,0.8),5px -5px rgba(145, 241, 145,0.8),-5px -5px rgba(145, 241, 145,0.8)"
             : "";
         let spanStyle =
-          currentbg === item
+          chosenone === item
             ? { opacity: 1, backgroundColor: "rgba(145, 241, 145,0.8)" }
             : {};
         return (
