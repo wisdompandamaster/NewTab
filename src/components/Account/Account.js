@@ -12,6 +12,7 @@ export default function Account() {
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
+    console.log(data);
     fetch("/api/account/signin/", {
       method: "post",
       body: data,
