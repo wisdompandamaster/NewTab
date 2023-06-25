@@ -96,12 +96,13 @@ function UploadImg() {
 
 function ShowBackground(props) {
   const { data } = props;
+  const { chosenone } = props;
   let imgList = data;
 
   const dispatch = useDispatch();
-  const currentbg = useSelector(state => state.currentbg);
+  // const currentbg = useSelector(state => state.currentbg);
   const bgtype = useSelector(state => state.bgtype);
-  const [chosenone, setChosenOne] = useState(currentbg.replace("/pic/", ""));
+  // const [chosenone, setChosenOne] = useState(chosen_one.replace("/pic/", ""));
 
   // bgtype变为 1 时，改 currentbg
   useEffect(() => {
@@ -116,7 +117,7 @@ function ShowBackground(props) {
   }, [bgtype]);
 
   function onChangeBg(e, value) {
-    setChosenOne(value);
+    // setChosenOne(value);
     if (bgtype == 1) {
       let url = "/pic/" + value;
       dispatch({
@@ -176,6 +177,19 @@ const SetBackground = () => {
   const onlineimglist = state.onlineimglist;
   const mybglist = state.mybglist;
 
+  // 自己选中的壁纸编号
+  const [chosenone, setChosenOne] = useState(
+    bgType == 1
+      ? currentbg.replace("/pic/", "")
+      : "background/cool-background1.png"
+  );
+
+  useEffect(() => {
+    if (bgType == 1) {
+      setChosenOne(currentbg.replace("/pic/", ""));
+    }
+  }, [currentbg]);
+
   useEffect(() => {
     async function getList() {
       fetch("/api/img/getmybglist/", {
@@ -231,6 +245,15 @@ const SetBackground = () => {
       bgtype: e.target.value,
     });
     localStorage.setItem("bgtype", e.target.value);
+    if (e.target.value == 1) {
+      let url = "/pic/" + chosenone;
+      dispatch({
+        type: "CHANGE_BG",
+        currentbg: url,
+      });
+      localStorage.setItem("currentbg", url);
+      saveSettings("current_bg", url); //上传修改的背景数据
+    }
     if (e.target.value == 2) {
       fetch("https://api.oneneko.com/v1/bing_today").then(data => {
         dispatch({
@@ -350,10 +373,16 @@ const SetBackground = () => {
           {" "}
           {/*二级页面左边的标签页*/}
           <TabPane tab={<span className='backTab'>在线壁纸</span>} key='1'>
-            <ShowBackground data={onlineimglist}></ShowBackground>
+            <ShowBackground
+              data={onlineimglist}
+              chosenone={chosenone}
+            ></ShowBackground>
           </TabPane>
           <TabPane tab={<span className='backTab'>我的壁纸</span>} key='2'>
-            <ShowBackground data={mybglist}></ShowBackground>
+            <ShowBackground
+              data={mybglist}
+              chosenone={chosenone}
+            ></ShowBackground>
           </TabPane>
           <TabPane tab={<span className='backTab'>上传壁纸</span>} key='3'>
             <UploadImg></UploadImg>
