@@ -8,6 +8,7 @@ import "../../font/iconfont.css";
 // import { SetTimePos } from "../Clock/Clock";
 import { SetFooter } from "../MottoFooter/MottoFooter";
 import { SetFuncCardStyle } from "../FuncCard/SetFuncCard/SetFuncCard";
+import ChatRoom from "../ChatRoom/ChatRoom";
 // 实验功能一：纸屑
 function Confetti() {
   const [disable, setDisable] = useState(true);
@@ -284,7 +285,9 @@ function Setting() {
             header={<div className='panel-title'>在线聊天室</div>}
             key='5'
             className='setting-panel'
-          ></Panel>
+          >
+            <ChatRoom></ChatRoom>
+          </Panel>
           {/* 实验性的功能 */}
           <Panel
             header={<div className='panel-title'>实验室</div>}

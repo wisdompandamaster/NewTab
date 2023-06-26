@@ -17,8 +17,6 @@ import { Snippets } from "./components/Snippets/Snippets";
 import Draggable from "react-draggable";
 // import { conversionMomentValue } from '@ant-design/pro-utils';
 
-//FIXME:bug, 这里 blur filter bg等改变时，由于改变的是最上层的组件，所以会把子组件全渲染一遍，会多出很多请求  2022.8.10
-
 /** 页面结构：
  *
  * 背景图片
