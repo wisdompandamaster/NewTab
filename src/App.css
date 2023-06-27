@@ -303,3 +303,8 @@ hr.todo-hr {
   top: 100px;
   left: 200px;
 }
+
+/* 设置新闻里的列表背景颜色 */
+.ant-tabs-content-holder {
+  background-color: rgba(255, 255, 255, 0.8);
+}
