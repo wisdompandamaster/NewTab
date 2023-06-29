@@ -13,6 +13,13 @@ const SwiperAera = () => {
   // const timePos = useSelector(state => state.timePos);
   let display = clear ? "none" : "block";
   let top = "25vh";
+  let slideType = ["链接", "组件"];
+  const pagination = {
+    clickable: true,
+    renderBullet: (index, className) => {
+      return '<span class="' + className + '">' + slideType[index] + "</span>";
+    },
+  };
 
   return (
     <div
@@ -28,7 +35,7 @@ const SwiperAera = () => {
         // FIXME:目前这里天气模块设置了loop后向后滑动时会显示空白
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={swiper => console.log(swiper)}
-        pagination={{ clickable: true }}
+        pagination={pagination}
         //scrollbar={{ draggable: false }}
         mousewheel={true}
         modules={[Pagination, Mousewheel]}

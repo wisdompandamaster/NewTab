@@ -26,3 +26,22 @@
     opacity: 1;
   }
 }
+
+.swiper-no-swiping .swiper-pagination-bullet {
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: #000;
+  opacity: 1;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.swiper-no-swiping .swiper-pagination-bullet-active {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
