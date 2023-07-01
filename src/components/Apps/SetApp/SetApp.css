@@ -2,7 +2,7 @@
   display: flex;
 }
 .icon_list {
-  height: 450px;
+  height: 89%;
   overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, calc(96% / 3));

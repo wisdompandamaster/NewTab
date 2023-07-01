@@ -29,7 +29,23 @@ function ChatRoom() {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-      ></FuncModal>
+      >
+        <div
+          style={{
+            fontSize: "30px",
+            height: "110px",
+            lineHeight: "110px",
+            marginTop: "20%",
+            width: "100%",
+            textAlign: "center",
+            fontWeight: "700",
+            color: "#00000033",
+            letterSpacing: "8px",
+          }}
+        >
+          建造中 ...
+        </div>
+      </FuncModal>
     </>
   );
 }
