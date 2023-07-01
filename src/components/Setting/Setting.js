@@ -2,6 +2,7 @@ import confetti from "canvas-confetti";
 import { GithubOutlined } from "@ant-design/icons";
 import { Drawer, Collapse, Form, Input, Button, Switch } from "antd";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SetBackground from "../SetBackground/SetBackground";
 import "../../font/iconfont.css";
 // import SetApp from "../Apps/SetApp/SetApp";
@@ -87,6 +88,52 @@ function Confetti() {
   );
 }
 
+// 实验功能二：文件夹
+function Folder() {
+  const [disable, setDisable] = useState(true);
+  const myApps = useSelector(state => state.myApps);
+  const dispatch = useDispatch();
+  const addfolder = () => {
+    const apps = [
+      ...myApps,
+      {
+        type: 1,
+        id: Date.now(), //时间戳作为唯一ID,最好是时间戳+随机数
+        children: {},
+        name: "文件夹",
+      },
+    ];
+    dispatch({
+      type: "CHANGE_APPS",
+      myApps: apps,
+    });
+    localStorage.setItem("apps", JSON.stringify(apps));
+    setItems(apps);
+    message.success("创建成功!");
+  };
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: "0.5rem",
+      }}
+    >
+      <Button
+        onClick={() => {
+          addfolder();
+        }}
+        type='primary'
+        ghost
+        disabled={disable}
+      >
+        添加文件夹
+      </Button>
+      <Switch onChange={checked => setDisable(!checked)} />
+    </div>
+  );
+}
 //设置功能
 function SetFunction() {
   return (
@@ -295,6 +342,7 @@ function Setting() {
             className='setting-panel'
           >
             <Confetti />
+            <Folder />
           </Panel>
         </Collapse>
       </Drawer>

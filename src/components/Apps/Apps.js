@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
+import AppFolder from "./AppFolder/AppFolder";
 // import ClickMenu from "../ClickMenu/ClickMenu";
 
 export default function Apps() {
@@ -45,6 +46,20 @@ export default function Apps() {
 
   const renderItem = item => {
     const shake = deleteMode ? " shake" : "";
+    const app = (
+      <a rel='noreferrer' key={item.name} href={item.href} target={"_blank"}>
+        <img
+          onContextMenu={e => handleContextMenu(e, deleteMode)}
+          alt={item.name}
+          src={item.imgPath}
+        />
+      </a>
+    );
+    const folder = (
+      <div>
+        <AppFolder />
+      </div>
+    );
 
     return (
       <div className={"apps_sortableItem" + shake}>
@@ -55,14 +70,7 @@ export default function Apps() {
           size='small'
           onMouseDown={() => deleteApp(item.id)}
         />
-        <a rel='noreferrer' key={item.name} href={item.href} target={"_blank"}>
-          <img
-            onContextMenu={e => handleContextMenu(e, deleteMode)}
-            alt={item.name}
-            src={item.imgPath}
-          />
-        </a>
-        {/* <div>{item.name}</div> */}
+        {item.type ? folder : app}
       </div>
     );
   };

@@ -20,72 +20,84 @@ export default function SetApp() {
   //这里的defaultIcon可以考虑删掉
   const defaultIcons = [
     {
+      type: 0,
       id: 1,
       href: "https://www.bilibili.com/",
       imgPath: Bilibili,
       name: "Bilibili",
     },
     {
+      type: 0,
       id: 2,
       href: "https://www.bytedance.com/zh/",
       imgPath: Bytedance,
       name: "Bytedance",
     },
     {
+      type: 0,
       id: 3,
       href: "https://www.douban.com/",
       imgPath: Douban,
       name: "豆瓣",
     },
     {
+      type: 0,
       id: 4,
       href: "https://www.douyin.com/",
       imgPath: Douyin,
       name: "抖音",
     },
     {
+      type: 0,
       id: 5,
       href: "https://github.com/",
       imgPath: Github,
       name: "Github",
     },
     {
+      type: 0,
       id: 6,
       href: "https://juejin.cn/",
       imgPath: Juejin,
       name: "掘金",
     },
     {
+      type: 0,
       id: 7,
       href: "https://leetcode-cn.com/",
       imgPath: Leetcode,
       name: "Leetcode",
     },
     {
+      type: 0,
       id: 8,
       href: "https://www.toutiao.com/",
       imgPath: Toutiao,
       name: "头条",
     },
     {
+      type: 0,
       id: 9,
       href: "https://weibo.com/",
       imgPath: Weibo,
       name: "微博",
     },
     {
+      type: 0,
       id: 10,
       href: "https://www.ixigua.com/",
       imgPath: Xigua,
       name: "西瓜视频",
     },
     {
+      type: 0,
       id: 11,
       href: "https://www.baidu.com/",
       imgPath: "https://www.baidu.com/favicon.ico",
       name: "百度",
     },
     {
+      type: 0,
       id: 12,
       href: "https://www.taptap.com/",
       imgPath: "https://www.taptap.com/favicon.ico",
@@ -122,11 +134,12 @@ export default function SetApp() {
   const onChange = checked => {
     setIsCustom(checked);
   };
-
+  //FIXME:这里的随机数应该换成更可靠的
   const addApp = app => {
     const apps = [
       ...myApps,
       {
+        type: 0,
         id: Date.now(), //时间戳作为唯一ID,最好是时间戳+随机数
         href: app.url,
         imgPath: app.src,
