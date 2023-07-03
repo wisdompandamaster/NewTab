@@ -22,7 +22,7 @@ jobs:
       # 步骤名称
       - name: npm install
         # 步骤执行指令
-        run: npm install
+        run: npm install -legacy-peer-deps
       - name: npm run build
         run: npm run build
       # 命名这个任务为发布Deploy
