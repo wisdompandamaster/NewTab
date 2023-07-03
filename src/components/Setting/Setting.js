@@ -99,7 +99,37 @@ function Folder() {
       {
         type: 1,
         id: Date.now(), //时间戳作为唯一ID,最好是时间戳+随机数
-        children: {},
+        children: [
+          {
+            id: 1,
+            href: "https://www.bilibili.com/",
+            imgPath:
+              "/static/media/Bilibili.6abd65c6438d572bc38b54bfc304f0d7.svg",
+            name: "Bilibili",
+          },
+          {
+            id: 9,
+            href: "https://weibo.com/",
+            imgPath: "/static/media/Weibo.4f37aa3483951123715ca47eb576f587.svg",
+            name: "微博",
+          },
+          {
+            type: 0,
+            id: 1688237586510,
+            href: "https://mail.qq.com",
+            imgPath:
+              "https://infinityicon.infinitynewtab.com/user-share-icon/3a9abce9ff5c6d6f6fa07c3eb60a2805.png",
+            name: "QQ邮箱",
+          },
+          {
+            type: 0,
+            id: 1688237542102,
+            href: "http://v.qq.com/",
+            imgPath:
+              "https://infinityicon.infinitynewtab.com/user-share-icon/b8d1c93c53412b30a35217cff865dcd7.png",
+            name: "腾讯视频",
+          },
+        ],
         name: "文件夹",
       },
     ];
@@ -108,8 +138,6 @@ function Folder() {
       myApps: apps,
     });
     localStorage.setItem("apps", JSON.stringify(apps));
-    setItems(apps);
-    message.success("创建成功!");
   };
   return (
     <div

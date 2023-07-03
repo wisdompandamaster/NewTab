@@ -57,7 +57,7 @@ export default function Apps() {
     );
     const folder = (
       <div>
-        <AppFolder />
+        <AppFolder contents={item.children} />
       </div>
     );
 
@@ -98,6 +98,13 @@ export default function Apps() {
       myApps: arrayMoveImmutable(items, oldIndex, newIndex),
     });
   };
+
+  // const onSortOver = (
+  //   // { index, oldIndex, newIndex, collection, isKeySorting },
+  //   e
+  // ) => {
+  //   e.helper.querySelector("div").style.transform = "scale(0.8)";
+  // };
   //-------------------------------------------------
 
   // const renderCard = (item)=>{
@@ -115,6 +122,7 @@ export default function Apps() {
         axis='xy'
         items={items}
         onSortEnd={onSortEnd}
+        // onSortOver={onSortOver}
       />
       {/* {apps.map((app, i) => renderCard(app, i))} */}
     </div>

@@ -7,3 +7,17 @@
   background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
 }
+.app-contents {
+  width: 90%;
+  height: 88%;
+  margin: 6% auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.app-contents img {
+  width: 0.9vw;
+  border-radius: 5px;
+}
