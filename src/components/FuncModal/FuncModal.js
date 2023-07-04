@@ -61,6 +61,7 @@ const FuncModal = props => {
           height: full ? "100vh" : props.height || "60vh",
           width: "100%",
           borderRadius: full ? "0" : "10px",
+          ...props.bodyStyle,
           // transition: ".1s ease-in",
         }}
         onOk={props.onOk}
@@ -68,6 +69,7 @@ const FuncModal = props => {
         onCancel={props.onCancel}
         // antd Modal 弹出动画
         transitionName='ant-slide-up'
+        // transitionName='ant-zoom-big-fast'
         modalRender={modal => (
           <Draggable
             disabled={disabled}

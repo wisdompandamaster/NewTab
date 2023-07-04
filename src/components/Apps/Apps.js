@@ -57,7 +57,7 @@ export default function Apps() {
     );
     const folder = (
       <div>
-        <AppFolder contents={item.children} />
+        <AppFolder contents={item.children} name={item.name} />
       </div>
     );
 

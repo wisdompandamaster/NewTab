@@ -5,7 +5,8 @@ import "./AppFolder.css";
 function AppFolder(props) {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { contents } = props;
+  const { contents, name } = props;
+
   const showModal = () => {
     // openNotification();
     setIsModalVisible(true);
@@ -48,21 +49,34 @@ function AppFolder(props) {
         </div>
       </div>
       <FuncModal
-        bodyStyle={{ padding: "11px" }}
-        width={"30vw"}
-        height={"30vw"}
+        bodyStyle={{
+          border: "5px solid white",
+          background: "#fff0",
+        }}
+        width={"25vw"}
+        height={"25vw"}
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        {contents.map((item, index) => (
-          <img
-            key={index}
-            style={{ width: "4.5vw" }}
-            alt={item.name}
-            src={item.imgPath}
-          />
-        ))}
+        <div className='app-folder-modal'>
+          {contents.map((item, index) => (
+            <a
+              rel='noreferrer'
+              key={item.name}
+              href={item.href}
+              target={"_blank"}
+            >
+              <img
+                key={index}
+                style={{ width: "4.5vw" }}
+                alt={item.name}
+                src={item.imgPath}
+              />
+            </a>
+          ))}
+        </div>
+        <div className='folder-name'>{name}</div>
       </FuncModal>
     </>
   );
