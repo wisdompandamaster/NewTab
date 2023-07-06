@@ -19,10 +19,21 @@ function AppFolder(props) {
     setIsModalVisible(false);
   };
 
-  const onDrag = e => {
+  const onDragEnd = e => {
     e.stopPropagation();
     e.preventDefault();
-    console.log(e.target);
+    let region =
+      e.target.parentNode.parentNode.parentNode.parentNode.getBoundingClientRect();
+    if (
+      e.clientY >= region.top &&
+      e.clientY <= region.bottom &&
+      e.clientX >= region.left &&
+      e.clientX <= region.right
+    ) {
+      console.log("in");
+    } else {
+      console.log("out");
+    }
   };
 
   const addFolder = () => {};
@@ -70,16 +81,17 @@ function AppFolder(props) {
         <div className='app-folder-modal'>
           {contents.map((item, index) => (
             <a
-              draggable='true'
               rel='noreferrer'
               key={item.name}
               href={item.href}
               target={"_blank"}
-              onDragStartCapture={e => e.stopPropagation()}
-              onDrop={e => e.stopPropagation()}
+              onDragEnd={onDragEnd}
+              // onDrop={e => {
+              //   e.stopPropagation();
+              //   console.log(e);
+              // }}
             >
               <img
-                draggable='true'
                 key={item.id}
                 style={{ width: "4.5vw" }}
                 alt={item.name}
