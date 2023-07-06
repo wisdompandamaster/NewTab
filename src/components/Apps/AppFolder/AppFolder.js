@@ -6,6 +6,7 @@ function AppFolder(props) {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { contents, name } = props;
+  console.log(contents);
 
   const showModal = () => {
     // openNotification();
@@ -16,6 +17,12 @@ function AppFolder(props) {
   };
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const onDrag = e => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(e.target);
   };
 
   const addFolder = () => {};
@@ -53,6 +60,7 @@ function AppFolder(props) {
           border: "5px solid white",
           background: "#fff0",
         }}
+        undraggable={true}
         width={"25vw"}
         height={"25vw"}
         visible={isModalVisible}
@@ -62,13 +70,17 @@ function AppFolder(props) {
         <div className='app-folder-modal'>
           {contents.map((item, index) => (
             <a
+              draggable='true'
               rel='noreferrer'
               key={item.name}
               href={item.href}
               target={"_blank"}
+              onDragStartCapture={e => e.stopPropagation()}
+              onDrop={e => e.stopPropagation()}
             >
               <img
-                key={index}
+                draggable='true'
+                key={item.id}
                 style={{ width: "4.5vw" }}
                 alt={item.name}
                 src={item.imgPath}

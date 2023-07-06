@@ -72,7 +72,7 @@ const FuncModal = props => {
         // transitionName='ant-zoom-big-fast'
         modalRender={modal => (
           <Draggable
-            disabled={disabled}
+            disabled={props.undraggable}
             bounds={bounds}
             onStart={(event, uiData) => onStart(event, uiData)}
           >
