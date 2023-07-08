@@ -1,12 +1,15 @@
 import FuncModal from "../../FuncModal/FuncModal";
 import { memo, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./AppFolder.css";
 
 function AppFolder(props) {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { contents, name } = props;
-  console.log(contents);
+  const myApps = useSelector(state => state.myApps);
+
+  const dispatch = useDispatch();
 
   const showModal = () => {
     // openNotification();
@@ -19,7 +22,7 @@ function AppFolder(props) {
     setIsModalVisible(false);
   };
 
-  const onDragEnd = e => {
+  const onDragEnd = (e, item) => {
     e.stopPropagation();
     e.preventDefault();
     let region =
@@ -32,10 +35,31 @@ function AppFolder(props) {
     ) {
       console.log("in");
     } else {
-      console.log("out");
+      const apps = [...myApps, item];
+      dispatch({
+        type: "CHANGE_APPS",
+        myApps: apps,
+      });
+      localStorage.setItem("apps", JSON.stringify(apps));
     }
   };
 
+  const onDrag = e => {
+    e.stopPropagation();
+    e.preventDefault();
+    let region =
+      e.target.parentNode.parentNode.parentNode.parentNode.getBoundingClientRect();
+    if (
+      !(
+        e.clientY >= region.top &&
+        e.clientY <= region.bottom &&
+        e.clientX >= region.left &&
+        e.clientX <= region.right
+      )
+    ) {
+      setIsModalVisible(false);
+    }
+  };
   const addFolder = () => {};
 
   // document.addEventListener("dragenter", function (event) {
@@ -85,7 +109,8 @@ function AppFolder(props) {
               key={item.name}
               href={item.href}
               target={"_blank"}
-              onDragEnd={onDragEnd}
+              onDragEnd={e => onDragEnd(e, item)}
+              onDrag={onDrag}
               // onDrop={e => {
               //   e.stopPropagation();
               //   console.log(e);
