@@ -6,7 +6,7 @@ import "./AppFolder.css";
 function AppFolder(props) {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { contents, name } = props;
+  const { contents, name, folderId } = props;
   const myApps = useSelector(state => state.myApps);
 
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ function AppFolder(props) {
   const onDragEnd = (e, item) => {
     e.stopPropagation();
     e.preventDefault();
+
     let region =
       e.target.parentNode.parentNode.parentNode.parentNode.getBoundingClientRect();
     if (
@@ -35,6 +36,12 @@ function AppFolder(props) {
     ) {
       console.log("in");
     } else {
+      let folderIndex = myApps.findIndex(i => i.id === folderId);
+      // 去除文件夹内图标
+      myApps[folderIndex].children.splice(
+        myApps[folderIndex].children.findIndex(i => i.id === item.id)
+      );
+      // console.log(myApps);
       const apps = [...myApps, item];
       dispatch({
         type: "CHANGE_APPS",
@@ -44,7 +51,7 @@ function AppFolder(props) {
     }
   };
 
-  const onDrag = e => {
+  const OnDrag = (e, item) => {
     e.stopPropagation();
     e.preventDefault();
     let region =
@@ -60,6 +67,7 @@ function AppFolder(props) {
       setIsModalVisible(false);
     }
   };
+
   const addFolder = () => {};
 
   // document.addEventListener("dragenter", function (event) {
@@ -110,7 +118,7 @@ function AppFolder(props) {
               href={item.href}
               target={"_blank"}
               onDragEnd={e => onDragEnd(e, item)}
-              onDrag={onDrag}
+              onDrag={e => OnDrag(e, item)}
               // onDrop={e => {
               //   e.stopPropagation();
               //   console.log(e);
