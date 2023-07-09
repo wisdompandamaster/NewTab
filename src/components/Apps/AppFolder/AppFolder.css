@@ -6,6 +6,7 @@
   border: 2px solid white;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
+  transition: 0.5s;
 }
 .app-contents {
   width: 90%;

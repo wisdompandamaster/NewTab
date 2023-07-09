@@ -1,5 +1,5 @@
 import FuncModal from "../../FuncModal/FuncModal";
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./AppFolder.css";
 
@@ -10,6 +10,13 @@ function AppFolder(props) {
   const myApps = useSelector(state => state.myApps);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // () => {
+    //   let node = document.querySelector("div.app-folder");
+    //   node.style.transform = "scale(0)";
+    // };
+  }, []);
 
   const showModal = () => {
     // openNotification();
@@ -26,8 +33,8 @@ function AppFolder(props) {
     e.stopPropagation();
     e.preventDefault();
 
-    let region =
-      e.target.parentNode.parentNode.parentNode.parentNode.getBoundingClientRect();
+    let foldernode = e.target.parentNode.parentNode.parentNode.parentNode;
+    let region = foldernode.getBoundingClientRect();
     if (
       e.clientY >= region.top &&
       e.clientY <= region.bottom &&
@@ -39,8 +46,16 @@ function AppFolder(props) {
       let folderIndex = myApps.findIndex(i => i.id === folderId);
       // 去除文件夹内图标
       myApps[folderIndex].children.splice(
-        myApps[folderIndex].children.findIndex(i => i.id === item.id)
+        myApps[folderIndex].children.findIndex(i => i.id === item.id),
+        1
       );
+
+      // dispatch时就移除文件夹，没有动画
+      if (myApps[folderIndex].children.length === 0) {
+        // let node = document.querySelector("div.app-folder");
+        // node.style.transform = "scale(0)";
+        myApps.splice(folderIndex, 1);
+      }
       // console.log(myApps);
       const apps = [...myApps, item];
       dispatch({
