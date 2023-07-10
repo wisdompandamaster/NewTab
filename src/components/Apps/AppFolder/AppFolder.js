@@ -6,6 +6,7 @@ import "./AppFolder.css";
 function AppFolder(props) {
   // modal组件控制函数
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [ediable, setEdiable] = useState(false);
   const { contents, name, folderId } = props;
   const myApps = useSelector(state => state.myApps);
 
@@ -86,7 +87,14 @@ function AppFolder(props) {
   const editFolderName = (e, name) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("code" + name);
+    setEdiable(true);
+  };
+
+  const onKeyDown = e => {
+    // console.log(e);
+    if (e.key == "Enter") {
+      setEdiable(false);
+    }
   };
   const addFolder = () => {};
 
@@ -153,8 +161,15 @@ function AppFolder(props) {
             </a>
           ))}
         </div>
+        <input
+          placeholder={name}
+          className='folder-name-input'
+          style={{ display: ediable ? "inline-block" : "none" }}
+          onKeyDown={onKeyDown}
+        />
         <div
           className='folder-name'
+          style={{ display: ediable ? "none" : "inline-block" }}
           onDoubleClick={e => editFolderName(e, name)}
         >
           {name}

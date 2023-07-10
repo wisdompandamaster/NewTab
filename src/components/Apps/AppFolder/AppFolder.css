@@ -45,3 +45,15 @@
   color: azure;
   width: 96%;
 }
+.folder-name-input {
+  position: fixed;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  font-weight: 600;
+  top: -4rem;
+  text-align: center;
+  color: azure;
+  width: 96%;
+  border: 0;
+  background: rgba(255, 255, 255, 0);
+}
