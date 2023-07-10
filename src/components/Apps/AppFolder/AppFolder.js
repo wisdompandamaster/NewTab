@@ -83,6 +83,11 @@ function AppFolder(props) {
     }
   };
 
+  const editFolderName = (e, name) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("code" + name);
+  };
   const addFolder = () => {};
 
   // document.addEventListener("dragenter", function (event) {
@@ -148,7 +153,12 @@ function AppFolder(props) {
             </a>
           ))}
         </div>
-        <div className='folder-name'>{name}</div>
+        <div
+          className='folder-name'
+          onDoubleClick={e => editFolderName(e, name)}
+        >
+          {name}
+        </div>
       </FuncModal>
     </>
   );
