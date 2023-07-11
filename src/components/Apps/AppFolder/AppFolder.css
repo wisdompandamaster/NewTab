@@ -44,6 +44,8 @@
   text-align: center;
   color: azure;
   width: 96%;
+  user-select: none;
+  cursor: pointer;
 }
 .folder-name-input {
   position: fixed;
@@ -53,7 +55,13 @@
   top: -4rem;
   text-align: center;
   color: azure;
-  width: 96%;
+  width: 95%;
   border: 0;
   background: rgba(255, 255, 255, 0);
+  outline: none;
+}
+.folder-name-input:focus {
+  outline: none;
+  border-bottom: 2px solid whitesmoke;
+  user-select: none;
 }

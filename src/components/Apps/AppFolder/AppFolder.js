@@ -94,6 +94,7 @@ function AppFolder(props) {
     // console.log(e);
     if (e.key == "Enter") {
       setEdiable(false);
+      // console.log(e);
     }
   };
   const addFolder = () => {};
