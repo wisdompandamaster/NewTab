@@ -8,7 +8,10 @@ function AppFolder(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [ediable, setEdiable] = useState(false);
   const { contents, name, folderId } = props;
+  const [nameinput, setNameInput] = useState(name);
   const myApps = useSelector(state => state.myApps);
+  // 文件夹位置
+  let folderIndex = myApps.findIndex(i => i.id === folderId);
 
   const dispatch = useDispatch();
 
@@ -44,7 +47,6 @@ function AppFolder(props) {
     ) {
       console.log("in");
     } else {
-      let folderIndex = myApps.findIndex(i => i.id === folderId);
       // 去除文件夹内图标
       myApps[folderIndex].children.splice(
         myApps[folderIndex].children.findIndex(i => i.id === item.id),
@@ -94,6 +96,13 @@ function AppFolder(props) {
     // console.log(e);
     if (e.key == "Enter") {
       setEdiable(false);
+
+      myApps[folderIndex].name = nameinput;
+      dispatch({
+        type: "CHANGE_APPS",
+        myApps: myApps,
+      });
+      localStorage.setItem("apps", JSON.stringify(myApps));
       // console.log(e);
     }
   };
@@ -167,13 +176,14 @@ function AppFolder(props) {
           className='folder-name-input'
           style={{ display: ediable ? "inline-block" : "none" }}
           onKeyDown={onKeyDown}
+          onChange={e => setNameInput(e.target.value)}
         />
         <div
           className='folder-name'
           style={{ display: ediable ? "none" : "inline-block" }}
           onDoubleClick={e => editFolderName(e, name)}
         >
-          {name}
+          {nameinput}
         </div>
       </FuncModal>
     </>
