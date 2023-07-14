@@ -97,7 +97,7 @@ function AppFolder(props) {
     if (e.key == "Enter") {
       setEdiable(false);
 
-      myApps[folderIndex].name = nameinput;
+      myApps[folderIndex].name = nameinput || "文件夹";
       dispatch({
         type: "CHANGE_APPS",
         myApps: myApps,
@@ -183,7 +183,7 @@ function AppFolder(props) {
           style={{ display: ediable ? "none" : "inline-block" }}
           onDoubleClick={e => editFolderName(e, name)}
         >
-          {nameinput}
+          {nameinput || "文件夹"}
         </div>
       </FuncModal>
     </>
