@@ -62,6 +62,7 @@
 }
 .folder-name-input:focus {
   outline: none;
-  border-bottom: 2px solid whitesmoke;
+  /* border-bottom: 2px solid whitesmoke; */
+  box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.8);
   user-select: none;
 }
