@@ -183,7 +183,7 @@ function AppFolder(props) {
           style={{ display: ediable ? "none" : "inline-block" }}
           onDoubleClick={e => editFolderName(e, name)}
         >
-          {nameinput || "文件夹"}
+          {nameinput}
         </div>
       </FuncModal>
     </>
