@@ -49,10 +49,10 @@ I use [**Shields IO**](https://shields.io/) for making badges. It is a simple an
 
 Here is a random GIF as a placeholder.-->
 
-![Demo1](./public/demo1.png)
-![Demo2](./public//Demo2.png)
-![Demo3](./public//Demo3.png)
-![Demo4](./public//Demo4.png)
+![Demo1](./public/demo1.jpg)
+![Demo2](./public//demo2.jpg)
+![Demo3](./public//demo3.jpg)
+![Demo4](./public//demo4.jpg)
 ![Random GIF](https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif)
 
 <!-- # Table of contents -->
