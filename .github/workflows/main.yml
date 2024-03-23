@@ -39,4 +39,4 @@ jobs:
           key: ${{ secrets.USER_KEY }}
           connect_timeout: 60s
           local: "./build/*"
-          remote: "/home/www/newtab.wisdompanda/build"
+          remote: "/home/www/newtab\.wisdompanda/build"
