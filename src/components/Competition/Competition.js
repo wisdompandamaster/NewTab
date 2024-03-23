@@ -44,17 +44,14 @@ function NBA(props) {
   };
 
   useEffect(() => {
-    let url =
-      "https://china.nba.cn/stats2/scores/miniscoreboardlive.json?countryCode=CN&locale=zh_CN&tz=%2B8";
+    let url = "https://api.nba.cn/sib/v2/game/schedule";
     async function getGameList() {
       fetch(url)
         .then(response => response.json())
         .then(
           data => {
-            setGames(data.payload.today.games);
-            flag = data.payload.today.games.map(
-              (item, index) => item.boxscore.status
-            );
+            setGames(data.data.groups[0].games);
+            flag = data.data.groups[0].games.map((item, index) => item.status);
           } //.next.games 表示下一天
         )
         .catch(e => console.log("error"));
@@ -64,7 +61,7 @@ function NBA(props) {
     const t = setInterval(() => {
       // let flag = games.map((item,index)=>item.boxscore.status)          //获取比赛状态数组，如果有比赛正在进行才请求  这个地方获取不行
       // console.log(games)
-      if (flag.includes("2")) {
+      if (flag.includes(2)) {
         console.log("比赛进行中");
         getGameList();
       }
@@ -76,20 +73,20 @@ function NBA(props) {
   }, []);
 
   const have_game = games.map((item, index) => {
-    let awayTeam = item.awayTeam.profile.displayAbbr;
-    let homeTeam = item.homeTeam.profile.displayAbbr;
-    let time = new Date(item.profile.dateTimeEt);
+    let awayTeam = item.awayTeamName;
+    let homeTeam = item.homeTeamName;
+    let time = new Date(item.dateTimeUtc);
     time = new Date(time.setHours(time.getHours() + 13));
     time = time.getHours() + " : " + time.toLocaleTimeString().slice(3, 5);
-    let score = item.boxscore.awayScore + " - " + item.boxscore.homeScore;
-    let score_time = item.boxscore.status !== "1" ? score : time;
+    let score = item.awayTeamScore + " - " + item.homeTeamScore;
+    let score_time = item.status !== 1 ? score : time;
     if (index === itemIndex)
       return (
         <div key={index} className='nba slidein'>
           <span className='nba_team'>
             <img
               alt='logo'
-              src={remote_logo_img + item.awayTeam.profile.abbr + "_logo.svg"}
+              src={remote_logo_img + item.awayTeamAbbr + "_logo.svg"}
             />
             {awayTeam}
           </span>
@@ -98,12 +95,12 @@ function NBA(props) {
             <div
               style={{
                 fontFamily: "SimHei, Serif",
-                color: "#ff0000aa",
+                color: "#5591FF",
                 fontWeight: "800",
                 fontSize: "1.1rem",
               }}
             >
-              {item.boxscore.statusDesc}&nbsp;{item.boxscore.periodClock}
+              {item.statusDesc}&nbsp;{item.gameClock}
             </div>
             <div>{item.seriesText}</div>
             {/* <div>{time}</div> */}
@@ -111,7 +108,7 @@ function NBA(props) {
           <span className='nba_team'>
             <img
               alt='logo'
-              src={remote_logo_img + item.homeTeam.profile.abbr + "_logo.svg"}
+              src={remote_logo_img + item.homeTeamAbbr + "_logo.svg"}
             />
             {homeTeam}
           </span>

@@ -35,7 +35,8 @@ jobs:
         with:
           host: ${{ secrets.USER_HOST }}
           user: ${{ secrets.USER_NAME }}
-          pass: ${{ secrets.USER_PASS }}
+          # pass: ${{ secrets.USER_PASS }}
+          key: ${{ secrets.USER_KEY }}
           connect_timeout: 60s
           local: "./build/*"
-          remote: /NewTab/build
+          remote: /home/www/newtab.wisdompanda/build
