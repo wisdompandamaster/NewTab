@@ -38,4 +38,4 @@ jobs:
           # pass: ${{ secrets.USER_PASS }}
           key: ${{ secrets.USER_KEY }}
           source: "./build/*"
-          target: "/home/www/newtab.wisdompanda/build"
+          target: /home/www/newtab.wisdompanda/build
