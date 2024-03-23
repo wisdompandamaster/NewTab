@@ -75,11 +75,22 @@ function NBA(props) {
   const have_game = games.map((item, index) => {
     let awayTeam = item.awayTeamName;
     let homeTeam = item.homeTeamName;
-    let time = new Date(item.dateTimeUtc);
-    time = new Date(time.setHours(time.getHours() + 13));
-    time = time.getHours() + " : " + time.toLocaleTimeString().slice(3, 5);
+    // let time = new Date(item.dateTimeUtc);
+    // time = new Date(time.setHours(time.getHours() + 13));
+    // time = time.getHours() + " : " + time.toLocaleTimeString().slice(3, 5);
+    let time = item.startTime.slice(0, 2) + " : " + item.startTime.slice(3, 5);
     let score = item.awayTeamScore + " - " + item.homeTeamScore;
     let score_time = item.status !== 1 ? score : time;
+    // 根据不同比赛状态显示不同文字
+    let status =
+      item.status == 2
+        ? item.periodText + " " + item.gameClock
+        : item.statusText;
+    // 详细信息跳转链接
+    let link =
+      item.status == 1
+        ? "https://china.nba.cn/preview/" + item.gameId + "/game-list"
+        : "https://china.nba.cn/game/" + item.gameId + "/box-score";
     if (index === itemIndex)
       return (
         <div key={index} className='nba slidein'>
@@ -91,19 +102,20 @@ function NBA(props) {
             {awayTeam}
           </span>
           <span className='score_time'>
-            {score_time}
-            <div
-              style={{
-                fontFamily: "SimHei, Serif",
-                color: "#5591FF",
-                fontWeight: "800",
-                fontSize: "1.1rem",
-              }}
-            >
-              {item.statusDesc}&nbsp;{item.gameClock}
-            </div>
-            <div>{item.seriesText}</div>
-            {/* <div>{time}</div> */}
+            <a href={link} rel='noreferrer' target='_blank'>
+              {score_time}
+              <div
+                style={{
+                  fontFamily: "SimHei, Serif",
+                  color: "#401F71",
+                  fontWeight: "800",
+                  fontSize: "1.1rem",
+                  marginTop: "0.6rem",
+                }}
+              >
+                {status}
+              </div>
+            </a>
           </span>
           <span className='nba_team'>
             <img
@@ -159,7 +171,7 @@ const Competition = () => {
           {/* 这里是FuncCard 尝试封装type的一个尝试 */}
           <a
             style={{ display: type === 0 ? "block" : "none" }}
-            href='https://v.qq.com/channel/nba'
+            href='#'
             rel='noreferrer'
             target='_blank'
           >
