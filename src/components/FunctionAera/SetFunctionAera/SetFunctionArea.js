@@ -107,14 +107,15 @@ const SetFunctionArea = memo(() => {
         onCancel={handleCancel}
       >
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 50%)",
-            height: "100%",
-            rowGap: "3%",
-            // margin: "1% 0 1% 0",
-            overflowY: "scroll",
-          }}
+          // style={{
+          //   display: "grid",
+          //   gridTemplateColumns: "repeat(2, 50%)",
+          //   height: "100%",
+          //   rowGap: "3%",
+          //   // margin: "1% 0 1% 0",
+          //   overflowY: "scroll",
+          // }}
+          className='flex flex-col gap-3'
         >
           {funcs.map((item, index) => {
             return (
