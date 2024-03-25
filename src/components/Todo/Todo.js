@@ -159,12 +159,12 @@ function Todo() {
               <div id="app-icon"></div>
               <h1 id="app-title">待办事项</h1>
             </header> */}
-            <div id='todo-count'>
-              <div className='count'>
+            <div className='flex justify-evenly h-full items-center mt-1.5'>
+              <div className='count h-full justify-evenly items-center'>
                 <h1 id='count-completed'>{metaToday.completed.length}</h1>
                 <p id='p-completed'>已做</p>
               </div>
-              <div className='count'>
+              <div className='count h-full justify-evenly items-center'>
                 <h1>{metaToday.uncompleted.length}</h1>
                 <p>待做</p>
               </div>
