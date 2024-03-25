@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "~antd/dist/antd.css";
 
 /* 全局CSS样式 */
