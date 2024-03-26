@@ -8,7 +8,7 @@ interface BackgroundProps {
   blur: number;
 }
 
-const Background = ({ src, cover, blur }: BackgroundProps) => {
+const Background: React.FC<BackgroundProps> = ({ src, cover, blur }) => {
   // 设置模糊程度，映射 1 - 100
   const filter = "blur(" + blur / 4 + "px)";
   // 隐藏模糊产生的白边，按模糊程度放大

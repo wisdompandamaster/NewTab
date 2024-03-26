@@ -16,7 +16,7 @@ const Nav = () => {
       <div className="fixed top-4 left-7 cursor-pointer">
         <HoverCard>
           <HoverCardTrigger>
-            <Avatar className="w-8 h-8 ring-2 ring-white hover:ring-gray-900">
+            <Avatar className="w-8 h-8 ring-2 ring-white hover:ring-black">
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
@@ -26,7 +26,7 @@ const Nav = () => {
           </HoverCardContent>
         </HoverCard>
       </div>
-      <div className="fixed top-5 right-16 text-cyan-50 leading-8 h-8 text-lg font-semibold cursor-pointer px-4 rounded-full hover:bg-[#0007]">
+      <div className="fixed top-5 right-20 text-cyan-50 leading-8 h-8 text-lg font-semibold cursor-pointer ring-2 ring-white px-3 rounded-sm hover:bg-[#0007]">
         <p>11 : 30 : 25</p>
       </div>
       <div className="fixed top-4 right-6 cursor-pointer w-10 h-10 flex justify-center items-center rounded-sm hover:bg-[#0007]">
