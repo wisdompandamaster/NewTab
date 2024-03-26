@@ -1,10 +1,16 @@
-import { Button } from "@/components/ui/button";
+import Background from "@/components/background/background";
+import Nav from "./components/nav/nav";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Button>Button</Button>
+      <Background
+        src="https://newtab.wisdompanda.com/pic/background/cool-background1.png"
+        cover={30}
+        blur={0}
+      />
+      <Nav />
     </>
   );
 }
